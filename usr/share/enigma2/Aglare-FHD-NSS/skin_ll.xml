@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin>
+    <!-- *************************************** -->
+    <!--  WORLDCAM PANELS                           * -->
+    <!-- *************************************** -->
+    <screen name="Webcam1" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <widget name="info" position="67,101" size="820,50" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="5"/>
+        <!-- Graph -->
+        <ePixmap position="973,638" size="250,250" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/WorldCam/pics/ft.png" zPosition="22" scale="strech" alphatest="blend"/>
+        <eLabel position="61,853" size="830,150" backgroundColor="#30000000" zPosition="1"/>
+        <eLabel position="973,638" size="250,250" backgroundColor="#30000000" zPosition="1"/>
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/WorldCam/plugin.png" scale="strech" alphatest="blend" position="736,35" size="191,67" zPosition="5"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/WorldCam/pics/PayPal.png" scale="strech" position="1238,889" size="156,75" zPosition="5" alphatest="on"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/WorldCam/pics/qr-code.png" scale="strech" position="1444,640" size="318,318" zPosition="2" alphatest="on"/>
+        <eLabel backgroundGradient="blue,red,vertical" cornerRadius="10" position="1399,605" size="400,400"/>
+        <widget name="paypal" position="59,851" size="830,150" font="Regular; 34" foregroundColor="#ffb75b" backgroundColor="#101010" halign="left" transparent="1" zPosition="5"/>
+        <!-- Menu List -->
+        <widget name="list" position="65,161" size="830,663" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" zPosition="10" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#000b2049" backgroundColorSelected="#0b2049" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/WorldCam/pics/slider.png"/>
+        <!-- Colors -->
+    </screen>
+    <screen name="Webcam2" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Webcam1"/>
+    </screen>
+    <screen name="Webcam3" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Webcam1"/>
+    </screen>
+    <screen name="Webcam4" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Webcam1"/>
+    </screen>
+    <screen name="Webcam5" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Webcam1"/>
+    </screen>
+    <screen name="Webcam5a" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Webcam1"/>
+    </screen>
+    <screen name="Webcam6" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Webcam1"/>
+    </screen>
+    <screen name="Webcam7" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Webcam1"/>
+    </screen>
+    <screen name="Webcam8" position="0,0" size="1920,1080" title="..::WORLDCAM::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Webcam1"/>
+    </screen>
+    <!-- *************************************** -->
+    <!--  APSATTV PANELS                           * -->
+    <!-- *************************************** -->
+    <screen name="Apsattv" position="0,0" size="1920,1080" title="::Apsattv::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <widget name="category" position="939,614" size="456,192" zPosition="3" backgroundColor="#30000000" transparent="1" font="Regular;38" halign="center" foregroundColor="#f4b700"/>
+        <widget name="name" position="56,111" size="850,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
+        <eLabel position="61,853" size="830,150" backgroundColor="#30000000" zPosition="1"/>
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Apsattv/plugin.png" scale="strech" alphatest="blend" position="736,35" size="191,67" zPosition="5"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Apsattv/skin/pic/PayPal.png" scale="strech" position="1238,889" size="156,75" zPosition="5" alphatest="on"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/Apsattv/skin/pic/qr-code.png" scale="strech" position="1444,640" size="318,318" zPosition="2" alphatest="on"/>
+        <eLabel backgroundGradient="blue,red,vertical" cornerRadius="10" position="1399,605" size="400,400"/>
+        <widget name="paypal" position="59,851" size="830,150" font="Regular; 34" foregroundColor="#ffb75b" backgroundColor="#101010" halign="left" transparent="1" zPosition="5"/>
+        <!-- Menu List -->
+        <widget name="menulist" position="57,181" size="833,632" scrollbarMode="showOnDemand" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#20000000" backgroundColorSelected="#0b2049" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/Apsattv/skin/pic/slider.png"/>
+    </screen>
+    <screen name="selectplay" position="0,0" size="1920,1080" title="..::Apsattv::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Apsattv"/>
+    </screen>
+    <!-- *************************************** -->
+    <!--  FILMON PANELS                           * -->
+    <!-- *************************************** -->
+    <screen name="filmon" position="0,0" size="1920,1080" backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <widget name="name" position="51,124" size="850,60" noWrap="1" zPosition="1" transparent="1" font="Regular;33" valign="center" halign="left" backgroundColor="#30000000" foregroundColor="#00ffffff"/>
+        <widget name="menulist" position="52,192" size="838,600" backgroundColor="#30000000" zPosition="1" scrollbarMode="showOnDemand" transparent="1" foregroundColor="#00ffffff"/>
+        <widget name="text" position="43,800" size="885,204" zPosition="1" backgroundColor="#30000000" transparent="1" font="Regular;33" halign="center" foregroundColor="#f4b700"/>
+        <widget name="poster" position="999,651" size="234,306" zPosition="4" backgroundColor="#30000000" transparent="1" borderWidth="3" borderColor="#00ffffff" flags="wfBorder" alphatest="blend"/>
+    </screen>
+    <!-- *************************************** -->
+    <!--  FREEARHEY PANELS                           * -->
+    <!-- *************************************** -->
+    <screen name="freearhey" position="0,0" size="1920,1080" title="::freearhey::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <widget name="category" position="939,614" size="456,192" zPosition="3" backgroundColor="#30000000" transparent="1" font="Regular;38" halign="center" foregroundColor="#f4b700"/>
+        <widget name="name" position="56,111" size="850,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
+        <eLabel position="61,853" size="830,150" backgroundColor="#30000000" zPosition="1"/>
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/freearhey/plugin.png" scale="strech" alphatest="blend" position="736,35" size="191,67" zPosition="5"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/freearhey/skin/pic/PayPal.png" scale="strech" position="1238,889" size="156,75" zPosition="5" alphatest="on"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/freearhey/skin/pic/qr-code.png" scale="strech" position="1444,640" size="318,318" zPosition="2" alphatest="on"/>
+        <eLabel backgroundGradient="blue,red,vertical" cornerRadius="10" position="1399,605" size="400,400"/>
+        <widget name="paypal" position="59,851" size="830,150" font="Regular; 34" foregroundColor="#ffb75b" backgroundColor="#101010" halign="left" transparent="1" zPosition="5"/>
+        <!-- Menu List -->
+        <widget name="menulist" position="55,206" size="838,640" backgroundColor="#30000000" zPosition="1" scrollbarMode="showOnDemand" transparent="1" foregroundColor="#00ffffff"/>
+    </screen>
+    <screen name="main23" position="0,0" size="1920,1080" title="..::freearhey::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="freearhey"/>
+    </screen>
+    <screen name="selectplay3" position="0,0" size="1920,1080" title="..::freearhey::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="freearhey"/>
+    </screen>
+    <!-- *************************************** -->
+    <!--  HASBAHCA PANELS                           * -->
+    <!-- *************************************** -->
+    <screen name="MainHasBahCa" position="0,0" size="1920,1080" title="..::HasBahCa::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <widget name="info" position="51,116" size="850,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
+        <widget name="progress" position="563,949" size="300,50" foregroundColor="#2a70a4" backgroundColor="#10000000" transparent="1" zPosition="5"/>
+        <widget source="progresstext" render="Label" font="Regular;20" position="562,950" size="300,50" backgroundColor="#202020" transparent="1" halign="center" zPosition="6"/>
+        <widget name="live" position="55,865" size="845,67" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
+        <!-- Menu List -->
+        <widget name="text" position="55,206" size="838,640" backgroundColor="#30000000" zPosition="1" scrollbarMode="showOnDemand" transparent="1" foregroundColor="#00ffffff"/>
+    </screen>
+    <screen name="HasBahCaC" position="0,0" size="1920,1080" title="..::freearhey::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainHasBahCa"/>
+    </screen>
+    <screen name="HasBahCa1" position="0,0" size="1920,1080" title="..::freearhey::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainHasBahCa"/>
+    </screen>
+    <!-- *************************************** -->
+    <!--  TVDREAM PANELS                           * -->
+    <!-- *************************************** -->
+    <screen name="MainSetting" position="0,0" size="1920,1080" title="..::TiVuDream::.." backgroundColor="transparent" flags="wfNoBorder">
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <!-- Menu List -->
+        <widget name="info" position="51,119" size="850,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
+        <widget name="text" position="49,191" size="850,650" scrollbarMode="showOnDemand" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#20000000" backgroundColorSelected="#0b2049" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/tvDream/res/pics/sliderb.png"/>
+    </screen>
+    <screen name="State" position="0,0" size="1920,1080" title="..::TiVuDream::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainSetting"/>
+    </screen>
+    <screen name="tvRegioni" position="0,0" size="1920,1080" title="..::TiVuDream::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainSetting"/>
+    </screen>
+    <screen name="tvItalia" position="0,0" size="1920,1080" title="..::TiVuDream::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainSetting"/>
+    </screen>
+    <screen name="tvCanal" position="0,0" size="1920,1080" title="..::TiVuDream::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainSetting"/>
+    </screen>
+    <screen name="tvCategory" position="0,0" size="1920,1080" title="..::TiVuDream::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainSetting"/>
+    </screen>
+    <screen name="subCategory" position="0,0" size="1920,1080" title="..::TiVuDream::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainSetting"/>
+    </screen>
+    <screen name="tvNew" position="0,0" size="1920,1080" title="..::TiVuDream::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainSetting"/>
+    </screen>
+    <screen name="Playstream1" position="0,0" size="1920,1080" title="TiVuDream" backgroundColor="#FF000000" flags="wfNoBorder">
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <widget name="info" position="51,119" size="850,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
+        <widget name="list" position="49,191" size="850,650" scrollbarMode="showOnDemand" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#20000000" backgroundColorSelected="#0b2049" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/tvDream/res/pics/sliderb.png"/>
+    </screen>
+    <!-- *************************************** -->
+    <!--  PARSATV PANELS                           * -->
+    <!-- *************************************** -->
+    <screen name="MainParsa" position="0,0" size="1920,1080" title="..::parsatv::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/parsatv/plugin.png" scale="strech" alphatest="blend" position="736,35" size="191,67" zPosition="5"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/parsatv/res/pics/PayPal.png" scale="strech" position="1238,889" size="156,75" zPosition="5" alphatest="on"/>
+        <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/parsatv/res/pics/qr-code.png" scale="strech" position="1444,640" size="318,318" zPosition="2" alphatest="on"/>
+        <eLabel backgroundGradient="blue,red,vertical" cornerRadius="10" position="1399,605" size="400,400"/>
+        <widget name="paypal" position="59,851" size="830,150" font="Regular; 34" foregroundColor="#ffb75b" backgroundColor="#101010" halign="left" transparent="1" zPosition="5"/>
+        <widget name="info" position="51,119" size="850,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
+        <widget name="text" position="49,191" size="850,650" scrollbarMode="showOnDemand" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#20000000" backgroundColorSelected="#0b2049" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/tvDream/res/pics/sliderb.png"/>
+    </screen>
+    <screen name="parsatv2" position="0,0" size="1920,1080" title="..::parsatv::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainParsa"/>
+    </screen>
+    <screen name="parsatv3" position="0,0" size="1920,1080" title="..::parsatv::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainParsa"/>
+    </screen>
+    <screen name="parsasport" position="0,0" size="1920,1080" title="..::parsatv::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainParsa"/>
+    </screen>
+    <screen name="parsatv" position="0,0" size="1920,1080" title="..::parsatv::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="MainParsa"/>
+    </screen>
+   
+
+</skin>

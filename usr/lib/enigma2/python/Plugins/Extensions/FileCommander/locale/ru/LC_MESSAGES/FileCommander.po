@@ -1,0 +1,1691 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST SkinerMan <TCSB2012@gmail.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FileCommander - E2OpenPlugins\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-06 14:25+0100\n"
+"PO-Revision-Date: 2023-06-15 17:23+0200\n"
+"Last-Translator: SkinerMan <TCSB2012@gmail.com>\n"
+"Language-Team: SkinerMan\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: ../addons/key_actions.py:406
+#, python-format
+msgid ""
+"\n"
+"optional parameter:\n"
+"%s"
+msgstr ""
+"\n"
+"дополнительный параметр:\n"
+"%s"
+
+#: ../addons/key_actions.py:174
+#, python-format
+msgid " ('%s') finished successefully."
+msgstr " ('%s') успешно завершено."
+
+#: ../addons/key_actions.py:160
+#, python-format
+msgid " ('%s') finished with error messages."
+msgstr " ('%s') выполнено с сообщениями об ошибках."
+
+#: ../addons/key_actions.py:157
+#, python-format
+msgid " ('%s') finished with error number [%d]."
+msgstr " ('%s') выполнено с номером ошибки [%d]."
+
+#: ../ui.py:1808 ../ui.py:1843
+#, python-format
+msgid " - %d element exist! Overwrite"
+msgid_plural " - %d elements exist! Overwrite"
+msgstr[0] " - %d элемент существует! Перезаписать"
+msgstr[1] " - %d элемента существует! Перезаписать"
+msgstr[2] " - %d элементов существует! Перезаписать"
+
+#: ../ui.py:982 ../ui.py:1044
+msgid " - file exist! Overwrite"
+msgstr " - файл существует! Перезаписать"
+
+#: ../ui.py:986 ../ui.py:1048
+msgid " - folder exist! Overwrite"
+msgstr " - папка существует! Перезаписать"
+
+#: ../addons/key_actions.py:740
+msgid " or save the picture additionally to a file"
+msgstr " или сохраните изображение дополнительно в файл"
+
+#: ../ui.py:310
+#, python-format
+msgid "%d GB"
+msgstr "%d ГБ"
+
+#: ../ui.py:308
+#, python-format
+msgid "%d MB"
+msgstr "%d МБ"
+
+#: ../ui.py:306
+#, python-format
+msgid "%d kB"
+msgstr "%d кб"
+
+#: ../addons/key_actions.py:139
+msgid "%d.%m.%Y, %H:%M:%S"
+msgstr "%d.%m.%Y, %H:%M:%S"
+
+#: ../addons/key_actions.py:349
+#, python-format
+msgid "%s"
+msgstr "%s"
+
+#: ../ui.py:2022
+#, python-format
+msgid "%s (%04o)"
+msgstr "%s (%04o)"
+
+#: ../addons/key_actions.py:332 ../addons/key_actions.py:350
+#: ../addons/key_actions.py:351 ../addons/key_actions.py:352
+#, python-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: ../addons/unarchiver.py:189
+#, python-format
+msgid "%s - extraction errors."
+msgstr "%s - ошибки извлечения."
+
+#: ../addons/unrar.py:63
+#, python-format
+msgid "%s is password protected."
+msgstr "%s защищено паролем."
+
+#: ../addons/unarchiver.py:200
+#, python-format
+msgid "%s successfully extracted."
+msgstr "%s успешно извлечено."
+
+#: ../addons/key_actions.py:442 ../addons/key_actions.py:746
+#, python-format
+msgid "%s: %s"
+msgstr "%s: %s"
+
+#: ../addons/key_actions.py:547
+#, python-format
+msgid "'%s' not installed and no known package"
+msgstr "'%s' не установлен не известен пакет"
+
+#: ../ui.py:198 ../ui.py:1404
+msgid "'Group selection' and 'Invert selection' in Multiselection mode can work with directories too."
+msgstr "'Групповой выбор' и 'Инвертированный выбор' в режиме Мультиселекции также может работать с каталогами."
+
+#: ../ui.py:553
+#, python-format
+msgid "(%d job)"
+msgid_plural "(%d jobs)"
+msgstr[0] "(%d задание)"
+msgstr[1] "(%d задания)"
+msgstr[2] "(%d заданий)"
+
+#: ../ui.py:1540
+msgid "(Selectmode)"
+msgstr "(Режим выбора)"
+
+#: ../ui.py:1268 ../ui.py:1869
+msgid "<Receiver>"
+msgstr "<Ресивер>"
+
+#: ../addons/key_actions.py:99
+msgid "?"
+msgstr "?"
+
+#: ../ui.py:2026
+msgid "Accessed:"
+msgstr "Доступно с:"
+
+#: ../ui.py:1509 ../ui.py:1511
+msgid "Activate left-hand file list as multi-select source"
+msgstr "Активировать левый список файлов как источник с множественным выбором"
+
+#: ../ui.py:501 ../ui.py:503
+msgid "Activate left-hand file list as source"
+msgstr "Активировать левый список файлов в качестве источника"
+
+#: ../ui.py:1508 ../ui.py:1510
+msgid "Activate right-hand file list as multi-select source"
+msgstr "Активировать правый список файлов как источник с множественным выбором"
+
+#: ../ui.py:500 ../ui.py:502
+msgid "Activate right-hand file list as source"
+msgstr "Активировать правый список файлов в качестве источника"
+
+#: ../ui.py:676
+msgid "Add current folder to bookmarks"
+msgstr "Добавить текущую папку в закладки"
+
+#: ../ui.py:185
+msgid "Add plugin to Extensions menu"
+msgstr "Добавить File Commander в Меню дополнений"
+
+#: ../ui.py:184
+msgid "Add plugin to main menu"
+msgstr "Добавить File Commander в Главное меню"
+
+#: ../ui.py:672
+msgid "Add selected folder to bookmarks"
+msgstr "Добавить выбранную папку в закладки"
+
+#: ../ui.py:1615
+#, python-format
+msgid "Add to selection (%s)"
+msgstr "Добавить к выбору (%s)"
+
+#: ../ui.py:154 ../ui.py:155
+msgid "All"
+msgstr "Все"
+
+#: ../ui.py:203 ../ui.py:1406
+msgid "All files in the directory with the same name as the selected movie will be copied or moved too."
+msgstr "Все файлы в каталоге с тем же именем, что и выбранный фильм, также будут скопированы или перемещены."
+
+#: ../ui.py:203 ../ui.py:1406
+msgid "All movie extensions"
+msgstr "Все видео расширения"
+
+#: ../addons/key_actions.py:275 ../addons/key_actions.py:296
+#: ../addons/key_actions.py:303 ../addons/key_actions.py:346
+#: ../addons/key_actions.py:351 ../addons/key_actions.py:352
+msgid "B"
+msgstr "В"
+
+#: ../addons/key_actions.py:83
+msgid "Block device"
+msgstr "Заблокированное устройство"
+
+#: ../ui.py:208
+msgid "CPU priority for script execution"
+msgstr "Приоритет процессора для выполнения скрипта"
+
+#: ../ui.py:643
+msgid "Calculate file checksums"
+msgstr "Рассчитать контрольные суммы файлов"
+
+#: ../ui.py:210
+msgid "Calculates file checksums."
+msgstr "Рассчитать контрольные суммы файлов."
+
+#: ../ui.py:206
+msgid "Calculates the size of directory contents for 'Info'."
+msgstr "Рассчитать размер содержимого каталога для получения дополнительной информации."
+
+#: ../addons/unrar.py:52 ../addons/unarchiver.py:143
+#, python-format
+msgid ""
+"Can not run %s: %s.\n"
+"%s may be in a plugin that is not installed."
+msgstr ""
+"Невозможно запустить %s: %s.\n"
+"Возможно дополнение, %s - не установлено."
+
+#: ../ui.py:2042
+#, python-format
+msgid "Can't read link contents: %s"
+msgstr "Не прочитать содержание ссылки: %s"
+
+#: ../Console.py:28 ../addons/type_utils.py:352 ../addons/unarchiver.py:74
+#: ../addons/unarchiver.py:245 ../addons/key_actions.py:250
+#: ../addons/key_actions.py:400 ../addons/key_actions.py:616 ../ui.py:216
+#: ../ui.py:1377
+msgid "Cancel"
+msgstr "Отмена"
+
+#: ../Console.py:131
+msgid "Cancel execution?"
+msgstr "Отменить выполнение?"
+
+#: ../addons/type_utils.py:348
+#, fuzzy
+msgid "Case sensitive search"
+msgstr "Сравнить с учетом регистра"
+
+#: ../ui.py:196
+msgid "Change buttons for list navigation"
+msgstr "Изменить кнопки навигации по списку"
+
+#: ../ui.py:646
+msgid "Change execute permissions (755/644)"
+msgstr "Изменить права (755/644)"
+
+#: ../ui.py:103
+msgid "Channel button always changes sides"
+msgstr "Кнопка CH+- переход на правую левую панель"
+
+#: ../addons/key_actions.py:85
+msgid "Character device"
+msgstr "Символьное устройство"
+
+#: ../TaskList.py:52 ../Console.py:83
+msgid "Close"
+msgstr "Закрыть"
+
+#: ../ui.py:1401
+msgid "Compare case sensitive"
+msgstr "Сравнить с учетом регистра"
+
+#: ../ui.py:2032
+msgid "Content size:"
+msgstr "Размер содержимого:"
+
+#: ../ui.py:649
+#, python-format
+msgid "Convert subtitles from '%s' to UTF-8"
+msgstr "Конвертировать субтитры из '%s' в UTF-8"
+
+#: ../ui.py:485 ../ui.py:1501
+msgid "Copy"
+msgstr "Копировать"
+
+#: ../ui.py:1844
+#, python-format
+msgid "Copy %d element"
+msgid_plural "Copy %d elements"
+msgstr[0] "Копировать %d элемент"
+msgstr[1] "Копировать %d элемента"
+msgstr[2] "Копировать %d элементов"
+
+#: ../ui.py:983
+msgid "Copy file"
+msgstr "Копировать файл"
+
+#: ../ui.py:513 ../ui.py:633
+msgid "Copy file/directory to target directory"
+msgstr "Копировать файл/каталог в целевой каталог"
+
+#: ../ui.py:1518
+msgid "Copy files/directories to target directory"
+msgstr "Копировать файлы/каталоги в целевой каталог"
+
+#: ../ui.py:987
+msgid "Copy folder"
+msgstr "Копировать папку"
+
+#: ../ui.py:206
+msgid "Count directory content size"
+msgstr "Рассчитывать размер содержимого каталога"
+
+#: ../ui.py:505 ../ui.py:1522
+msgid "Counting directory content size while walking (on/off)"
+msgstr "Подсчет размера содержимого каталога во время навигации (вкл/выкл)"
+
+#: ../ui.py:508 ../ui.py:635
+msgid "Create directory"
+msgstr "Создать каталог"
+
+#: ../ui.py:1586
+msgid "Create directory in 'Target' panel"
+msgstr "Создать каталог в 'Целевой' панели"
+
+#: ../ui.py:1176
+msgid "Create symlink to file"
+msgstr "Создать символическую ссылку на файл"
+
+#: ../ui.py:652
+msgid "Create user-named symbolic link"
+msgstr "Создать символическую ссылку"
+
+#: ../ui.py:115 ../ui.py:120
+msgid "Date"
+msgstr "Дата"
+
+#: ../ui.py:116 ../ui.py:121
+msgid "Date reverse"
+msgstr "Дата по убыванию"
+
+#: ../ui.py:208
+msgid "Default CPU priority (nice) for executed scripts. This can reduce the load so that scripts do not interfere with the rest of the system. (higher values = lower priority)"
+msgstr "Приоритет ЦП по умолчанию (nice) для исполняемых скриптов. Это может снизить нагрузку, чтобы сценарии не мешали работе остальной системы. (более высокие значения = более низкий приоритет)"
+
+#: ../ui.py:239
+msgid "Default Folder"
+msgstr "Каталог по умолчанию"
+
+#: ../ui.py:209
+msgid "Default I/O priority (ionice) for executed scripts. This can reduce the load so that scripts do not interfere with the rest of the system. (higher values = lower priority)"
+msgstr "Приоритет Ввода/Вывода по умолчанию (ionice) для исполняемых скриптов. Это может снизить нагрузку, чтобы сценарии не мешали работе остальной системы. (более высокие значения = более низкий приоритет)"
+
+#: ../ui.py:201
+msgid "Default directory sorting"
+msgstr "Сортировка каталогов"
+
+#: ../ui.py:199
+msgid "Default file sorting left"
+msgstr "Сортировка файлов слева"
+
+#: ../ui.py:200
+msgid "Default file sorting right"
+msgstr "Сортировка файлов справа"
+
+#: ../ui.py:202
+msgid "Default folder"
+msgstr "Каталог по умолчанию"
+
+#: ../ui.py:201
+msgid "Default sorting method for directories in both panels (to apply the changes FileCommander must be restarted)."
+msgstr "Метод сортировки по умолчанию для каталогов в обеих панелях (для изменения настроек - перезапусте FileCommander)."
+
+#: ../ui.py:199
+msgid "Default sorting method for files in left panel."
+msgstr "Метод сортировки файлов по умолчанию на левой панели."
+
+#: ../ui.py:200
+msgid "Default sorting method for files in right panel."
+msgstr "Метод сортировки файлов по умолчанию на правой панели."
+
+#: ../addons/type_utils.py:128 ../ui.py:483 ../ui.py:1499
+msgid "Delete"
+msgstr "Удалить"
+
+#: ../ui.py:1774
+#, python-format
+msgid "Delete %d element"
+msgid_plural "Delete %d elements"
+msgstr[0] "Удалить %d элемент"
+msgstr[1] "Удалить %d элемента"
+msgstr[2] "Удалить %d элементов"
+
+#: ../addons/type_utils.py:117
+msgid "Delete current line"
+msgstr "Удалить текущую строку"
+
+#: ../ui.py:1014
+msgid "Delete file"
+msgstr "Удалить файл"
+
+#: ../ui.py:511 ../ui.py:636
+msgid "Delete file or directory (and all its contents)"
+msgstr "Удалить файл или каталог (и все его содержимое)"
+
+#: ../ui.py:1016
+msgid "Delete folder"
+msgstr "Удалить каталог"
+
+#: ../ui.py:1516
+msgid "Delete the selected files or directories"
+msgstr "Удалить выбранные файлы или каталоги"
+
+#: ../ui.py:1585
+msgid "Deselect All"
+msgstr "Отменить весь выбор"
+
+#: ../ui.py:1524
+msgid "Deselect group"
+msgstr "Отменить групповой выбор"
+
+#: ../ui.py:1583
+msgid "Deselect group..."
+msgstr "Отменить групповой выбор..."
+
+#: ../ui.py:198 ../ui.py:1404
+msgid "Directories to group selections"
+msgstr "Каталоги для группового выбора"
+
+#: ../addons/key_actions.py:84
+msgid "Directory"
+msgstr "Каталог"
+
+#: ../ui.py:1227 ../ui.py:1740
+msgid ""
+"Directory cannot be created here on\n"
+"<List of Storage Devices> or <Receiver>.\n"
+"Move selector one line below or change directory."
+msgstr ""
+"Каталог не может быть создан здесь на\n"
+"<Список Устройств Хранения> или <Ресивер>.\n"
+"Переместить селектор на одну строку ниже или изменить каталог."
+
+#: ../ui.py:190 ../ui.py:1403
+msgid "Display filenames in header. It is useful for filenames that are too long."
+msgstr "Отображать имена файлов в заголовке. Это полезно для слишком длинных имен файлов."
+
+#: ../addons/key_actions.py:251
+msgid "Do you want change rights?\n"
+msgstr "Вы хотите изменить права?\n"
+
+#: ../addons/key_actions.py:407
+msgid "Do you want to view or run the script?\n"
+msgstr "Вы хотите просмотреть или запустить скрипт?\n"
+
+#: ../addons/type_utils.py:127
+msgid "Edit"
+msgstr "Редактировать"
+
+#: ../addons/type_utils.py:113 ../addons/type_utils.py:114
+msgid "Edit current line"
+msgstr "Редактировать текущую строку"
+
+#: ../addons/type_utils.py:233
+msgid "Edit line "
+msgstr "Редактировать строку "
+
+#: ../ui.py:651
+msgid "Edit new file"
+msgstr "Создать - Редактировать новый файл"
+
+#: ../ui.py:195
+msgid "Edit position is the line end"
+msgstr "Позиция редактирования с конца строки"
+
+#: ../ui.py:516 ../ui.py:517 ../ui.py:638
+msgid "Enter multi-file selection mode"
+msgstr "Включить режим множественного выбора"
+
+#: ../ui.py:850
+msgid "Error"
+msgstr "Ошибка"
+
+#: ../ui.py:1239 ../ui.py:1752
+#, python-format
+msgid ""
+"Error creating directory %s:\n"
+"%s"
+msgstr ""
+"Ошибка при создании каталога %s:\n"
+"%s"
+
+#: ../ui.py:1217
+#, python-format
+msgid ""
+"Error creating file %s:\n"
+"%s"
+msgstr ""
+"Ошибка при создании файла %s:\n"
+"%s"
+
+#: ../ui.py:1157
+#, python-format
+msgid ""
+"Error linking %s to %s:\n"
+"%s"
+msgstr ""
+"Ошибка ссылки %s на %s:\n"
+"%s"
+
+#: ../ui.py:1115
+#, python-format
+msgid ""
+"Error renaming %s to %s:\n"
+"%s"
+msgstr ""
+"Ошибка переименования %s на %s:\n"
+"%s"
+
+#: ../addons/type_utils.py:236
+msgid "Error..."
+msgstr "Ошибка..."
+
+#: ../Console.py:89 ../Console.py:90
+msgid "Execution finished!!"
+msgstr "Выполнение завершено!!"
+
+#: ../Console.py:68 ../Console.py:69
+msgid "Execution progress:"
+msgstr "Ход выполнения:"
+
+#: ../addons/type_utils.py:126
+msgid "Exit"
+msgstr "Выход"
+
+#: ../addons/type_utils.py:115 ../addons/type_utils.py:116
+msgid "Exit editor and write changes (if any)"
+msgstr "Выход из редактора и запись изменений (при наличии)"
+
+#: ../addons/type_utils.py:57
+msgid "Exit movie player?"
+msgstr ""
+
+#: ../addons/type_utils.py:403
+msgid "Exit picture viewer"
+msgstr "Выход из просмотра изображений"
+
+#: ../addons/key_actions.py:86
+msgid "FIFO"
+msgstr "FIFO"
+
+#: ../plugin.py:14 ../addons/type_utils.py:167
+msgid "File Commander"
+msgstr "File Commander"
+
+#: ../addons/type_utils.py:104
+msgid "File Commander - Addon File-Viewer"
+msgstr "File Commander - просмотр и редактирование"
+
+#: ../addons/type_utils.py:365
+#, fuzzy
+msgid "File Commander - Addon File-Viewer Settings"
+msgstr "File Commander - просмотр и редактирование"
+
+#: ../addons/type_utils.py:42
+msgid "File Commander - Addon Mediaplayer"
+msgstr "File Commander - дополнение Mediaplayer"
+
+#: ../addons/key_actions.py:68
+msgid "File Commander - Addon Movieplayer"
+msgstr "File Commander - дополнение Movieplayer"
+
+#: ../ui.py:878
+msgid "File Commander - all Task's completed!"
+msgstr "File Commander - все Задачи выполнены!"
+
+#: ../addons/unarchiver.py:20
+msgid "File Commander - generalised archive handler"
+msgstr "File Commander - общее управление архивами"
+
+#: ../addons/gz.py:16
+msgid "File Commander - gzip Addon"
+msgstr "File Commander - дополнение gzip"
+
+#: ../addons/ipk.py:24
+msgid "File Commander - ipk Addon"
+msgstr "File Commander - дополнение ipk"
+
+#: ../addons/tar.py:11
+msgid "File Commander - tar Addon"
+msgstr "File Commander - дополнение tar"
+
+#: ../addons/unrar.py:15
+msgid "File Commander - unrar Addon"
+msgstr "File Commander - дополнение unrar"
+
+#: ../addons/unzip.py:16
+msgid "File Commander - unzip Addon"
+msgstr "File Commander - дополнение unzip"
+
+#: ../ui.py:1202
+msgid ""
+"File cannot be created on\n"
+"<List of Storage Devices> or <Receiver>.\n"
+"Change directory, please."
+msgstr ""
+"Файл не может быть создан на\n"
+"<Список Устройств Хранения> или <Ресивер>.\n"
+"Смените каталог, пожалуйста."
+
+#: ../ui.py:210
+msgid "File checksums/hashes"
+msgstr "Контрольные суммы файлов/хэши"
+
+#: ../addons/key_actions.py:692 ../addons/key_actions.py:792
+#, python-format
+msgid "File not found: %s"
+msgstr "Файл не найден: %s"
+
+#: ../FileTransfer.py:96
+msgid "File transfer was cancelled by user"
+msgstr "Передача файла была отменена пользователем"
+
+#: ../Console.py:181
+#, python-format
+msgid "File write error: '%s'"
+msgstr "Ошибка записи файла: '%s'"
+
+#: ../ui.py:515 ../ui.py:637 ../ui.py:1520 ../ui.py:1973
+msgid "File/Directory Status Information"
+msgstr "Информация о Статусе Файла/Каталога"
+
+#: ../ui.py:190 ../ui.py:1403
+msgid "Filenames in header"
+msgstr "Имена файлов в заголовке"
+
+#: ../ui.py:204
+msgid "Filter extension for 'My Extension' setting of 'Filter extension'. Use the extension name without a '.'."
+msgstr "Расширение фильтра для настройки 'Мои расширения' 'Фильтр расширений'. Используйте имя расширения без '.'."
+
+#: ../ui.py:205
+msgid "Filter extension, (*) appears in title"
+msgstr "Расширение фильтра, (*) отображается в заголовке"
+
+#: ../ui.py:205
+msgid "Filter visible file classes by extension."
+msgstr "Фильтр видимых классов файлов по расширению."
+
+#: ../addons/key_actions.py:275
+msgid "GB"
+msgstr "ГБ"
+
+#: ../ui.py:658
+msgid "Go to bookmarked folder"
+msgstr "Перейти в папку закладок"
+
+#: ../ui.py:654
+msgid "Go to default directory"
+msgstr "Перейти в каталог по умолчанию"
+
+#: ../addons/type_utils.py:120
+msgid "Go to end of file"
+msgstr "Перейти к концу файла"
+
+#: ../ui.py:653
+msgid "Go to parent directory"
+msgstr "Перейти в родительский каталог"
+
+#: ../addons/type_utils.py:119
+msgid "Go to start of file"
+msgstr "Перейти к началу файла"
+
+#: ../ui.py:2021
+msgid "Group:"
+msgstr "Группа:"
+
+#: ../ui.py:209
+msgid "I/O priority for script execution"
+msgstr "Приоритет ввода/вывода для выполнения скрипта"
+
+#: ../ui.py:195
+msgid "If editing a file, you can set the cursor start position at end or begin of the line."
+msgstr "При редактировании файла установить начальную позицию курсора в конце или начале строки."
+
+#: ../ui.py:197 ../ui.py:1405
+msgid "In multi-selection mode moves cursor to next item after marking."
+msgstr "В режиме множественного выбора курсор перемещается к следующему элементу после маркировки."
+
+#: ../ui.py:2029
+msgid "Inode:"
+msgstr "Индексный дескриптор:"
+
+#: ../addons/type_utils.py:129
+msgid "Insert"
+msgstr "Вставить"
+
+#: ../addons/type_utils.py:118
+msgid "Insert line before current line"
+msgstr "Вставить строку перед текущей строкой"
+
+#: ../addons/ipk.py:37
+msgid "Install"
+msgstr "Установить"
+
+#: ../addons/key_actions.py:545
+#, python-format
+msgid "Install '%s' and enable this operation"
+msgstr "Установите '%s' и включите эту операцию"
+
+#: ../addons/ipk.py:59
+msgid "Installing Plugin ..."
+msgstr "Установка плагина ..."
+
+#: ../ui.py:1587
+msgid "Invert Selection"
+msgstr "Инвертировать Выбор"
+
+#: ../ui.py:1502 ../ui.py:1519
+msgid "Invert selection"
+msgstr "Инвертировать выбор"
+
+#: ../addons/key_actions.py:601
+msgid "It is not possible to calculate hashes on <List of Storage Devices>"
+msgstr "Невозможно вычислить контрольную сумму файлов в <Списке Устройств Хранения>"
+
+#: ../addons/key_actions.py:245
+msgid "It is not possible to change the file mode of <List of Storage Devices>"
+msgstr "Невозможно изменить режим файла <Список Устройств Хранения>"
+
+#: ../ui.py:1991
+msgid "It is not possible to get the file status of <List of Storage Devices>"
+msgstr "Невозможно прочитать состояние файлов в <Списке Устройств Хранения>"
+
+#: ../addons/key_actions.py:496
+#, python-format
+msgid "It is not possible to run '%s' on <List of Storage Devices>"
+msgstr "Невозможно запустить '%s' из <список устройств хранения>"
+
+#: ../ui.py:1079
+msgid "It's not possible to rename the filesystem root."
+msgstr "Переименовать корень файловой системы невозможно."
+
+#: ../addons/key_actions.py:275
+msgid "KB"
+msgstr "КБ"
+
+#: ../ui.py:498
+msgid "Leave File Commander"
+msgstr "Выйти из File Commander"
+
+#: ../ui.py:1507 ../ui.py:1527 ../ui.py:1528
+msgid "Leave multi-select mode"
+msgstr "Выйти из режима множественного выбора"
+
+#: ../ui.py:2038
+msgid "Link target:"
+msgstr "Целевая ссылка:"
+
+#: ../ui.py:2028
+msgid "Links:"
+msgstr "Ссылки:"
+
+#: ../FileList.py:191 ../FileList.py:460 ../FileList.py:464
+msgid "List of Storage Devices"
+msgstr "Список устройств хранения"
+
+#: ../Console.py:178
+msgid "Load"
+msgstr "Загрузка"
+
+#: ../addons/key_actions.py:275
+msgid "MB"
+msgstr "МБ"
+
+#: ../ui.py:185
+msgid "Make FileCommander accessible from the Extensions menu."
+msgstr "Показывать FileCommander в Меню Расширений."
+
+#: ../ui.py:184
+msgid "Make FileCommander accessible from the main menu."
+msgstr "Показывать FileCommander в Главном Меню."
+
+#: ../addons/type_utils.py:121
+msgid "Menu..."
+msgstr ""
+
+#: ../ui.py:2027
+msgid "Metadata changed:"
+msgstr "Метаданные изменены:"
+
+#: ../addons/key_actions.py:298
+#, python-format
+msgid "Mode %s (%04o)"
+msgstr "Режим %s (%04o)"
+
+#: ../ui.py:2025
+msgid "Modified:"
+msgstr "Изменено:"
+
+#: ../ui.py:484 ../ui.py:1500
+msgid "Move"
+msgstr "Переместить"
+
+#: ../ui.py:1809
+#, python-format
+msgid "Move %d element"
+msgid_plural "Move %d elements"
+msgstr[0] "Переместить %d элемент"
+msgstr[1] "Переместить %d элемента"
+msgstr[2] "Переместить %d элементов"
+
+#: ../ui.py:519 ../ui.py:1513
+msgid "Move down list"
+msgstr "Перейти вниз списка"
+
+#: ../ui.py:1045
+msgid "Move file"
+msgstr "Переместить файл"
+
+#: ../ui.py:512 ../ui.py:634
+msgid "Move file/directory to target directory"
+msgstr "Переместить файл/каталог в целевой каталог"
+
+#: ../ui.py:1517
+msgid "Move files/directories to target directory"
+msgstr "Переместить файлы/каталоги в целевой каталог"
+
+#: ../ui.py:1049
+msgid "Move folder"
+msgstr "Переместить папку"
+
+#: ../ui.py:197 ../ui.py:1405
+msgid "Move selector to next item"
+msgstr "Переместить селектор к следующему элементу"
+
+#: ../ui.py:1525
+msgid "Move selector to next item (on/off)"
+msgstr "Переместить селектор к следующему элементу (вкл/выкл)"
+
+#: ../ui.py:518 ../ui.py:1512
+msgid "Move up list"
+msgstr "Перейти вверх по списку"
+
+#: ../ui.py:102
+msgid "Movie"
+msgstr "Кино"
+
+#: ../ui.py:1422
+msgid "MultiSelection Settings"
+msgstr "Настройки Множественного Выбора"
+
+#: ../ui.py:102
+msgid "Music"
+msgstr "Музыка"
+
+#: ../ui.py:102
+msgid "My Extension"
+msgstr "Мои Расширения"
+
+#: ../ui.py:204
+msgid "My extension"
+msgstr "Мои расширения"
+
+#: ../ui.py:113 ../ui.py:118
+msgid "Name"
+msgstr "Имя"
+
+#: ../ui.py:114 ../ui.py:119
+msgid "Name reverse"
+msgstr "Имя по убыванию"
+
+#: ../ui.py:1229 ../ui.py:1742
+msgid "New folder"
+msgstr "Новая папка"
+
+#: ../addons/key_actions.py:734 ../ui.py:103 ../ui.py:154 ../ui.py:155
+msgid "No"
+msgstr "Нет"
+
+#: ../addons/unarchiver.py:152
+msgid "No files found."
+msgstr "Файлы не найдены."
+
+#: ../addons/key_actions.py:592
+msgid "No hash calculations configured"
+msgstr "Хэш-вычисления не настроены"
+
+#: ../addons/key_actions.py:757
+#, python-format
+msgid "No viewer installed for this file type: %s"
+msgstr "Для этого типа файлов средство просмотра не установлено: %s"
+
+#: ../addons/key_actions.py:596
+#, python-format
+msgid "None of the hash programs for the hashes %s are available"
+msgstr "Ни одна из хэш-программ для хэшей %s не доступна"
+
+#: ../addons/key_actions.py:253
+msgid "Not allowed with folders"
+msgstr "Не допустимо для папок"
+
+#: ../ui.py:197 ../ui.py:1405
+msgid "Note - for switching this option in multi-selection mode you can use key '6' too."
+msgstr ""
+
+#: ../ui.py:206
+msgid "Note - independently of setting this item, there in list you can turn on/turn off counting and displaying directory content size with key '1'."
+msgstr ""
+
+#: ../ui.py:193
+msgid "Number of lines in script messages"
+msgstr "Количество строк в сообщении скрипта"
+
+#: ../addons/type_utils.py:353 ../addons/unarchiver.py:75
+#: ../addons/unarchiver.py:246 ../ui.py:217 ../ui.py:1378
+msgid "OK"
+msgstr "ОК"
+
+#: ../ui.py:2030
+msgid "On device:"
+msgstr "На устройстве:"
+
+#: ../ui.py:1505
+msgid "Open actions menu"
+msgstr "Открыть меню действий"
+
+#: ../ui.py:499
+msgid "Open settings/actions menu"
+msgstr "Открыть меню настроек/действий"
+
+#: ../plugin.py:41
+msgid "Open with File Commander"
+msgstr "Открыть при помощи File Commander"
+
+#: ../ui.py:212
+msgid "Original subtitles codepage"
+msgstr "Оригинальная кодовая страница субтитров"
+
+#: ../ui.py:212
+msgid "Original subtitles codepage for conversion to UTF-8."
+msgstr "Оригинальная кодовая страница субтитров для преобразования в UTF-8."
+
+#: ../addons/type_utils.py:233
+msgid "Original:"
+msgstr "Oригинал:"
+
+#: ../ui.py:2020
+msgid "Owner:"
+msgstr "Владелец:"
+
+#: ../ui.py:521 ../ui.py:1515
+msgid "Page down list"
+msgstr "Страница вниз по списоку"
+
+#: ../ui.py:520 ../ui.py:1514
+msgid "Page up list"
+msgstr "Страница вверх по списку"
+
+#: ../FileList.py:195 ../FileList.py:464
+msgid "Parent Directory"
+msgstr "Родительский каталог"
+
+#: ../Console.py:155
+msgid "Path to save not exist: '/tmp/'"
+msgstr "Путь для сохранения не существует: '/tmp/'"
+
+#: ../ui.py:2022
+msgid "Permissions:"
+msgstr "Права:"
+
+#: ../ui.py:102
+msgid "Pictures"
+msgstr "Картинки"
+
+#: ../addons/key_actions.py:616
+msgid "Play folder"
+msgstr "Воспроизвести все файлы в папке"
+
+#: ../addons/key_actions.py:616
+msgid "Play title"
+msgstr "Воспроизвести файл"
+
+#: ../ui.py:497
+msgid "Play/view/edit/install/extract/run file or enter directory"
+msgstr "Воспроизвести/просмотреть/отредактировать/установить/извлечь/запустить файл или войти в каталог"
+
+#: ../ui.py:1229 ../ui.py:1742
+msgid "Please enter name of the new directory"
+msgstr "Пожалуйста, введите имя нового каталога"
+
+#: ../ui.py:1138
+msgid "Please enter name of the new symlink"
+msgstr "Пожалуйста, введите имя новой символической ссылки"
+
+#: ../addons/unrar.py:63
+msgid "Please enter password"
+msgstr "Пожалуйста введите пароль"
+
+#: ../ui.py:1083
+msgid "Please enter the new directory name"
+msgstr "Пожалуйста, введите новое имя каталога"
+
+#: ../ui.py:1081
+msgid "Please enter the new file name"
+msgstr "Пожалуйста, введите новое имя файла"
+
+#: ../addons/type_utils.py:413
+msgid "Please wait, Loading image."
+msgstr "Пожалуйста подождите, загрузка изображения."
+
+#: ../ui.py:1398
+msgid "Pre-fill first 'n' filename chars to virtual keyboard"
+msgstr "Предварительно заполнить первый 'n' символ имени файла на виртуальной клавиатуре"
+
+#: ../ui.py:1400
+msgid "Pre-fill last 'n' filename chars to virtual keyboard"
+msgstr "Предварительно заполнить последний 'n' символ имени файла на виртуальной клавиатуре"
+
+#: ../ui.py:202
+msgid "Press 'OK' and select from list or bookmarks directory for 'Go to default directory'. Eventually you can manage plugin's bookmarks here too."
+msgstr "Нажмите 'ОК' и выберите из списка или каталога закладок пункт 'Перейти в каталог по умолчанию'. В конце концов, вы можете управлять закладками плагина здесь."
+
+#: ../addons/key_actions.py:566
+#, python-format
+msgid ""
+"Program '%s' is installed.\n"
+"The package containing this program isn't known, so it can't be uninstalled."
+msgstr ""
+"Программа '%s' установлена.\n"
+"Пакет, содержащий эту программу, неизвестен, поэтому его нельзя удалить."
+
+#: ../addons/key_actions.py:563
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run the '%s' action.\n"
+"Uninstall the '%s' package to uninstall the program?"
+msgstr ""
+"Программа '%s' должна быть установлена для запуска действия '%s'.\n"
+"Удалить пакет '%s', чтобы удалить программу?"
+
+#: ../addons/key_actions.py:488
+#, python-format
+msgid ""
+"Program '%s' needs to be installed to run this action.\n"
+"Install the '%s' package to install the program?"
+msgstr ""
+"Для выполнения этого действия необходимо установить '%s'.\n"
+"Вы хотите установить '%s'?"
+
+#: ../addons/key_actions.py:490
+#, python-format
+msgid ""
+"Program '%s' not installed.\n"
+"The package containing this program isn't known."
+msgstr ""
+"Программа '%s' не установлена.\n"
+"Пакет, содержащий эту программу, неизвестен."
+
+#: ../ui.py:102
+msgid "Records"
+msgstr "Записи"
+
+#: ../ui.py:504 ../ui.py:639 ../ui.py:1521
+msgid "Refresh screen"
+msgstr "Обновить экран"
+
+#: ../addons/key_actions.py:82
+msgid "Regular file"
+msgstr "Регулярный файл"
+
+#: ../ui.py:676
+msgid "Remove current folder from bookmarks"
+msgstr "Удалить текущую папку из закладок"
+
+#: ../ui.py:1617
+#, python-format
+msgid "Remove from selection (%s)"
+msgstr "Удалить из выбора (%s)"
+
+#: ../ui.py:672
+msgid "Remove selected folder from bookmarks"
+msgstr "Удалить выбранную папку из закладок"
+
+#: ../ui.py:486
+msgid "Rename"
+msgstr "Переименовать"
+
+#: ../ui.py:506 ../ui.py:514 ../ui.py:628
+msgid "Rename file/directory"
+msgstr "Переименовать файл/каталог"
+
+#: ../ui.py:491 ../ui.py:493
+msgid "Reverse left file sorting"
+msgstr "Обратная сортировка файлов слева"
+
+#: ../ui.py:490 ../ui.py:494
+msgid "Reverse right file sorting"
+msgstr "Обратная сортировка файлов справа"
+
+#: ../addons/key_actions.py:542
+#, python-format
+msgid "Run '%s' command"
+msgstr "Запустить '%s' команду"
+
+#: ../TaskList.py:76 ../addons/key_actions.py:157 ../addons/key_actions.py:160
+#: ../addons/key_actions.py:174 ../addons/key_actions.py:400
+#: ../addons/key_actions.py:456 ../ui.py:561 ../ui.py:874
+msgid "Run script"
+msgstr "Запустить скрипт"
+
+#: ../addons/key_actions.py:400
+msgid "Run script in background"
+msgstr "Запустить скрипт в фоновом режиме"
+
+#: ../addons/key_actions.py:404
+msgid "Run script with optional parameter"
+msgstr "Запустить скрипт с необязательным параметром"
+
+#: ../addons/key_actions.py:405
+msgid "Run script with optional parameter in background"
+msgstr "Запустить скрипт с дополнительным параметром в фоновом режиме"
+
+#: ../Console.py:84
+msgid "Save"
+msgstr "Сохранить"
+
+#: ../ui.py:188
+msgid "Save cursor position"
+msgstr "Сохранять позицию курсора"
+
+#: ../ui.py:188
+msgid "Save cursor position in active panel."
+msgstr "Сохранять позицию курсора на активной панели."
+
+#: ../ui.py:186
+msgid "Save left folder on exit"
+msgstr "Запомнить левый каталог при выходе"
+
+#: ../ui.py:187
+msgid "Save right folder on exit"
+msgstr "Запомнить правый каталог при выходе"
+
+#: ../Console.py:142
+#, python-format
+msgid ""
+"Save the commands and the output to a file?\n"
+"('%s')"
+msgstr ""
+"Сохранить команды и вывод в файл?\n"
+"('%s')"
+
+#: ../ui.py:186
+msgid "Save the left directory list location on exit."
+msgstr "Запомнить левое местоположение списка каталогов при выходе."
+
+#: ../ui.py:187
+msgid "Save the right folder list location on exit."
+msgstr "Запомнить правое местоположение списка каталогов при выходе."
+
+#: ../addons/key_actions.py:413
+#, python-format
+msgid "Script '%s' must have read permission to be able to run it"
+msgstr "Скрипт '%s' должен иметь права на выполнение, чтобы его можно было запустить"
+
+#: ../ui.py:1395
+msgid "Search in group selection by"
+msgstr "Поиск в группе выбора по"
+
+#: ../addons/type_utils.py:151
+msgid "Search text"
+msgstr ""
+
+#: ../addons/type_utils.py:323
+#, python-format
+msgid "Search text (%s):"
+msgstr ""
+
+#: ../addons/type_utils.py:151
+#, python-format
+msgid "Search text in file (%s)."
+msgstr ""
+
+#: ../ui.py:1506
+msgid "Select (source list) or enter directory (target list)"
+msgstr "Выберите (список источников) или введите каталог (целевой список)"
+
+#: ../ui.py:1584
+msgid "Select All"
+msgstr "Выбрать Всё"
+
+#: ../ui.py:731
+msgid "Select a path"
+msgstr "Выберите путь"
+
+#: ../addons/type_utils.py:153
+#, fuzzy
+msgid "Select action:"
+msgstr "Выберите действие:"
+
+#: ../ui.py:1523
+msgid "Select group"
+msgstr "Выбрать группу"
+
+#: ../ui.py:1582
+msgid "Select group..."
+msgstr "Выбрать группу..."
+
+#: ../ui.py:679 ../ui.py:1590
+msgid "Select operation:"
+msgstr "Выберите действие:"
+
+#: ../ui.py:177
+msgid "Select your personal settings:"
+msgstr "Выберите ваши личные настройки:"
+
+#: ../addons/key_actions.py:250
+msgid "Set archive mode (644)"
+msgstr "Задать права чтения (644)"
+
+#: ../addons/key_actions.py:250
+msgid "Set executable mode (755)"
+msgstr "Задать права выполнения (755)"
+
+#: ../ui.py:193
+msgid "Set for 'stout' and 'sterr' the number of lines in script info or script error messages."
+msgstr "Установить для 'стандартный выход' и 'ошибка вывода' количество строк в информации скрипта или сообщениях об ошибках скрипта."
+
+#: ../ui.py:1401
+msgid "Sets whether to distinguish between uper case and lower case for searching."
+msgstr "Установить, следует ли различать верхний и нижний регистр для поиска."
+
+#: ../ui.py:229
+msgid "Settings"
+msgstr "Настройки"
+
+#: ../addons/type_utils.py:152 ../ui.py:657 ../ui.py:1588
+msgid "Settings..."
+msgstr "Настройки..."
+
+#: ../addons/key_actions.py:741
+#, python-format
+msgid ""
+"Show '%s' as picture%s?\n"
+"The current service must be interrupted!"
+msgstr ""
+"Показать '%s' как картинку%s?\n"
+"Текущий сервис должен быть прерван!"
+
+#: ../ui.py:192
+msgid "Show Script completed message"
+msgstr "Показывать сообщение о выполнении Скрипта"
+
+#: ../ui.py:191
+msgid "Show Task's completed message"
+msgstr "Показывать сообщение о выполнении Задачи"
+
+#: ../addons/key_actions.py:735
+msgid "Show as Picture (press any key to close)"
+msgstr "Показать как изображение (нажмите любую кнопку, чтобы закрыть)"
+
+#: ../addons/key_actions.py:739
+#, python-format
+msgid "Show as Picture and save as file ('%s')"
+msgstr "Показать как изображение и сохранить как файл ('%s')"
+
+#: ../addons/ipk.py:36
+msgid "Show contents of ipk file"
+msgstr "Показать содержимое ipk-файла"
+
+#: ../addons/unrar.py:30
+msgid "Show contents of rar file"
+msgstr "Показать содержимое rar-файла"
+
+#: ../addons/tar.py:21
+msgid "Show contents of tar or compressed tar file"
+msgstr "Показать содержимое tar-файла"
+
+#: ../addons/unzip.py:26
+msgid "Show contents of zip file"
+msgstr "Показать содержимое zip-файла"
+
+#: ../ui.py:189
+msgid "Show directories first"
+msgstr "Показывать каталоги в начале списка"
+
+#: ../ui.py:189
+msgid "Show directories on first or last positions in panel (to apply the changes FileCommander must be restarted)."
+msgstr "Показать каталоги на первой или последней позиции в панели (для изменения настроек - перезапусте FileCommander)."
+
+#: ../addons/type_utils.py:407
+msgid "Show image information"
+msgstr "Показать информацию об изображении"
+
+#: ../ui.py:191
+msgid "Show message if FileCommander is not running and all Task's are completed."
+msgstr "Показать сообщение, если File Commander не запущен и все задачи выполнены."
+
+#: ../ui.py:192
+msgid "Show message if a background script ends successfully. Has 'stout', then this is displayed as additional info."
+msgstr "Показать сообщение, если фоновый скрипт завершается успешно. Имеет 'стандартный выход', то это отображается в качестве дополнительной информации."
+
+#: ../addons/type_utils.py:405
+msgid "Show next picture"
+msgstr "Показать следующее изображение"
+
+#: ../addons/type_utils.py:404
+msgid "Show previous picture"
+msgstr "Показать предыдущее изображение"
+
+#: ../ui.py:509 ../ui.py:640 ../ui.py:1526
+msgid "Show task list"
+msgstr "Показать список задач"
+
+#: ../ui.py:194
+msgid "Show unknown extension as text"
+msgstr "Показывать неизвестные расширения как текст"
+
+#: ../ui.py:194
+msgid "Show unknown file extensions with 'Addon File-Viewer'."
+msgstr "Показать неизвестные расширения с помощью 'Просмотра и редактирования файлов'."
+
+#: ../ui.py:122
+msgid "Size"
+msgstr "Размер"
+
+#: ../ui.py:123
+msgid "Size reverse"
+msgstr "Размер по убыванию"
+
+#: ../ui.py:2024
+msgid "Size:"
+msgstr "Размер:"
+
+#: ../addons/key_actions.py:80
+msgid "Socket"
+msgstr "Сокет"
+
+#: ../ui.py:522
+msgid "Sorting left files by name, date or size"
+msgstr "Сортировка левых файлов по имени, дате или размеру"
+
+#: ../ui.py:525
+msgid "Sorting right files by name, date or size"
+msgstr "Сортировка правых файлов по имени, дате или размеру"
+
+#: ../addons/type_utils.py:406
+msgid "Start/stop slide show"
+msgstr "Запуск/остановка слайд-шоу"
+
+#: ../ui.py:728
+msgid "Storage devices"
+msgstr "Устройства хранения"
+
+#: ../ui.py:207
+msgid "Swap buttons for reverse file sorting"
+msgstr "Поменять кнопки для обратной сортировки файлов"
+
+#: ../ui.py:196
+msgid "Swap buttons right/left with channel +/- or the channel button changed always the side."
+msgstr "Поменять местами кнопки вправо/влево, с кнопкой CH+- или кнопка смены канала всегда меняет сторону."
+
+#: ../addons/key_actions.py:81
+msgid "Symbolic link"
+msgstr "Символическая ссылка"
+
+#: ../ui.py:1178
+msgid "Symlink to "
+msgstr "Символическая ссылка на "
+
+#: ../addons/key_actions.py:279
+msgid "TB"
+msgstr "ТБ"
+
+#: ../TaskList.py:88
+msgid "Task list"
+msgstr "Список задач"
+
+#: ../addons/type_utils.py:322
+#, fuzzy
+msgid "Text not found."
+msgstr "Файл не найден: %s"
+
+#: ../addons/type_utils.py:348
+msgid "Text searching as case sensitive or case insensitive."
+msgstr ""
+
+#: ../addons/type_utils.py:443
+msgid "The Image Viewer component of the File Commander requires the PicturePlayer extension. Install PicturePlayer to enable this operation."
+msgstr "Компонент просмотра изображений File Commander требует расширения PicturePlayer. Установите PicturePlayer, чтобы включить эту операцию."
+
+#: ../addons/type_utils.py:164
+msgid "The authors are NOT RESPONSIBLE"
+msgstr "Авторы Не Несут Ответственности"
+
+#: ../addons/key_actions.py:798
+msgid ""
+"The function has been interrupted.\n"
+"Don't press any key until the picture from mvi-file is displayed!"
+msgstr ""
+"Функция была прервана.\n"
+"Не нажимайте никакие кнопки, пока не отобразится картинка из mvi-файла!"
+
+#: ../addons/key_actions.py:605
+msgid "The hash of a directory can't be calculated."
+msgstr "Не удается вычислить контрольную сумму каталога."
+
+#: ../addons/type_utils.py:235
+msgid "This line is not editable!"
+msgstr "Эта строка не редактируется!"
+
+#: ../ui.py:211
+msgid "Time between slides in image viewer slideshow."
+msgstr "Время задержки между слайдами в слайд-шоу."
+
+#: ../ui.py:211
+msgid "Time for Slideshow"
+msgstr "Время для слайд-шоу"
+
+#: ../addons/type_utils.py:123
+msgid "To next found text"
+msgstr ""
+
+#: ../addons/type_utils.py:122
+#, fuzzy
+msgid "To previous found text"
+msgstr "Показать предыдущее изображение"
+
+#: ../ui.py:1204
+msgid "Type the name for the new file"
+msgstr "Введите имя для нового файла"
+
+#: ../ui.py:2019
+msgid "Type:"
+msgstr "Тип:"
+
+#: ../addons/key_actions.py:587
+#, python-format
+msgid "Uninstall '%s' package and disable '%s'"
+msgstr "Удалить пакет '%s' и отключить '%s'"
+
+#: ../addons/key_actions.py:87
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: ../addons/key_actions.py:133
+#, python-format
+msgid "Unknown group: %d"
+msgstr "Неизвестная группа: %d"
+
+#: ../addons/key_actions.py:125
+#, python-format
+msgid "Unknown user: %d"
+msgstr "Неизвестный пользователь: %d"
+
+#: ../addons/unrar.py:32 ../addons/unrar.py:33 ../addons/gz.py:27
+#: ../addons/gz.py:28 ../addons/tar.py:23 ../addons/tar.py:24
+#: ../addons/unzip.py:28 ../addons/unzip.py:29
+#, python-format
+msgid "Unpack to %s"
+msgstr "Распаковать в %s"
+
+#: ../addons/unrar.py:31 ../addons/gz.py:26 ../addons/tar.py:22
+#: ../addons/unzip.py:27
+msgid "Unpack to current folder"
+msgstr "Распаковать в текущий каталог"
+
+#: ../ui.py:207
+msgid "Useful if remote controller having 'pause' button left to 'stop' (to apply the changes FileCommander must be restarted)."
+msgstr "Полезно, если на пульте дистанционного управления кнопка 'пауза' оставлена для 'остановки' (для изменения настроек - перезапусте FileCommander)."
+
+#: ../ui.py:507 ../ui.py:631
+msgid "View or edit file (if size < 1MB)"
+msgstr "Просмотр или правка файла (для размеров <1 МБ)"
+
+#: ../addons/key_actions.py:400 ../addons/key_actions.py:402
+#, python-format
+msgid "View or edit this %s script"
+msgstr "Просмотр или редактирование скрипта %s"
+
+#: ../addons/type_utils.py:163
+msgid "WARNING!"
+msgstr "ВНИМАНИЕ!"
+
+#: ../addons/key_actions.py:617
+msgid "What do you want to play?\n"
+msgstr "Вы хотите воспроизвести это?\n"
+
+#: ../ui.py:103
+msgid "Yes"
+msgstr "Да"
+
+#: ../ui.py:1398
+msgid "You can set the number of letters from the beginning of the current file name as the text pre-filled into virtual keyboard for easier input via group selection."
+msgstr "Вы можете установить количество букв в начале текущего имени файла в качестве текста, предварительно заполненного на виртуальной клавиатуре, для более удобного ввода с помощью группового выбора."
+
+#: ../ui.py:1400
+msgid "You can set the number of letters from the end of the current file name as the text pre-filled into virtual keyboard for easier input via group selection."
+msgstr "Вы можете установить количество букв в конце текущего имени файла в качестве текста, предварительно заполненного на виртуальной клавиатуре, для более удобного ввода с помощью группового выбора."
+
+#: ../ui.py:1396
+msgid "You can set what will group selection use - start of title, end of title or contains in title."
+msgstr "Вы можете установить, что будет использовн груповой выбор - начало заголовка, конец заголовка или содержание в заголовке."
+
+#: ../addons/key_actions.py:518
+#, python-format
+msgid "You can't usefully run '%s' on '%s'."
+msgstr "Невозможно выполнить '%s' в '%s'."
+
+#: ../addons/key_actions.py:501
+#, python-format
+msgid "You can't usefully run '%s' on a directory."
+msgstr "Невозможно выполнить '%s' для каталога."
+
+#: ../ui.py:272
+#, python-format
+msgid "[D]%s%s[F]%s%s"
+msgstr "[D]%s%s[F]%s%s"
+
+#: ../addons/type_utils.py:151 ../addons/type_utils.py:323
+#, fuzzy
+msgid "case insensitive"
+msgstr "Сравнить с учетом регистра"
+
+#: ../addons/type_utils.py:151 ../addons/type_utils.py:323
+#, fuzzy
+msgid "case sensitive"
+msgstr "Сравнить с учетом регистра"
+
+#: ../ui.py:148
+msgid "contains in title"
+msgstr "содержится в заголовке"
+
+#: ../ui.py:1613
+msgid "contains..."
+msgstr "содержит..."
+
+#: ../ui.py:561 ../ui.py:874 ../ui.py:1000 ../ui.py:1842
+msgid "copy file"
+msgstr "копировать файл"
+
+#: ../ui.py:561 ../ui.py:874 ../ui.py:1002 ../ui.py:1840
+msgid "copy folder"
+msgstr "копировать папку"
+
+#: ../ui.py:1194
+msgid "create symlink ..."
+msgstr "создать символическую ссылку..."
+
+#: ../ui.py:268 ../ui.py:269
+msgid "d"
+msgstr "d"
+
+#: ../ui.py:148
+msgid "end title"
+msgstr "конец заглавия"
+
+#: ../ui.py:1611
+msgid "ends with..."
+msgstr "заканчивается..."
+
+#: ../addons/type_utils.py:165
+msgid "for DATA LOSS OR DAMAGE !!!"
+msgstr "за Потерю или Повреждения ДАННЫХ !!!"
+
+#: ../ui.py:988 ../ui.py:1017 ../ui.py:1050 ../ui.py:1775 ../ui.py:1810
+#: ../ui.py:1845
+msgid "from dir"
+msgstr "из каталога"
+
+#: ../addons/type_utils.py:162
+msgid "has been CHANGED! Do you want to save it?"
+msgstr "было ИЗМЕНЕНО! Хотите сохранить?"
+
+#: ../Console.py:29
+msgid "hide"
+msgstr "скрыть"
+
+#: ../addons/key_actions.py:305
+#, python-format
+msgid "in %s selected file"
+msgid_plural "in %s selected files"
+msgstr[0] "в %s выбранном файле"
+msgstr[1] "в %s выбранных файлах"
+msgstr[2] "в %s выбранных файлах"
+
+#: ../addons/ipk.py:25
+msgid "install/unpack ipk Files"
+msgstr "установить/распаковать ipk Файлы"
+
+#: ../plugin.py:15
+msgid "manage local Files"
+msgstr "Менеджер локальных Файлов"
+
+#: ../ui.py:561 ../ui.py:874 ../ui.py:1064 ../ui.py:1807
+msgid "move file"
+msgstr "переместить файл"
+
+#: ../ui.py:561 ../ui.py:874 ../ui.py:1066
+msgid "move folder"
+msgstr "переместить папку"
+
+#: ../ui.py:268 ../ui.py:269
+msgid "n"
+msgstr "n"
+
+#: ../ui.py:1204
+msgid "new.txt"
+msgstr "новый.txt"
+
+#: ../FileList.py:237
+msgid "nothing connected"
+msgstr "нет связей"
+
+#: ../addons/key_actions.py:69
+msgid "play Files"
+msgstr "воспроизвести Файлы"
+
+#: ../addons/type_utils.py:43
+msgid "play/show Files"
+msgstr "воспроизвести/показать Файлы"
+
+#: ../addons/key_actions.py:397
+msgid "python"
+msgstr "python"
+
+#: ../ui.py:268 ../ui.py:269
+msgid "s"
+msgstr "s"
+
+#: ../addons/key_actions.py:154
+msgid "script 'sterr':"
+msgstr "скрипт 'ошибка вывода':"
+
+#: ../addons/key_actions.py:152
+msgid "script 'stout':"
+msgstr "скрипт 'стандартный выход':"
+
+#: ../addons/key_actions.py:399
+msgid "shell"
+msgstr "shell"
+
+#: ../ui.py:148
+msgid "start title"
+msgstr "начало заглавия"
+
+#: ../ui.py:1609
+msgid "starts with..."
+msgstr "начало..."
+
+#: ../ui.py:988 ../ui.py:1050 ../ui.py:1810 ../ui.py:1845
+msgid "to dir"
+msgstr "в каталог"
+
+#: ../addons/unrar.py:16
+msgid "unpack Rar Files"
+msgstr "распаковать Rar Файлы"
+
+#: ../addons/unarchiver.py:21
+msgid "unpack archives"
+msgstr "распаковать архивы"
+
+#: ../addons/gz.py:17
+msgid "unpack gzip Files"
+msgstr "распаковать gzip Файлы"
+
+#: ../addons/tar.py:12
+msgid "unpack tar/compressed tar Files"
+msgstr "распаковать tar Файлы"
+
+#: ../addons/unzip.py:17
+msgid "unpack zip Files"
+msgstr "распаковать zip Файлы"
+
+#: ../ui.py:67
+msgid "v"
+msgstr "v"
+
+#: ../ui.py:102
+msgid "without"
+msgstr "без"

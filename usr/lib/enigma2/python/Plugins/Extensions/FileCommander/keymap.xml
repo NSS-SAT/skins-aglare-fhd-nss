@@ -1,0 +1,42 @@
+<keymap>
+	<map context="FileCommanderActions">
+		<key id="KEY_0" mapto="FC0" flags="m" />
+		<key id="KEY_1" mapto="FC1" flags="m" />
+		<key id="KEY_2" mapto="FC2" flags="m" />
+		<key id="KEY_3" mapto="FC3" flags="m" />
+		<key id="KEY_4" mapto="FC4" flags="m" />
+		<key id="KEY_5" mapto="FC5" flags="m" />
+		<key id="KEY_6" mapto="FC6" flags="m" />
+		<key id="KEY_7" mapto="FC7" flags="m" />
+		<key id="KEY_8" mapto="FC8" flags="m" />
+		<key id="KEY_9" mapto="FC9" flags="m" />
+		<key id="KEY_UP" mapto="FCup" flags="mr" />
+		<key id="KEY_DOWN" mapto="FCdown" flags="mr" />
+		<key id="KEY_LEFT" mapto="FCleft" flags="mr" />
+		<key id="KEY_RIGHT" mapto="FCright" flags="mr" />
+		<key id="KEY_CHANNELUP" mapto="FCpageup" flags="mr" />
+		<key id="KEY_CHANNELDOWN" mapto="FCpagedown" flags="mr" />
+		<key id="KEY_NEXT" mapto="FCnext" flags="b" />
+		<key id="KEY_PREVIOUS" mapto="FCback" flags="b" />
+		<key id="KEY_RED" mapto="FCred" flags="b" />
+		<key id="KEY_RED" mapto="FCredlong" flags="l" />
+		<key id="KEY_GREEN" mapto="FCgreen" flags="b" />
+		<key id="KEY_GREEN" mapto="FCgreenlong" flags="l" />
+		<key id="KEY_YELLOW" mapto="FCyellow" flags="b" />
+		<key id="KEY_YELLOW" mapto="FCyellowlong" flags="l" />
+		<key id="KEY_BLUE" mapto="FCblue" flags="b" />
+		<key id="KEY_BLUE" mapto="FCbluelong" flags="l" />
+		<key id="KEY_EPG" mapto="FCepg" flags="b" />
+		<key id="KEY_VIDEO" mapto="FCvideo" flags="b" />
+		<key id="KEY_PVR" mapto="FCpvr" flags="b" />
+		<key id="KEY_TEXT" mapto="FCtext" flags="b" />
+		<key id="KEY_INFO" mapto="FCinfo" flags="b" />
+		<key id="KEY_MENU" mapto="FCmenu" flags="b" />
+		<key id="KEY_OK" mapto="FCok" flags="b" />
+		<key id="KEY_EXIT" mapto="FCcancel" flags="b" />
+		<key id="KEY_REWIND" mapto="FCseekBack" flags="b" />
+		<key id="KEY_FASTFORWARD" mapto="FCseekFwd" flags="b" />
+		<key id="KEY_HELP" mapto="FChelpshow" flags="b" />
+		<key id="KEY_F1" mapto="FChelpshow" flags="b" />
+	</map>
+</keymap>
