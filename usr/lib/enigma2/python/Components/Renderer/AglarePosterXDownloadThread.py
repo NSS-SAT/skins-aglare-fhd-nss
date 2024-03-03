@@ -123,7 +123,7 @@ class AglarePosterXDownloadThread(threading.Thread):
             poster = None
 
             chkType, fd = self.checkType(shortdesc, fulldesc)
-            
+
             try:
                 if re.findall('19\d{2}|20\d{2}', title):
                     year = re.findall('19\d{2}|20\d{2}', fd)[1]

@@ -475,12 +475,12 @@ class AglarePosterX(Renderer):
         self.oldCanal = None
         self.logdbg = None
         self.timer = eTimer()
-        # try:
-            # self.timer_conn = self.timer.timeout.connect(self.showPoster)
-        # except:
-            # self.timer.callback.append(self.showPoster)
-        # self.timer.start(10, True)
-        self.timer.callback.append(self.showPoster)
+        try:
+            self.timer_conn = self.timer.timeout.connect(self.showPoster)
+        except:
+            self.timer.callback.append(self.showPoster)
+        self.timer.start(10, True)
+        # ~ self.timer.callback.append(self.showPoster)
 
     def applySkin(self, desktop, parent):
         attribs = []

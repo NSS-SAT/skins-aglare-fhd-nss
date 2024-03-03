@@ -68,6 +68,9 @@
     <screen name="selectplay" position="0,0" size="1920,1080" title="..::Apsattv::.." backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="Apsattv"/>
     </screen>
+    <screen name="main2" position="0,0" size="1920,1080" title="..::Apsattv::.." backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="Apsattv"/>
+    </screen>
     <!-- *************************************** -->
     <!--  FILMON PANELS                           * -->
     <!-- *************************************** -->
@@ -196,6 +199,4 @@
     <screen name="parsatv" position="0,0" size="1920,1080" title="..::parsatv::.." backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="MainParsa"/>
     </screen>
-   
-
 </skin>

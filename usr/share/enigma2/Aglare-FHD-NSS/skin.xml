@@ -2013,7 +2013,7 @@ MultiContentEntryText(pos = (50, 44), size = (800, 200), font = 1, flags = RT_HA
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="button1temp"/>
-        <widget name="infolist" position="250,230" size="1420,700" zPosition="0" halign="left" itemHeight="50" transparent="1"/>
+        <widget name="infolist" position="51,109" size="868,835" zPosition="0" halign="left" itemHeight="50" transparent="1"/>
     </screen>
     <screen name="Standby" position="fill" flags="wfNoBorder">
         <eLabel text="Tuners in Use:" position="50,50" size="400,100" font="Regular;50"/>
@@ -2029,8 +2029,8 @@ MultiContentEntryText(pos = (50, 44), size = (800, 200), font = 1, flags = RT_HA
             <convert type="ClientsStreaming">INFO_RESOLVE_SHORT</convert>
         </widget>
         <panel name="bLogo"/>
-        <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/aglarelogo.png" transparent="1" alphatest="on"/>
-        <eLabel backgroundColor="#c101b" cornerRadius="90" position="1600,788" size="500,180"/>
+        <ePixmap name="" position="76,872" size="180,180" zPosition="1" pixmap="main/ico/aglarelogo.png" transparent="1" alphatest="on"/>
+        <eLabel backgroundColor="#c101b" cornerRadius="90" position="20,874" size="500,180"/>
     </screen>
     <screen name="SubservicesQuickzap" position="540,900" size="840,113" title="Subservices" backgroundColor="transparent" flags="wfNoBorder">
         <widget source="session.RecordState" render="Pixmap" pixmap="main/rec1.png" position="770,57" zPosition="2" size="34,34" alphatest="blend">
@@ -2319,7 +2319,7 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <widget source="list" render="Listbox" position="36,582" size="890,400" transparent="1" itemHeight="50">
             <convert type="TemplatedMultiContent">
 			{"template": [ MultiContentEntryText(pos = (0,0),size = (660,42),flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER,text = 0) ],
-	"fonts": [gFont("Regular",30)],
+	"fonts": [gFont("Regular",32)],
 	"itemHeight": 50
   }
 		</convert>
@@ -2420,16 +2420,16 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <widget name="arrowup2" position="-100,-100" size="56,105" pixmap="skin_default/arrowup.png" zPosition="11" alphatest="blend"/>
         <widget name="wizard" pixmap="Aglare-FHD-NSS/skin_default/wizard.png" position="250,230" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
         <widget name="languagetext" position="306,960" size="250,45" zPosition="11" font="Regular; 32" halign="left" backgroundColor="background" transparent="1" foregroundColor="white"/>
-        <widget name="text" position="987,230" size="477,450" font="Regular; 30" transparent="1" backgroundColor="background" valign="top"/>
-        <widget source="list" render="Listbox" position="250,570" size="600,350" transparent="1" itemHeight="50">
+        <widget name="text" position="1014,368" size="477,450" font="Regular; 30" transparent="1" backgroundColor="background" valign="top"/>
+        <widget source="list" render="Listbox" position="86,509" size="822,350" transparent="1" itemHeight="50">
             <convert type="TemplatedMultiContent">
 			{"template": [ MultiContentEntryText(pos = (0,0),size = (660,42),flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER,text = 0) ],
-	"fonts": [gFont("Regular",30)],
+	"fonts": [gFont("Regular",32)],
 	"itemHeight": 50
   }
 		</convert>
         </widget>
-        <widget name="config" position="250,570" size="600,350" transparent="1" itemHeight="50"/>
+        <widget name="config" position="86,509" size="600,350" transparent="1" itemHeight="50"/>
         <ePixmap name="" position="256,960" size="46,46" zPosition="99" pixmap="buttons/red.png" alphatest="on"/>
     </screen>
     <screen name="LanguageWizard" position="0,0" size="1920,1080" title="Welcome..." backgroundColor="transparent" flags="wfNoBorder">
@@ -2441,7 +2441,7 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <widget name="arrowup2" position="-100,-100" size="56,105" pixmap="skin_default/arrowup.png" zPosition="11" alphatest="blend"/>
         <widget name="wizard" pixmap="skin_default/wizard.png" position="250,230" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
         <widget name="text" position="987,230" size="690,398" font="Regular; 30" transparent="1" backgroundColor="background" valign="top"/>
-        <widget source="languages" render="Listbox" position="250,640" size="1000,300" zPosition="13" transparent="1" itemHeight="100">
+        <widget source="languages" render="Listbox" position="86,509" size="822,350" zPosition="13" transparent="1" itemHeight="100">
             <convert type="TemplatedMultiContent">
 				{"template": [
 				MultiContentEntryText(pos = (195, 26), size = (795, 90), flags = RT_HALIGN_LEFT, text = 1), # index 1 is the language name,
@@ -2466,15 +2466,15 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <widget name="wizard" pixmap="skin_default/wizard.png" position="250,230" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
         <widget name="languagetext" position="306,960" size="250,45" zPosition="11" font="Regular; 32" halign="left" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <widget name="text" position="987,230" size="477,450" font="Regular; 30" transparent="1" backgroundColor="background" valign="top"/>
-        <widget source="list" render="Listbox" position="250,570" size="600,350" transparent="1" itemHeight="50">
+        <widget source="list" render="Listbox" position="86,509" size="822,350" transparent="1" itemHeight="50">
             <convert type="TemplatedMultiContent">
 			{"template": [ MultiContentEntryText(pos = (0,0),size = (660,42),flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER,text = 0) ],
-	"fonts": [gFont("Regular",30)],
+	"fonts": [gFont("Regular",32)],
 	"itemHeight": 50
   }
 		</convert>
         </widget>
-        <widget name="config" position="250,570" size="600,350" transparent="1" itemHeight="50"/>
+        <widget name="config" position="86,509" size="822,350" transparent="1" itemHeight="50"/>
         <ePixmap name="" position="256,960" size="46,46" zPosition="99" pixmap="buttons/red.png" alphatest="on"/>
     </screen>
     <screen name="VideoWizard" position="0,0" size="1920,1080" title="Welcome..." backgroundColor="transparent" flags="wfNoBorder">
@@ -2488,15 +2488,15 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <widget name="arrowup2" position="-100,-100" size="56,105" pixmap="skin_default/arrowup.png" zPosition="11" alphatest="blend"/>
         <widget name="wizard" pixmap="skin_default/wizard.png" position="250,230" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
         <widget name="text" position="987,230" size="477,450" font="Regular; 30" transparent="1" backgroundColor="background" valign="top"/>
-        <widget source="list" render="Listbox" position="250,570" size="600,350" transparent="1" itemHeight="50">
+        <widget source="list" render="Listbox" position="86,509" size="822,350" transparent="1" itemHeight="50">
             <convert type="TemplatedMultiContent">
 			{"template": [ MultiContentEntryText(pos = (0,0),size = (660,42),flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER,text = 0) ],
-	"fonts": [gFont("Regular",30)],
+	"fonts": [gFont("Regular",32)],
 	"itemHeight": 50
   }
 		</convert>
         </widget>
-        <widget name="config" position="250,570" size="600,350" transparent="1" itemHeight="50"/>
+        <widget name="config" position="87,509" size="822,350" transparent="1" itemHeight="50"/>
     </screen>
     <screen name="UpgradeStatus" position="0,0" size="1920,1080" title="FPGA Upgrade" backgroundColor="transparent" flags="wfNoBorder">
         <panel name="titletemp"/>
@@ -4038,10 +4038,6 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
     </screen>
     <screen name="VideoMode" title="VideoMode" position="85,45" size="500,80" backgroundColor="transparent" flags="wfNoBorder">
         <widget name="videomode" position="10,0" size="480,60" backgroundColor="transparent" transparent="1" font="Regular;32" borderColor="black" borderWidth="2" valign="center" halign="left"/>
-    </screen>
-    <screen name="Screensaver" title="ScreenSaver" position="fill" flags="wfNoBorder">
-        <eLabel position="fill" backgroundColor="transpBlack" zPosition="0"/>
-        <widget name="picture" pixmap="picon_default.png" position="0,0" size="220,120" alphatest="on" zPosition="1"/>
     </screen>
     <screen name="PictureInPictureZapping" title="PiPZap" position="center,80" size="200,60" zPosition="-1" backgroundColor="transparent" flags="wfNoBorder">
         <eLabel text="PiP-Zap" position="0,0" size="200,60" backgroundColor="transparent" transparent="1" font="Regular;32" borderColor="black" borderWidth="3" valign="center" halign="center"/>
@@ -6817,9 +6813,9 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <widget name="AboutScrollLabel" position="36,200" size="890,700" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30"/>
         <widget source="IFtext" render="Label" position="36,120" size="150,40" zPosition="10" font="Regular; 28" halign="left" backgroundColor="background" transparent="1"/>
         <widget source="IF" render="Label" position="160,120" size="307,40" zPosition="10" font="Regular; 28" halign="left" backgroundColor="background" transparent="1"/>
-        <widget source="Statustext" render="Label" position="668,120" size="77,40" zPosition="10" font="Regular; 28" halign="right" backgroundColor="background" transparent="1"/>
+        <widget source="Statustext" render="Label" position="550,120" size="195,40" zPosition="10" font="Regular; 28" halign="right" backgroundColor="background" transparent="1"/>
         <widget name="statuspic" pixmaps="main/greenon.png,main/greenoff.png" position="750,120" zPosition="10" size="40,40" transparent="1" alphatest="blend"/>
-        <eLabel backgroundColor="#00fe0000" cornerRadius="3" position="34,1064" size="296,6" zPosition="-11"/>
+        <eLabel backgroundColor="#fe0000" cornerRadius="3" position="34,1064" size="296,6" zPosition="-11"/>
         <widget source="key_red" render="Label" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <eLabel name="" position="1660,826" size="180,180" font="FA; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="#c101b" cornerRadius="90" position="1600,788" size="500,180"/>
