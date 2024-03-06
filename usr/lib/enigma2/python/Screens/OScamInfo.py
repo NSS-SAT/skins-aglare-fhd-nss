@@ -406,7 +406,7 @@ class oscMenuList(MenuList):
 	def __init__(self, list, itemH=30):
 		MenuList.__init__(self, list, False, eListboxPythonMultiContent)
 		self.l.setItemHeight(int(itemH * f))
-		self.l.setFont(0, gFont("Regular", int(20 * f)))
+		self.l.setFont(0, gFont("Regular", int(22 * f)))
 		self.l.setFont(1, gFont("Regular", int(18 * f)))
 		self.clientFont = gFont("Regular", int(16 * f))
 		self.l.setFont(2, self.clientFont)

@@ -60,15 +60,15 @@
     </screen>
     <!-- ************* nssConfig************* -->
     <screen backgroundColor="transparent" flags="wfNoBorder" name="nssConfig" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="titletemp"/>
-        <panel name="menutemp"/>
-        <panel name="button1temp"/>
-        <panel name="pigscreen885"/>
-        <widget name="config" position="43,96" size="869,575" itemHeight="40" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
-        <widget name="info" position="999,617" size="884,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
-        <widget name="description" position="38,758" size="882,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
-        <ePixmap position="1376,965" size="500,90" pixmap="oZetaNSS-FHD/menu/bLogo.png" alphatest="blend" zPosition="1"/>
-        <eLabel backgroundGradient="#0023314c,#000c101b,horizontal" cornerRadius="90" position="1600,788" size="500,180"/>
+        <panel name="titletemp" />
+        <panel name="menutemp" />
+        <panel name="button1temp" />
+        <panel name="pigscreen885" />
+        <widget name="config" position="43,96" size="869,575" font="Regular;30" itemHeight="40" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1" />
+        <widget name="info" position="999,606" size="884,359" font="Regular; 28" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5" />
+        <widget name="description" position="38,758" size="882,59" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5" />
+        <ePixmap position="1376,965" size="500,90" pixmap="oZetaNSS-FHD/menu/bLogo.png" alphatest="blend" zPosition="1" />
+        
     </screen>
     <!-- ************* cccConfig************* -->
     <screen backgroundColor="transparent" flags="wfNoBorder" name="cccConfig" position="0,0" size="1920,1080" title="NSS Panels">

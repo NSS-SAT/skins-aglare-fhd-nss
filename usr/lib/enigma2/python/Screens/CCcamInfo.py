@@ -343,8 +343,8 @@ class CCcamLineEdit(Setup):
 class CCcamMenuList(MenuList):
     def __init__(self, list):
         MenuList.__init__(self, list, content=eListboxPythonMultiContent)
-        self.l.setItemHeight(45)
-        self.l.setFont(0, gFont("Regular", int(18 * sf)))
+        self.l.setItemHeight(50)
+        self.l.setFont(0, gFont("Regular", int(24 * sf)))
 
 
 def CCcamListEntry(name, idx):
