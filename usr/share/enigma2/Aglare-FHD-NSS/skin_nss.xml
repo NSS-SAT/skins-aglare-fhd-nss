@@ -11,11 +11,11 @@
     </screen>
     <!-- ************* NSS Panels ************* -->
     <screen backgroundColor="transparent" flags="wfNoBorder" name="NssMenu" position="0,0" size="1920,1080" title="NssMenu">
-        <panel name="titletemp"/>
-        <panel name="menutemp"/>
-        <panel name="button1temp"/>
-        <panel name="pigscreen885"/>
-        <widget source="list" render="Listbox" position="43,96" size="869,888" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1">
+        <panel name="titletemp" />
+        <panel name="menutemp" />
+        <panel name="button1temp" />
+        <panel name="pigscreen885" />
+        <widget source="list" render="Listbox" position="43,96" size="869,830" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1">
             <convert type="TemplatedMultiContent">
 				{"template": [
 					MultiContentEntryText(pos = (90, 3), size = (700, 30), font=0, flags = RT_HALIGN_LEFT | RT_HALIGN_LEFT, text = 1),
@@ -27,8 +27,48 @@
 				}
 			</convert>
         </widget>
-        <widget source="conn" render="Label" position="1002,795" size="878,64" font="Regular;32" halign="left" valign="center" foregroundColor="yellow" backgroundColor="#000000" transparent="1"/>
-        <ePixmap position="1376,965" size="500,90" pixmap="oZetaNSS-FHD/menu/bLogo.png" alphatest="blend" zPosition="1"/>
+        <widget source="conn" render="Label" position="33,941" size="878,64" font="Regular;32" halign="left" valign="center" foregroundColor="yellow" backgroundColor="#000000" transparent="1" />
+        <ePixmap position="1376,965" size="500,90" pixmap="oZetaNSS-FHD/menu/bLogo.png" alphatest="blend" zPosition="1" />
+        <eLabel name="" position="997,684" size="50,50" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1" />
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,634" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareReceiverInfo">HddInfo</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Progress" position="1058,662" size="400,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="10" zPosition="88">
+            <convert type="AglareReceiverInfo">HddInfo</convert>
+        </widget>
+        <eLabel name="" position="997,684" size="50,50" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1" />
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,688" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareReceiverInfo">MemFree</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Progress" position="1058,716" size="400,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="10" zPosition="88">
+            <convert type="AglareReceiverInfo">MemFree</convert>
+        </widget>
+        <eLabel name="" position="997,738" size="50,50" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1" />
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,742" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareReceiverInfo">FlashInfo</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Progress" position="1058,770" size="400,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="10" zPosition="88">
+            <convert type="AglareReceiverInfo">FlashInfo</convert>
+        </widget>
+        <eLabel name="" position="997,792" size="50,50" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1" />
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,796" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareReceiverInfo">UsbInfo</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Progress" position="1058,824" size="400,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="10" zPosition="88">
+            <convert type="AglareReceiverInfo">UsbInfo</convert>
+        </widget>
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,859" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareBoxInfo">Boxtype</convert>
+        </widget>
+        <eLabel name="" position="997,846" size="50,50" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1" />
+        <eLabel name="" position="997,900" size="50,50" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1" />
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,913" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareBoxInfo">CpuInfo</convert>
+        </widget>
+        <eLabel name="" position="997,954" size="50,50" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 18" zPosition="1" text="UP" />
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,967" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareBoxInfo">Upinfo</convert>
+        </widget>
     </screen>
     <!-- ************* CAM Manager ************* -->
     <screen backgroundColor="transparent" flags="wfNoBorder" name="NSSCamsManager" position="0,0" size="1920,1080" title="NSSCamsManager">
