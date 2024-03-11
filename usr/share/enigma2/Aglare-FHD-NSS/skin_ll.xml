@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <skin>
-
     <!-- *************************************** -->
     <!--  WORLDCAM PANELS                           * -->
     <!-- *************************************** -->
@@ -242,7 +241,7 @@
         <widget name="paypal" position="984,612" size="401,301" font="Regular; 34" foregroundColor="#ffb75b" backgroundColor="#101010" halign="left" transparent="1" zPosition="5"/>
     </screen>
     <screen name="PiconsPreview" position="0,0" size="1920,1080" title="..::mmPicons::.." backgroundColor="#ff000000" flags="wfNoBorder">
-        <widget name="pixmap" position="center,center" size="1280,720" zPosition="1" alphatest="on"/>
+        <widget name="pixmap" position="center,center" size="1920,1080" zPosition="1" alphatest="on"/>
     </screen>
     <!-- *************************************** -->
     <!--  INFOS PANELS                           * -->
@@ -336,8 +335,8 @@
         <widget name="list" position="43,158" size="869,826" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
         <eLabel name="" position="1734,1016" size="55,52" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
         <widget name="info" position="41,96" size="884,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
-        <widget name="progress" position="490,995" size="300,50" foregroundColor="#2a70a4" backgroundColor="#10000000" transparent="1" zPosition="5"/>
-        <widget source="progresstext" render="Label" font="Regular;20" position="490,995" size="300,50" backgroundColor="#202020" transparent="1" halign="center" zPosition="6"/>
+        <widget name="progress" position="1578,910" size="300,50" foregroundColor="#2a70a4" backgroundColor="#10000000" transparent="1" zPosition="5"/>
+        <widget source="progresstext" render="Label" font="Regular;20" position="1577,910" size="300,50" backgroundColor="#202020" transparent="1" halign="center" zPosition="6"/>
         <widget name="pth" position="995,645" size="877,90" font="Regular; 32" halign="right" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
         <widget name="pform" position="995,593" size="882,50" font="Regular;30" halign="right" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
         <ePixmap position="1376,965" size="500,90" pixmap="oZetaNSS-FHD/menu/bLogo.png" alphatest="blend" zPosition="1"/>
@@ -510,8 +509,8 @@
         <panel name="menutemp"/>
         <panel name="button1temp"/>
         <panel name="pigscreen885"/>
-        <widget name="text" position="43,96" size="869,799" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
-        <widget name="MENU" position="999,617" size="884,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
+        <widget name="text" position="43,153" size="869,742" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
+        <widget name="MENU" position="43,97" size="884,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
         <widget name="version" position="41,901" size="877,90" font="Regular; 32" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/tvaddon/plugin.png" scale="strech" alphatest="blend" position="736,35" size="191,67" zPosition="5"/>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/tvaddon/Skin/PayPal.png" scale="strech" position="1310,896" size="156,75" zPosition="5" alphatest="on"/>
