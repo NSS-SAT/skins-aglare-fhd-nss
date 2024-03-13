@@ -1,4 +1,3 @@
-# Embedded file name: /usr/lib/enigma2/python/Components/Converter/NOVEventName2.py
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from enigma import eEPGCache, eServiceReference
