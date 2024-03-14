@@ -1356,7 +1356,7 @@
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget source="IF" render="Label" position="36,98" size="550,50" font="Regular; 40" backgroundColor="background" transparent="1" foregroundColor="gold"/>
-        <widget source="Statustext" render="Label" position="730,98" size="200,50" font="Regular; 40" backgroundColor="background" transparent="1" foregroundColor="gold"/>
+        <widget source="Statustext" render="Label" position="645,98" size="200,50" font="Regular; 40" backgroundColor="background" transparent="1" foregroundColor="gold" />
         <widget name="statuspic" position="868,98" size="50,50" pixmaps="skin_default/icons/selectioncross.png,skin_default/icons/redx.png" transparent="1" alphatest="on" zPosition="5"/>
         <widget name="menulist" position="36,200" size="890,400" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" valign="center" itemCornerRadius="8" textOffset="20,8"/>
         <widget source="description" render="Label" position="997,607" size="885,180" font="Regular; 24" halign="left" valign="top" backgroundColor="background" transparent="1" zPosition="55"/>
