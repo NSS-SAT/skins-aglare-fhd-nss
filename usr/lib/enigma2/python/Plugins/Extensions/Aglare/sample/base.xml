@@ -184,6 +184,7 @@
         <panel name="menutemp"/>
         <panel name="menulistpli"/>
         <panel name="button3temp"/>
+        <panel name="button4temp"/>
         <panel name="bLogo"/>
         <panel name="menusep"/>
         <panel name="pigscreen885"/>
@@ -4610,6 +4611,8 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y()))
     <screen name="setup_usage" position="0,0" size="1920,1080" title="Customize" backgroundColor="transparent" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="button1temp"/>
+        <panel name="button3temp"/>
+        <panel name="button4temp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
@@ -5394,14 +5397,11 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
     </screen>
     <screen name="NetworkWizard" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp" />
-          <!-- <panel name="menutemp" /> -->
-          <!-- /* time -->
           <panel name="timedate" />
           <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99" />
           <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80" />
           <eLabel name="" position="31,30" size="1157,977" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2" />
           <!-- /* time -->
-        <!-- <panel name="pigscreen885" /> -->
         <panel name="bLogo" />
         <widget name="text" position="1250,665" size="569,255" font="Regular; 32" transparent="1" backgroundColor="background" valign="top" />
         <widget source="list" render="Listbox" position="36,552" size="1140,400" itemHeight="50" zPosition="13" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" valign="center" itemCornerRadius="8">
@@ -5412,7 +5412,6 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
 				}
             </convert>
         </widget>
-        <!-- <widget name="config" position="36,582" size="890,400" transparent="1" itemHeight="50"/> -->
         <widget name="config" position="36,552" size="1140,400" itemHeight="50" font="Regular;32" valign="center" zPosition="14" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" itemCornerRadius="8" textOffset="15,4" />
         <eLabel backgroundColor="#fe0000" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11" />
         <widget name="languagetext" position="306,960" size="250,45" zPosition="11" font="Regular; 32" halign="left" backgroundColor="background" transparent="1" foregroundColor="white" />
@@ -5523,13 +5522,10 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
     </screen>
     <screen name="ImageWizard" title="Image Wizard..." position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
         <panel name="titletemp" />
-          <!-- <panel name="menutemp" /> -->
-          <!-- /* time -->
           <panel name="timedate" />
           <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99" />
           <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80" />
           <eLabel name="" position="31,30" size="1157,977" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2" />
-          <!-- /* time -->
         <panel name="bLogo" />
         <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1497,114" zPosition="10" size="124,500" alphatest="on" transparent="1" font="Regular; 24" />
         <widget name="wizard" pixmap="skin_default/wizard.png" position="250,230" zPosition="10" size="240,240" alphatest="blend" transparent="1" />
@@ -5543,7 +5539,6 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
                 }
 		</convert>
         </widget>
-        <!-- <widget name="config" position="36,582" size="890,400" transparent="1" itemHeight="50" itemCornerRadius="8" valign="center"/> -->
         <widget name="config" position="36,552" size="1140,400" itemHeight="50" font="Regular;32" valign="center" zPosition="14" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" itemCornerRadius="8" textOffset="15,4" />
         <ePixmap name="" position="256,960" size="46,46" zPosition="99" pixmap="buttons/red.png" alphatest="on" />
     </screen>
@@ -5953,7 +5948,7 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="524,932" size="400,3" zPosition="99"/>
         <eLabel name="" position="416,916" size="132,40" font="FA; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
         <!--
-         <widget name="" position="1281,1013" size="339,56" render="Label" source="global.CurrentTime" font="Regular; 30" transparent="1" halign="center" valign="center" zPosition="10">
+        <widget name="" position="1281,1013" size="339,56" render="Label" source="global.CurrentTime" font="Regular; 30" transparent="1" halign="center" valign="center" zPosition="10">
             <convert type="FNCpiLayInfo">Flashfree</convert>
         </widget>
          -->

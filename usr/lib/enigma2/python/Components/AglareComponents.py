@@ -94,7 +94,7 @@ def isImageType(imgName = ''):
     else:
         return False
 
-def NOVDEBUG(myText = None, Append = True, myDEBUG = '/tmp/AglareComponents.log'):
+def AGDEBUG(myText = None, Append = True, myDEBUG = '/tmp/AglareComponents.log'):
     global append2file
     if myDEBUG is None:
         return
