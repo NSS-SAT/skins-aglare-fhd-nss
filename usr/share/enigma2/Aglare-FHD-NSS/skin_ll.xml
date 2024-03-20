@@ -274,7 +274,7 @@
     <screen name="GetipkTv" position="0,0" size="1920,1080" title="Get Server" backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="GetipklistTv"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="Hometv" position="0,0" size="1920,1080" title="NSS Panels">
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="Hometv" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="button1temp"/>
@@ -327,7 +327,7 @@
             <convert type="AglareBoxInfo">Upinfo</convert>
         </widget>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvall" position="0,0" size="1920,1080" title="NSS Panels">
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="Categories" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="button1temp"/>
@@ -381,43 +381,40 @@
             <convert type="AglareBoxInfo">Upinfo</convert>
         </widget>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvInstall" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvInstall" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="Categories" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvDailySetting" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvDailySetting" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingVhan" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingVhan" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingVhan2" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingVhan2" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="Milenka61" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="Milenka61" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingManutek" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingManutek" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingMorpheus" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingMorpheus" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingCiefp" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingCiefp" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingBi58" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingBi58" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingPredrag" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingPredrag" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingCyrus" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingCyrus" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
-    </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvIPK" position="0,0" size="1920,1080" title="NSS Panels">
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvIPK" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="button1temp"/>
@@ -468,26 +465,26 @@
             <convert type="AglareBoxInfo">Upinfo</convert>
         </widget>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvUpdate" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvUpdate" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvRemove" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvRemove" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="mainkodilite" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="mainkodilite" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="pluginx" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="pluginx" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="plugins_adult" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="plugins_adult" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="script" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="script" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="repository" position="0,0" size="1920,1080" title="NSS Panels">
-        <panel name="tvall"/>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="repository" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
     </screen>
     <screen name="tvConfig" position="0,0" size="1920,1080" title="Config" backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="titletemp"/>
