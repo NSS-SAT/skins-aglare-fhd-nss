@@ -25,7 +25,9 @@ config.plugins.AglareNss.colorSelector = ConfigSelection(default='head', choices
  ('color1', _('Black')),
  ('color2', _('Brown')),
  ('color3', _('Green')),
- ('color4', _('Magenta'))])
+ ('color4', _('Magenta')),
+ ('color5', _('Blue')),
+ ('color6', _('Red'))])
 config.plugins.AglareNss.FontStyle = ConfigSelection(default='basic', choices=[
  ('basic', _('Default')),
  ('font1', _('HandelGotD')),
@@ -46,7 +48,9 @@ config.plugins.AglareNss.ChannSelector = ConfigSelection(default='channellist_no
  ('channellist_big_mini_tv', _('ChannelSelection_big_mini_tv'))])
 config.plugins.AglareNss.EventView = ConfigSelection(default='eventview_no_posters', choices=[
  ('eventview_no_posters', _('EventView_NO_Posters')),
- ('eventview_7_posters', _('EventView_7_Posters'))])
+ ('eventview_7_posters', _('EventView_7_Posters')),
+ ('eventview_banner', _('EventView_Banner'))])
+ 
 config.plugins.AglareNss.VolumeBar = ConfigSelection(default='volume1', choices=[
  ('volume1', _('Default')),
  ('volume2', _('volume2'))])
