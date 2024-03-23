@@ -73,10 +73,10 @@
         <ePixmap position="33,36" size="66,54" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="20"/>
     </screen>
     <screen name="buttonicons" flags="wfNoBorder">
-        <eLabel backgroundColor="#00fe0000" cornerRadius="3" position="34,1064" size="296,6" zPosition="-11"/>
-        <eLabel backgroundColor="#0000fe00" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
-        <eLabel backgroundColor="#00fefe00" cornerRadius="3" position="652,1064" size="300,6" zPosition="-11"/>
-        <eLabel backgroundColor="#000000fe" cornerRadius="3" position="962,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="red" cornerRadius="3" position="34,1064" size="296,6" zPosition="-11"/>
+        <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="yellow" cornerRadius="3" position="652,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="blue" cornerRadius="3" position="962,1064" size="300,6" zPosition="-11"/>
     </screen>
     <screen name="button1temp" flags="wfNoBorder">
         <widget source="key_red" render="Label" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
@@ -155,14 +155,14 @@
     <screen name="cancelscan" flags="wfNoBorder">
         <eLabel name="new eLabel" text="Cancel" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <eLabel name="new eLabel" text="Scan" position="342,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
-        <eLabel backgroundColor="#00fe0000" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11"/>
-        <eLabel backgroundColor="#0000fe00" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="red" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
     </screen>
     <screen name="cancelsave" flags="wfNoBorder">
         <eLabel name="new eLabel" text="Cancel" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <eLabel name="new eLabel" text="Save" position="342,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
-        <eLabel backgroundColor="#00fe0000" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11"/>
-        <eLabel backgroundColor="#0000fe00" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="red" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
     </screen>
     <screen name="timedate" flags="wfNoBorder">
         <!-- /* time -->
@@ -250,7 +250,7 @@
             <convert type="ServiceInfo">AudioTracksAvailable</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="FixedLabel" position="1362,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="4" text="DOL">
+        <widget source="session.CurrentService" render="FixedLabel" position="1362,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="icomoon; 28" text="" zPosition="4">
             <convert type="ServiceInfo">IsMultichannel</convert>
             <convert type="ConditionalShowHide"/>
         </widget>

@@ -106,9 +106,9 @@
         <color name="lmsb" value="#003e91f6"/>
         <color name="maindark" value="#000b1d21"/>
         <color name="mainlight" value="#0004495c"/>
-        <color name="mainskincolor" value="#007396ff"/>
+        <color name="mainskincolor" value="#00ff00ff"/>
         <color name="mcolor2" value="#00171a1c"/>
-        <color name="mcolor3" value="#0028343b"/>
+        <color name="mcolor3" value="#00fffffe"/>
         <color name="mcolor4" value="#003e4b53"/>
         <color name="mcolor5" value="#00283752"/>
         <color name="mcolor6" value="#004d5e7c"/>
@@ -131,51 +131,6 @@
         <color name="transparent" value="#ff000000"/>
         <color name="transparent2" value="#ffffffff"/>
         <color name="transpyellow" value="#33bab329"/>
-        <color name="un203658a4" value="#203658a4"/>
-        <color name="un2144557e" value="#2144557e"/>
-        <color name="un21e2e2e2" value="#21e2e2e2"/>
-        <color name="un22071423" value="#22071423"/>
-        <color name="un25062748" value="#00062748"/>
-        <color name="un252b4247" value="#252b4247"/>
-        <color name="un303234" value="#00303234"/>
-        <color name="un333333" value="#00333333"/>
-        <color name="un3366" value="#00003366"/>
-        <color name="un404040" value="#00404040"/>
-        <color name="un40f" value="#0000040f"/>
-        <color name="un445566" value="#00445566"/>
-        <color name="un4d5375" value="#004d5375"/>
-        <color name="un4e5a74" value="#004e5a74"/>
-        <color name="un540f0f0f" value="#540f0f0f"/>
-        <color name="un666666" value="#00666666"/>
-        <color name="un6a7a8a" value="#006a7a8a"/>
-        <color name="un800000" value="#00800000"/>
-        <color name="un808888" value="#00808888"/>
-        <color name="un909090" value="#00909090"/>
-        <color name="un99bad6" value="#0099bad6"/>
-        <color name="un9f1313" value="#009f1313"/>
-        <color name="una050" value="#0000a050"/>
-        <color name="una08500" value="#00a08500"/>
-        <color name="unaaaaac" value="#00aaaaac"/>
-        <color name="unab5400" value="#00ab5400"/>
-        <color name="unaf2f4170" value="#af2f4170"/>
-        <color name="unb5b5b5" value="#00b5b5b5"/>
-        <color name="unc0c0c0" value="#00c0c0c0"/>
-        <color name="uncccccc" value="#00cccccc"/>
-        <color name="undcaaaa" value="#00dcaaaa"/>
-        <color name="undcdcdc" value="#00dcdcdc"/>
-        <color name="undedede" value="#00dedede"/>
-        <color name="unf0b400" value="#00f0b400"/>
-        <color name="unf0f0f0" value="#00f0f0f0"/>
-        <color name="unf23d21" value="#00f23d21"/>
-        <color name="unfcc000" value="#00fcc000"/>
-        <color name="unff0000" value="#00ff0000"/>
-        <color name="unff000000" value="#ff000000"/>
-        <color name="unff2f2e" value="#00ff2f2e"/>
-        <color name="unff888888" value="#ff888888"/>
-        <color name="unffc000" value="#00ffc000"/>
-        <color name="unffc435" value="#00ffc435"/>
-        <color name="unffdc64" value="#00ffdc64"/>
-        <color name="unfff000" value="#00fff000"/>
         <color name="wdcolor" value="#00171a1c"/>
         <color name="white" value="#00ffffff"/>
         <color name="white2" value="#00dddddd"/>
@@ -192,6 +147,7 @@
         <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/DroidSans-Bold.ttf" name="Bold" scale="100"/>
         <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/arial.ttf" name="Replacement" scale="100" replacement="1"/>
         <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/fa.ttf" name="FA" scale="100"/>
+        <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/icomoon.ttf" name="icomoon" scale="100"/>
         <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/OpenSans-Regular.ttf" name="OpenSans" scale="100"/>
         <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/TickingTimebombBB.ttf" name="digiclock" scale="100"/>
         <alias name="PluginBrowser0" font="Regular" size="28" height="60"/>
@@ -238,7 +194,7 @@
         <parameter name="FileListMultiIcon" value="45, 4, 30, 30"/>
         <parameter name="FileListMultiLock" value="2,0,36,36"/>
         <parameter name="FileListMultiName" value="90,0,1000,36"/>
-        <parameter name="FileListName" value="66,10,1000,50"/>
+        <parameter name="FileListName" value="66,0,1000,50"/>
         <parameter name="GMultiEPGTimelineItemHeight" value="60"/>
         <parameter name="HelpMenuListExtHlp0" value="0,0,900,39"/>
         <parameter name="HelpMenuListExtHlp1" value="0,42,900,30"/>
@@ -283,7 +239,7 @@
         <pixmap name="menu_off" filename="Aglare-FHD-NSS/icons/menu_off.png"/>
     </switchpixmap>
     <windowstyle type="skinned" id="0">
-        <scrolllabel scrollbarMode="showOnDemand" scrollbarForegroundColor="mcolor5" scrollbarBorderColor="mcolor2" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarRadius="5"/>
+        <scrolllabel scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
         <configList entryFont="Regular;28" valueFont="Regular;28"/>
         <title offset="30,8" font="Regular;36"/>
         <color name="Background" color="background"/>
@@ -294,7 +250,7 @@
         <color name="ListboxSelectedForeground" color="white"/>
         <color name="ListboxMarkedBackground" color="yellow"/>
         <color name="ListboxMarkedForeground" color="green"/>
-        <color name="ListboxMarkedAndSelectedBackground" color="lmsb"/>
+        <color name="ListboxMarkedAndSelectedBackground" color="#3e91f6"/>
         <color name="ListboxMarkedAndSelectedForeground" color="green"/>
         <color name="WindowTitleForeground" color="chselfg"/>
         <color name="WindowTitleBackground" color="background"/>
@@ -468,10 +424,7 @@
     <screen name="ChannelSelection" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder">
         <panel name="button2temp"/>
         <panel name="timedate"/>
-        <eLabel backgroundColor="#fe0000" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11"/>
-        <eLabel backgroundColor="#fe00" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
-        <eLabel backgroundColor="#fefe00" cornerRadius="3" position="652,1064" size="300,6" zPosition="-11"/>
-        <eLabel backgroundColor="#fe" cornerRadius="3" position="962,1064" size="300,6" zPosition="-11"/>
+        <panel name="buttonicons"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <widget source="ServiceEvent" render="Label" position="970,652" size="691,316" font="Regular; 28" backgroundColor="background" transparent="1" noWrap="1" zPosition="8" foregroundColor="white" valign="top">
             <convert type="AglareEventName2">NextEventList</convert>
@@ -603,7 +556,7 @@
             <convert type="ServiceInfo">HasHBBTV</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="FixedLabel" position="1732,534" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="4" text="DOL">
+        <widget source="session.CurrentService" render="Label" position="1732,534" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" zPosition="4" font="icomoon; 28" text="">
             <convert type="ServiceInfo">IsMultichannel</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
@@ -725,7 +678,6 @@
     <screen name="Volume" position="center,30" size="704,70" backgroundColor="transparent" flags="wfNoBorder" zPosition="100" transparent="0">
         <widget source="global.CurrentTime" render="AglareVolumeText" position="634,0" size="66,65" font="Regular; 34" backgroundColor="background" foregroundColor="white" halign="center" valign="center" zPosition="99" transparent="1"/>
         <widget name="Volume" position="68,24" size="564,20" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="88"/>
-        <!--ePixmap name="" position="2,2" size="66,65" transparent="1" pixmap="main/audioiconh.png" alphatest="on" /-->
         <eLabel name="" position="0,2" size="66,65" font="FA; 44" text="" transparent="1" valign="center" halign="center"/>
         <eLabel backgroundColor="wpmc" cornerRadius="30" position="0,0" size="704,70" zPosition="-99"/>
     </screen>
@@ -914,6 +866,7 @@
         <panel name="menutemp"/>
         <panel name="menulistpli"/>
         <panel name="button3temp"/>
+        <panel name="button4temp"/>
         <panel name="bLogo"/>
         <panel name="menusep"/>
         <panel name="pigscreen885"/>
@@ -2621,7 +2574,6 @@
         <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="31,30" size="1157,977" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
-        <!-- /* time -->
         <panel name="bLogo"/>
         <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1497,114" zPosition="10" size="124,500" alphatest="on" transparent="1" font="Regular; 24"/>
         <widget name="arrowdown" position="-100,-100" size="56,105" pixmap="skin_default/arrowdown.png" zPosition="11" alphatest="blend"/>
@@ -5007,7 +4959,7 @@ self.instance.move(ePoint(int(deskwidth - newwidth)//2,int(deskheight - newheigh
         <widget source="session.CurrentService" render="Progress" position="190,60" size="1720,50" foregroundColor="white" transparent="1" zPosition="2">
             <convert type="ServicePosition">Position</convert>
         </widget>
-        <eLabel name="new eLabel" position="152,189" size="270,1" backgroundColor="un404040" zPosition="1"/>
+        <eLabel name="new eLabel" position="152,189" size="270,1" backgroundColor="#00404040" zPosition="1"/>
         <eLabel name="new eLabel" position="70,0" size="1780,59" backgroundColor="background" zPosition="-1"/>
         <eLabel name="new eLabel" position="0,0" size="20,59" backgroundColor="background" zPosition="7"/>
     </screen>
@@ -5303,6 +5255,8 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y()))
     <screen name="setup_usage" position="0,0" size="1920,1080" title="Customize" backgroundColor="transparent" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="button1temp"/>
+        <panel name="button3temp"/>
+        <panel name="button4temp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
@@ -6101,7 +6055,6 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
 				}
             </convert>
         </widget>
-        <!-- <widget name="config" position="36,582" size="890,400" transparent="1" itemHeight="50"/> -->
         <widget name="config" position="36,552" size="1140,400" itemHeight="50" font="Regular;32" valign="center" zPosition="14" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" itemCornerRadius="8" textOffset="15,4"/>
         <eLabel backgroundColor="#fe0000" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11"/>
         <widget name="languagetext" position="306,960" size="250,45" zPosition="11" font="Regular; 32" halign="left" backgroundColor="background" transparent="1" foregroundColor="white"/>
@@ -6216,7 +6169,6 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
         <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="31,30" size="1157,977" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
-        <!-- /* time -->
         <panel name="bLogo"/>
         <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1497,114" zPosition="10" size="124,500" alphatest="on" transparent="1" font="Regular; 24"/>
         <widget name="wizard" pixmap="skin_default/wizard.png" position="250,230" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
@@ -6638,11 +6590,6 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="36,932" size="400,3" zPosition="99"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="524,932" size="400,3" zPosition="99"/>
         <eLabel name="" position="416,916" size="132,40" font="FA; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
-        <!--
-         <widget name="" position="1281,1013" size="339,56" render="Label" source="global.CurrentTime" font="Regular; 30" transparent="1" halign="center" valign="center" zPosition="10">
-            <convert type="FNCpiLayInfo">Flashfree</convert>
-        </widget>
-         -->
         <eLabel name="" position="996,631" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1"/>
         <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,634" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
             <convert type="AglareReceiverInfo">MemFree</convert>
@@ -6661,10 +6608,6 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
         <widget name="text" position="36,428" size="890,60" zPosition="-1" halign="center" valign="center" font="Regular; 34" backgroundColor="background" transparent="1" foregroundColor="yellow"/>
         <widget name="list" position="36,98" size="890,910" itemHeight="70" foregroundColor="white" foregroundColorSelected="yellow" transparent="1" zPosition="11" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="8" valign="center"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
-        <!--
-         <widget name="" position="1281,1013" size="339,56" render="Label" source="global.CurrentTime" font="Regular; 30" transparent="1" halign="center" valign="center" zPosition="10">
-            <convert type="FNCpiLayInfo">Flashfree</convert>
-        </widget> -->
         <eLabel name="" position="996,631" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1"/>
         <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,634" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
             <convert type="AglareReceiverInfo">MemFree</convert>

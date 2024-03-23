@@ -110,6 +110,7 @@
         <color name="mcolor3" value="#00fffffe"/>
         <color name="mcolor4" value="#003e4b53"/>
         <color name="mcolor5" value="#00283752"/>
+        <color name="mcolor6" value="#004d5e7c"/>
         <color name="menu" value="#25062748"/>
         <color name="mint" value="#0000cc99"/>
         <color name="progbg" value="#005a5a5a"/>
@@ -128,51 +129,6 @@
         <color name="transparent" value="#ff000000"/>
         <color name="transparent2" value="#ffffffff"/>
         <color name="transpyellow" value="#33bab329"/>
-        <color name="un203658a4" value="#203658a4"/>
-        <color name="un2144557e" value="#2144557e"/>
-        <color name="un21e2e2e2" value="#21e2e2e2"/>
-        <color name="un22071423" value="#22071423"/>
-        <color name="un25062748" value="#00062748"/>
-        <color name="un252b4247" value="#252b4247"/>
-        <color name="un303234" value="#00303234"/>
-        <color name="un333333" value="#00333333"/>
-        <color name="un3366" value="#00003366"/>
-        <color name="un404040" value="#00404040"/>
-        <color name="un40f" value="#0000040f"/>
-        <color name="un445566" value="#00445566"/>
-        <color name="un4d5375" value="#004d5375"/>
-        <color name="un4e5a74" value="#004e5a74"/>
-        <color name="un540f0f0f" value="#540f0f0f"/>
-        <color name="un666666" value="#00666666"/>
-        <color name="un6a7a8a" value="#006a7a8a"/>
-        <color name="un800000" value="#00800000"/>
-        <color name="un808888" value="#00808888"/>
-        <color name="un909090" value="#00909090"/>
-        <color name="un99bad6" value="#0099bad6"/>
-        <color name="un9f1313" value="#009f1313"/>
-        <color name="una050" value="#0000a050"/>
-        <color name="una08500" value="#00a08500"/>
-        <color name="unaaaaac" value="#00aaaaac"/>
-        <color name="unab5400" value="#00ab5400"/>
-        <color name="unaf2f4170" value="#af2f4170"/>
-        <color name="unb5b5b5" value="#00b5b5b5"/>
-        <color name="unc0c0c0" value="#00c0c0c0"/>
-        <color name="uncccccc" value="#00cccccc"/>
-        <color name="undcaaaa" value="#00dcaaaa"/>
-        <color name="undcdcdc" value="#00dcdcdc"/>
-        <color name="undedede" value="#00dedede"/>
-        <color name="unf0b400" value="#00f0b400"/>
-        <color name="unf0f0f0" value="#00f0f0f0"/>
-        <color name="unf23d21" value="#00f23d21"/>
-        <color name="unfcc000" value="#00fcc000"/>
-        <color name="unff0000" value="#00ff0000"/>
-        <color name="unff000000" value="#ff000000"/>
-        <color name="unff2f2e" value="#00ff2f2e"/>
-        <color name="unff888888" value="#ff888888"/>
-        <color name="unffc000" value="#00ffc000"/>
-        <color name="unffc435" value="#00ffc435"/>
-        <color name="unffdc64" value="#00ffdc64"/>
-        <color name="unfff000" value="#00fff000"/>
         <color name="wdcolor" value="#00171a1c"/>
         <color name="white" value="#00ffffff"/>
         <color name="white2" value="#00dddddd"/>
@@ -181,30 +137,6 @@
         <color name="wpuc" value="#00080b11"/>
         <color name="yellow" value="#00ffff00"/>
     </colors>
-<!--     <fonts>
-        <font filename="lcd.ttf" name="LCD" scale="100"/>
-        <font filename="tuxtxt.ttf" name="Console" scale="100"/>
-        <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/verdana.ttf" name="Regular" scale="92"/>
-        <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/DroidSans.ttf" name="Regularn" scale="100"/>
-        <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/DroidSans-Bold.ttf" name="Bold" scale="100"/>
-        <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/arial.ttf" name="Replacement" scale="100" replacement="1"/>
-        <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/fa.ttf" name="FA" scale="100"/>
-        <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/OpenSans-Regular.ttf" name="OpenSans" scale="100"/>
-        <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/TickingTimebombBB.ttf" name="digiclock" scale="100"/>
-        <alias name="PluginBrowser0" font="Regular" size="28" height="60"/>
-        <alias name="PluginBrowser1" font="Regular" size="24"/>
-        <alias name="ChoiceList" font="Regular" size="30" height="48"/>
-        <alias name="VirtualKeyBoard" font="Regular" size="42" height="68"/>
-        <alias name="FileList" font="Regular" size="28" height="48"/>
-        <alias name="PlayList" font="Regular" size="28" height="48"/>
-        <alias name="ServiceInfo" font="Regular" size="30" height="42"/>
-        <alias name="SelectionList" font="Regular" size="30" height="42"/>
-        <alias name="FileListMulti" font="Regular" size="30" height="42"/>
-        <alias name="HelpMenuListExt0" font="Regular" size="32" height="75"/>
-        <alias name="HelpMenuListExt1" font="Regular" size="28"/>
-        <alias name="HelpMenuList" font="OpenSans" size="20" height="50"/>
-        <alias name="Dreamexplorer" font="Regular" size="28" height="36"/>
-    </fonts> -->
     <parameters>
         <parameter name="AboutHddSplit" value="1"/>
         <parameter name="ChoicelistButtonIcon" value="15,14,54,34"/>

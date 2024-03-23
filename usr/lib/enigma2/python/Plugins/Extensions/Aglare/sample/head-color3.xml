@@ -33,6 +33,7 @@
   <color name="#555556" value="#00555556" />
   <color name="#606060" value="#00606060" />
   <color name="#808080" value="#00808080" />
+  <color name="#8293b3" value="#008293b3" />
   <color name="#90000000" value="#90000000" />
   <color name="#90ff00ff" value="#90ff00ff" />
   <color name="#92f1fc" value="#0092f1fc" />
@@ -42,12 +43,17 @@
   <color name="#b0b0b0" value="#00b0b0b0" />
   <color name="#b2049" value="#000b2049" />
   <color name="#bab329" value="#00bab329" />
+  <color name="#c101b" value="#000c101b" />
   <color name="#c4c4c4" value="#00c4c4c4" />
   <color name="#cccc40" value="#00cccc40" />
   <color name="#e5b243" value="#00e5b243" />
   <color name="#ecbb41" value="#00ecbb41" />
   <color name="#f3fc92" value="#00f3fc92" />
   <color name="#f4b700" value="#00f4b700" />
+  <color name="#fe" value="#000000fe" />
+  <color name="#fe00" value="#0000fe00" />
+  <color name="#fe0000" value="#00fe0000" />
+  <color name="#fefe00" value="#00fefe00" />
   <color name="#ffb75b" value="#00ffb75b" />
   <color name="#fffff4" value="#00fffff4" />
   <color name="#fffffe" value="#00fffffe" />
@@ -89,8 +95,8 @@
   <color name="grey2" value="#006b6b6b" />
   <color name="greyc4" value="#00c4c4c4" />
   <color name="hellgreen" value="#0056c856" />
-  <color name="igsd" value="#00000f0c" />
-  <color name="igsdt" value="#44000f0c" />
+  <color name="igsd" value="#000b3737" />
+  <color name="igsdt" value="#440b3737" />
   <color name="igsl" value="#000a372e" />
   <color name="linebg" value="#00999999" />
   <color name="listbgt" value="#200a1c20" />
@@ -99,8 +105,8 @@
   <color name="mainlight" value="#0004495c" />
   <color name="mainskincolor" value="#007396ff" />
   <color name="mcolor2" value="#00171a1c" />
-  <color name="mcolor3" value="#002a2a2a" />
-  <color name="mcolor4" value="#00303030" />
+  <color name="mcolor3" value="#00ececfb" />
+  <color name="mcolor4" value="#002a2a2a" />
   <color name="mcolor5" value="#00005826" />
   <color name="mcolor6" value="#00117d40" />
   <color name="menu" value="#25062748" />
@@ -121,49 +127,6 @@
   <color name="transpGrey" value="#41444444" />
   <color name="transpWhite" value="#77ffffff" />
   <color name="transpyellow" value="#33bab329" />
-  <color name="un203658a4" value="#203658a4" />
-  <color name="un2144557e" value="#2144557e" />
-  <color name="un21e2e2e2" value="#21e2e2e2" />
-  <color name="un22071423" value="#22071423" />
-  <color name="un25062748" value="#00062748" />
-  <color name="un252b4247" value="#252b4247" />
-  <color name="un303234" value="#00303234" />
-  <color name="un333333" value="#00333333" />
-  <color name="un3366" value="#00003366" />
-  <color name="un404040" value="#00404040" />
-  <color name="un40f" value="#0000040f" />
-  <color name="un445566" value="#00445566" />
-  <color name="un4d5375" value="#004d5375" />
-  <color name="un4e5a74" value="#004e5a74" />
-  <color name="un540f0f0f" value="#540f0f0f" />
-  <color name="un666666" value="#00666666" />
-  <color name="un6a7a8a" value="#006a7a8a" />
-  <color name="un800000" value="#00800000" />
-  <color name="un808888" value="#00808888" />
-  <color name="un909090" value="#00909090" />
-  <color name="un99bad6" value="#0099bad6" />
-  <color name="un9f1313" value="#009f1313" />
-  <color name="una050" value="#0000a050" />
-  <color name="una08500" value="#00a08500" />
-  <color name="unaaaaac" value="#00aaaaac" />
-  <color name="unab5400" value="#00ab5400" />
-  <color name="unaf2f4170" value="#af2f4170" />
-  <color name="unb5b5b5" value="#00b5b5b5" />
-  <color name="unc0c0c0" value="#00c0c0c0" />
-  <color name="uncccccc" value="#00cccccc" />
-  <color name="undcaaaa" value="#00dcaaaa" />
-  <color name="undedede" value="#00dedede" />
-  <color name="unf0b400" value="#00f0b400" />
-  <color name="unf0f0f0" value="#00f0f0f0" />
-  <color name="unf23d21" value="#00f23d21" />
-  <color name="unfcc000" value="#00fcc000" />
-  <color name="unff000000" value="#ff000000" />
-  <color name="unff2f2e" value="#00ff2f2e" />
-  <color name="unff888888" value="#ff888888" />
-  <color name="unffc000" value="#00ffc000" />
-  <color name="unffc435" value="#00ffc435" />
-  <color name="unffdc64" value="#00ffdc64" />
-  <color name="unfff000" value="#00fff000" />
   <color name="wdcolor" value="#002a2a2a" />
   <color name="white" value="#00ffffff" />
   <color name="white2" value="#00dddddd" />
@@ -177,6 +140,7 @@
     <parameter name="ChoicelistDash" value="0,4,790,62" />
     <parameter name="ChoicelistName" value="70,14,790,62" />
     <parameter name="ChoicelistIcon" value="8,14,54,62" />
+    <parameter name="ChoicelistButtonIcon" value="15,14,54,34" />
     <parameter name="ChoicelistNameSingle" value="20,16,790,62" />
     <parameter name="ConfigListSlider" value="20,2" />
     <parameter name="ConfigListSeperator" value="600" />
@@ -189,10 +153,10 @@
     <parameter name="HelpMenuListExtHlp0" value="0,0,900,39" />
     <parameter name="HelpMenuListExtHlp1" value="0,42,900,30" />
     <parameter name="FileListIcon" value="14,8,50,50" />
-    <parameter name="FileListName" value="66,10,790,50" />
+    <parameter name="FileListName" value="66,0,790,50" />
     <parameter name="PlayListIcon" value="7,12,32,48" />
     <parameter name="PlayListName" value="45,0,1000,48" />
-    <parameter name="PluginBrowserIcon" value="20,5,120,60" />
+    <parameter name="PluginBrowserIcon" value="20,0,120,60" />
     <parameter name="PluginBrowserName" value="160,4,36" />
     <parameter name="PluginBrowserDescr" value="160,36,30" />
     <parameter name="PluginBrowserDescColor" value="1017253" />
@@ -226,11 +190,11 @@
     <parameter name="MerlinMusicPlayerFileListName" value="100,0,780,50" />
     <parameter name="MerlinMusicPlayerFileListIcon" value="10,0,40,40" />
     <!-- /**************** FileCommander Plugin  *****************-->
-    <parameter name="FcFileListIcon" value="10,0,30,30" />
-    <parameter name="FcFileListMultiIcon" value="45,0,30,30" />
+    <parameter name="FcFileListIcon" value="10,2,30,30" />
+    <parameter name="FcFileListMultiIcon" value="45,2,30,30" />
     <parameter name="FcFileListMultiLock" value="2,0,30,30" />
-    <parameter name="FcFileListMultiName" value="90,00,870,50" />
-    <parameter name="FcFileListName" value="72,0,870,50" />
+    <parameter name="FcFileListMultiName" value="90,2,1000,32" />
+    <parameter name="FcFileListName" value="68,2,1000,34" />
     <!-- /**************** MSN Weather Plugin  *******************-->
     <parameter name="WeatherPluginSearchResultListFont1" value="Regular;32" />
     <parameter name="WeatherPluginSearchResultListFont2" value="Regular;32" />
@@ -247,7 +211,7 @@
     <pixmap name="menu_off" filename="Aglare-FHD-NSS/icons/menu_off.png" />
   </switchpixmap>
   <windowstyle type="skinned" id="0">
-    <scrolllabel scrollbarMode="showOnDemand" scrollbarForegroundColor="mcolor5" scrollbarBorderColor="mcolor2" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarRadius="5" />
+    <scrolllabel scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" />
     <configList entryFont="Regular;28" valueFont="Regular;28" />
     <title offset="30,8" font="Regular;36" />
     <color name="Background" color="background" />
@@ -258,7 +222,7 @@
     <color name="ListboxSelectedForeground" color="white" />
     <color name="ListboxMarkedBackground" color="yellow" />
     <color name="ListboxMarkedForeground" color="green" />
-    <color name="ListboxMarkedAndSelectedBackground" color="lmsb" />
+    <color name="ListboxMarkedAndSelectedBackground" color="#3e91f6" />
     <color name="ListboxMarkedAndSelectedForeground" color="green" />
     <color name="WindowTitleForeground" color="chselfg" />
     <color name="WindowTitleBackground" color="background" />
@@ -277,7 +241,7 @@
     <sub name="Subtitle_TTX" font="Regular;52" shadowColor="#00101010" shadowOffset="1,1" />
     <sub name="Subtitle_Regular" font="Regular;52" foregroundColor="white" shadowColor="#00101010" shadowOffset="1,1" />
     <sub name="Subtitle_Bold" font="Replacement;52" foregroundColor="white" shadowColor="#00101010" shadowOffset="1,1" />
-    <sub name="Subtitle_Italic" font="Regular;52" foregroundColor="undcaaaa" shadowColor="#00101010" shadowOffset="1,1" />
+    <sub name="Subtitle_Italic" font="Regular;52" foregroundColor="white" shadowColor="#00101010" shadowOffset="1,1" />
   </subtitles>
     <include filename="skin_templates.xml"/>
     <include filename="skin_nss.xml"/>
