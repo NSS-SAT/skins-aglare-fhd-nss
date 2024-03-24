@@ -2508,13 +2508,14 @@
         <ePixmap name="" position="1670,786" size="180,180" zPosition="1" pixmap="main/ico/setup.png" transparent="1" alphatest="on"/>
     </screen>
     <screen name="OpenWebifConfig" position="0,0" size="1920,1080" title="OpenWebif Configuration" backgroundColor="transparent" flags="wfNoBorder">
-        <panel name="titletemp"/>
-        <panel name="menutemp"/>
-        <panel name="button1temp"/>
-        <panel name="configlist45"/>
-        <panel name="bLogo"/>
-        <widget name="lab1" position="1180,230" size="510,400" font="Regular; 26" halign="left" valign="top" foregroundColor="green" backgroundColor="background" transparent="1" zPosition="55"/>
-        <ePixmap name="" position="1670,786" size="180,180" zPosition="1" pixmap="main/ico/setup.png" transparent="1" alphatest="on"/>
+        <panel name="titletemp" />
+        <panel name="menutemp" />
+        <panel name="button1temp" />
+        <panel name="configlist45" />
+        <panel name="pigscreen885" />
+        <panel name="bLogo" />
+        <widget name="lab1" position="1001,675" size="510,254" font="Regular; 26" halign="left" valign="top" foregroundColor="green" backgroundColor="background" transparent="1" zPosition="55" />
+        <ePixmap name="" position="1670,786" size="180,180" zPosition="1" pixmap="main/ico/setup.png" transparent="1" alphatest="on" />
     </screen>
     <screen name="DefaultWizard" position="0,0" size="1920,1080" title="Welcome..." backgroundColor="transparent" flags="wfNoBorder">
         <panel name="titletemp"/>
