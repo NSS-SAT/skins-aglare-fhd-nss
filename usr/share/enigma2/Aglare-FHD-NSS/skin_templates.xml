@@ -59,7 +59,7 @@
         <widget name="menu" position="40,100" size="890,900" itemHeight="50" transparent="1" font="Regular; 30" itemCornerRadius="8" valign="center" sscrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
     </screen>
     <screen name="configlist45" flags="wfNoBorder">
-        <widget name="config" position="40,400" size="890,900" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" valign="center"/>
+        <widget name="config" position="40,100" size="890,900" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" valign="center"/>
     </screen>
     <screen name="ScreenPath" flags="wfNoBorder">
         <widget source="ScreenPath" render="Label" position="30,4" size="1380,22" backgroundColor="background" transparent="1" zPosition="1" font="Regular;19" valign="center" halign="left"/>
