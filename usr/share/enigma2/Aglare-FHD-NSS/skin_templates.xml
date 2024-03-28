@@ -212,10 +212,10 @@
         <widget source="session.CurrentService" render="Picon" position="20,820" size="220,132" transparent="1" alphatest="blend" zPosition="10">
             <convert type="ServiceName">Reference</convert>
         </widget>
-        <widget source="session.Event_Now" render="Label" position="410,918" size="610,35" font="Regular; 30" halign="left" valign="center" transparent="1" backgroundColor="background" noWrap="1" zPosition="2">
+        <widget source="session.Event_Now" position="430,918" size="570,35" render="AglareRunningText" options="movetype=swimming,direction=right,startpoint=0,startdelay=1000,steptime=40,wrap=1,always=0,repeat=6,oneshot=1" font="Regular; 30" halign="left" valign="center" transparent="1" backgroundColor="background" noWrap="1" zPosition="2">
             <convert type="EventName">Name</convert>
         </widget>
-        <widget source="session.Event_Next" render="Label" position="410,960" size="610,35" font="Regular; 30" halign="left" valign="center" transparent="1" backgroundColor="background" noWrap="1" zPosition="2" foregroundColor="white2">
+        <widget source="session.Event_Next" position="430,960" size="570,35" render="AglareRunningText" options="movetype=swimming,direction=right,startpoint=0,startdelay=1000,steptime=40,wrap=1,always=0,repeat=6,oneshot=1" font="Regular; 30" halign="left" valign="center" transparent="1" backgroundColor="background" noWrap="1" zPosition="2" foregroundColor="white2">
             <convert type="EventName">Name</convert>
         </widget>
         <widget source="session.CurrentService" render="Label" position="1200,870" zPosition="1" size="666,30" font="Regular; 23" halign="center" backgroundColor="background" transparent="1" valign="center">
@@ -238,7 +238,7 @@
         <widget source="session.CurrentService" position="1680,964" size="227,30" render="Label" font="Regular; 26" halign="left" valign="center" backgroundColor="background" transparent="1" zPosition="10" text="192.168.222.222">
             <convert type="AglareTemp">Iplocal</convert>
         </widget>
-        <widget source="session.CurrentService" render="FixedLabel" position="1416,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="4" text="Hbb">
+        <widget source="session.CurrentService" render="FixedLabel" position="1416,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="4" text="Hbb">
             <convert type="ServiceInfo">HasHBBTV</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
@@ -274,57 +274,57 @@
             <convert type="AglareServiceInfoEX">IsTerrestrialT2</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="Label" position="1200,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="3" text="FHD">
+        <widget source="session.CurrentService" render="Label" position="1200,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="3" text="FHD">
             <convert type="ServiceInfo">VideoWidth</convert>
             <convert type="ValueRange">1440,1920</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="Label" position="1200,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="2" text="HD">
+        <widget source="session.CurrentService" render="Label" position="1200,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="2" text="HD">
             <convert type="ServiceInfo">VideoWidth</convert>
             <convert type="ValueRange">1280,1439</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="Label" position="1200,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="SD">
+        <widget source="session.CurrentService" render="Label" position="1200,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="1" text="SD">
             <convert type="ServiceInfo">VideoWidth</convert>
             <convert type="ValueRange">0,720</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="FixedLabel" position="1200,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="4" text="4K">
+        <widget source="session.CurrentService" render="FixedLabel" position="1200,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="4" text="4K">
             <convert type="ServiceInfo">VideoWidth</convert>
             <convert type="ValueRange">3440,4096</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="FixedLabel" position="1632,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="9" text="TXT">
+        <widget source="session.CurrentService" render="FixedLabel" position="1632,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="9" text="TXT">
             <convert type="ServiceInfo">HasTelext</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="FixedLabel" position="1470,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 18" zPosition="4" text="4:3">
+        <widget source="session.CurrentService" render="FixedLabel" position="1470,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="4" text="4:3">
             <convert type="ServiceInfo">IsNotWidescreen</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.CurrentService" render="FixedLabel" position="1470,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 18" zPosition="4" text="16:9">
+        <widget source="session.CurrentService" render="FixedLabel" position="1470,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="4" text="16:9">
             <convert type="ServiceInfo">IsWidescreen</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
         <widget source="session.FrontendStatus" render="Progress" position="1252,840" size="190,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="10" zPosition="1">
             <convert type="FrontendInfo">SNR</convert>
         </widget>
-        <widget source="session.FrontendInfo" render="FixedLabel" text="A" position="1848,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 22" zPosition="4">
+        <widget source="session.FrontendInfo" render="FixedLabel" text="A" position="1848,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 26" zPosition="4">
             <convert type="FrontendInfo">NUMBER</convert>
             <convert type="ValueRange">0,0</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.FrontendInfo" render="FixedLabel" text="B" position="1848,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 22" zPosition="3">
+        <widget source="session.FrontendInfo" render="FixedLabel" text="B" position="1848,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 26" zPosition="3">
             <convert type="FrontendInfo">NUMBER</convert>
             <convert type="ValueRange">1,1</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.FrontendInfo" render="FixedLabel" text="C" position="1848,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 22" zPosition="2">
+        <widget source="session.FrontendInfo" render="FixedLabel" text="C" position="1848,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 26" zPosition="2">
             <convert type="FrontendInfo">NUMBER</convert>
             <convert type="ValueRange">2,2</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.FrontendInfo" render="FixedLabel" text="D" position="1848,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 22" zPosition="1">
+        <widget source="session.FrontendInfo" render="FixedLabel" text="D" position="1848,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 26" zPosition="1">
             <convert type="FrontendInfo">NUMBER</convert>
             <convert type="ValueRange">3,3</convert>
             <convert type="ConditionalShowHide"/>
@@ -340,7 +340,7 @@
         <widget source="session.CurrentService" render="Label" position="640,1019" size="250,50" font="Regular; 22" backgroundColor="background" transparent="1" halign="center" noWrap="1" valign="center">
             <convert type="AglareBase">ResCodec</convert>
         </widget>
-        <eLabel backgroundColor="igsd" cornerRadius="30" position="10,810" size="1900,200" zPosition="-99"/>
+        <eLabel backgroundColor="igsdt" cornerRadius="30" position="10,810" size="1900,200" zPosition="-99"/>
         <eLabel backgroundColor="igsd" cornerRadius="14" position="10,1010" size="1900,60" zPosition="-99"/>
         <widget source="session.Event_Now" render="Progress" position="60,1005" size="1800,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="88">
             <convert type="EventTime">Progress</convert>
@@ -348,8 +348,8 @@
         <widget source="session.CurrentService" render="Label" position="254,820" size="858,54" font="Bold; 44" backgroundColor="background" transparent="1" halign="left" zPosition="1" valign="center" noWrap="1">
             <convert type="ServiceName">Name</convert>
         </widget>
-        <eLabel name="" position="1200,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="SNR"/>
-        <eLabel name="" position="1522,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="AGC"/>
+        <eLabel name="" position="1200,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="1" text="SNR"/>
+        <eLabel name="" position="1522,819" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 20" zPosition="1" text="AGC"/>
         <widget source="session.FrontendStatus" render="Progress" position="1576,840" size="190,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="10" zPosition="1">
             <convert type="FrontendInfo">AGC</convert>
         </widget>
@@ -432,7 +432,7 @@
         <widget source="session.CurrentService" render="Label" position="72,1019" size="60,50" font="Regular; 22" zPosition="99" backgroundColor="background" transparent="1" foregroundColor="white" text="88 C" noWrap="1" halign="left" valign="center">
             <convert type="AglareTemp">Temperature</convert>
         </widget>
-        <widget backgroundColor="background" font="Regular; 22" foregroundColor="white" halign="left" position="202,1019" render="Label" size="63,50" source="session.CurrentService" transparent="1" zPosition="99" text="100%" valign="center">
+        <widget backgroundColor="background" font="Regular; 22" foregroundColor="white" halign="left" position="200,1019" render="Label" size="63,50" source="session.CurrentService" transparent="1" zPosition="99" text="100%" valign="center">
             <convert type="AglareCpuUsage">Total</convert>
         </widget>
         <widget source="session.CurrentService" render="Label" position="340,1019" size="120,50" font="Regular; 22" halign="left" backgroundColor="background" zPosition="2" transparent="1" text="25888" valign="center">
@@ -454,11 +454,11 @@
             <convert type="AglareBase">IsHLG</convert>
             <convert type="ConditionalShowHide"/>
         </widget>
-        <widget source="session.Event_Now" render="Label" position="244,918" size="160,35" halign="center" font="Regular; 30" backgroundColor="background" transparent="1" valign="center" zPosition="1">
+        <widget source="session.Event_Now" render="Label" position="244,918" size="180,35" halign="center" font="Regular; 30" backgroundColor="background" transparent="1" valign="center" zPosition="1">
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Default</convert>
         </widget>
-        <widget source="session.Event_Next" render="Label" position="244,960" size="160,35" halign="center" font="Regular; 30" backgroundColor="background" transparent="1" valign="center" zPosition="1" foregroundColor="white2">
+        <widget source="session.Event_Next" render="Label" position="244,960" size="180,35" halign="center" font="Regular; 30" backgroundColor="background" transparent="1" valign="center" zPosition="1" foregroundColor="white2">
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Default</convert>
         </widget>
@@ -478,7 +478,7 @@
         <widget font="Bold; 30" halign="right" position="1632,85" render="Label" size="278,40" source="global.CurrentTime" transparent="1" zPosition="1">
             <convert type="ClockToText">Format:%a %d.%m.  %H:%M</convert>
         </widget>
-        <eLabel backgroundColor="igsd" cornerRadius="30" position="1632,75" size="500,60"/>
+        <eLabel backgroundColor="igsdt" cornerRadius="30" position="1632,75" size="500,60"/>
     </screen>
     <screen name="mediaplayertemp" flags="wfNoBorder" position="0,0" backgroundColor="transparent">
         <eLabel backgroundColor="wpmc" cornerRadius="30" position="10,840" size="1900,200" zPosition="-99"/>
