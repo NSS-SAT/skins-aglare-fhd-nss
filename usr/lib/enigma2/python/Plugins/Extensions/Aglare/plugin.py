@@ -57,7 +57,7 @@ config.plugins.AglareNss.VolumeBar = ConfigSelection(default='volume1', choices=
 
 
 def Plugins(**kwargs):
-    return PluginDescriptor(name='Nss Skin Setup', description=_('Customization tool for Aglare-FHD-NSS Skin'), where=PluginDescriptor.WHERE_PLUGINMENU, icon='plugin.png', fnc=main)
+    return PluginDescriptor(name='NSS Skin Setup', description=_('Customization tool for Aglare-FHD-NSS Skin'), where=PluginDescriptor.WHERE_PLUGINMENU, icon='plugin.png', fnc=main)
 
 
 def main(session, **kwargs):

@@ -1,7 +1,8 @@
 <skin>
-    <!-- Aglare-FHD-NSS skin by MNASR for all images v2.3 -->
+    <!-- Aglare-FHD-NSS skin by MNASR for all images v2.0-->
     <!-- You are free to edit or modify this skin but please keep theses lines above and add your credits below -->
-    <!-- oe-alliance -->
+    <!-- edit from lululla for nss team -->
+    <!-- pli core -->
     <output id="0">
         <resolution xres="1920" yres="1080" bpp="32"/>
     </output>
@@ -57,6 +58,7 @@
         <color name="#fefe00" value="#00fefe00"/>
         <color name="#ffb75b" value="#00ffb75b"/>
         <color name="#fffff4" value="#00fffff4"/>
+        <color name="#fffffe" value="#00fffffe"/>
         <color name="babyblue" value="#0089cff0"/>
         <color name="background" value="#05201000"/>
         <color name="background2" value="#55000000"/>
@@ -119,6 +121,7 @@
         <color name="selectbg" value="#000f4c5c"/>
         <color name="sidec1" value="#00664d00"/>
         <color name="sidec2" value="#00d9a300"/>
+        <color name="sidect" value="#1123314c"/>
         <color name="silver" value="#00c0c0c0"/>
         <color name="transchsel1" value="#21020202"/>
         <color name="transchsel2" value="#21201120"/>
@@ -140,10 +143,11 @@
         <parameter name="AboutHddSplit" value="1"/>
         <parameter name="CCcamMenuListName" value="0,4,790,62"/>
         <parameter name="ChoicelistButtonIcon" value="15,14,54,34"/>
-        <parameter name="ChoicelistDash" value="0,4,790,62"/>
+        <parameter name="ChoicelistDash" value="8,3,790,62"/>
         <parameter name="ChoicelistIcon" value="8,14,54,62"/>
-        <parameter name="ChoicelistName" value="70,14,790,62"/>
-        <parameter name="ChoicelistNameSingle" value="20,16,790,62"/>
+        <parameter name="ChoicelistName" value="80,14,790,62"/>
+        <parameter name="ChoicelistButtonIcon" value="15,14,54,34"/>
+        <parameter name="ChoicelistNameSingle" value="30,14,790,62"/>
         <parameter name="ConfigListSeperator" value="600"/>
         <parameter name="ConfigListSlider" value="20,2"/>
         <parameter name="DreamexplorerIcon" value="15,6,30,30"/>
@@ -153,19 +157,19 @@
         <parameter name="EpgListMultiProgressBar" value="150,20,1"/>
         <parameter name="EpgListSingle" value="88,220"/>
         <parameter name="ExpandableListDescr" value="55,2,1000,45"/>
-        <parameter name="ExpandableListIcon" value="0,0,55,38"/>
+        <parameter name="ExpandableListIcon" value="5,2,55,38"/>
         <parameter name="FallbackReceiverListIP" value="300,2,225,38"/>
         <parameter name="FallbackReceiverListName" value="8,2,225,38"/>
         <parameter name="FcFileListIcon" value="10,0,30,30"/>
         <parameter name="FcFileListMultiIcon" value="45,0,30,30"/>
         <parameter name="FcFileListMultiLock" value="2,0,30,30"/>
-        <parameter name="FcFileListMultiName" value="90,00,870,50"/>
-        <parameter name="FcFileListName" value="72,0,870,50"/>
+        <parameter name="FcFileListMultiName" value="90,0,1000,32"/>
+        <parameter name="FcFileListName" value="68,0,1000,34"/>
         <parameter name="FileListIcon" value="14,8,50,50"/>
         <parameter name="FileListMultiIcon" value="45, 4, 30, 30"/>
-        <parameter name="FileListMultiLock" value="2,0,36,36"/>
+        <parameter name="FileListMultiLock" value="5,0,36,36"/>
         <parameter name="FileListMultiName" value="90,0,1000,36"/>
-        <parameter name="FileListName" value="66,0,790,50"/>
+        <parameter name="FileListName" value="66,0,1000,50"/>
         <parameter name="GMultiEPGTimelineItemHeight" value="60"/>
         <parameter name="HelpMenuListExtHlp0" value="0,0,900,39"/>
         <parameter name="HelpMenuListExtHlp1" value="0,42,900,30"/>
@@ -177,23 +181,23 @@
         <parameter name="PlayListIcon" value="7,12,32,48"/>
         <parameter name="PlayListName" value="45,0,1000,48"/>
         <parameter name="PluginBrowserDescColor" value="1017253"/>
-        <parameter name="PluginBrowserDescr" value="160,36,30"/>
+        <parameter name="PluginBrowserDescr" value="170,40,40"/>
         <parameter name="PluginBrowserDownloadDescColor" value="1017253"/>
-        <parameter name="PluginBrowserDownloadDescr" value="120,36,30"/>
+        <parameter name="PluginBrowserDownloadDescr" value="120,40,40"/>
         <parameter name="PluginBrowserDownloadIcon" value="20,10,60,60"/>
-        <parameter name="PluginBrowserDownloadName" value="120,4,36"/>
-        <parameter name="PluginBrowserIcon" value="20,5,120,60"/>
-        <parameter name="PluginBrowserName" value="160,4,36"/>
-        <parameter name="SelectionListDescr" value="45,0,870,45"/>
-        <parameter name="SelectionListLock" value="0,2,36,36"/>
-        <parameter name="SelectionListLockOff" value="0,2,36,36"/>
-        <parameter name="ServiceInfo" value="0,0,600,50"/>
+        <parameter name="PluginBrowserDownloadName" value="120,4,60"/>
+        <parameter name="PluginBrowserIcon" value="20,0,120,70"/>
+        <parameter name="PluginBrowserName" value="160,4,40"/>
+        <parameter name="SelectionListDescr" value="50,2,900,40"/>
+        <parameter name="SelectionListLock" value="5,5,40,40"/>
+        <parameter name="SelectionListLockOff" value="5,5,40,40"/>
+        <parameter name="ServiceInfo" value="0,0,500,50"/>
         <parameter name="ServiceInfoFont" value="Regular;28"/>
-        <parameter name="ServiceInfoLeft" value="10,0,710,50"/>
-        <parameter name="ServiceInfoRight" value="710,0,720,50"/>
+        <parameter name="ServiceInfoLeft" value="10,0,350,50"/>
+        <parameter name="ServiceInfoRight" value="370,0,450,50"/>
         <parameter name="VirtualKeyBoardAlignment" value="80,80"/>
         <parameter name="VirtualKeyBoardPadding" value="1,1"/>
-        <parameter name="VirtualKeyboard" value="60, 60"/>
+        <parameter name="VirtualKeyboard" value="100, 100"/>
         <parameter name="VirtualKeyboard" value="80,80"/>
         <parameter name="VirtualKeyboardFont" value="Bold;40"/>
         <parameter name="WeatherPluginCity" value="20,0,680,40"/>

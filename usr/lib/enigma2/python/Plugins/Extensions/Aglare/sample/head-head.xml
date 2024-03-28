@@ -35,7 +35,7 @@
         <color name="#555556" value="#00555556"/>
         <color name="#606060" value="#00606060"/>
         <color name="#808080" value="#00808080"/>
-        <color name="progfg" value="#008293b3"/>
+        <color name="#8293b3" value="#008293b3"/>
         <color name="#90000000" value="#90000000"/>
         <color name="#90ff00ff" value="#90ff00ff"/>
         <color name="#92f1fc" value="#0092f1fc"/>
@@ -58,6 +58,7 @@
         <color name="#fefe00" value="#00fefe00"/>
         <color name="#ffb75b" value="#00ffb75b"/>
         <color name="#fffff4" value="#00fffff4"/>
+        <color name="#fffffe" value="#00fffffe"/>
         <color name="babyblue" value="#0089cff0"/>
         <color name="background" value="#0528343b"/>
         <color name="background2" value="#55000000"/>
@@ -120,6 +121,7 @@
         <color name="selectbg" value="#000f4c5c"/>
         <color name="sidec1" value="#0023314c"/>
         <color name="sidec2" value="#000c101b"/>
+        <color name="sidect" value="#1123314c"/>
         <color name="silver" value="#00c0c0c0"/>
         <color name="transchsel1" value="#21020202"/>
         <color name="transchsel2" value="#21201120"/>
@@ -139,9 +141,9 @@
     </colors>
     <parameters>
         <parameter name="AboutHddSplit" value="1"/>
+        <parameter name="CCcamMenuListName" value="0,4,790,62"/>                                                                
         <parameter name="ChoicelistButtonIcon" value="15,14,54,34"/>
-        <parameter name="CCcamMenuListName" value="0,4,790,62"/>
-        <parameter name="ChoicelistDash" value="0,3,790,62"/>
+        <parameter name="ChoicelistDash" value="8,3,790,62"/>
         <parameter name="ChoicelistIcon" value="8,14,54,62"/>
         <parameter name="ChoicelistName" value="80,14,790,62"/>
         <parameter name="ChoicelistButtonIcon" value="15,14,54,34"/>
@@ -155,17 +157,17 @@
         <parameter name="EpgListMultiProgressBar" value="150,20,1"/>
         <parameter name="EpgListSingle" value="88,220"/>
         <parameter name="ExpandableListDescr" value="55,2,1000,45"/>
-        <parameter name="ExpandableListIcon" value="0,0,55,38"/>
+        <parameter name="ExpandableListIcon" value="5,2,55,38"/>
         <parameter name="FallbackReceiverListIP" value="300,2,225,38"/>
         <parameter name="FallbackReceiverListName" value="8,2,225,38"/>
-        <parameter name="FcFileListIcon" value="10,2,30,30"/>
-        <parameter name="FcFileListMultiIcon" value="45,2,30,30"/>
+        <parameter name="FcFileListIcon" value="10,0,30,30"/>
+        <parameter name="FcFileListMultiIcon" value="45,0,30,30"/>
         <parameter name="FcFileListMultiLock" value="2,0,30,30"/>
-        <parameter name="FcFileListMultiName" value="90,2,1000,32"/>
-        <parameter name="FcFileListName" value="68,2,1000,34"/>
+        <parameter name="FcFileListMultiName" value="90,0,1000,32"/>
+        <parameter name="FcFileListName" value="68,0,1000,34"/>
         <parameter name="FileListIcon" value="14,8,50,50"/>
         <parameter name="FileListMultiIcon" value="45, 4, 30, 30"/>
-        <parameter name="FileListMultiLock" value="2,0,36,36"/>
+        <parameter name="FileListMultiLock" value="5,0,36,36"/>
         <parameter name="FileListMultiName" value="90,0,1000,36"/>
         <parameter name="FileListName" value="66,0,1000,50"/>
         <parameter name="GMultiEPGTimelineItemHeight" value="60"/>
@@ -173,6 +175,8 @@
         <parameter name="HelpMenuListExtHlp1" value="0,42,900,30"/>
         <parameter name="HelpMenuListHlp" value="0,0,1300,50"/>
         <parameter name="InformationColors" value="0x00ffffff,0x00ffffff,0x00cccccc,0x00cccccc,0x00ffff00"/>
+        <parameter name="MerlinMusicPlayerFileListIcon" value="10,0,40,40"/>
+        <parameter name="MerlinMusicPlayerFileListName" value="100,0,780,50"/>
         <parameter name="PicturePlayerThumb" value="30,285,45,300,30,25"/>
         <parameter name="PlayListIcon" value="7,12,32,48"/>
         <parameter name="PlayListName" value="45,0,1000,48"/>
@@ -184,10 +188,10 @@
         <parameter name="PluginBrowserDownloadName" value="120,4,60"/>
         <parameter name="PluginBrowserIcon" value="20,0,120,70"/>
         <parameter name="PluginBrowserName" value="160,4,40"/>
-        <parameter name="SelectionListDescr" value="45,0,870,45"/>
-        <parameter name="SelectionListLock" value="0,2,36,36"/>
-        <parameter name="SelectionListLockOff" value="0,2,36,36"/>
-        <parameter name="ServiceInfo" value="0,0,400,50"/>
+        <parameter name="SelectionListDescr" value="50,2,900,40"/>
+        <parameter name="SelectionListLock" value="5,5,40,40"/>
+        <parameter name="SelectionListLockOff" value="5,5,40,40"/>
+        <parameter name="ServiceInfo" value="0,0,500,50"/>
         <parameter name="ServiceInfoFont" value="Regular;28"/>
         <parameter name="ServiceInfoLeft" value="10,0,350,50"/>
         <parameter name="ServiceInfoRight" value="370,0,450,50"/>
