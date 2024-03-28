@@ -247,12 +247,12 @@
     <!--  INFOS PANELS                           * -->
     <!-- *************************************** -->
     <screen name="InfoCfg" position="0,0" size="1920,1080" title="Info Config" backgroundColor="#ff000000" flags="wfNoBorder">
-        <panel name="titletemp"/>
-        <panel name="menutemp"/>
-        <panel name="button1temp"/>
-        <panel name="pigscreen885"/>
-        <widget name="list" position="49,109" size="850,732" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" backgroundColor="#20000000"/>
-        <widget name="description" position="61,878" size="845,113" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
+        <panel name="titletemp" />
+        <panel name="menutemp" />
+        <panel name="button1temp" />
+        <panel name="pigscreen885" />
+        <widget name="list" position="49,109" size="850,863" font="Regular;30" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" backgroundColor="#20000000" />
+        <widget name="description" position="999,612" size="879,313" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5" />
     </screen>
     <screen name="tv_config" position="0,0" size="1920,1080" title="Config" backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="titletemp"/>
@@ -274,7 +274,7 @@
     <screen name="GetipkTv" position="0,0" size="1920,1080" title="Get Server" backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="GetipklistTv"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="Hometv" position="0,0" size="1920,1080" title="Addons Panels">
+    <screen name="Hometv" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="button1temp"/>
@@ -327,7 +327,7 @@
             <convert type="AglareBoxInfo">Upinfo</convert>
         </widget>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="Categories" position="0,0" size="1920,1080" title="Addons Panels">
+    <screen name="Categories" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="button1temp"/>
@@ -414,6 +414,27 @@
     <screen backgroundColor="transparent" flags="wfNoBorder" name="SettingCyrus" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="Categories"/>
     </screen>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvUpdate" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
+    </screen>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvRemove" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
+    </screen>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="mainkodilite" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
+    </screen>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="pluginx" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
+    </screen>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="plugins_adult" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
+    </screen>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="script" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
+    </screen>
+    <screen backgroundColor="transparent" flags="wfNoBorder" name="repository" position="0,0" size="1920,1080" title="Addons Panels">
+        <panel name="Categories"/>
+    </screen>
     <screen backgroundColor="transparent" flags="wfNoBorder" name="tvIPK" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
@@ -465,27 +486,7 @@
             <convert type="AglareBoxInfo">Upinfo</convert>
         </widget>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvUpdate" position="0,0" size="1920,1080" title="Addons Panels">
-        <panel name="Categories"/>
-    </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="tvRemove" position="0,0" size="1920,1080" title="Addons Panels">
-        <panel name="Categories"/>
-    </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="mainkodilite" position="0,0" size="1920,1080" title="Addons Panels">
-        <panel name="Categories"/>
-    </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="pluginx" position="0,0" size="1920,1080" title="Addons Panels">
-        <panel name="Categories"/>
-    </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="plugins_adult" position="0,0" size="1920,1080" title="Addons Panels">
-        <panel name="Categories"/>
-    </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="script" position="0,0" size="1920,1080" title="Addons Panels">
-        <panel name="Categories"/>
-    </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="repository" position="0,0" size="1920,1080" title="Addons Panels">
-        <panel name="Categories"/>
-    </screen>
+
     <screen name="tvConfig" position="0,0" size="1920,1080" title="Config" backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
