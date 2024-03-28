@@ -7,7 +7,7 @@
         <ePixmap position="220,32" size="160,81" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="20"/>
     </screen>
     <screen name="bLogo">
-        <ePixmap position="1314,986" size="500,90" pixmap="image_logo/nss/bLogo.png" alphatest="blend" transparent="1" zPosition="1"/>
+        <ePixmap position="1314,984" size="500,90" pixmap="image_logo/nss/bLogo.png" alphatest="blend" transparent="1" zPosition="1"/>
     </screen>
     
     <!-- *************************************** -->
@@ -311,5 +311,30 @@
         </widget>
         <widget name="labstatus" position="44,99" size="884,55" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
         <panel name="bLogo"/>
+    </screen>
+
+    <!-- *************************************** -->
+    <!--  NEW NSS MANAGER                         * -->
+    <!-- *************************************** -->
+    <screen name="nssInfoCfg" position="0,0" size="1920,1080" title="Info Config" backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="titletemp" />
+        <panel name="menutemp" />
+        <panel name="button1temp" />
+        <panel name="pigscreen885" />
+        <panel name="bLogo" />
+        <widget name="list" position="49,109" size="850,863" font="Regular;30" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" backgroundColor="#20000000" />
+        <widget name="description" position="998,620" size="875,266" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5" />
+    </screen>
+    <screen name="nssGetipk" position="0,0" size="1920,1080" title="Get Server" backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="nssGetipklist"/>
+    </screen>    
+    <screen name="nssGetipklist" position="0,0" size="1920,1080" title="Get Server" backgroundColor="#ff000000" flags="wfNoBorder">
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="button1temp"/>
+        <panel name="pigscreen885"/>
+        <panel name="bLogo" />
+        <widget name="list" position="49,118" size="850,723" scrollbarMode="showOnDemand" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#20000000" backgroundColorSelected="#0b2049" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/tvDream/res/pics/sliderb.png"/>
+        <widget name="description" position="61,878" size="845,113" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
     </screen>
 </skin>
