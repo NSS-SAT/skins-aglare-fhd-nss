@@ -435,6 +435,7 @@
     <screen backgroundColor="transparent" flags="wfNoBorder" name="repository" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="Categories"/>
     </screen>
+    
     <screen backgroundColor="transparent" flags="wfNoBorder" name="tvIPK" position="0,0" size="1920,1080" title="Addons Panels">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
@@ -442,9 +443,7 @@
         <panel name="pigscreen885"/>
         <widget name="info" position="42,109" size="1030,70" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
         <widget name="info1" position="41,183" size="1030,100" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
-        <widget source="list" render="Listbox" position="43,296" size="869,688" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#20000000" backgroundColorSelected="#0b2049" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/tvaddon/res/pics/sliderb.png">
-            <convert type="StringList"/>
-        </widget>
+        <widget name="list" position="43,296" size="869,688" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
         <eLabel name="" position="997,630" size="50,50" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="FA; 26" text="" zPosition="1"/>
         <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,634" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
             <convert type="AglareReceiverInfo">MemTotal</convert>
