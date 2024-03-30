@@ -67,9 +67,7 @@
     <eLabel name="" position="970,976" size="30,30" font="FA; 24" text="" transparent="1" valign="center" halign="center" zPosition="99" foregroundColor="gold"/>
     <eLabel name="" position="970,372" size="40,40" font="FA; 30" text="" halign="center" zPosition="99" transparent="1"/>
     <eLabel name="" position="1667,649" size="204,304" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
- 
-    <ePixmap name="" position="1667,649" size="204,304" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="90"/>
-    <!--
+     <!--
      <widget source="ServiceEvent" render="Label" position="970,376" zPosition="1" size="412,40" font="Regular; 28" halign="left" backgroundColor="background" transparent="1" valign="center">
         <convert type="AglareServName2">Reference</convert>
     </widget> -->
