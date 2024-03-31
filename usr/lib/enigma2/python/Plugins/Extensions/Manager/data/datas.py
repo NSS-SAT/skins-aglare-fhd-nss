@@ -347,7 +347,10 @@ class nssConfig(Screen, ConfigListScreen):
         else:
             try:
                 print('runningcam=', runningcam)
-                if runningcam == 'oscam' or runningcam == 'ncam':
+                if runningcam == None:
+                    return
+                # if runningcam == 'oscam' or runningcam == 'ncam':
+                if runningcam == 'oscam':
                     cmd = 'ps -T'
                     res = os.popen(cmd).read()
                     print('res: ', res)
@@ -392,7 +395,7 @@ class nssConfig(Screen, ConfigListScreen):
                         else:
                             self.session.open(MessageBox, _("File no exist /tmp/emm.txt"), MessageBox.TYPE_INFO, timeout=10)
                 else:
-                    self.session.openWithCallback(self.callMyMsg, MessageBox, _('The Cam is not active, send the command anyway?'), MessageBox.TYPE_YESNO)
+                    self.session.openWithCallback(self.callMyMsg, MessageBox, _('The Oscam is not active, send the command anyway?'), MessageBox.TYPE_YESNO)
             except Exception as e:
                 print('error on emm', str(e))
 
@@ -474,32 +477,35 @@ class nssConfig(Screen, ConfigListScreen):
             else:
                 return
         else:
-            msg = []
-            msg.append(_("\n....\n.....\n"))
-            self.cmd1 = data_path + 'emm_sender.sh'
-            from os import access, X_OK
-            if not access(self.cmd1, X_OK):
-                os.chmod(self.cmd1, 493)
-            import subprocess
-            try:
-                subprocess.check_output(['bash', self.cmd1])
-            except subprocess.CalledProcessError as e:
-                print(e.output)
-            os.system('sleep 3')
-            if os.path.exists('/tmp/emm.txt'):
-                msg.append(_("READ EMM....\n"))
-                with open('/tmp/emm.txt') as f:
-                    f = f.read()
-                    if f.startswith('82708'):
-                        msg.append(_("CURRENT EMM IS:\n"))
-                        msg.append(f)
-                        msg.append(_("\nCurrent Emm saved to /tmp/emm.txt"))
-                    else:
-                        msg.append('No Emm')
-                msg = (" %s " % _("\n")).join(msg)
-                self.session.open(MessageBox, _("Please wait, %s.") % msg, MessageBox.TYPE_INFO, timeout=10)
+            if runningcam == 'oscam':
+                msg = []
+                msg.append(_("\n....\n.....\n"))
+                self.cmd1 = data_path + 'emm_sender.sh'
+                from os import access, X_OK
+                if not access(self.cmd1, X_OK):
+                    os.chmod(self.cmd1, 493)
+                import subprocess
+                try:
+                    subprocess.check_output(['bash', self.cmd1])
+                except subprocess.CalledProcessError as e:
+                    print(e.output)
+                os.system('sleep 3')
+                if os.path.exists('/tmp/emm.txt'):
+                    msg.append(_("READ EMM....\n"))
+                    with open('/tmp/emm.txt') as f:
+                        f = f.read()
+                        if f.startswith('82708'):
+                            msg.append(_("CURRENT EMM IS:\n"))
+                            msg.append(f)
+                            msg.append(_("\nCurrent Emm saved to /tmp/emm.txt"))
+                        else:
+                            msg.append('No Emm')
+                    msg = (" %s " % _("\n")).join(msg)
+                    self.session.open(MessageBox, _("Please wait, %s.") % msg, MessageBox.TYPE_INFO, timeout=10)
+                else:
+                    self.session.open(MessageBox, _("No Action!\nFile no exist /tmp/emm.txt"), MessageBox.TYPE_INFO, timeout=5)
             else:
-                self.session.open(MessageBox, _("No Action!\nFile no exist /tmp/emm.txt"), MessageBox.TYPE_INFO, timeout=5)
+                self.session.open(MessageBox, _("No Action!\nOscam not active"), MessageBox.TYPE_INFO, timeout=5)
 
     def createSetup(self):
         self.editListEntry = None
