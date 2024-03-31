@@ -93,8 +93,8 @@
         <color name="green" value="#0000ff00"/>
         <color name="greenfont" value="#0051bc0e"/>
         <color name="grey" value="#008f8f8f"/>
+        <color name="grey2" value="#006b6b6b"/>											   
         <color name="grey_tux" value="#00333333"/>
-        <color name="grey2" value="#006b6b6b"/>
         <color name="greyc4" value="#00c4c4c4"/>
         <color name="hellgreen" value="#0056c856"/>
         <color name="igsd" value="#000b3737"/>
@@ -246,7 +246,9 @@
         <sub name="Subtitle_Bold" font="Replacement;52" foregroundColor="white" shadowColor="#00101010" shadowOffset="1,1"/>
         <sub name="Subtitle_Italic" font="Regular;52" foregroundColor="white" shadowColor="#00101010" shadowOffset="1,1"/>
     </subtitles>
+
     <include filename="skin_templates.xml"/>
     <include filename="skin_nss.xml"/>
     <include filename="skin_ll.xml"/>
+  
   

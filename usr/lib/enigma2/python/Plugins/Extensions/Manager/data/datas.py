@@ -35,7 +35,6 @@ import subprocess
 import codecs
 global skin_path
 import base64
-
 sss = 'aHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3L1U0ZU02RGpW'
 PY3 = sys.version_info.major >= 3
 if PY3:
@@ -348,7 +347,7 @@ class nssConfig(Screen, ConfigListScreen):
         else:
             try:
                 print('runningcam=', runningcam)
-                if runningcam == 'oscam':
+                if runningcam == 'oscam' or runningcam == 'ncam':
                     cmd = 'ps -T'
                     res = os.popen(cmd).read()
                     print('res: ', res)
@@ -450,7 +449,7 @@ class nssConfig(Screen, ConfigListScreen):
             self.session.open(MessageBox, _('Reset') + ' ' + putlbl, type=MessageBox.TYPE_INFO, timeout=8)
 
     def showhide(self):
-        if config.plugins.Manager.active.value:
+        if config.plugins.Manager.active.value is True:
             self['key_green'].setText(buttn)
             self['key_yellow'].setText(_('Get Link'))
             self['key_blue'].setText(_('Reset'))
@@ -461,7 +460,7 @@ class nssConfig(Screen, ConfigListScreen):
         return
 
     def green(self):
-        if config.plugins.Manager.active.value:
+        if config.plugins.Manager.active.value is True:
             if putlbl == '/etc/CCcam.cfg':
                 self.CCcam()
             elif putlbl == '/etc/tuxbox/config/oscam.server':
@@ -639,15 +638,12 @@ class nssConfig(Screen, ConfigListScreen):
     def getcl(self):
         try:
             data1 = str(config.plugins.Manager.Server.value)
-            print(data1)
             data = b64decoder(data1)
-            print('data2 ', data)
             try:
                 data = getUrl(data)
                 if PY3:
                     import six
                     data = six.ensure_str(data)
-                print('=== Lnk ==== ', data)
                 self.timer = eTimer()
                 if os.path.exists('/var/lib/dpkg/info'):
                     self.timer_conn = self.timer.timeout.connect(self.load_getcl(data))

@@ -277,6 +277,9 @@
     <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
         <panel name="infobartemp"/>
         <panel name="infobartimedate"/>
+        <!--posters-->
+        <widget source="session.Event_Now" render="AglarePosterX" position="40,440" size="240,360" cornerRadius="14" zPosition="1" borderWidth="1" borderColor="igsd"/>
+        <widget source="session.Event_Now" render="AglarePosterX" nexts="1" position="1640,440" size="240,360" cornerRadius="14" zPosition="1" borderWidth="1" borderColor="igsd"/>
         <eLabel backgroundColor="igsd" cornerRadius="60" position="1632,175" size="500,120"/>
         <widget render="MSNWeatherPixmap" position="1639,185" size="100,100" source="session.MSNWeather" alphatest="blend" transparent="1" zPosition="8">
             <convert type="MSNWeather">weathericon,current,/usr/share/enigma2/Aglare-FHD-NSS/weather_icons/,png</convert>
@@ -288,7 +291,6 @@
             <convert type="MSNWeather">temperature_current</convert>
         </widget>
     </screen>
-
     <screen name="SecondInfoBar" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
         <panel name="infobartemp"/>
         <eLabel backgroundColor="igsdt" cornerRadius="30" position="10,31" size="1900,759" zPosition="-99"/>
@@ -297,6 +299,10 @@
         <eLabel name="" position="20,426" size="1880,300" zPosition="-71" cornerRadius="30" backgroundColor="#10171a1c" foregroundColor="#10171a1c"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="40,167" size="1640,3" zPosition="99"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="40,483" size="1640,3" zPosition="99"/>
+        <widget source="session.Event_Now" render="AglarePosterX" position="1690,117" size="190,285" cornerRadius="20" zPosition="5" borderWidth="1" borderColor="igsd"/>
+        <widget source="session.Event_Now" render="AglarePosterX" nexts="1" position="1690,431" size="190,285" cornerRadius="20" zPosition="5" borderWidth="1" borderColor="igsd"/>
+        <ePixmap name="" position="1690,117" size="190,285" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="2"/>
+        <ePixmap name="" position="1690,431" size="190,285" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="2"/>
         <!-- /* sep #####################################################-->
         <widget source="session.Event_Now" render="Label" position="180,120" size="750,40" font="Regular; 32" halign="left" valign="center" transparent="1" backgroundColor="background" noWrap="1" zPosition="2">
             <convert type="EventName">Name</convert>
@@ -304,10 +310,10 @@
         <widget source="session.Event_Next" render="Label" position="180,436" size="750,40" font="Regular; 32" halign="left" valign="center" transparent="1" backgroundColor="background" noWrap="1" zPosition="2">
             <convert type="EventName">Name</convert>
         </widget>
-        <widget source="session.Event_Now" render="AglareRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" position="40,178" size="1837,224" halign="left" font="Regular; 30" transparent="1" backgroundColor="background" valign="top" zPosition="1" foregroundColor="white">
+        <widget source="session.Event_Now" render="AglareRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" position="40,178" size="1640,224" halign="left" font="Regular; 30" transparent="1" backgroundColor="background" valign="top" zPosition="1" foregroundColor="white">
             <convert type="EventName">ExtendedDescription</convert>
         </widget>
-        <widget source="session.Event_Next" render="AglareRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" position="40,494" size="1837,224" halign="left" font="Regular; 30" transparent="1" backgroundColor="background" valign="top" zPosition="1" foregroundColor="white">
+        <widget source="session.Event_Next" render="AglareRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" position="40,494" size="1640,224" halign="left" font="Regular; 30" transparent="1" backgroundColor="background" valign="top" zPosition="1" foregroundColor="white">
             <convert type="EventName">ExtendedDescription</convert>
         </widget>
         <widget source="session.Event_Now" render="Label" position="934,120" size="400,40" halign="center" font="Regular; 26" transparent="1" backgroundColor="background" valign="center" zPosition="1" noWrap="1">
@@ -417,9 +423,8 @@
     <screen name="ChannelSelection" position="0,0" size="1920,1080" title="Channel Selection" backgroundColor="black" flags="wfNoBorder">
         <panel name="button2temp"/>
         <panel name="timedate"/>
-        <panel name="buttonicons"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
-        <widget source="ServiceEvent" render="Label" position="970,652" size="917,316" font="Regular; 28" backgroundColor="background" transparent="1" noWrap="1" zPosition="8" foregroundColor="white" valign="top">
+        <widget source="ServiceEvent" render="Label" position="970,652" size="691,316" font="Regular; 28" backgroundColor="background" transparent="1" noWrap="1" zPosition="8" foregroundColor="white" valign="top">
             <convert type="AglareEventName2">NextEventList</convert>
         </widget>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="970,468" size="920,3" zPosition="99"/>
@@ -474,12 +479,15 @@
         <eLabel name="" position="1718,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EPG"/>
         <eLabel name="" position="1778,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="INFO"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
+        <widget source="ServiceEvent" render="AglarePosterX" position="1669,651" size="200,300" cornerRadius="20" zPosition="99"/>
+        <ePixmap name="" position="1669,651" size="200,300" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="2"/>
         <eLabel name="" position="1368,620" size="132,40" font="FA; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
         <widget source="ServiceEvent" render="Label" position="1000,976" size="905,34" font="Bold; 28" backgroundColor="background" transparent="1" noWrap="1" zPosition="8" foregroundColor="gold" valign="top">
             <convert type="AglareEventName2">PrimeTimeWithDuration</convert>
         </widget>
         <eLabel name="" position="970,976" size="30,30" font="FA; 24" text="" transparent="1" valign="center" halign="center" zPosition="99" foregroundColor="gold"/>
         <eLabel name="" position="970,372" size="40,40" font="FA; 30" text="" halign="center" zPosition="99" transparent="1"/>
+        <eLabel name="" position="1667,649" size="204,304" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
     </screen>
     <screen name="EventView" position="0,0" size="1920,1080" title="Eventview" backgroundColor="background" flags="wfNoBorder">
         <panel name="button1temp"/>
@@ -1179,8 +1187,8 @@
         <panel name="button1temp" />
         <panel name="pigscreen885" />
         <panel name="bLogo" />
-        <widget name="config" position="36,162" size="890,442" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8"/>
-        <!-- <widget name="config" position="36,162" size="890,442" itemHeight="50" valign="center" font="Regular; 30" itemCornerRadius="10" enableWrapAround="1" transparent="1" zPosition="9" scrollbarSliderForegroundColor="mcolor5" scrollbarMode="showOnDemand" /> -->
+        <!-- <widget name="config" position="36,162" size="890,200" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8"/> -->
+        <widget name="config" position="36,162" size="890,442" itemHeight="50" valign="center" font="Regular; 30" itemCornerRadius="10" enableWrapAround="1" transparent="1" zPosition="9" scrollbarSliderForegroundColor="mcolor5" scrollbarMode="showOnDemand" />
         <widget source="Adapter" render="Label" position="36,98" size="890,50" font="Regular; 40" backgroundColor="background" transparent="1" foregroundColor="gold" />
         <widget source="introduction2" render="Label" position="997,607" size="985,180" font="Regular; 32" halign="left" backgroundColor="background" transparent="1" zPosition="5" valign="center" />
         <widget source="introduction" render="Label" position="36,630" size="890,50" font="Regular; 40" backgroundColor="background" transparent="1" foregroundColor="gold" />
@@ -3156,7 +3164,7 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
         <panel name="bLogo"/>
     </screen>
     <screen name="QuitMainloopScreen" position="0,0" size="1920,1080" backgroundColor="background" flags="wfNoBorder">
-        <ePixmap pixmap="Aglare-FHD-NSS/image_logo/nss/zlogo.png" position="center,center" size="445,350" scale="1" alphatest="blend"/>
+        <ePixmap pixmap="Aglare-FHD-NSS/image_logo/nss/zlogo.png" position="779,335" size="362,409" scale="1" alphatest="blend"/>
         <widget name="text" position="center,850" size="1770,150" font="Regular; 60" halign="center"/>
         <eLabel name="" position="1498,1000" size="400,80" backgroundColor="background" text="Designed by MNASR" transparent="1" halign="center" foregroundColor="yellow" font="Regular; 34"/>
         <eLabel name="" position="24,1000" size="400,80" backgroundColor="background" text="Edit by LULULLA" transparent="1" halign="center" foregroundColor="yellow" font="Regular; 34"/>
@@ -3228,7 +3236,7 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="list" position="36,98" size="890,900" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" valign="center" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
-        <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/epg.png" transparent="1" alphatest="on"/>
+        <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/audio.png" transparent="1" alphatest="on"/>
     </screen>
     <screen name="CacheFlushSetupMenu" position="fill" title="CacheFlush" flags="wfNoBorder" backgroundColor="transparent">
         <panel name="titletemp"/>
@@ -3259,7 +3267,7 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y() + (or
         <widget name="pused" position="46,908" size="120,40" font="Regular; 28" zPosition="1" halign="left" backgroundColor="background" transparent="1" valign="center"/>
         <widget name="slide" render="Progress" position="170,921" size="1600,14" zPosition="8" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10"/>
     </screen>
-    <screen name="CacheFlushAutoScreen" position="35,77" size="420,40" title="CacheFlush Status" zPosition="10" flags="wfNoBorder">
+    <screen name="CacheFlushAutoScreen" position="35,77" size="420,40" title="CacheFlush Status" zPosition="10" flags="wfBorder">
         <widget name="message_label" position="1,0" size="418,39" font="Regular;28" valign="center" halign="center" backgroundColor="background" transparent="1"/>
     </screen>
     <screen backgroundColor="transparent" flags="wfNoBorder" name="SoftcamSetup" position="0,0" size="1920,1080" title="">
@@ -7401,6 +7409,4 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
         <widget name="Preview" position="997,690" size="498, 280" zPosition="5"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/aglarelogo.png" transparent="1" alphatest="on"/>
     </screen>
-
-
 </skin>

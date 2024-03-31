@@ -246,6 +246,7 @@
         <sub name="Subtitle_Bold" font="Replacement;52" foregroundColor="white" shadowColor="#00101010" shadowOffset="1,1"/>
         <sub name="Subtitle_Italic" font="Regular;52" foregroundColor="white" shadowColor="#00101010" shadowOffset="1,1"/>
     </subtitles>
+
     <include filename="skin_templates.xml"/>
     <include filename="skin_nss.xml"/>
     <include filename="skin_ll.xml"/>

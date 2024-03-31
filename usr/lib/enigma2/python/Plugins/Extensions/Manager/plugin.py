@@ -275,6 +275,21 @@ class Manager(Screen):
                 elif os.path.exists('/usr/lib/enigma2/python/Screens/OScamInfo.pyo'):
                     BlueAction = 'OSCAMINFO'
                     self["key_blue"].setText("OSCAMINFO")
+
+            elif 'ncam' in nim.lower():
+                runningcam = "ncam"
+                if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/OscamStatus")):
+                    BlueAction = 'NCAMSTATUS'
+                    self["key_blue"].setText("NCAMSTATUS")
+
+                elif os.path.exists('/usr/lib/enigma2/python/Screens/OScamInfo.pyc'):
+                    BlueAction = 'NCAMINFO'
+                    self["key_blue"].setText("NCAMINFO")
+
+                elif os.path.exists('/usr/lib/enigma2/python/Screens/OScamInfo.pyo'):
+                    BlueAction = 'NCAMINFO'
+                    self["key_blue"].setText("NCAMINFO")
+
         else:
             BlueAction = 'SOFTCAM'
             self["key_blue"].setText("Softcam")
@@ -296,12 +311,12 @@ class Manager(Screen):
             from Screens.CCcamInfo import CCcamInfoMain
             self.session.open(CCcamInfoMain)
 
-        if BlueAction == 'OSCAMSTATUS':
+        if BlueAction == 'OSCAMSTATUS' or 'NCAMSTATUS':
             if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/OscamStatus")):
                 from Plugins.Extensions.OscamStatus.plugin import OscamStatus
                 self.session.open(OscamStatus)
 
-        if BlueAction == 'OSCAMINFO':
+        if BlueAction == 'OSCAMINFO' or 'NCAMINFO':
             try:
                 from Screens.OScamInfo import OSCamInfo
                 self.session.open(OSCamInfo)
@@ -361,7 +376,6 @@ class Manager(Screen):
 
     def cgdesc(self):
         if len(self.namelist) >= 1:
-            print('self.currCam= ', self.currCam)
             self['description'].setText(_('Select a cam to run ...'))
         else:
             self['description'].setText(_('Install Cam first!!!'))
@@ -425,7 +439,6 @@ class Manager(Screen):
             return
         self.session.nav.stopService()
         self.last = self.getLastIndex()
-        print('self.last=', self.last)
         if self['list'].getCurrent():
             self.var = self['list'].getIndex()
             '''
@@ -498,7 +511,6 @@ class Manager(Screen):
         stcam.write('#!/bin/sh\n' + self.cmd1)
         stcam.close()
         os.system('chmod 755 /etc/startcam.sh &')
-
         return
 
     def stop(self):
@@ -509,25 +521,9 @@ class Manager(Screen):
         if self.currCam != 'None' or self.currCam is not None:
             self.EcmInfoPollTimer.stop()
             self.last = self.getLastIndex()
-            '''
-                # self.var = self['list'].getSelectedIndex()
-                # # self.var = self['list'].getSelectionIndex()
-                # print('self var=== ', self.var)
-            # if self.last and self.last is not None:  # or self.currCam != 'no':
-            '''
             if self.last is not None:  # or self.currCam != 'no':
-                '''
-                # if self.last > 0:
-                    # self.cmd1 = '/usr/camscript/' + self.softcamslist[self.last][0] + '.sh' + ' cam_down &'
-                    # os.system(self.cmd1)
-                # else:
-                    # return
-                    # if self.currCam is not None or self.currCam != 'no':
-                    '''
-
                 self.cmd1 = '/usr/camscript/' + self.softcamslist[self.last][0] + '.sh' + ' cam_down &'
                 os.system(self.cmd1)
-
                 self.currCam = None
                 self.writeFile()
                 sleep(1)
@@ -575,17 +571,13 @@ class Manager(Screen):
                             nam = line[5:len(line) - 2]
                             print('We are in Manager and cam is type  = ', nam)
                             if self.currCam != 'None' or self.currCam is not None:
-                                print('self.currCam= 4 ', self.currCam)
                                 if nam == self.currCam:
-                                    # print('nam == self.currCam: ', nam)
                                     self.softcamslist.append((nam,  png1, '(Active)'))
                                     pliste.append((nam, '(Active)'))
                                 else:
-                                    # print('nam != self.currCam: ', nam)
                                     self.softcamslist.append((nam, png2, ''))
                                     pliste.append((nam, ''))
                             else:
-                                # print('self.currCam is None: ', nam)
                                 self.softcamslist.append(nam, png2, '')
                                 pliste.append(nam, '')
                             self.index += 1
@@ -682,7 +674,6 @@ class Manager(Screen):
                 continue
             myfile2.write(line)
             icount = icount + 1
-
         myfile.close()
         myfile2.close()
         os.system('rm /etc/autocam.txt')
@@ -707,7 +698,6 @@ class nssGetipk(Screen):
         self.setTitle(_(title_plug))
         self['title'] = Label(_(title_plug))
         self['description'] = Label(_('Getting the list, please wait ...'))
-        # self["paypal"] = Label()
         self['key_red'] = Button(_('Back'))
         self['key_green'] = Button(_('Load'))
         self['key_yellow'] = Button()
@@ -831,7 +821,6 @@ class nssGetipklist(Screen):
         for item in items:
             name = item.split('###')[0]
             url = item.split('###')[1]
-
             self.names.append(name)
             self.urls.append(url)
         showlist(self.names, self['list'])
@@ -896,7 +885,6 @@ class nssGetipklist(Screen):
 
             if len(extensionlist) > 1:
                 tar = extensionlist[-2]
-
             if extension in ["gz", "bz2"] and tar == "tar":
                 self.command = ['']
                 # self.dest = self.dowfil()
@@ -1012,6 +1000,12 @@ class nssInfoCfg(Screen):
             return str(zarcffll)
         except Exception as e:
             print("Error ", e)
+
+    def Down(self):
+        self['text'].pageDown()
+
+    def Up(self):
+        self['text'].pageUp()
 
 
 sl2 = skin_path + sl + '.xml'

@@ -68,8 +68,6 @@
         </widget>
     </screen>
     
-    
-    
     <!-- ************* NSS Panels ************* -->
     <screen backgroundColor="transparent" flags="wfNoBorder" name="NssMenu" position="0,0" size="1920,1080" title="NssMenu">
         <panel name="titletemp"/>
