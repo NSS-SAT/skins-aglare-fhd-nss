@@ -6,7 +6,9 @@ from enigma import eTimer, RT_HALIGN_LEFT, eListboxPythonMultiContent
 from enigma import gFont, getDesktop
 # from Components.About import about
 from Components.ActionMap import ActionMap, NumberActionMap
-from Components.config import config, getConfigListEntry
+from Components.config import config, getConfigListEntry, ConfigPassword
+from Components.config import ConfigYesNo, ConfigSubsection, ConfigIP
+from Components.config import ConfigDirectory, ConfigText, ConfigInteger        
 from Components.ConfigList import ConfigListScreen
 from Components.MenuList import MenuList
 from Components.Sources.List import List
@@ -27,6 +29,16 @@ import fcntl
 import struct
 global NAMEBIN
 
+config.oscaminfo = ConfigSubsection()
+config.oscaminfo.userdatafromconf = ConfigYesNo(default = True)
+#config.oscaminfo.usehostname = ConfigYesNo(default = False)
+config.oscaminfo.autoupdate = ConfigYesNo(default = False)
+config.oscaminfo.username = ConfigText(default = "username", fixed_size = False, visible_width=12)
+config.oscaminfo.password = ConfigPassword(default = "password", fixed_size = False)
+config.oscaminfo.ip = ConfigIP( default = [ 127,0,0,1 ], auto_jump=True)
+config.oscaminfo.hostname = ConfigText(default = "", fixed_size = False)
+config.oscaminfo.port = ConfigInteger(default = 8181, limits=(0,65536) )
+config.oscaminfo.intervall = ConfigInteger(default = 10, limits=(1,600) )         
 
 def check_NAMEBIN():
     NAMEBIN = "oscam"

@@ -6,8 +6,9 @@ from enigma import eTimer, RT_HALIGN_LEFT, eListboxPythonMultiContent
 from enigma import gFont, getDesktop
 # from Components.About import about
 from Components.ActionMap import ActionMap, NumberActionMap
-from Components.config import config, getConfigListEntry, ConfigInteger, ConfigIP, ConfigYesNo
-from Components.config import ConfigSubsection, ConfigDirectory, ConfigText, ConfigPassword
+from Components.config import config, getConfigListEntry, ConfigInteger, ConfigIP
+from Components.config import ConfigYesNo, ConfigPassword
+from Components.config import ConfigSubsection, ConfigDirectory, ConfigText
 from Components.ConfigList import ConfigListScreen
 from Components.MenuList import MenuList
 from Components.Sources.List import List
@@ -29,28 +30,28 @@ import struct
 global NAMEBIN
 
 config.NcamInfo = ConfigSubsection()
-config.NcamInfo.userdatafromconf = ConfigYesNo(default=False)
-# config.NcamInfo.usehostname = ConfigYesNo(default=False)
-config.NcamInfo.autoupdate = ConfigYesNo(default=False)
-config.NcamInfo.username = ConfigText(default="username", fixed_size=False, visible_width=12)
-config.NcamInfo.password = ConfigPassword(default="password", fixed_size=False)
-config.NcamInfo.ip = ConfigIP(default=[127, 0, 0, 1], auto_jump=True)
-config.NcamInfo.hostname = ConfigText(default="", fixed_size=False)
-config.NcamInfo.port = ConfigInteger(default=8181, limits=(0, 65536))
-config.NcamInfo.intervall = ConfigInteger(default=10, limits=(1, 600))
+config.NcamInfo.userdatafromconf = ConfigYesNo(default = True)
+#config.NcamInfo.usehostname = ConfigYesNo(default = False)
+config.NcamInfo.autoupdate = ConfigYesNo(default = False)
+config.NcamInfo.username = ConfigText(default = "username", fixed_size = False, visible_width=12)
+config.NcamInfo.password = ConfigPassword(default = "password", fixed_size = False)
+config.NcamInfo.ip = ConfigIP( default = [ 127,0,0,1 ], auto_jump=True)
+config.NcamInfo.hostname = ConfigText(default = "", fixed_size = False)
+config.NcamInfo.port = ConfigInteger(default = 8181, limits=(0,65536) )
+config.NcamInfo.intervall = ConfigInteger(default = 10, limits=(1,600) )
 
 
 def check_NAMEBIN():
     NAMEBIN = "Ncam"
-    if fileExists("/tmp/.ncam/ncam.version"):
-        NAMEBIN = "ncam"
+    # if fileExists("/tmp/.ncam/ncam.version"):
+        # NAMEBIN = "ncam"
     return NAMEBIN
 
 
 def check_NAMEBIN2():
     NAMEBIN2 = "Ncam"
-    if fileExists("/tmp/.ncam/ncam.version"):
-        NAMEBIN2 = "Ncam"
+    # if fileExists("/tmp/.ncam/ncam.version"):
+        # NAMEBIN2 = "Ncam"
     return NAMEBIN2
 
 
@@ -917,7 +918,7 @@ class ncInfo(Screen, NcamInfo):
             # print("[NcamInfo][showData] data[0], data[1] not isinstance(data[1], str)")
             if self.what != "l":
                 heading = (self.HEAD[self.NAME], self.HEAD[self.PROT], self.HEAD[self.CAID_SRVID],
-                           self.HEAD[self.SRVNAME], self.HEAD[self.ECMTIME], self.HEAD[self.IP_PORT], "")
+                        self.HEAD[self.SRVNAME], self.HEAD[self.ECMTIME], self.HEAD[self.IP_PORT], "")
                 self.out = [self.buildListEntry(heading, heading=True)]
                 for i in data[1]:
                     self.out.append(self.buildListEntry(i))
