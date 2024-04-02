@@ -89,12 +89,22 @@ except ImportError:
     pass
 
 try:
-    from Screens.OScamInfo import OscamInfoMenu
+    from Plugins.Extensions.OscamStatus.plugin import OscamStatus
 except ImportError:
     pass
 
 try:
-    from Screens.NcamInfo import NcamInfoMenu
+    from Screens.OScamInfo import OSCamInfo
+except ImportError:
+    pass
+
+try:
+    from Screens.CCcamInfo import CCcamInfoMain
+except ImportError:
+    pass
+
+try:
+    from Screens.OScamInfo import OscamInfoMenu
 except ImportError:
     pass
 
@@ -215,7 +225,7 @@ class Manager(Screen):
         self.currCam = self.readCurrent()
         self.readScripts()
         BlueAction = 'SOFTCAM'
-        self.setBlueKey()
+        # self.setBlueKey()
         self.timer = eTimer()
         try:
             self.timer_conn = self.timer.timeout.connect(self.cgdesc)
@@ -240,11 +250,11 @@ class Manager(Screen):
         if self.currCam and self.currCam is not None or self.currCam != '':
             nim = str(self.currCam)
             if 'ccam' in nim.lower():
-                # if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/CCcamInfo")):
-                    # BlueAction = 'CCCAMINFO'
-                    # self["key_blue"].setText("CCCAMINFO")
+                if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/CCcamInfo")):
+                    BlueAction = 'CCCAMINFO'
+                    self["key_blue"].setText("CCCAMINFO")
 
-                if os.path.exists('/usr/lib/enigma2/python/Screens/CCcamInfo.pyc'):
+                elif os.path.exists('/usr/lib/enigma2/python/Screens/CCcamInfo.pyc'):
                     BlueAction = 'CCCAMINFOMAIN'
                     self["key_blue"].setText("CCCAMINFO")
 
@@ -254,11 +264,11 @@ class Manager(Screen):
 
             elif 'oscam' in nim.lower():
                 runningcam = "oscam"
-                # if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/OscamStatus")):
-                    # BlueAction = 'OSCAMSTATUS'
-                    # self["key_blue"].setText("OSCAMSTATUS")
+                if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/OscamStatus")):
+                    BlueAction = 'OSCAMSTATUS'
+                    self["key_blue"].setText("OSCAMSTATUS")
 
-                if os.path.exists('/usr/lib/enigma2/python/Screens/OScamInfo.pyc'):
+                elif os.path.exists('/usr/lib/enigma2/python/Screens/OScamInfo.pyc'):
                     BlueAction = 'OSCAMINFO'
                     self["key_blue"].setText("OSCAMINFO")
 
@@ -268,42 +278,51 @@ class Manager(Screen):
 
             elif 'ncam' in nim.lower():
                 runningcam = "ncam"
-                if os.path.exists('/usr/lib/enigma2/python/Screens/NcamInfo.pyc'):
+                if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/OscamStatus")):
+                    BlueAction = 'NCAMSTATUS'
+                    self["key_blue"].setText("NCAMSTATUS")
+
+                elif os.path.exists('/usr/lib/enigma2/python/Screens/OScamInfo.pyc'):
                     BlueAction = 'NCAMINFO'
                     self["key_blue"].setText("NCAMINFO")
 
-                elif os.path.exists('/usr/lib/enigma2/python/Screens/NcamInfo.pyo'):
+                elif os.path.exists('/usr/lib/enigma2/python/Screens/OScamInfo.pyo'):
                     BlueAction = 'NCAMINFO'
                     self["key_blue"].setText("NCAMINFO")
 
         else:
             BlueAction = 'SOFTCAM'
-            # runningcam = None
             self["key_blue"].setText("Softcam")
-        print('Blue2=', BlueAction)
+        print('Blue=', BlueAction)
 
     def ShowSoftcamCallback(self):
         pass
 
     def Blue(self):
-        print('Blue2=', BlueAction)
         if BlueAction == 'SOFTCAM':
             self.messagekd()
 
-        # if BlueAction == 'CCCAMINFO':
-            # if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/CCcamInfo")):
-                # from Plugins.Extensions.CCcamInfo.plugin import CCcamInfoMain
-                # self.session.openWithCallback(self.ShowSoftcamCallback, CCcamInfoMain)
+        if BlueAction == 'CCCAMINFO':
+            if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/CCcamInfo")):
+                from Plugins.Extensions.CCcamInfo.plugin import CCcamInfoMain
+                self.session.openWithCallback(self.ShowSoftcamCallback, CCcamInfoMain)
 
         if BlueAction == 'CCCAMINFOMAIN':
             from Screens.CCcamInfo import CCcamInfoMain
             self.session.open(CCcamInfoMain)
 
-        # if BlueAction == 'OSCAMSTATUS':
+        # if BlueAction == 'OSCAMSTATUS' or 'NCAMSTATUS':
             # if os.path.exists(resolveFilename(SCOPE_PLUGINS, "Extensions/OscamStatus")):
                 # from Plugins.Extensions.OscamStatus.plugin import OscamStatus
                 # self.session.open(OscamStatus)
 
+        # if BlueAction == 'OSCAMINFO' or 'NCAMINFO':
+            # try:
+                # from Screens.OScamInfo import OSCamInfo
+                # self.session.open(OSCamInfo)
+            # except ImportError:
+                # from Screens.OScamInfo import OscamInfoMenu
+                # self.session.open(OscamInfoMenu)
         if BlueAction == 'OSCAMINFO':
             try:
                 from Screens.OScamInfo import OSCamInfo
@@ -511,7 +530,7 @@ class Manager(Screen):
         i = len(self.softcamslist)
         if i < 1:
             return
-        global BlueAction
+        global BlueAction                         
         print('Blue3=', BlueAction)
         if self.currCam != 'None' or self.currCam is not None:
             self.EcmInfoPollTimer.stop()
@@ -1114,6 +1133,25 @@ def mainmenu(menuid):
                  None)]
 
 
+# class AutoStartTimertvman:
+
+    # def __init__(self, session):
+        # self.session = session
+        # global _firstStarttvsman
+        # print("*** running AutoStartTimertvman ***")
+        # if _firstStarttvsman:
+            # self.runUpdate()
+
+    # def runUpdate(self):
+        # print("*** running update ***")
+        # try:
+            # from . import Update
+            # Update.upd_done()
+            # _firstStarttvsman = False
+        # except Exception as e:
+            # print('error Softcam Manager', str(e))
+
+
 def autostart(reason, session=None, **kwargs):
     """called with reason=1 to during shutdown, with reason=0 at startup?"""
     print("[Softcam] Started")
@@ -1251,3 +1289,4 @@ def Plugins(**kwargs):
             # PluginDescriptor(name=_(name_plug), description=_(title_plug), where=[PluginDescriptor.WHERE_AUTOSTART, PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart),
             PluginDescriptor(name=_(name_plug), description=_(title_plug), where=PluginDescriptor.WHERE_PLUGINMENU, icon=iconpic, fnc=main),
             PluginDescriptor(name=_(name_plug), description=_(title_plug), where=PluginDescriptor.WHERE_EXTENSIONSMENU, fnc=main)]
+
