@@ -30,28 +30,29 @@ import struct
 global NAMEBIN
 
 config.NcamInfo = ConfigSubsection()
-config.NcamInfo.userdatafromconf = ConfigYesNo(default = True)
-#config.NcamInfo.usehostname = ConfigYesNo(default = False)
-config.NcamInfo.autoupdate = ConfigYesNo(default = False)
-config.NcamInfo.username = ConfigText(default = "username", fixed_size = False, visible_width=12)
-config.NcamInfo.password = ConfigPassword(default = "password", fixed_size = False)
-config.NcamInfo.ip = ConfigIP( default = [ 127,0,0,1 ], auto_jump=True)
-config.NcamInfo.hostname = ConfigText(default = "", fixed_size = False)
-config.NcamInfo.port = ConfigInteger(default = 8181, limits=(0,65536) )
-config.NcamInfo.intervall = ConfigInteger(default = 10, limits=(1,600) )
+config.NcamInfo.showInExtensions = ConfigYesNo(default=False)
+config.NcamInfo.userdatafromconf = ConfigYesNo(default=True)
+# config.NcamInfo.usehostname = ConfigYesNo(default=False)
+config.NcamInfo.autoupdate = ConfigYesNo(default=False)
+config.NcamInfo.username = ConfigText(default="username", fixed_size=False, visible_width=12)
+config.NcamInfo.password = ConfigPassword(default="password", fixed_size=False)
+config.NcamInfo.ip = ConfigIP(default=[127, 0, 0, 1], auto_jump=True)
+config.NcamInfo.hostname = ConfigText(default="", fixed_size=False)
+config.NcamInfo.port = ConfigInteger(default=8181, limits=(0, 65536))
+config.NcamInfo.intervall = ConfigInteger(default=10, limits=(1, 600))
 
 
 def check_NAMEBIN():
-    NAMEBIN = "Ncam"
-    # if fileExists("/tmp/.ncam/ncam.version"):
-        # NAMEBIN = "ncam"
+    NAMEBIN = "ncam"
+    if fileExists("/tmp/.ncam/ncam.version"):
+        NAMEBIN = "ncam"
     return NAMEBIN
 
 
 def check_NAMEBIN2():
-    NAMEBIN2 = "Ncam"
-    # if fileExists("/tmp/.ncam/ncam.version"):
-        # NAMEBIN2 = "Ncam"
+    NAMEBIN2 = "ncam"
+    if fileExists("/tmp/.ncam/ncam.version"):
+        NAMEBIN2 = "ncam"
     return NAMEBIN2
 
 
@@ -646,7 +647,7 @@ class oscECMInfo(Screen, NcamInfo):
 
     global HDSKIN, sizeH
     sizeLH = sizeH - 20
-    skin = """<screen position="center,center" size="%s, 390*f" title="oscECMInfo" >
+    skin = """<screen position="center,center" size="%s, 390*f" title="ECMInfo" >
             <widget source="output" render="Listbox" position="10,10" size="%s,390*f" scrollbarMode="showOnDemand" >
                 <convert type="TemplatedMultiContent">
                 {"templates":
@@ -912,7 +913,7 @@ class ncInfo(Screen, NcamInfo):
         else:
             data = self.readXML(typ=self.what)
         self.out = []
-        self.itemheight = 25
+        self.itemheight = 35
         # print("[NcamInfo][showData] data[0], data[1]", data[0], "   ", data[1])
         if data[0]:
             # print("[NcamInfo][showData] data[0], data[1] not isinstance(data[1], str)")
@@ -1327,3 +1328,4 @@ class NcamInfoConfigScreen(ConfigListScreen, Screen):
         config.NcamInfo.port.save()
         config.NcamInfo.autoupdate.save()
         config.NcamInfo.intervall.save()
+        self.close()
