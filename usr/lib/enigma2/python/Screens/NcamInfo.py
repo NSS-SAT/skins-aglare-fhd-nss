@@ -50,9 +50,9 @@ def check_NAMEBIN():
 
 
 def check_NAMEBIN2():
-    NAMEBIN2 = "ncam"
+    NAMEBIN2 = "Ncam"
     if fileExists("/tmp/.ncam/ncam.version"):
-        NAMEBIN2 = "ncam"
+        NAMEBIN2 = "Ncam"
     return NAMEBIN2
 
 
@@ -1292,11 +1292,14 @@ class NcamInfoConfigScreen(ConfigListScreen, Screen):
         self["status"] = StaticText(_("Error:\n%s") % msg if msg is not None else "")  # what is this?
         ConfigListScreen.__init__(self, [], session=session, on_change=self.changedEntry)
         # ConfigListScreen.__init__(self, [], session=session, on_change=self.changedEntry, fullUI=True)
-        self["actions"] = ActionMap(["SetupActions"],
-            {
-                "ok": self.savx,
-                "cancel": self.exit
-            }, -1)  # noqa: E123
+        self["actions"] = ActionMap(["SetupActions", "ColorActions"],
+        {
+            "red": self.cancel,
+            "green": self.save,
+            "save": self.save,
+            "cancel": self.cancel,
+            "ok": self.save,
+        }, -2)
         # self["key_red"] = StaticText(_("Close"))
         self.createSetup()
 
