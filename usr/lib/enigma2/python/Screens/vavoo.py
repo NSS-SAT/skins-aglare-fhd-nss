@@ -261,38 +261,17 @@ class m2list(MenuList):
     def __init__(self, list):
         MenuList.__init__(self, list, False, eListboxPythonMultiContent)
         self.l.setItemHeight(50)
-        textfont = int(28)
+        textfont = int(34)
         self.l.setFont(0, gFont('Regular', textfont))
 
 
 def show_(name, link):
     res = [(name, link)]
-    res.append(MultiContentEntryText(pos=(0, 0), size=(1900, 50), font=0, text=name, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
+    cur_skin = config.skin.primary_skin.value.replace('/skin.xml', '')
+    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/mainmenu/vavoo_ico.png"
+    res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 10), size=(30, 30), png=loadPNG(pngx)))
+    res.append(MultiContentEntryText(pos=(60, 0), size=(1200, 50), font=0, text=name, color=0xa6d1fe, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
     return res
-
-
-def cat_(letter, link):
-    res = [(letter, link)]
-    res.append(MultiContentEntryText(pos=(0, 0), size=(1900, 50), font=0, text=letter, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
-    return res
-
-
-def rvoneListEntry(name):
-    res = [name]
-    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, config.skin.primary_skin.value)) + "/mainmenu/vavoo_ico.png"
-    res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 12), size=(34, 25), png=loadPNG(pngx)))
-    res.append(MultiContentEntryText(pos=(60, 0), size=(1900, 50), font=0, text=name, color=0xa6d1fe, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
-    return res
-
-
-def showlist(data, list):
-    icount = 0
-    plist = []
-    for line in data:
-        name = data[icount]
-        plist.append(rvoneListEntry(name))
-        icount += 1
-        list.setList(plist)
 
 
 Panel_list = [
@@ -343,9 +322,12 @@ class MainVavoo(Screen):
                                                                 'green': self.msgdeleteBouquets,
                                                                 'cancel': self.close,
                                                                 'red': self.close}, -1)
-        # self.onLayoutFinish.append(self.updateMenuList)
         self.timer = eTimer()
-        self.timer.callback.append(self.cat)
+        try:
+            self.timer_conn = self.timer.timeout.connect(self.cat)
+        except:
+            self.timer.callback.append(self.cat)
+        # self.timer.callback.append(self.cat)
         self.timer.start(500, True)
 
     def up(self):
@@ -378,23 +360,18 @@ class MainVavoo(Screen):
             content = getUrl(self.url)
             if six.PY3:
                 content = six.ensure_str(content)
-            # print('content: ', content)
-            # "country": "Balkans", "id": 1572002411, "name": "RTS 1 (7)", "p": 0
             regexcat = '"country".*?"(.*?)".*?"id".*?"name".*?".*?"'
             match = re.compile(regexcat, re.DOTALL).findall(content)
             for country in match:
                 if country not in self.items_tmp:
-                    # print(country + ' I\n')
                     self.items_tmp.append(country)
                     item = country + "###" + self.url + '\n'
                     items.append(item)
-            # print('self.items_tmp:', self.items_tmp)
             items.sort()
             for item in items:
                 name = item.split('###')[0]
                 url = item.split('###')[1]
                 if name not in self.cat_list:
-                    # print('country III =', name)
                     self.cat_list.append(show_(name, url))
             if len(self.cat_list) < 0:
                 return
@@ -455,7 +432,6 @@ class vavoo(Screen):
         self['green'] = Label(_('Export'))
         self['Title'] = Label(title_plug)
         self['name'] = Label('')
-        # self['poster'] = Pixmap()
         self['text'] = Label('Vavoo Stream Live by Lululla')
         self.currentList = 'menulist'
         self.loading_ok = False
@@ -475,7 +451,11 @@ class vavoo(Screen):
                                                                 'cancel': self.close,
                                                                 'red': self.close}, -1)
         self.timer = eTimer()
-        self.timer.callback.append(self.cat)
+        try:
+            self.timer_conn = self.timer.timeout.connect(self.cat)
+        except:
+            self.timer.callback.append(self.cat)
+        # self.timer.callback.append(self.cat)
         self.timer.start(500, True)
 
     def up(self):
@@ -508,16 +488,12 @@ class vavoo(Screen):
                 content = getUrl(self.url)
                 if six.PY3:
                     content = six.ensure_str(content)
-                # print('content: ', content)
-                # "country": "Balkans", "id": 1572002411, "name": "RTS 1 (7)", "p": 0
                 names = self.name
-                # print('country=', names)
                 regexcat = '"country".*?"(.*?)".*?"id"(.*?)"name".*?"(.*?)"'
                 match = re.compile(regexcat, re.DOTALL).findall(content)
                 for country, ids, name in match:
                     if country != names:
                         continue
-                    # print(country + '\n' + name + '\n' + str(ids))
                     ids = ids.replace(':', '').replace(' ', '').replace(',', '')
                     url = 'http://vavoo.to/play/' + str(ids) + '/index.m3u8'
                     name = decodeHtml(name)
@@ -528,14 +504,11 @@ class vavoo(Screen):
                     name = item.split('###')[0]
                     url = item.split('###')[1]
                     self.cat_list.append(show_(name, url))
-
-                    # #EXTINF:-1,ARB KEPEZ
-                    # http://85.132.81.184:8080/arbkepez/live/index.m3u8
+                    # make m3u
                     nname = '#EXTINF:-1,' + str(name) + '\n'
                     outfile.write(nname)
                     outfile.write(str(url))
                 outfile.close()
-                # print('country=', self.name)
                 if len(self.cat_list) < 0:
                     return
                 else:
