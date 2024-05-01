@@ -209,8 +209,8 @@ class radiom1(Screen):
         x = 430
         y = 430
         if screenWidth >= 1920:
-            x = 640
-            y = 640
+            x = 400
+            y = 400
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
@@ -278,8 +278,8 @@ class radiom1(Screen):
         x = 430
         y = 430
         if screenWidth >= 1920:
-            x = 640
-            y = 640
+            x = 400
+            y = 400
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
@@ -336,8 +336,8 @@ class radiom2(Screen):
         x = 430
         y = 430
         if screenWidth >= 1920:
-            x = 640
-            y = 640
+            x = 400
+            y = 400
         resizePoster(x, y, picture)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
@@ -407,8 +407,8 @@ class radiom3(Screen):
         x = 430
         y = 430
         if screenWidth >= 1920:
-            x = 640
-            y = 640
+            x = 400
+            y = 400
         resizePoster(x, y, picture)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
