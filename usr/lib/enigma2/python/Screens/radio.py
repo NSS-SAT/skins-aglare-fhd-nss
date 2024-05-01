@@ -15,6 +15,7 @@ from Components.Label import Label
 from Components.MenuList import MenuList
 from Components.Pixmap import Pixmap
 from Components.ServiceEventTracker import InfoBarBase
+from Components.MultiContent import MultiContentEntryPixmapAlphaTest
 from Components.MultiContent import MultiContentEntryText
 from enigma import eListboxPythonMultiContent, gFont
 from Components.config import config
@@ -30,6 +31,7 @@ from enigma import RT_HALIGN_LEFT, RT_VALIGN_CENTER
 from enigma import eServiceReference
 from enigma import ePicLoad
 from enigma import getDesktop, eTimer
+from enigma import loadPNG
 import os
 import sys
 import six
@@ -158,8 +160,10 @@ def RListEntry(download):
     res = [(download)]
     col = 0xffffff
     colsel = 0xf07655
+    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/skin_default/icons/folder.png"
     if screenWidth >= 1920:
-        res.append(MultiContentEntryText(pos=(0, 0), size=(1900, 50), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
+        res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 10), size=(30, 30), png=loadPNG(pngx)))
+        res.append(MultiContentEntryText(pos=(60, 0), size=(1200, 50), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
     else:
         res.append(MultiContentEntryText(pos=(0, 0), size=(1000, 40), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
     return res
@@ -171,7 +175,7 @@ def showlist(data, list):
     for line in data:
         name = data[icount]
         plist.append(RListEntry(name))
-        icount = icount + 1
+        icount += 1
     list.setList(plist)
 
 
@@ -198,9 +202,6 @@ def resizePoster(x, y, dwn_poster):
 
 class radiom1(Screen):
     def __init__(self, session):
-        # skin = os.path.join(skin_path, 'radiom.xml')
-        # with codecs.open(skin, "r", encoding="utf-8") as f:
-            # self.skin = f.read()
         Screen.__init__(self, session)
         self.session = session
         self.list = []
@@ -517,7 +518,7 @@ class radiom80(Screen):
             self.init_aspect = 0
         self.new_aspect = self.init_aspect
         self['key_red'] = Button(_('Exit'))
-        self['key_blue'] = Button(_('Player 1-2-3'))
+        self['key_blue'] = Label(_('Player 1-2-3'))
         self['key_green'] = Button(_('Select'))
         self['key_green'].hide()
         self['actions'] = ActionMap(['OkActions',
