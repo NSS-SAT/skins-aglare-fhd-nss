@@ -134,6 +134,15 @@ def ReadUrl2(url, referer):
     return link
 
 
+def geturl(url):
+    try:
+        response = requests.get(url, headers=HEADERS, timeout=5)
+        return response.content
+    except Exception as e:
+        print(str(e))
+        return ''
+
+
 class radioList(MenuList):
     def __init__(self, list):
         MenuList.__init__(self, list, True, eListboxPythonMultiContent)
@@ -621,7 +630,8 @@ class radiom80(Screen):
     def getCover(self, url):
         try:
             referer = 'http://itunes.apple.com'
-            data = ReadUrl2(url, referer)
+            # data = ReadUrl2(url, referer)
+            data = geturl(url)
             if data:
                 with open('/tmp/artist.jpg', 'wb') as f:
                     f.write(data)
