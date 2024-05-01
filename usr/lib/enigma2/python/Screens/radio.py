@@ -160,7 +160,7 @@ def RListEntry(download):
     res = [(download)]
     col = 0xffffff
     colsel = 0xf07655
-    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/skin_default/icons/folder.png"
+    pngx = os.path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/skin_default/icons/folder.png"
     if screenWidth >= 1920:
         res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 10), size=(30, 30), png=loadPNG(pngx)))
         res.append(MultiContentEntryText(pos=(60, 0), size=(1200, 50), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
@@ -518,7 +518,7 @@ class radiom80(Screen):
             self.init_aspect = 0
         self.new_aspect = self.init_aspect
         self['key_red'] = Button(_('Exit'))
-        self['key_blue'] = Label(_('Player 1-2-3'))
+        self['key_blue'] = Label('Player 1-2-3')
         self['key_green'] = Button(_('Select'))
         self['key_green'].hide()
         self['actions'] = ActionMap(['OkActions',
@@ -538,14 +538,15 @@ class radiom80(Screen):
 
     def typeplayer(self):
         if self.player == '2':
-            self["key_blue"].setText(_("Player 3-2-1"))
+            self["key_blue"].setText("Player 3-2-1")
             self.player = '3'
         elif self.player == '1':
-            self["key_blue"].setText(_("Player 2-3-1"))
+            self["key_blue"].setText("Player 2-3-1")
             self.player = '2'
         else:
-            self["key_blue"].setText(_("Player 1-2-3"))
+            self["key_blue"].setText("Player 1-2-3")
             self.player = '1'
+        return
 
     def showback(self, picInfo=None):
         try:
