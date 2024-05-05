@@ -5,8 +5,6 @@
 Plugin RadioM is developed
 from Lululla to Mmark
 """
-# from .PicLoader import PicLoader
-# from Plugins.Plugin import PluginDescriptor
 from __future__ import print_function
 from Components.AVSwitch import AVSwitch
 from Components.ActionMap import ActionMap
@@ -42,7 +40,7 @@ try:
     isDreamOS = True
 except:
     isDreamOS = False
-version = '1.0_r3'
+version = '1.0_r4'
 # THISPLUG = os.path.dirname(sys.modules[__name__].__file__)
 # skin_path = THISPLUG
 HD = getDesktop(0).size()
@@ -414,8 +412,8 @@ class radiom3(Screen):
         sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
         picture = path_png + "ft.jpg"
-        x = 430
-        y = 430
+        x = 350
+        y = 350
         if screenWidth >= 1920:
             x = 400
             y = 400
@@ -458,8 +456,33 @@ class radiom3(Screen):
             return
         name = self.names[idx]
         url = self.urls[idx]
-        self.session.open(Playstream2, name, url)
-        return
+        if self.is_playing:
+            self.stop()
+            return
+
+        url = url.replace(':', '%3a').replace(' ', '%20')
+        tv = False
+        if tv is False:
+            ref = '4097:0:1:0:0:0:0:0:0:0:' + str(url)  # tv
+        else:
+            ref = '4097:0:2:0:0:0:0:0:0:0:' + str(url)  # radio
+        print('final reference:   ', ref)
+        sref = eServiceReference(ref)
+        sref.setName(name)
+        self.session.nav.stopService()
+        self.session.nav.playService(sref)
+        self.is_playing = True
+
+    def stop(self, text=''):
+        if self.is_playing:
+            try:
+                self.is_playing = False
+                self.session.nav.stopService()
+                self.session.nav.playService(self.srefOld)
+                return
+            except TypeError as e:
+                print(e)
+                self.close()
 
     def showback(self, picInfo=None):
         try:
@@ -472,6 +495,7 @@ class radiom3(Screen):
             print("ERROR showImage:", err)
 
     def cancel(self):
+        self.stop()
         Screen.close(self, False)
 
 
@@ -528,6 +552,7 @@ class radiom80(Screen):
                                      'InfoActions',
                                      'CancelActions'], {
             'red': self.cancel,
+            'back': self.cancel,
             'blue': self.typeplayer,
             'green': self.openPlay,
             'info': self.countdown,
