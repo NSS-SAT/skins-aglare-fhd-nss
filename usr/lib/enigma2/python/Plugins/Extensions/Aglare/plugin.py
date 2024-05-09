@@ -31,7 +31,7 @@ else:
     from urllib2 import Request
 
 
-version = '1.0'
+version = '1.01'
 
 config.plugins.AglareNss = ConfigSubsection()
 config.plugins.AglareNss.colorSelector = ConfigSelection(default='head', choices=[
@@ -58,8 +58,10 @@ config.plugins.AglareNss.SecondInfobarStyle = ConfigSelection(default='secondinf
  ('secondinfobar_posters', _('SecondInfobar_Posters'))])
 config.plugins.AglareNss.ChannSelector = ConfigSelection(default='channellist_no_posters', choices=[
  ('channellist_no_posters', _('ChannelSelection_NO_Posters')),
- ('channellist_np_full', _('ChannelSelection_NO_Posters_Full')),  
+ ('channellist_np_full', _('ChannelSelection_NO_Posters_Full')),
+ ('channellist_no_posters_no_picon', _('ChannelSelection_NO_Posters_NO_Picon')),
  ('channellist_1_poster', _('ChannelSelection_1_Poster')),
+ ('channellist_3_posters_v', _('ChannelSelection_3_Posters_V')),
  ('channellist_4_posters', _('ChannelSelection_4_Posters')),
  ('channellist_big_mini_tv', _('ChannelSelection_big_mini_tv'))])
 config.plugins.AglareNss.EventView = ConfigSelection(default='eventview_no_posters', choices=[
@@ -295,8 +297,9 @@ class AglareSetup(ConfigListScreen, Screen):
             destr = '/tmp/AglareUpdate.txt'
             req = Request('http://nonsolosat.net/AglareImage/AglareUpdate.txt')
             req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36')
-            fp = str_encode(urlopen(req))
-            fp = fp.read()
+            fp = urlopen(req)
+            fp = fp.read().decode('utf-8')
+            print('fp read:', fp)
             with open(destr, 'w') as f:
                 f.write(str(fp))  # .decode("utf-8"))
                 f.seek(0)
@@ -308,8 +311,7 @@ class AglareSetup(ConfigListScreen, Screen):
                     url = s1.split('#')[1]
                     # print('vers', vers)
                     # print('url:', url)
-                    version_server = repr(vers)[2:-1]
-                    version_server = version_server.replace("'",'').strip()
+                    version_server = vers.strip()
                     self.updateurl = url.strip()
                     cc.close()
                     # print('Version plugin=', version)
@@ -334,31 +336,6 @@ class AglareSetup(ConfigListScreen, Screen):
         except Exception as e:
             print('error: ', str(e))
 
-    def gotError(self, error=''):
-        pass
-
-    def gotUpdateInfo(self, html):
-        html = html.decode("utf-8")
-        tmp_infolines = html.splitlines()
-        version_server = tmp_infolines[0]
-        self.updateurl = tmp_infolines[1]
-        if version_server == version:
-            message = '%s %s\n%s %s\n\n%s' % (_('Server version:'),
-             version_server,
-             _('Version installed:'),
-             version,
-             _('You have the current version Aglare!'))
-            self.session.open(MessageBox, message, MessageBox.TYPE_INFO)
-        elif version_server > version:
-            message = '%s %s\n%s %s\n\n%s' % (_('Server version:'),
-             version_server,
-             _('Version installed:'),
-             version,
-             _('The update is available!\n\nDo you want to run the update now?'))
-            self.session.openWithCallback(self.update, MessageBox, message, MessageBox.TYPE_YESNO)
-        else:
-            self.session.open(MessageBox, _('You have an experimental beta version!!!'), MessageBox.TYPE_ERROR)
-
     def update(self, answer):
         if answer is True:
             self.session.open(AglareUpdater, self.updateurl)
@@ -375,25 +352,39 @@ class AglareUpdater(Screen):
 
     def __init__(self, session, updateurl):
         self.session = session
-        self.updateurl = updateurl
-        skin = '\n\t\t<screen name="AglareUpdater" position="center,center" size="840,360" flags="wfNoBorder" backgroundColor="background">\n\t\t\t<widget name="status" position="20,10" size="800,70" transparent="1" font="Regular;16" foregroundColor="foreground" backgroundColor="background" valign="center" halign="left" noWrap="1" />\n\t\t\t<widget source="progress" render="Progress" position="100,153" size="400,6" transparent="1" borderWidth="0" />\n\t\t\t<widget source="progresstext" render="Label" position="333,184" zPosition="2" font="Regular;18" halign="center" transparent="1" size="180,20" foregroundColor="foreground" backgroundColor="background" />\n\t\t</screen>'
+        skin = '''
+                <screen name="AglareUpdater" position="center,center" size="840,360" flags="wfNoBorder" backgroundColor="background">
+                    <widget name="status" position="20,10" size="800,70" transparent="1" font="Regular;16" foregroundColor="foreground" backgroundColor="background" valign="center" halign="left" noWrap="1" />
+                    <widget source="progress" render="Progress" position="100,153" size="400,6" transparent="1" borderWidth="0" />
+                    <widget source="progresstext" render="Label" position="333,184" zPosition="2" font="Regular;18" halign="center" transparent="1" size="180,20" foregroundColor="foreground" backgroundColor="background" />
+                </screen>
+                '''
         self.skin = skin
-        Screen.__init__(self, session, updateurl)
+        Screen.__init__(self, session)
+        self.updateurl = updateurl
+        print('self.updateurl', self.updateurl)
         self['status'] = Label()
         self['progress'] = Progress()
         self['progresstext'] = StaticText()
+        self.icount = 0
+        self.downloading = False
+        self.last_recvbytes = 0
+        self.error_message = None
+        self.download = None
+        self.aborted = False
         self.startUpdate()
 
     def startUpdate(self):
         self['status'].setText(_('Downloading Aglare...'))
-        self.dlfile = '/tmp/xxx.tar.gz'
+        self.dlfile = '/tmp/xxx.tar'
+        print('self.dlfile', self.dlfile)
         self.download = downloadWithProgress(self.updateurl, self.dlfile)
         self.download.addProgress(self.downloadProgress)
         self.download.start().addCallback(self.downloadFinished).addErrback(self.downloadFailed)
 
     def downloadFinished(self, string=''):
         self['status'].setText(_('Installing updates!'))
-        os.system('cd /tmp/; tar -xzvf xxx*.tar.gz -C /; sync')
+        os.system('cd /tmp/; tar -xzvf xxx.tar -C /; sync')
         os.system('rm /tmp/xxx*.*')
         os.system('sync')
         restartbox = self.session.openWithCallback(self.restartGUI, MessageBox, _('Aglare update was done!!!\nDo you want to restart the GUI now?'), MessageBox.TYPE_YESNO)
@@ -408,8 +399,10 @@ class AglareUpdater(Screen):
         return
 
     def downloadProgress(self, recvbytes, totalbytes):
-        self['progress'].value = int(100 * recvbytes / float(totalbytes))
-        self['progresstext'].text = '%d of %d kBytes (%.2f%%)' % (recvbytes / 1024, totalbytes / 1024, 100 * recvbytes / float(totalbytes))
+        self['status'].setText(_('Download in progress...'))
+        self['progress'].value = int(100 * self.last_recvbytes / float(totalbytes))
+        self['progresstext'].text = '%d of %d kBytes (%.2f%%)' % (self.last_recvbytes / 1024, totalbytes / 1024, 100 * self.last_recvbytes / float(totalbytes))
+        self.last_recvbytes = recvbytes
 
     def restartGUI(self, answer):
         if answer is True:
