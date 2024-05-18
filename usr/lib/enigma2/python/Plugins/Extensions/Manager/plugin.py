@@ -252,7 +252,6 @@ class Manager(Screen):
                 if os.path.exists(dir_work + 'CCcamInfo.pyc') or os.path.exists(dir_work + 'CCcamInfo.pyo'):
                     BlueAction = 'CCCAMINFO'
                     self["key_blue"].setText("CCCAMINFO")
-
                 elif os.path.isfile(resolveFilename(SCOPE_PLUGINS, 'Extensions/CCcamInfo/plugin.pyc')):
                     # from Plugins.Extensions.CCcamInfo.plugin import CCcamInfoMain
                     # self.session.open(CCcamInfoMain)
@@ -361,8 +360,8 @@ class Manager(Screen):
         self.session.open(nssInfoCfg)
 
     def configtv(self):
-        from Plugins.Extensions.Manager.data.datas import nssConfig
-        self.session.open(nssConfig)
+        from Plugins.Extensions.Manager.data.datas import nssCamConfig
+        self.session.open(nssCamConfig)
 
     def cgdesc(self):
         if len(self.namelist) >= 1:

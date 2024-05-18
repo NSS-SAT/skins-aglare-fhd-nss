@@ -1,22 +1,26 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 
-"""
-Plugin RadioM is developed
-from Lululla to Mmark
-"""
+'''
+****************************************
+*        modded by Lululla             *
+*             26/04/2024               *
+****************************************
+# --------------------#
+# Info Linuxsat-support.com  corvoboys.org
+'''
 from __future__ import print_function
 from Components.AVSwitch import AVSwitch
 from Components.ActionMap import ActionMap
 from Components.Button import Button
 from Components.Label import Label
 from Components.MenuList import MenuList
-from Components.Pixmap import Pixmap
-from Components.ServiceEventTracker import InfoBarBase
 from Components.MultiContent import MultiContentEntryPixmapAlphaTest
 from Components.MultiContent import MultiContentEntryText
-from enigma import eListboxPythonMultiContent, gFont
+from Components.Pixmap import Pixmap
+from Components.ServiceEventTracker import InfoBarBase
 from Components.config import config
+from enigma import eListboxPythonMultiContent, gFont
 from Screens.InfoBarGenerics import InfoBarMenu, \
     InfoBarSeek, InfoBarNotifications, InfoBarShowHide
 from Screens.Screen import Screen
@@ -34,15 +38,12 @@ import os
 import sys
 import six
 import requests
-# import codecs
 try:
     from enigma import eMediaDatabase  # @UnresolvedImport @UnusedImport
     isDreamOS = True
 except:
     isDreamOS = False
 version = '1.0_r4'
-# THISPLUG = os.path.dirname(sys.modules[__name__].__file__)
-# skin_path = THISPLUG
 HD = getDesktop(0).size()
 iconpic = 'plugin.png'
 screenWidth = getDesktop(0).size().width()
@@ -56,20 +57,6 @@ if PY3:
 else:
     from urllib2 import urlopen
     from urllib2 import Request
-
-
-# def fhd(num, factor=1.5):
-    # if screenWidth and screenWidth >= 1920:
-        # prod = num * factor
-    # else:
-        # prod = num
-    # return int(round(prod))
-
-
-# if screenWidth >= 1920:
-    # skin_path = THISPLUG + '/skin/fhd'
-# else:
-    # skin_path = THISPLUG + '/skin/hd'
 
 
 HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0',
@@ -1163,13 +1150,3 @@ class PicLoader:
 
     def startDecode(self, f):
         self.picload.startDecode(f)
-
-
-# def main(session, **kwargs):
-    # global _session
-    # _session = session
-    # session.open(radiom1)
-
-
-# def Plugins(**kwargs):
-    # return PluginDescriptor(name='RadioM', description='RadioM from around the world V. ' + version, where=PluginDescriptor.WHERE_PLUGINMENU, icon='plugin.png', fnc=main)
