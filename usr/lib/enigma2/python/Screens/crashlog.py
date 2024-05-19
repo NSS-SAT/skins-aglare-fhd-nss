@@ -27,7 +27,7 @@ global Crashfile, path_folder_log
 
 Crashfile = " "
 version = '1.2'
-path_folder_log = '/media/hdd/'
+path_folder_log = '/home/root/logs/'
 
 
 def isMountReadonly(mnt):
@@ -48,7 +48,7 @@ def isMountReadonly(mnt):
 def crashlogPath():
     crashlogPath_found = False
     try:
-        path_folder_log = config.crash.debug_path.value
+        path_folder_log = config.usage.debug_path.value
     except KeyError:
         path_folder_log = None
     if path_folder_log is None:
@@ -62,7 +62,7 @@ def crashlogPath():
             if not isMountReadonly("/media/mmc"):
                 path_folder_log = "/media/mmc/"
         else:
-            path_folder_log = "/tmp/"
+            path_folder_log = "/home/root/logs/"
     for crashlog in os.listdir(path_folder_log):
         if crashlog.endswith(".log"):
             crashlogPath_found = True
