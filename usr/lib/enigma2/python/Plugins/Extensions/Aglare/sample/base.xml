@@ -7344,7 +7344,7 @@ MultiContentEntryPixmapAlphaTest(pos = (738, 5), size = (40, 40), png = 1),
         <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="31,30" size="947,977" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
-        <widget name="info" position="27,30" zPosition="4" size="836,45" font="Regular;35" foregroundColor="#ffc000" valign="center"/>
+        <widget name="info" position="995,627" zPosition="4" size="884,373" font="Regular;35" foregroundColor="#ffc000" valign="center"/>\
         <widget name="mylist" itemHeight="57" position="39,106" size="924,847" scrollbarMode="showOnDemand" zPosition="2"/>\
     </screen>
     <screen name="RSSFeedScreenItemviewer" position="center,68" size="1380,930" title="RSSFeedScreenItemviewer" flags="wfNoBorder">
