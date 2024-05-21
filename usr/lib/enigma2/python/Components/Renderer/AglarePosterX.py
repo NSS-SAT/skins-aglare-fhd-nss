@@ -12,18 +12,18 @@
 # by beber...03.2022,
 # 03.2022 several enhancements : several renders with one queue thread, google search (incl. molotov for france) + autosearch & autoclean thread ...
 # for infobar,
-# <widget source="session.Event_Now" render="ZPoster" position="100,100" size="185,278" />
-# <widget source="session.Event_Next" render="ZPoster" position="100,100" size="100,150" />
-# <widget source="session.Event_Now" render="ZPoster" position="100,100" size="185,278" nexts="2" />
-# <widget source="session.CurrentService" render="ZPoster" position="100,100" size="185,278" nexts="3" />
+# <widget source="session.Event_Now" render="AglarePosterX" position="100,100" size="185,278" />
+# <widget source="session.Event_Next" render="AglarePosterX" position="100,100" size="100,150" />
+# <widget source="session.Event_Now" render="AglarePosterX" position="100,100" size="185,278" nexts="2" />
+# <widget source="session.CurrentService" render="AglarePosterX" position="100,100" size="185,278" nexts="3" />
 
 # for ch,
-# <widget source="ServiceEvent" render="ZPoster" position="100,100" size="185,278" />
-# <widget source="ServiceEvent" render="ZPoster" position="100,100" size="185,278" nexts="2" />
+# <widget source="ServiceEvent" render="AglarePosterX" position="100,100" size="185,278" />
+# <widget source="ServiceEvent" render="AglarePosterX" position="100,100" size="185,278" nexts="2" />
 
 # for epg, event
-# <widget source="Event" render="ZPoster" position="100,100" size="185,278" />
-# <widget source="Event" render="ZPoster" position="100,100" size="185,278" nexts="2" />
+# <widget source="Event" render="AglarePosterX" position="100,100" size="185,278" />
+# <widget source="Event" render="AglarePosterX" position="100,100" size="185,278" nexts="2" />
 # or put tag -->  path="/media/hdd/poster"
 from __future__ import print_function
 from Components.Renderer.Renderer import Renderer
@@ -60,9 +60,6 @@ else:
     from thread import start_new_thread
     from urllib2 import HTTPError, URLError
     from urllib2 import urlopen
-
-
-epgcache = eEPGCache.getInstance()
 
 
 def isMountReadonly(mnt):
@@ -163,8 +160,8 @@ else:
 
 try:
     folder_size = sum([sum(map(lambda fname: os.path.getsize(os.path.join(path_folder, fname)), files)) for folder_p, folders, files in os.walk(path_folder)])
-    ozposter = "%0.f" % (folder_size / (1024 * 1024.0))
-    if ozposter >= "5":
+    oAglarePosterX = "%0.f" % (folder_size / (1024 * 1024.0))
+    if oAglarePosterX >= "5":
         shutil.rmtree(path_folder)
 except:
     pass
@@ -249,11 +246,31 @@ def str_encode(text, encoding="utf8"):
         return text
 
 
+def cutName(eventName=""):
+    if eventName:
+        eventName = eventName.replace('"', '').replace('Х/Ф', '').replace('М/Ф', '').replace('Х/ф', '').replace('.', '').replace(' | ', '')
+        eventName = eventName.replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '')
+        eventName = eventName.replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '')
+        eventName = eventName.replace('(0+)', '').replace('0+', '').replace('+', '')
+        return eventName
+    return ""
+
+
+def getCleanTitle(eventitle=""):
+    save_name = re.sub('\ \(\d+\)$', '', eventitle)
+    save_name = re.sub('\ \(\d+\/\d+\)$', '', save_name)  # remove episode-number " (xx/xx)" at the end
+    # save_name = re.sub('\ |\?|\.|\,|\!|\/|\;|\:|\@|\&|\'|\-|\"|\%|\(|\)|\[|\]\#|\+', '', save_name)
+    save_name = save_name.replace(' ^`^s', '').replace(' ^`^y', '')
+    return save_name
+
+
 def convtext(text=''):
     try:
         if text != '' or text is not None or text != 'None':
             print('original text: ', text)
-            text = text.replace("\xe2\x80\x93", "").replace('\xc2\x86', '').replace('\xc2\x87', '')  # replace special
+            text = cutName(text)
+            text = getCleanTitle(text)
+            # text = text.replace("\xe2\x80\x93", "").replace('\xc2\x86', '').replace('\xc2\x87', '')  # replace special
             text = text.lower()
             text = text.replace('1^ visione rai', '').replace('1^ visione', '').replace('primatv', '').replace('1^tv', '')
             text = text.replace('prima visione', '').replace('1^ tv', '').replace('((', '(').replace('))', ')')
@@ -375,6 +392,7 @@ class PosterAutoDB(AglarePosterXDownloadThread):
         while True:
             time.sleep(7200)  # 7200 - Start every 2 hours
             self.logAutoDB("[AutoDB] *** Running ***")
+            pstcanal = ''
             # AUTO ADD NEW FILES - 1440 (24 hours ahead)
             for service in apdb.values():
                 try:
@@ -443,7 +461,7 @@ class PosterAutoDB(AglarePosterXDownloadThread):
                 if diff_tm > 120 and os.path.getsize(path_folder + '/' + f) == 0:  # Detect empty files > 2 minutes
                     os.remove(path_folder + '/' + f)
                     emptyfd += 1
-                if diff_tm > 432000:  # Detect old files > 5 days old
+                if diff_tm > 31536000:  # Detect old files > 365 days old
                     os.remove(path_folder + '/' + f)
                     oldfd = oldfd + 1
             self.logAutoDB("[AutoDB] {} old file(s) removed".format(oldfd))
@@ -474,13 +492,13 @@ class AglarePosterX(Renderer):
         self.canal = [None, None, None, None, None, None]
         self.oldCanal = None
         self.logdbg = None
+        self.pstcanal = ''                          
         self.timer = eTimer()
         try:
             self.timer_conn = self.timer.timeout.connect(self.showPoster)
         except:
             self.timer.callback.append(self.showPoster)
         self.timer.start(10, True)
-        # ~ self.timer.callback.append(self.showPoster)
 
     def applySkin(self, desktop, parent):
         attribs = []
@@ -559,7 +577,7 @@ class AglarePosterX(Renderer):
                 self.oldCanal = curCanal
                 self.logPoster("Service: {} [{}] : {} : {}".format(servicetype, self.nxts, self.canal[0], self.oldCanal))
                 pstcanal = convtext(self.canal[5])
-                pstrNm = self.path + '/' + pstcanal + ".jpg"
+                pstrNm = self.path + '/' + str(pstcanal) + ".jpg"
                 self.pstcanal = str(pstrNm)
                 if os.path.exists(self.pstcanal):
                     self.timer.start(10, True)
@@ -579,7 +597,7 @@ class AglarePosterX(Renderer):
         if self.canal[5]:
             if not os.path.exists(self.pstcanal):
                 pstcanal = convtext(self.canal[5])
-                pstrNm = self.path + '/' + pstcanal + ".jpg"
+                pstrNm = self.path + '/' + str(pstcanal) + ".jpg"
                 self.pstcanal = str(pstrNm)
             if os.path.exists(self.pstcanal):
                 self.logPoster("[LOAD : showPoster] {}".format(self.pstcanal))
@@ -593,7 +611,7 @@ class AglarePosterX(Renderer):
         if self.canal[5]:
             if not os.path.exists(self.pstcanal):
                 pstcanal = convtext(self.canal[5])
-                pstrNm = self.path + '/' + pstcanal + ".jpg"
+                pstrNm = self.path + '/' + str(pstcanal) + ".jpg"
                 self.pstcanal = str(pstrNm)
             loop = 180
             found = None
