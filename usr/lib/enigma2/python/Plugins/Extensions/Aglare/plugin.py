@@ -54,6 +54,7 @@ config.plugins.AglareNss.skinSelector = ConfigSelection(default='base', choices=
  ('base', _('Default'))])
 config.plugins.AglareNss.InfobarStyle = ConfigSelection(default='infobar_no_posters', choices=[
  ('infobar_no_posters', _('Infobar_NO_Posters')),
+ ('infobar_posters_meteo', _('Infobar_Posters_Meteo')),
  ('infobar_posters', _('Infobar_Posters'))])
 config.plugins.AglareNss.SecondInfobarStyle = ConfigSelection(default='secondinfobar_no_posters', choices=[
  ('secondinfobar_no_posters', _('SecondInfobar_NO_Posters')),
