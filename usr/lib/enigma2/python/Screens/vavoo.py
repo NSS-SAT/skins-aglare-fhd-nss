@@ -8,6 +8,18 @@
 ****************************************
 # --------------------#
 # Info Linuxsat-support.com  corvoboys.org
+put to menu.xml this:
+
+<!--  <id val="mainmenu"/>  -->
+ 
+<item weight="11" level="0" text="NSS Vavoo Stream Live" entryID="vavoo">
+<code>
+from Screens.vavoo import MainVavoo
+self.session.open(MainVavoo)  
+</code>
+</item>
+
+
 '''
 from __future__ import print_function
 from Components.AVSwitch import AVSwitch
@@ -54,7 +66,6 @@ PY3 = sys.version_info[0] == 3
 if PY3:
     bytes = bytes
     unicode = str
-    range = range
     from urllib.request import urlopen
     from urllib.request import Request
     string_types = str,
@@ -89,8 +100,8 @@ else:
             MAXSIZE = int((1 << 63) - 1)
         del X
 
-currversion = '1.0'
-title_plug = 'Vavoo '
+currversion = '1.1'
+title_plug = 'Vavoo'
 desc_plugin = ('..:: Vavoo by Lululla %s ::.. ' % currversion)
 stripurl = 'aHR0cHM6Ly92YXZvby50by9jaGFubmVscw=='
 searchurl = 'aHR0cHM6Ly90aXZ1c3RyZWFtLndlYnNpdGUvcGhwX2ZpbHRlci9rb2RpMTkva29kaTE5LnBocD9tb2RlPW1vdmllJnF1ZXJ5PQ=='
@@ -265,7 +276,7 @@ Panel_list = ("Albania", "Arabia", "Balkans", "Bulgaria",
 def show_(name, link):
     res = [(name, link)]
     cur_skin = config.skin.primary_skin.value.replace('/skin.xml', '')
-    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/mainmenu/vavoo_ico.png"
+    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/vavoo/vavoo_ico.png"
     if any(s in name for s in Panel_list):
         pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + '/vavoo/%s.png' % str(name)
     if os.path.isfile(pngx):
@@ -273,24 +284,6 @@ def show_(name, link):
     res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 5), size=(60, 40), png=loadPNG(pngx)))
     res.append(MultiContentEntryText(pos=(85, 0), size=(600, 50), font=0, text=name, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
     return res
-
-
-# Panel_list = [
-    # ('Albania'),
-    # ('Arabia'),
-    # ('Balkans'),
-    # ('Bulgaria'),
-    # ('France'),
-    # ('Germany'),
-    # ('Italy'),
-    # ('Netherlands'),
-    # ('Poland'),
-    # ('Portugal'),
-    # ('Romania'),
-    # ('Russia'),
-    # ('Spain'),
-    # ('Turkey'),
-    # ('United Kingdom')]
 
 
 class MainVavoox(Screen):
@@ -303,7 +296,7 @@ class MainVavoox(Screen):
         self['menulist'] = m2list([])
         self['red'] = Label(_('Exit'))
         self['green'] = Label(_('Remove'))
-        self['Title'] = Label(title_plug)
+        self['titel'] = Label('X VAVOO')
         self['name'] = Label('')
         self['text'] = Label('Vavoo Stream Live by Lululla')
         self.currentList = 'menulist'
@@ -393,7 +386,7 @@ class MainVavoox(Screen):
         name = self['menulist'].getCurrent()[0][0]
         url = self['menulist'].getCurrent()[0][1]
         try:
-            self.session.open(vavoo, name, url)
+            self.session.open(vavoox, name, url)
         except Exception as e:
             print(e)
 
@@ -426,7 +419,7 @@ class MainVavoox(Screen):
                 raise
 
 
-class vavoo(Screen):
+class vavoox(Screen):
     def __init__(self, session, name, url):
         self.session = session
         global _session
@@ -436,7 +429,7 @@ class vavoo(Screen):
         self['menulist'] = m2list([])
         self['red'] = Label(_('Back'))
         self['green'] = Label(_('Export'))
-        self['Title'] = Label(title_plug)
+        self['titel'] = Label('X VAVOO')
         self['name'] = Label('')
         self['text'] = Label('Vavoo Stream Live by Lululla')
         self.currentList = 'menulist'
