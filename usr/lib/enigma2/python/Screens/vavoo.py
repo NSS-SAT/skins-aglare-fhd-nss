@@ -11,11 +11,11 @@
 put to menu.xml this:
 
 <!--  <id val="mainmenu"/>  -->
- 
+
 <item weight="11" level="0" text="NSS Vavoo Stream Live" entryID="vavoo">
 <code>
 from Screens.vavoo import MainVavoo
-self.session.open(MainVavoo)  
+self.session.open(MainVavoo)
 </code>
 </item>
 
@@ -100,9 +100,9 @@ else:
             MAXSIZE = int((1 << 63) - 1)
         del X
 
-currversion = '1.1'
+currversion = '1.2'
 title_plug = 'Vavoo'
-desc_plugin = ('..:: Vavoo by Lululla %s ::.. ' % currversion)
+desc_plugin = ('..:: Vavoo by Lululla %s ::..' % currversion)
 stripurl = 'aHR0cHM6Ly92YXZvby50by9jaGFubmVscw=='
 searchurl = 'aHR0cHM6Ly90aXZ1c3RyZWFtLndlYnNpdGUvcGhwX2ZpbHRlci9rb2RpMTkva29kaTE5LnBocD9tb2RlPW1vdmllJnF1ZXJ5PQ=='
 _session = None
@@ -178,7 +178,6 @@ if PY3:
             response = urlopen(req, timeout=20)
             link = response.read().decode(errors='ignore')
             response.close()
-            # return link
         except:
             import ssl
             gcontext = ssl._create_unverified_context()
@@ -263,7 +262,7 @@ class m2list(MenuList):
     def __init__(self, list):
         MenuList.__init__(self, list, False, eListboxPythonMultiContent)
         self.l.setItemHeight(50)
-        textfont = int(34)
+        textfont = int(45)
         self.l.setFont(0, gFont('Regular', textfont))
 
 
@@ -276,7 +275,7 @@ Panel_list = ("Albania", "Arabia", "Balkans", "Bulgaria",
 def show_(name, link):
     res = [(name, link)]
     cur_skin = config.skin.primary_skin.value.replace('/skin.xml', '')
-    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/vavoo/vavoo_ico.png"
+    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/vavoo/Internat.png"
     if any(s in name for s in Panel_list):
         pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + '/vavoo/%s.png' % str(name)
     if os.path.isfile(pngx):
@@ -285,6 +284,15 @@ def show_(name, link):
     res.append(MultiContentEntryText(pos=(85, 0), size=(600, 50), font=0, text=name, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
     return res
 
+
+def show2_(name, link):
+    res = [(name, link)]
+    cur_skin = config.skin.primary_skin.value.replace('/skin.xml', '')
+    pngx = os_path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + '/vavoo/vavoo_ico.png'
+    if os.path.isfile(pngx):
+        res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 5), size=(40, 40), png=loadPNG(pngx)))
+        res.append(MultiContentEntryText(pos=(65, 0), size=(600, 50), font=0, text=name, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
+    return res
 
 class MainVavoox(Screen):
     def __init__(self, session):
@@ -296,9 +304,7 @@ class MainVavoox(Screen):
         self['menulist'] = m2list([])
         self['red'] = Label(_('Exit'))
         self['green'] = Label(_('Remove'))
-        self['titel'] = Label('X VAVOO')
         self['name'] = Label('')
-        self['text'] = Label('Vavoo Stream Live by Lululla')
         self.currentList = 'menulist'
         self.loading_ok = False
         self.count = 0
@@ -322,7 +328,6 @@ class MainVavoox(Screen):
             self.timer_conn = self.timer.timeout.connect(self.cat)
         except:
             self.timer.callback.append(self.cat)
-        # self.timer.callback.append(self.cat)
         self.timer.start(500, True)
 
     def info(self):
@@ -429,9 +434,7 @@ class vavoox(Screen):
         self['menulist'] = m2list([])
         self['red'] = Label(_('Back'))
         self['green'] = Label(_('Export'))
-        self['titel'] = Label('X VAVOO')
         self['name'] = Label('')
-        self['text'] = Label('Vavoo Stream Live by Lululla')
         self.currentList = 'menulist'
         self.loading_ok = False
         self.count = 0
@@ -440,6 +443,7 @@ class vavoox(Screen):
         self.url = url
         self['actions'] = ActionMap(['OkCancelActions',
                                      'ColorActions',
+                                     'EPGSelectActions',
                                      'DirectionActions',
                                      'MovieSelectionActions'], {'up': self.up,
                                                                 'down': self.down,
@@ -455,7 +459,6 @@ class vavoox(Screen):
             self.timer_conn = self.timer.timeout.connect(self.cat)
         except:
             self.timer.callback.append(self.cat)
-        # self.timer.callback.append(self.cat)
         self.timer.start(500, True)
 
     def info(self):
@@ -507,7 +510,7 @@ class vavoox(Screen):
                 for item in items:
                     name = item.split('###')[0]
                     url = item.split('###')[1]
-                    self.cat_list.append(show_(name, url))
+                    self.cat_list.append(show2_(name, url))
                     # make m3u
                     nname = '#EXTINF:-1,' + str(name) + '\n'
                     outfile.write(nname)
@@ -524,15 +527,21 @@ class vavoox(Screen):
             print(e)
 
     def ok(self):
-        name = self['menulist'].getCurrent()[0][0]
-        url = self['menulist'].getCurrent()[0][1]
         try:
-            self.play_that_shit(url, name)
+            i = self['menulist'].getSelectedIndex()
+            self.currentindex = i
+            # print('self.currentindex=', self.currentindex)
+            selection = self['menulist'].l.getCurrentSelection()
+            if selection is not None:
+                item = self.cat_list[i][0]
+                name = item[0]
+                url = item[1]
+            self.play_that_shit(url, name, self.currentindex, item, self.cat_list)
         except Exception as e:
             print(e)
 
-    def play_that_shit(self, url, name):
-        self.session.open(Playstream2, name, url)
+    def play_that_shit(self, url, name, index, item, cat_list):
+        self.session.open(Playstream2, name, url, index, item, cat_list)
 
     def message2(self, answer=None):
         if answer is None:
@@ -712,12 +721,16 @@ class Playstream2(
     ALLOW_SUSPEND = True
     screen_timeout = 5000
 
-    def __init__(self, session, name, url):
+    def __init__(self, session, name, url, index, item, cat_list):
         global streaml, _session
         Screen.__init__(self, session)
         self.session = session
         _session = session
         self.skinName = 'MoviePlayer'
+        self.currentindex = index
+        self.item = item
+        self.itemscount = len(cat_list)
+        self.list = cat_list
         streaml = False
         for x in InfoBarBase, \
                 InfoBarMenu, \
@@ -741,17 +754,22 @@ class Playstream2(
                                      'MovieSelectionActions',
                                      'MediaPlayerActions',
                                      'EPGSelectActions',
-                                     'MediaPlayerSeekActions',
-                                     'ColorActions',
+                                     # 'MediaPlayerSeekActions',
+                                     # 'ColorActions',
                                      'OkCancelActions',
                                      'InfobarShowHideActions',
                                      'InfobarActions',
+                                     # 'InfobarSeekActions',
                                      'InfobarSeekActions'], {'epg': self.showIMDB,
                                                              'info': self.showIMDB,
                                                              # 'info': self.cicleStreamType,
                                                              'tv': self.cicleStreamType,
                                                              'stop': self.leavePlayer,
                                                              'cancel': self.cancel,
+                                                             'channelDown': self.previousitem,
+                                                             'channelUp': self.nextitem,
+                                                             'down': self.previousitem,
+                                                             'up': self.nextitem,
                                                              'back': self.cancel}, -1)
         if '8088' in str(self.url):
             # self.onLayoutFinish.append(self.slinkPlay)
@@ -760,6 +778,28 @@ class Playstream2(
             # self.onLayoutFinish.append(self.cicleStreamType)
             self.onFirstExecBegin.append(self.cicleStreamType)
         self.onClose.append(self.cancel)
+
+    def nextitem(self):
+        currentindex = int(self.currentindex) + 1
+        if currentindex == self.itemscount:
+            currentindex = 0
+        self.currentindex = currentindex
+        i = self.currentindex
+        item = self.list[i][0]
+        self.name = item[0]
+        self.url = item[1]
+        self.cicleStreamType()
+
+    def previousitem(self):
+        currentindex = int(self.currentindex) - 1
+        if currentindex < 0:
+            currentindex = self.itemscount - 1
+        self.currentindex = currentindex
+        i = self.currentindex
+        item = self.list[i][0]
+        self.name = item[0]
+        self.url = item[1]
+        self.cicleStreamType()
 
     def getAspect(self):
         return AVSwitch().getAspectRatioSetting()
@@ -788,15 +828,21 @@ class Playstream2(
             pass
 
     def av(self):
-        temp = int(self.getAspect())
-        temp = temp + 1
-        if temp > 6:
-            temp = 0
-        self.new_aspect = temp
-        self.setAspect(temp)
+        self.new_aspect += 1
+        if self.new_aspect > 6:
+            self.new_aspect = 0
+        try:
+            AVSwitch.getInstance().setAspectRatio(self.new_aspect)
+            return VIDEO_ASPECT_RATIO_MAP[self.new_aspect]
+        except Exception as e:
+            print(e)
+            return _("Resolution Change Failed")
+
+    def nextAV(self):
+        message = self.av()
+        self.session.open(MessageBox, message, type=MessageBox.TYPE_INFO, timeout=1)
 
     def showinfo(self):
-        # debug = True
         sTitle = ''
         sServiceref = ''
         try:
@@ -887,12 +933,6 @@ class Playstream2(
         print('servicetype2: ', self.servicetype)
         self.openTest(self.servicetype, url)
 
-    def up(self):
-        pass
-
-    def down(self):
-        self.up()
-
     def doEofInternal(self, playing):
         self.close()
 
@@ -925,6 +965,17 @@ class Playstream2(
 
     def leavePlayer(self):
         self.close()
+
+
+VIDEO_ASPECT_RATIO_MAP = {
+    0: "4:3 Letterbox",
+    1: "4:3 PanScan",
+    2: "16:9",
+    3: "16:9 Always",
+    4: "16:10 Letterbox",
+    5: "16:10 PanScan",
+    6: "16:9 Letterbox"}
+VIDEO_FMT_PRIORITY_MAP = {"38": 1, "37": 2, "22": 3, "18": 4, "35": 5, "34": 6}
 
 
 def decodeHtml(text):
@@ -1022,61 +1073,60 @@ def decodeHtml(text):
 
 
 ListAgent = [
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
-          'Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2919.83 Safari/537.36',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.15 (KHTML, like Gecko) Chrome/24.0.1295.0 Safari/537.15',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.14 (KHTML, like Gecko) Chrome/24.0.1292.0 Safari/537.14',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-          'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-          'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1284.0 Safari/537.13',
-          'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.940.0 Safari/535.8',
-          'Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-          'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-          'Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20120716 Firefox/15.0a2',
-          'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.16) Gecko/20120427 Firefox/15.0a1',
-          'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20120427 Firefox/15.0a1',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:15.0) Gecko/20120910144328 Firefox/15.0.2',
-          'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0a2) Gecko/20111101 Firefox/9.0a2',
-          'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110613 Firefox/6.0a2',
-          'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110612 Firefox/6.0a2',
-          'Mozilla/5.0 (Windows NT 6.1; rv:6.0) Gecko/20110814 Firefox/6.0',
-          'Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; SV1; .NET CLR 2.0.50727; WOW64)',
-          'Mozilla/4.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Macintosh; Intel Mac OS X 10_7_3; Trident/6.0)',
-          'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0;  it-IT)',
-          'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; chromeframe/13.0.782.215)',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; chromeframe/11.0.696.57)',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0) chromeframe/10.0.648.205',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/4.0; GTB7.4; InfoPath.1; SV1; .NET CLR 2.8.52393; WOW64; en-US)',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0; chromeframe/11.0.696.57)',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/4.0; GTB7.4; InfoPath.3; SV1; .NET CLR 3.1.76908; WOW64; en-US)',
-          'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; GTB7.4; InfoPath.2; SV1; .NET CLR 3.3.69573; WOW64; en-US)',
-          'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 1.0.3705; .NET CLR 1.1.4322)',
-          'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; InfoPath.1; SV1; .NET CLR 3.8.36217; WOW64; en-US)',
-          'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727)',
-          'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; it-IT)',
-          'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)',
-          'Opera/9.80 (X11; Linux i686; Ubuntu/14.10) Presto/2.12.388 Version/12.16.2',
-          'Opera/12.80 (Windows NT 5.1; U; en) Presto/2.10.289 Version/12.02',
-          'Opera/9.80 (Windows NT 6.1; U; es-ES) Presto/2.9.181 Version/12.00',
-          'Opera/9.80 (Windows NT 5.1; U; zh-sg) Presto/2.9.181 Version/12.00',
-          'Opera/12.0(Windows NT 5.2;U;en)Presto/22.9.168 Version/12.00',
-          'Opera/12.0(Windows NT 5.1;U;en)Presto/22.9.168 Version/12.00',
-          'Mozilla/5.0 (Windows NT 5.1) Gecko/20100101 Firefox/14.0 Opera/12.0',
-          'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.3 Safari/534.53.10',
-          'Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko ) Version/5.1 Mobile/9B176 Safari/7534.48.3',
-          ]
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36',
+    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2919.83 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.15 (KHTML, like Gecko) Chrome/24.0.1295.0 Safari/537.15',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.14 (KHTML, like Gecko) Chrome/24.0.1292.0 Safari/537.14',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
+    'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
+    'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1284.0 Safari/537.13',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.940.0 Safari/535.8',
+    'Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
+    'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
+    'Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20120716 Firefox/15.0a2',
+    'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.16) Gecko/20120427 Firefox/15.0a1',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20120427 Firefox/15.0a1',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:15.0) Gecko/20120910144328 Firefox/15.0.2',
+    'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0a2) Gecko/20111101 Firefox/9.0a2',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110613 Firefox/6.0a2',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110612 Firefox/6.0a2',
+    'Mozilla/5.0 (Windows NT 6.1; rv:6.0) Gecko/20110814 Firefox/6.0',
+    'Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0',
+    'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)',
+    'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
+    'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)',
+    'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; SV1; .NET CLR 2.0.50727; WOW64)',
+    'Mozilla/4.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)',
+    'Mozilla/5.0 (compatible; MSIE 10.0; Macintosh; Intel Mac OS X 10_7_3; Trident/6.0)',
+    'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0;  it-IT)',
+    'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
+    'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; chromeframe/13.0.782.215)',
+    'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; chromeframe/11.0.696.57)',
+    'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0) chromeframe/10.0.648.205',
+    'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/4.0; GTB7.4; InfoPath.1; SV1; .NET CLR 2.8.52393; WOW64; en-US)',
+    'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0; chromeframe/11.0.696.57)',
+    'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/4.0; GTB7.4; InfoPath.3; SV1; .NET CLR 3.1.76908; WOW64; en-US)',
+    'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; GTB7.4; InfoPath.2; SV1; .NET CLR 3.3.69573; WOW64; en-US)',
+    'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 1.0.3705; .NET CLR 1.1.4322)',
+    'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; InfoPath.1; SV1; .NET CLR 3.8.36217; WOW64; en-US)',
+    'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727)',
+    'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; it-IT)',
+    'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)',
+    'Opera/9.80 (X11; Linux i686; Ubuntu/14.10) Presto/2.12.388 Version/12.16.2',
+    'Opera/12.80 (Windows NT 5.1; U; en) Presto/2.10.289 Version/12.02',
+    'Opera/9.80 (Windows NT 6.1; U; es-ES) Presto/2.9.181 Version/12.00',
+    'Opera/9.80 (Windows NT 5.1; U; zh-sg) Presto/2.9.181 Version/12.00',
+    'Opera/12.0(Windows NT 5.2;U;en)Presto/22.9.168 Version/12.00',
+    'Opera/12.0(Windows NT 5.1;U;en)Presto/22.9.168 Version/12.00',
+    'Mozilla/5.0 (Windows NT 5.1) Gecko/20100101 Firefox/14.0 Opera/12.0',
+    'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.3 Safari/534.53.10',
+    'Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko ) Version/5.1 Mobile/9B176 Safari/7534.48.3']
 
 
 def RequestAgent():

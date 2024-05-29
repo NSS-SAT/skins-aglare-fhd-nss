@@ -1,7 +1,8 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: AglarePlugin\n"
-"POT-Creation-Date: 2024-05-13 20:06+0200\n"
+"POT-Creation-Date: 2024-05-13 20:04+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -10,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.2\n"
-"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: plugin.py\n"
 
 #: plugin.py:40 plugin.py:49 plugin.py:54 plugin.py:75
@@ -163,31 +164,29 @@ msgstr ""
 
 #: plugin.py:287
 msgid "Error by processing the skin file !!!"
-msgstr "Errore nella creazione della nuova skin !!!"
+msgstr ""
 
 #: plugin.py:289
 msgid ""
 "GUI needs a restart to apply a new skin.\n"
 "Do you want to Restart the GUI now?"
 msgstr ""
-"L'interfaccia necessita il riavvio per applicare la nuova skin.\n"
-"Vuoi riavviare l'interfaccia grafica adesso?"
 
 #: plugin.py:290 plugin.py:395
 msgid "Restart GUI now?"
-msgstr "Riavvia Interfaccia Grafica ora?"
+msgstr ""
 
 #: plugin.py:325 plugin.py:332
 msgid "Server version:"
-msgstr "Versione sul server:"
+msgstr ""
 
 #: plugin.py:327 plugin.py:334
 msgid "Version installed:"
-msgstr "Versione Installata:"
+msgstr ""
 
 #: plugin.py:329
 msgid "You have the current version Aglare!"
-msgstr "La versione presente è l'ultima versione di Aglare!"
+msgstr ""
 
 #: plugin.py:336
 msgid ""
@@ -195,14 +194,11 @@ msgid ""
 "\n"
 "Do you want to run the update now?"
 msgstr ""
-"Nuovo aggiornamento disponibile!!\n"
-"Vuoi aggiornare il plugin?\n"
-"Si prega di riavviare l'interfaccia grafica dopo l'installazione!"
 
 #: plugin.py:339
 #, python-format
 msgid "You have version %s!!!"
-msgstr "Hai la versione %s!!!"
+msgstr ""
 
 #: plugin.py:382
 msgid "Downloading Aglare..."
@@ -210,15 +206,13 @@ msgstr ""
 
 #: plugin.py:390
 msgid "Installing updates!"
-msgstr "Aggiornamento installato!"
+msgstr ""
 
 #: plugin.py:394
 msgid ""
 "Aglare update was done!!!\n"
 "Do you want to restart the GUI now?"
 msgstr ""
-"L'aggiornamento è concluso!!!\n"
-"Vuoi riavviare l'interfaccia grafica?"
 
 #: plugin.py:398
 msgid "Error downloading files!"
