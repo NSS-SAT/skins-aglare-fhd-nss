@@ -525,12 +525,17 @@
         <ePixmap position="0,0" size="1920,1080" pixmap="vavoo/main.png" alphatest="blend" zPosition="-1" />
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80" />
         <eLabel backgroundColor="#00ff0000" position="108,1018" size="300,6" zPosition="12" />
-        <eLabel backgroundColor="#0000ff00" position="522,1020" size="300,6" zPosition="12" />  
+        <eLabel backgroundColor="#0000ff00" position="407,1020" size="300,6" zPosition="12" /> 
+        <eLabel backgroundColor="#00ffff00" position="707,1019" size="300,6" zPosition="12" />
+        <eLabel backgroundColor="#000000ff" position="1007,1019" size="300,6" zPosition="12" />
         <eLabel name="" position="31,30" size="900,980" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2" />
         <widget name="name" position="107,879" size="714,82" noWrap="1" zPosition="1" transparent="1" font="Regular;38" valign="center" halign="center" backgroundColor="#30000000" foregroundColor="#00ffffff" />
         <widget name="menulist" position="135,182" size="659,650" zPosition="1" scrollbarMode="showNever" transparent="1" backgroundColor="#ffffff" foregroundColor="#ffccff" backgroundColorSelected="#914167" foregroundColorSelected="#ffffcc" />
         <widget name="red" font="Regular;30" halign="center" valign="center" position="107,961" size="300,58" backgroundColor="#30000000" foregroundColor="#00ffffff" transparent="1" zPosition="1" />
-        <widget name="green" font="Regular;30" halign="center" valign="center" position="521,961" size="300,58" backgroundColor="#0000ff00" foregroundColor="#00ffffff" transparent="1" zPosition="1" />
+        <widget name="green" font="Regular;30" halign="center" valign="center" position="406,961" size="300,58" backgroundColor="#0000ff00" foregroundColor="#00ffffff" transparent="1" zPosition="1" />
+        <widget name="yellow" font="Regular;30" halign="center" valign="center" position="706,961" size="300,58" backgroundColor="#0000ff00" foregroundColor="#00ffffff" transparent="1" zPosition="1" />
+        <widget name="blue" font="Regular;30" halign="center" valign="center" position="1006,961" size="300,58" backgroundColor="#0000ff00" foregroundColor="#00ffffff" transparent="1" zPosition="1" />
+        <widget name="version" position="1811,973" size="100,35" noWrap="1" zPosition="1" transparent="1" font="Regular;24" valign="center" halign="center" backgroundColor="#30000000" foregroundColor="#00ffffff" />
         <eLabel name="" position="1834,1018" size="75,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="cvfont; 24" zPosition="3" text="INFO" />
         <eLabel name="" position="1770,1018" size="64,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="cvfont; 24" zPosition="3" text="CH+" />
         <eLabel name="" position="1706,1018" size="64,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="cvfont; 24" zPosition="3" text="CH-" />
