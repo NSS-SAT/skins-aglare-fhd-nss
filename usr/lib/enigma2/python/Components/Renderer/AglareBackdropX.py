@@ -328,7 +328,7 @@ def convtext(text=''):
             print('original text: ', text)
             text = remove_accents(text)
             print('remove_accents text: ', text)
-            text = UNAC(text)
+
             text = cutName(text)
             text = getCleanTitle(text)
             text = get_safe_filename(text)
@@ -361,9 +361,10 @@ def convtext(text=''):
             if 'skytg24' in text:
                 text = 'skytg24'
             # for oden2014
-            if ' - ح - ' in text:
+            if '- ح -' in text:
                 print('1 text episode:', text)
-                text = text.partition(' - ح - ')[0] 
+                pattern = r'- ح -.*'
+                text = re.sub(pattern, '', text)
                 print('2 text episode:', text)
 
             if text.endswith("the"):
@@ -384,9 +385,9 @@ def convtext(text=''):
             text = text.partition(" -")[0]  # .strip()
             text = re.sub(' - +.+?FIN', '', text)  # all episodes and series ????
             text = re.sub('FIN', '', text)
-            text = re.sub(r'^\|[\w\-\|]*\|', '', text)
-            text = re.sub(r"[-,?!/\.\":]", '', text)  # replace (- or , or ! or / or . or " or :) by space
-
+            # text = re.sub(r'^\|[\w\-\|]*\|', '', text)
+            # text = re.sub(r"[-,?!/\.\":]", '', text)  # replace (- or , or ! or / or . or " or :) by space
+            text = UNAC(text)
             text = text.strip()
             text = text.capitalize()
             # print('Final text: ', text)
