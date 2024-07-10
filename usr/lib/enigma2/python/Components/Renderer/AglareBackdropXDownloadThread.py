@@ -11,9 +11,10 @@ import requests
 import socket
 import sys
 import threading
+from enigma import getDesktop
 from Components.config import config
 
-global my_cur_skin
+global my_cur_skin, srch
 
 PY3 = False
 if sys.version_info[0] >= 3:
@@ -78,8 +79,15 @@ except:
     my_cur_skin = False
 
 
-# isz = "original"
-isz = "w300"
+isz = "300,450"
+screenwidth = getDesktop(0).size()
+if screenwidth.width() <= 1280:
+    isz = isz.replace(isz, "300,450")
+elif screenwidth.width() <= 1920:
+    isz = isz.replace(isz, "780,1170")
+else:
+    isz = isz.replace(isz, "1280,1920")
+
 
 '''
 isz = "w780"
@@ -172,7 +180,7 @@ class AglareBackdropXDownloadThread(threading.Thread):
             backdrop = requests.get(url_tmdb).json()
             if backdrop and backdrop['results'] and backdrop['results'][0] and backdrop['results'][0]['backdrop_path']:
                 if backdrop and backdrop != 'null' or backdrop is not None or backdrop != '':
-                    url_backdrop = "https://image.tmdb.org/t/p/{}{}".format(str(isz.split(",")[0]), backdrop['results'][0]['backdrop_path'])
+                    url_backdrop = "https://image.tmdb.org/t/p/w{}{}".format(str(isz.split(",")[0]), backdrop['results'][0]['backdrop_path'])
                     self.savebackdrop(dwn_backdrop, url_backdrop)
                     if self.verifybackdrop(dwn_backdrop):
                         self.resizebackdrop(dwn_backdrop)
@@ -655,7 +663,7 @@ class AglareBackdropXDownloadThread(threading.Thread):
             fd = fulldesc.splitlines()[0]
         else:
             fd = ''
-
+        global srch
         srch = "multi"
         fds = fd[:60]
         for i in self.checkMovie:

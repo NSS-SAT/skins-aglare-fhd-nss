@@ -11,9 +11,10 @@ import requests
 import socket
 import sys
 import threading
+from enigma import getDesktop
 from Components.config import config
 
-global my_cur_skin
+global my_cur_skin, srch
 
 PY3 = False
 if sys.version_info[0] >= 3:
@@ -79,6 +80,13 @@ except:
 
 
 isz = "185,278"
+screenwidth = getDesktop(0).size()
+if screenwidth.width() <= 1280:
+    isz = isz.replace(isz, "185,278")
+elif screenwidth.width() <= 1920:
+    isz = isz.replace(isz, "342,514")
+else:
+    isz = isz.replace(isz, "780,1170")
 
 
 def intCheck():
@@ -648,7 +656,7 @@ class AglarePosterXDownloadThread(threading.Thread):
             fd = fulldesc.splitlines()[0]
         else:
             fd = ''
-
+        global srch 
         srch = "multi"
         fds = fd[:60]
         for i in self.checkMovie:
