@@ -1,49 +1,50 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-'''
-****************************************
-*        modded by Lululla             *
-*             26/04/2024               *
-****************************************
-# --------------------#
-# Info Linuxsat-support.com  corvoboys.org
-'''
+"""
+Plugin RadioM is developed
+from Lululla to Mmark
+"""
 from __future__ import print_function
 from Components.AVSwitch import AVSwitch
 from Components.ActionMap import ActionMap
 from Components.Button import Button
 from Components.Label import Label
 from Components.MenuList import MenuList
-from Components.MultiContent import MultiContentEntryPixmapAlphaTest
-from Components.MultiContent import MultiContentEntryText
+from Components.MultiContent import (MultiContentEntryPixmapAlphaTest, MultiContentEntryText)
 from Components.Pixmap import Pixmap
 from Components.ServiceEventTracker import InfoBarBase
 from Components.config import config
-from enigma import eListboxPythonMultiContent, gFont
-from Screens.InfoBarGenerics import InfoBarMenu, \
-    InfoBarSeek, InfoBarNotifications, InfoBarShowHide
+from Screens.InfoBarGenerics import (
+    InfoBarMenu,
+    InfoBarSeek,
+    InfoBarNotifications,
+    InfoBarShowHide,
+)
 from Screens.Screen import Screen
 try:
     from Tools.Directories import SCOPE_GUISKIN as SCOPE_SKIN
 except ImportError:
     from Tools.Directories import SCOPE_SKIN
 from Tools.Directories import resolveFilename
-from enigma import RT_HALIGN_LEFT, RT_VALIGN_CENTER
-from enigma import eServiceReference
-from enigma import ePicLoad
-from enigma import getDesktop, eTimer
-from enigma import loadPNG
+
+from enigma import (
+    RT_HALIGN_LEFT,
+    RT_VALIGN_CENTER,
+    eServiceReference,
+    ePicLoad,
+    getDesktop,
+    eTimer,
+    loadPNG,
+    eListboxPythonMultiContent,
+    gFont,
+)
 import os
 import sys
 import six
 import requests
-try:
-    from enigma import eMediaDatabase  # @UnresolvedImport @UnusedImport
-    isDreamOS = True
-except:
-    isDreamOS = False
-version = '1.0_r4'
+
+version = '1.1'
 HD = getDesktop(0).size()
 iconpic = 'plugin.png'
 screenWidth = getDesktop(0).size().width()
@@ -148,9 +149,9 @@ def RListEntry(download):
     pngx = os.path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/skin_default/icons/folder.png"
     if screenWidth >= 1920:
         res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 10), size=(30, 30), png=loadPNG(pngx)))
-        res.append(MultiContentEntryText(pos=(60, 0), size=(1200, 50), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
+        res.append(MultiContentEntryText(pos=(60, 0), size=(600, 50), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
     else:
-        res.append(MultiContentEntryText(pos=(0, 0), size=(1000, 40), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
+        res.append(MultiContentEntryText(pos=(0, 0), size=(400, 40), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
     return res
 
 
@@ -191,21 +192,24 @@ class radiom1(Screen):
         self.session = session
         self.list = []
         self['list'] = radioList([])
-        self['info'] = Label()
+        self['info'] = Label('HOME RADIO VIEW')
         self['key_red'] = Button(_('Exit'))
         self['key_green'] = Button(_('Select'))
-        self['info'].setText('HOME RADIO VIEW')
         self.currentList = 'list'
         self["logo"] = Pixmap()
         self["back"] = Pixmap()
         sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
+        global x, y
         pic = path_png + "ft.jpg"
         x = 430
         y = 430
-        if screenWidth >= 1920:
-            x = 400
-            y = 400
+        if screenWidth == 1920:
+            x = 640
+            y = 640
+        if screenWidth == 2560:
+            x = 850
+            y = 850
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
@@ -270,11 +274,6 @@ class radiom1(Screen):
         pic = self.pics[idx]
         sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
-        x = 430
-        y = 430
-        if screenWidth >= 1920:
-            x = 400
-            y = 400
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
@@ -324,13 +323,18 @@ class radiom2(Screen):
         self["back"].hide()
         sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
+        
+        global x, y
         picture = path_png + "ft.jpg"
         x = 430
         y = 430
-        if screenWidth >= 1920:
-            x = 400
-            y = 400
-        resizePoster(x, y, picture)
+        if screenWidth == 1920:
+            x = 640
+            y = 640
+        if screenWidth == 2560:
+            x = 850
+            y = 850
+        resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
         self.picload.startDecode(picture)
@@ -392,16 +396,20 @@ class radiom3(Screen):
         self.is_playing = False
         sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
-        picture = path_png + "ft.jpg"
-        x = 350
-        y = 350
-        if screenWidth >= 1920:
-            x = 400
-            y = 400
-        resizePoster(x, y, picture)
+        global x, y
+        pic = path_png + "ft.jpg"
+        x = 430
+        y = 430
+        if screenWidth == 1920:
+            x = 640
+            y = 640
+        if screenWidth == 2560:
+            x = 850
+            y = 850
+        resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
-        self.picload.startDecode(picture)
+        self.picload.startDecode(pic)
 
         self['setupActions'] = ActionMap(['SetupActions',
                                           'ColorActions',
@@ -502,13 +510,17 @@ class radiom80(Screen):
         self.player = '1'
         sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
-        picture = pic.replace("\n", "").replace("\r", "")
-        x = 240
-        y = 240
-        if screenWidth >= 1920:
-            x = 340
-            y = 340
-        resizePoster(x, y, picture)
+        global x, y
+        pic = pic.replace("\n", "").replace("\r", "")
+        x = 430
+        y = 430
+        if screenWidth == 1920:
+            x = 640
+            y = 640
+        if screenWidth == 2560:
+            x = 850
+            y = 850
+        resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
         self.picload.startDecode(self.pic)
@@ -565,8 +577,8 @@ class radiom80(Screen):
             pic = '/tmp/artist.jpg'
             x = self["logo"].instance.size().width()
             y = self["logo"].instance.size().height()
-            picture = pic.replace("\n", "").replace("\r", "")
-            resizePoster(x, y, picture)
+            pic = pic.replace("\n", "").replace("\r", "")
+            resizePoster(x, y, pic)
             sc = AVSwitch().getFramebufferScale()
             self.picload = PicLoader()
             self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "FF000000"))
@@ -574,6 +586,7 @@ class radiom80(Screen):
             self.picload.startDecode(pic)
         return
 
+    '''
     # http://radio.garden/api/ara/content/places
     # "results": [
         # {
@@ -607,7 +620,7 @@ class radiom80(Screen):
             # "country": "USA",
             # "currency": "USD",
             # "primaryGenreName": "Rock"
-        # },
+        # },'''
 
     def downloadCover(self, title):
         try:
@@ -634,8 +647,6 @@ class radiom80(Screen):
 
     def getCover(self, url):
         try:
-            # referer = 'http://itunes.apple.com'
-            # data = ReadUrl2(url, referer)
             data = geturl(url)
             if data:
                 with open('/tmp/artist.jpg', 'wb') as f:
@@ -1116,7 +1127,7 @@ class PicLoader:
         self.picload.setPara((width, height, sc[0], sc[1], False, 1, "#ff000000"))
 
     def load(self, filename):
-        if isDreamOS:
+        if os.path.exists('/var/lib/dpkg/status'):
             self.picload.startDecode(filename, False)
         else:
             self.picload.startDecode(filename, 0, 0, False)
@@ -1128,7 +1139,7 @@ class PicLoader:
         self.picload_conn = None
 
     def addCallback(self, callback):
-        if isDreamOS:
+        if os.path.exists('/var/lib/dpkg/status'):
             self.picload_conn = self.picload.PictureData.connect(callback)
         else:
             self.picload.PictureData.get().append(callback)

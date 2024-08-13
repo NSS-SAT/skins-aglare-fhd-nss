@@ -10,7 +10,7 @@
     <widget source="session.CurrentService" render="Label" position="1188,88" size="700,34" font="Regular; 27" borderWidth="1" backgroundColor="background" transparent="1" halign="center" foregroundColor="white" zPosition="30" valign="center" noWrap="1">
         <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="Progress" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" position="1188,525" size="700,10" zPosition="8">
+    <widget source="ServiceEvent" render="Progress" pixmap="main/progfg70010.png" cornerRadius="5" position="1188,525" size="700,10" zPosition="8">
         <convert type="EventTime">Progress</convert>
     </widget>
     <widget source="session.VideoPicture" render="Pig" position="1188,120" zPosition="20" size="700,394" backgroundColor="transparent" transparent="0" cornerRadius="14"/>

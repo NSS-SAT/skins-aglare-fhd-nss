@@ -25,17 +25,18 @@
         </widget>
         <eLabel name="" position="1229,488" size="681,470" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2" />
         <eLabel name="" position="960,970" size="40,40" font="icomoon; 30" text="" halign="center" zPosition="89" transparent="1" />
-        <!--
-        <widget source="ServiceEvent" render="AglarePosterX" nexts="0" position="960,29" size="240,304" zPosition="3" cornerRadius="20" />
-        <widget source="ServiceEvent" render="AglarePosterX" nexts="1" position="960,344" size="240,304" zPosition="3" cornerRadius="20" />
-        <widget source="ServiceEvent" render="AglarePosterX" nexts="2" position="960,659" size="240,304" zPosition="3" cornerRadius="20" />
-        <ePixmap name="" position="960,29" size="240,304" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="90" />
-        <ePixmap name="" position="960,344" size="240,304" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="90" />
-        <ePixmap name="" position="960,659" size="240,304" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="90" />
-        -->
+
+
         <widget source="ServiceEvent" render="AglarePosterX" position="980,29" size="200,300" cornerRadius="20" zPosition="95" />
         <widget source="ServiceEvent" render="AglarePosterX" nexts="1" position="980,341" size="200,300" cornerRadius="20" zPosition="95" />
         <widget source="ServiceEvent" render="AglarePosterX" nexts="2" position="980,656" size="200,300" cornerRadius="20" zPosition="95" />
+
+       <!-- lululla -->
+        <widget source="ServiceEvent" render="zNxtEvnt" nxtEvents="" snglEvent="1" font="Regular;20" position="940,1000" size="205,73" halign="center" zPosition="5" foregroundColor="yellow" backgroundColor="#000000" transparent="1"/>
+        <widget source="ServiceEvent" render="zNxtEvnt" nxtEvents="" snglEvent="2" font="Regular;20" position="1195,1000" size="205,73" halign="center" zPosition="5" foregroundColor="yellow" backgroundColor="#000000" transparent="1"/>
+        <widget source="ServiceEvent" render="zNxtEvnt" nxtEvents="" snglEvent="3" font="Regular;20" position="1450,1000" size="205,73" halign="center" zPosition="5" foregroundColor="yellow" backgroundColor="#000000" transparent="1"/>
+
+
         <ePixmap name="" position="978,27" size="204,304" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="90" />
         <ePixmap name="" position="978,339" size="204,304" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="90" />
         <ePixmap name="" position="978,654" size="204,304" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="90" />

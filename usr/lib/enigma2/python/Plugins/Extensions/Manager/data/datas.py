@@ -8,33 +8,40 @@
 #      No Coppy       #
 # --------------------#
 from __future__ import print_function
+from .. import _
+from ..plugin import runningcam
 from Components.ActionMap import ActionMap
 from Components.Button import Button
 from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
-from Components.config import ConfigNumber, ConfigSelection, ConfigYesNo
-from Components.config import ConfigSubsection, ConfigPassword
-from Components.config import config, ConfigText
-from Components.config import getConfigListEntry, NoSave
+from Components.config import (
+    ConfigNumber,
+    ConfigSelection,
+    ConfigYesNo,
+    ConfigSubsection,
+    ConfigPassword,
+    config,
+    ConfigText,
+    getConfigListEntry,
+    NoSave,
+)
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.VirtualKeyBoard import VirtualKeyBoard
-from Tools.Directories import fileExists
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Tools.Directories import (fileExists, resolveFilename, SCOPE_PLUGINS)
 from Components.Sources.StaticText import StaticText
-from .. import _, sl
-from ..plugin import runningcam
 from random import choice
-from enigma import eTimer
-from enigma import getDesktop
+from enigma import (eTimer, getDesktop)
+import base64
 import os
 import re
 import ssl
 import sys
 import subprocess
 import codecs
+
 global skin_path
-import base64
+
 sss = 'aHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3L1U0ZU02RGpW'
 PY3 = sys.version_info.major >= 3
 if PY3:
@@ -71,14 +78,10 @@ def b64decoder(s):
     return outp
 
 
-sl = 'slManager'
 name_plug = 'NSS Softcam Manager'
 plugin_path = resolveFilename(SCOPE_PLUGINS, "Extensions/Manager/")
 data_path = os.path.join(plugin_path, 'data/')
 skin_path = plugin_path
-sl2 = skin_path + sl + '.xml'
-if os.path.exists(sl2):
-    os.system('rm -rf ' + plugin_path + ' > /dev/null 2>&1')
 
 try:
     _create_unverified_https_context = ssl._create_unverified_context
@@ -99,58 +102,24 @@ def checkStr(txt):
 
 
 ListAgent = [
-          'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.15 (KHTML, like Gecko) Chrome/24.0.1295.0 Safari/537.15',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.14 (KHTML, like Gecko) Chrome/24.0.1292.0 Safari/537.14',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-          'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-          'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1284.0 Safari/537.13',
-          'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.940.0 Safari/535.8',
-          'Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-          'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-          'Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20120716 Firefox/15.0a2',
-          'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.16) Gecko/20120427 Firefox/15.0a1',
-          'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20120427 Firefox/15.0a1',
-          'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:15.0) Gecko/20120910144328 Firefox/15.0.2',
-          'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0a2) Gecko/20111101 Firefox/9.0a2',
-          'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110613 Firefox/6.0a2',
-          'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110612 Firefox/6.0a2',
-          'Mozilla/5.0 (Windows NT 6.1; rv:6.0) Gecko/20110814 Firefox/6.0',
-          'Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/5.0; InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; SV1; .NET CLR 2.0.50727; WOW64)',
-          'Mozilla/4.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)',
-          'Mozilla/5.0 (compatible; MSIE 10.0; Macintosh; Intel Mac OS X 10_7_3; Trident/6.0)',
-          'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0;  it-IT)',
-          'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; chromeframe/13.0.782.215)',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; chromeframe/11.0.696.57)',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0) chromeframe/10.0.648.205',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/4.0; GTB7.4; InfoPath.1; SV1; .NET CLR 2.8.52393; WOW64; en-US)',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/5.0; chromeframe/11.0.696.57)',
-          'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.0; Trident/4.0; GTB7.4; InfoPath.3; SV1; .NET CLR 3.1.76908; WOW64; en-US)',
-          'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; GTB7.4; InfoPath.2; SV1; .NET CLR 3.3.69573; WOW64; en-US)',
-          'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 1.0.3705; .NET CLR 1.1.4322)',
-          'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; InfoPath.1; SV1; .NET CLR 3.8.36217; WOW64; en-US)',
-          'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727)',
-          'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; it-IT)',
-          'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)',
-          'Opera/12.80 (Windows NT 5.1; U; en) Presto/2.10.289 Version/12.02',
-          'Opera/9.80 (Windows NT 6.1; U; es-ES) Presto/2.9.181 Version/12.00',
-          'Opera/9.80 (Windows NT 5.1; U; zh-sg) Presto/2.9.181 Version/12.00',
-          'Opera/12.0(Windows NT 5.2;U;en)Presto/22.9.168 Version/12.00',
-          'Opera/12.0(Windows NT 5.1;U;en)Presto/22.9.168 Version/12.00',
-          'Mozilla/5.0 (Windows NT 5.1) Gecko/20100101 Firefox/14.0 Opera/12.0',
-          'Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2',
-          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.3 Safari/534.53.10',
-          'Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko ) Version/5.1 Mobile/9B176 Safari/7534.48.3',
-          ]
+    'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.15 (KHTML, like Gecko) Chrome/24.0.1295.0 Safari/537.15',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.14 (KHTML, like Gecko) Chrome/24.0.1292.0 Safari/537.14',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
+    'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
+    'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1284.0 Safari/537.13',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.940.0 Safari/535.8',
+    'Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
+    'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
+    'Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20120716 Firefox/15.0a2',
+    'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.16) Gecko/20120427 Firefox/15.0a1',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20120427 Firefox/15.0a1',
+    'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:15.0) Gecko/20120910144328 Firefox/15.0.2',
+    'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:15.0) Gecko/20100101 Firefox/15.0.1',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:9.0a2) Gecko/20111101 Firefox/9.0a2',
+]
 
 
 def RequestAgent():
@@ -177,17 +146,15 @@ def getUrl(url):
     return content
 
 
-skin_path = os.path.join(plugin_path, 'res/skins/hd/')
-res_plugin_path = os.path.join(plugin_path, "res/")
+skin_path = os.path.join(plugin_path, 'res/skins/hd')
+res_plugin_path = os.path.join(plugin_path, "res")
 screenwidth = getDesktop(0).size()
-if screenwidth.width() == 1920:
-    skin_path = res_plugin_path + 'skins/fhd/'
 if screenwidth.width() == 2560:
-    skin_path = res_plugin_path + 'skins/uhd/'
+    skin_path = res_plugin_path + '/skins/uhd/'
+if screenwidth.width() == 1920:
+    skin_path = res_plugin_path + '/skins/fhd/'
 # if os.path.exists('/var/lib/dpkg/info'):
     # skin_path = skin_path + 'dreamOs/'
-if os.path.exists(sl2):
-    os.system('rm -rf ' + plugin_path + ' > /dev/null 2>&1')
 
 
 def cccamPath():
@@ -222,18 +189,18 @@ def cccamPath():
 
 
 Serverlive = [
-              ('aHR0cHM6Ly9ib3NzY2NjYW0uY28vVGVzdC5waHA=', 'Server01'),
-              ('aHR0cHM6Ly9jY2NhbWlwdHYuY2x1Yi9mcmVlLWNjY2FtLw==', 'Server02'),
-              ('aHR0cHM6Ly9pcHR2LTE1ZGF5cy5ibG9nc3BvdC5jb20=', 'Server03'),
-              ('aHR0cHM6Ly9jY2NhbWlhLmNvbS9mcmVlLWNjY2FtLw==', 'Server04'),
-              ('aHR0cHM6Ly9jY2NhbXguY29tL2ZyZWUtY2NjYW0=', 'Server05'),
-              ('aHR0cHM6Ly9jY2NhbS5uZXQvZnJlZWNjY2Ft', 'Server06'),
-              ('aHR0cHM6Ly9jY2NhbS1wcmVtaXVtLmNvL2ZyZWUtY2NjYW0v', 'Server07'),
-              ('aHR0cHM6Ly93d3cuY2NjYW1iaXJkMi5jb20vZnJlZWNjY2FtLnBocA==', 'Server08'),
-              ('aHR0cHM6Ly9jY2NhbWZyZWUuY28vZnJlZS9nZXQucGhw', 'Server9'),
-              ('aHR0cHM6Ly9jY2NhbWZyZWkuY29tL2ZyZWUvZ2V0LnBocA==', 'Server10'),
-              ('aHR0cHM6Ly9jY2NhbWF6b24uY29tL2ZyZWUvZ2V0LnBocA==', 'Server11'),
-              ]
+    ('aHR0cHM6Ly9ib3NzY2NjYW0uY28vVGVzdC5waHA=', 'Server01'),
+    ('aHR0cHM6Ly9pcHR2LTE1ZGF5cy5ibG9nc3BvdC5jb20=', 'Server02'),
+    ('aHR0cHM6Ly9jY2NhbWlhLmNvbS9mcmVlLWNjY2FtLw==', 'Server03'),
+    ('aHR0cHM6Ly9jY2NhbS5uZXQvZnJlZWNjY2Ft', 'Server04'),
+    ('aHR0cHM6Ly9jY2NhbXNhdGUuY29tL2ZyZWU=', 'Server05'),
+    # ('aHR0cHM6Ly9jY2NhbXguY29tL2ZyZWUtY2NjYW0=', 'Server06'),
+    ('aHR0cHM6Ly9jY2NhbS1wcmVtaXVtLmNvL2ZyZWUtY2NjYW0v', 'Server07'),
+    ('aHR0cHM6Ly9jY2NhbS5uZXQvZnJlZWNjY2Ft', 'Server08'),
+    # ('aHR0cHM6Ly9jY2NhbWZyZWUuY28vZnJlZS9nZXQucGhw', 'Server9'),
+    ('aHR0cHM6Ly9jY2NhbWZyZWkuY29tL2ZyZWUvZ2V0LnBocA==', 'Server10'),
+    ('aHR0cHM6Ly9jY2NhbWlwdHYuY2x1Yi9mcmVlLWNjY2FtLw==', 'Server11'),
+]
 
 # cfgcam = [(cccamPath(), 'CCcam'),
 cfgcam = [('/etc/CCcam.cfg', 'CCcam'),
@@ -298,13 +265,22 @@ class nssCamConfig(Screen, ConfigListScreen):
             self.skin = f.read()
         self.setup_title = (name_plug)
         self['title'] = Label(_(name_plug))
-        self["key_red"] = StaticText(_("Back"))
-        self["key_green"] = StaticText("")
-        self["key_yellow"] = StaticText("")
-        self["key_blue"] = StaticText("")
+        # self["key_red"] = Label(_("Back"))
+        # self["key_green"] = Label("")
+        # self["key_yellow"] = Label("")
+        # self["key_blue"] = Label("")
+        if os.path.exists('/usr/lib/enigma2/python/Plugins/PLi'):
+            self["key_red"] = StaticText(_("Back"))
+            self["key_green"] = StaticText("")
+            self["key_yellow"] = StaticText("")
+            self["key_blue"] = StaticText("")
+        else:
+            self["key_red"] = Label(_("Back"))
+            self["key_green"] = Label("")
+            self["key_yellow"] = Label("")
+            self["key_blue"] = Label("")
         self['description'] = Label('')
-        self['info'] = Label('')
-        self['info'].setText(_('Wait please...'))
+        self['info'] = Label(_('Wait please...'))
         self.onChangedEntry = []
         self.list = []
         ConfigListScreen.__init__(self, self.list, session=self.session, on_change=self.changedEntry)
@@ -313,6 +289,7 @@ class nssCamConfig(Screen, ConfigListScreen):
                                      'ColorActions',
                                      'VirtualKeyboardActions',
                                      'MenuActions',
+                                     'EPGSelectActions',
                                      'InfobarChannelSelection'], {'left': self.keyLeft,
                                                                   'right': self.keyRight,
                                                                   'ok': self.closex,
@@ -322,32 +299,36 @@ class nssCamConfig(Screen, ConfigListScreen):
                                                                   'blue': self.resetcfg,
                                                                   'red': self.closex,
                                                                   'cancel': self.closex,
+                                                                  'info': self.infomsg,
                                                                   'back': self.closex}, -1)
-        if config.plugins.Manager.active.value is True:
-            self['key_green'].setText(buttn)
-            self['key_yellow'].setText(_('Get Link'))
-            self['key_blue'].setText(_('Reset'))
-        else:
-            self['key_green'].setText('Force Emm Send')
-            self['key_yellow'].setText('Check Emm Send')
-            self['key_blue'].setText('')
+        # if config.plugins.Manager.active.value is True:
+            # self['key_green'].setText(buttn)
+            # self['key_yellow'].setText(_('Get Link'))
+            # self['key_blue'].setText(_('Reset'))
+        # else:
+            # self['key_green'].setText('Force Emm Send')
+            # self['key_yellow'].setText('Check Emm Send')
+            # self['key_blue'].setText('')
         self.createSetup()
         if self.selectionChanged not in self["config"].onSelectionChanged:
             self["config"].onSelectionChanged.append(self.selectionChanged)
-        self.selectionChanged()
+        # self.selectionChanged()
         self.onLayoutFinish.append(self.layoutFinished)
+        self.onLayoutFinish.append(self.showhide)
 
     def layoutFinished(self):
         self.setTitle(self.setup_title)
         self['info'].setText(_('Select Your Choice'))
 
+    def infomsg(self):
+        self.session.open(MessageBox, _("Manager by Lululla\nInstall Cam Software\nForum Support www.corvoboys.org\n"),  MessageBox.TYPE_INFO, timeout=4)
     def sendemm(self):
         if config.plugins.Manager.active.value is True:
             self.getcl()
         else:
             try:
                 print('runningcam=', runningcam)
-                if runningcam == None:
+                if runningcam is None:
                     return
                 # if runningcam == 'oscam' or runningcam == 'ncam':
                 if runningcam == 'oscam':
@@ -363,7 +344,6 @@ class nssCamConfig(Screen, ConfigListScreen):
                         if not access(self.cmd1, X_OK):
                             os.chmod(self.cmd1, 493)
                         # os.system(self.cmd1)
-                        import subprocess
                         # subprocess.check_output(['bash', self.cmd1])
                         try:
                             subprocess.check_output(['bash', self.cmd1])
@@ -375,7 +355,7 @@ class nssCamConfig(Screen, ConfigListScreen):
                         os.system('sleep 5')
                         if not os.path.exists('/tmp/emm.txt'):
                             # import wget
-                            outp = base64.b64decode(sss)
+                            # outp = base64.b64decode(sss)
                             # url = str(outp)
                             cmmnd = "wget --no-check-certificate -U 'Enigma2 - Manager Plugin' -c 'https://pastebin.com/raw/U4eM6DjV' -O '/tmp/emm.txt'"
                             # wget.download(url, '/tmp/emm.txt')
@@ -395,11 +375,11 @@ class nssCamConfig(Screen, ConfigListScreen):
                         else:
                             self.session.open(MessageBox, _("File no exist /tmp/emm.txt"), MessageBox.TYPE_INFO, timeout=10)
                 else:
-                    self.session.openWithCallback(self.callMyMsg, MessageBox, _('The Oscam is not active, send the command anyway?'), MessageBox.TYPE_YESNO)
+                    self.session.openWithCallback(self.callMyMsg, MessageBox, _('The Cam is not active, send the command anyway?'), MessageBox.TYPE_YESNO)
             except Exception as e:
                 print('error on emm', str(e))
 
-    def callMyMsg(self, answer=None):
+    def callMyMsg(self, answer=False):
         if answer:
             msg = []
             msg.append(_("\n....\n.....\n"))
@@ -407,7 +387,6 @@ class nssCamConfig(Screen, ConfigListScreen):
             from os import access, X_OK
             if not access(self.cmd1, X_OK):
                 os.chmod(self.cmd1, 493)
-            import subprocess
             try:
                 subprocess.check_output(['bash', self.cmd1])
                 self.session.open(MessageBox, _('Card Updated!'), MessageBox.TYPE_INFO, timeout=5)
@@ -460,7 +439,7 @@ class nssCamConfig(Screen, ConfigListScreen):
             self['key_green'].setText('Force Emm Send')
             self['key_yellow'].setText('Check Emm Send')
             self['key_blue'].setText('')
-        return
+        # return
 
     def green(self):
         if config.plugins.Manager.active.value is True:
@@ -477,14 +456,13 @@ class nssCamConfig(Screen, ConfigListScreen):
             else:
                 return
         else:
-            if runningcam == 'oscam':
+            if 'oscam' in str(runningcam):  #  or 'movicam' in str(self.runningcam):
                 msg = []
                 msg.append(_("\n....\n.....\n"))
                 self.cmd1 = data_path + 'emm_sender.sh'
                 from os import access, X_OK
                 if not access(self.cmd1, X_OK):
                     os.chmod(self.cmd1, 493)
-                import subprocess
                 try:
                     subprocess.check_output(['bash', self.cmd1])
                 except subprocess.CalledProcessError as e:
@@ -519,6 +497,9 @@ class nssCamConfig(Screen, ConfigListScreen):
             self.list.append(getConfigListEntry(_('Server Username'), config.plugins.Manager.user, _('Username')))
             self.list.append(getConfigListEntry(_('Server Password'), config.plugins.Manager.passw, _('Password')))
 
+            self['key_green'].setText(buttn)
+            self['key_yellow'].setText(_('Get Link'))
+            self['key_blue'].setText(_('Reset'))
         self['config'].list = self.list
         self['config'].l.setList(self.list)
         self.showhide()
@@ -670,8 +651,21 @@ class nssCamConfig(Screen, ConfigListScreen):
             if 'bosscccam' in data.lower():
                 url1 = re.findall('ong>c: (.+?) (.+?) (.+?) (.+?)</', data)
 
+            elif 'cccam.net/freecccam' in data.lower():  
+                # <b>C: free.cccam.net 21126 by5MtVIk cccam.net</b>
+                url1 = re.findall('b>C:\s+([\w.-]+)\s+(\d+)\s+(\w+)\s+([\w.-]+)', data)
+
             elif 'testcline' in data.lower():
                 url1 = re.findall('C: (.+?) (.+?) (.+?) (.+?)</d', data)
+
+            elif 'free.cccam.net' in data.lower():
+                url1 = re.findall('<b>C: (.*?) (.*?) (.*?) (.*?)</b>', data)
+
+            elif 'cccam-premium.co' in data.lower():
+                url1 = re.findall('C:\s+([\w.-]+)\s+(\d+)\s+(\w+)\s+([\w.-]+)', data)
+
+            elif 'cccamsate' in data.lower():
+                url1 = re.findall('<span><b>C: (.+?) (.+?) (.+?) (.+?)</b>', data)
 
             elif 'cccameagle' in data.lower():
                 url1 = re.findall('>C: (.+?) (.+?) (.+?) (.+?)</h2>', data)
@@ -688,9 +682,6 @@ class nssCamConfig(Screen, ConfigListScreen):
 
             elif 'cccamfree.co' in data.lower():
                 url1 = re.findall('<h1>C: (.+?) (.+?) (.+?) (.+?)\n', data)
-
-            elif 'cccam-premium' in data.lower():
-                url1 = re.findall('C: (.+?) (.+?) (.+?) (*?)\n.*?</h3>', data)
 
             elif 'iptvcccam' in data.lower():
                 url1 = re.findall('C: (.+?) (.+?) (.+?) (*?).*?</h1>', data)
@@ -724,12 +715,6 @@ class nssCamConfig(Screen, ConfigListScreen):
 
             elif 'cccamhub' in data.lower():
                 url1 = re.findall('id="cline">.*?C: (.+?) (.+?) (.+?) (.+?).*?</div>', data)
-
-            elif 'cccamsate' in data.lower():
-                url1 = re.findall('class="credentials.*?C: (.+?) (.+?) (.+?) (.+?)</b>', data)
-
-            elif 'cccam.net' in data.lower():
-                url1 = re.findall('b>C: (.*?) (.*?) (.*?) (.*?)</b>', data)
 
             elif 'rogcam' in data.lower():
                 url1 = re.findall('bg-primary"> C: (.+?) (.+?) (.+?) (.+?) </span>', data)
@@ -793,3 +778,24 @@ class nssCamConfig(Screen, ConfigListScreen):
                 return
         except Exception as e:
             print('error on string cline', str(e))
+
+    def readCurrent(self):
+        currCam = None
+        self.FilCurr = ''
+        if fileExists('/etc/CurrentBhCamName'):
+            self.FilCurr = '/etc/CurrentBhCamName'
+        else:
+            self.FilCurr = '/etc/clist.list'
+        if os.stat(self.FilCurr).st_size > 0:
+            try:
+                if sys.version_info[0] == 3:
+                    clist = open(self.FilCurr, 'r', encoding='UTF-8')
+                else:
+                    clist = open(self.FilCurr, 'r')
+            except:
+                return
+            if clist is not None:
+                for line in clist:
+                    currCam = line
+                clist.close()
+        return currCam
