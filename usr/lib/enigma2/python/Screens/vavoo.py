@@ -197,9 +197,8 @@ cfg.fixedtime = ConfigClock(default=46800)
 cfg.last_update = ConfigText(default="Never")
 
 cfg.ipv6 = ConfigEnableDisable(default=False)
-# cfg.fonts = ConfigSelection(default=default_font, choices=fonts)
-
-# FONTSTYPE = cfg.fonts.value
+# cfg.fonts = ConfigSelection(default='vav', choices=fonts)
+# FONTSTYPE = FNTPath + '/' + str(cfg.fonts.value) + '.ttf'
 
 eserv = int(cfg.services.value)
 
@@ -209,10 +208,15 @@ if os_path.islink('/etc/rc3.d/S99ipv6dis.sh'):
     cfg.ipv6.save()
 
 
+# language
+locl = "ar", "ae", "bh", "dz", "eg", "in", "iq", "jo", "kw", "lb", "ly", "ma", "om", "qa", "sa", "sd", "ss", "sy", "tn", "ye"
+global lngx
+lngx = 'en'
 try:
+    from Components.config import config
     lng = config.osd.language.value
     lng = lng[:-3]
-    if lng.lower() == 'ar':
+    if any(s in lngx for s in locl):
         HALIGN = RT_HALIGN_RIGHT
 except:
     lng = 'en'
@@ -482,7 +486,7 @@ def show2_(name, link):
     return res
 
 
-class vavoo_config(Screen, ConfigListScreen):
+class vavoo_configx(Screen, ConfigListScreen):
     def __init__(self, session):
         Screen.__init__(self, session)
         self.session = session
@@ -527,6 +531,7 @@ class vavoo_config(Screen, ConfigListScreen):
         self.list.append(getConfigListEntry(_("Server for Player Used"), cfg.server, _("Server for player.\nNow %s") % cfg.server.value))
         self.list.append(getConfigListEntry(_("Ipv6 State Of Lan (On/Off)"), cfg.ipv6, _("Active or Disactive lan Ipv6.\nNow %s") % cfg.ipv6.value))
         self.list.append(getConfigListEntry(_("Movie Services Reference"), cfg.services, _("Configure service Reference Iptv-Gstreamer-Exteplayer3")))
+        # self.list.append(getConfigListEntry(_("Select Fonts"), cfg.fonts, _("Configure Fonts.\nEg:Arabic or other language.")))
         self.list.append(getConfigListEntry(_("Scheduled Bouquet Update:"), cfg.autobouquetupdate, _("Active Automatic Bouquet Update")))
         if cfg.autobouquetupdate.value is True:
             self.list.append(getConfigListEntry(indent + _("Schedule type:"), cfg.timetype, _("At an interval of hours or at a fixed time")))
@@ -645,7 +650,11 @@ class MainVavoox(Screen):
         self['red'] = Label(_('Exit'))
         self['green'] = Label(_('Remove') + ' Fav')
         self['yellow'] = Label()
-        self["blue"] = Label(_("HALIGN"))
+        self["blue"] = Label()
+        if HALIGN == RT_HALIGN_RIGHT:
+            self['blue'].setText(_('Halign Left'))
+        else:
+            self['blue'].setText(_('Halign Right'))
         self['name'] = Label('Loading...')
         self['version'] = Label()
         self.currentList = 'menulist'
@@ -653,7 +662,7 @@ class MainVavoox(Screen):
         self.count = 0
         self.loading = 0
         self.url = b64decoder(stripurl)
-        self['actions'] = ActionMap(['ButtonSetupActions', 'MenuActions', 'OkCancelActions', 'ColorActions', 'DirectionActions', 'HotkeyActions', 'InfobarEPGActions', 'ChannelSelectBaseActions'], {
+        self['actions'] = ActionMap(['ButtonSetupActions', 'MenuActions', 'OkCancelActions', 'DirectionActions', 'HotkeyActions', 'InfobarEPGActions', 'ChannelSelectBaseActions'], {
             'prevBouquet': self.chDown,
             'nextBouquet': self.chUp,
             'ok': self.ok,
@@ -678,12 +687,14 @@ class MainVavoox(Screen):
         global HALIGN
         if HALIGN == RT_HALIGN_LEFT:
             HALIGN = RT_HALIGN_RIGHT
+            self['blue'].setText(_('Halign Left'))
         elif HALIGN == RT_HALIGN_RIGHT:
             HALIGN = RT_HALIGN_LEFT
+            self['blue'].setText(_('Halign Right'))
         self.cat()
 
     def goConfig(self):
-        self.session.open(vavoo_config)
+        self.session.open(vavoo_configx)
 
     def info(self):
         aboutbox = self.session.open(MessageBox, _('%s\n\n\nThanks:\n@KiddaC\n@oktus\nQu4k3\nAll staff Linuxsat-support.com\nCorvoboys - Forum\n\nThis plugin is free,\nno stream direct on server\nbut only free channel found on the net') % desc_plugin, MessageBox.TYPE_INFO)
@@ -787,7 +798,11 @@ class vavoox(Screen):
         self['red'] = Label(_('Back'))
         self['green'] = Label(_('Export') + ' Fav')
         self['yellow'] = Label(_('Search'))
-        self["blue"] = Label(_("HALIGN"))
+        self["blue"] = Label()
+        if HALIGN == RT_HALIGN_RIGHT:
+            self['blue'].setText(_('Halign Left'))
+        else:
+            self['blue'].setText(_('Halign Right'))
         self['name'] = Label('Loading ...')
         self['version'] = Label()
         self.currentList = 'menulist'
@@ -796,7 +811,7 @@ class vavoox(Screen):
         self.loading = 0
         self.name = name
         self.url = url
-        self['actions'] = ActionMap(['MenuActions', 'OkCancelActions', 'ColorActions', 'EPGSelectActions', 'DirectionActions', 'ChannelSelectBaseActions'], {
+        self['actions'] = ActionMap(['MenuActions', 'OkCancelActions', 'HotkeyActions', 'EPGSelectActions', 'DirectionActions', 'ChannelSelectBaseActions'], {
             'prevBouquet': self.chDown,
             'nextBouquet': self.chUp,
             'ok': self.ok,
@@ -820,8 +835,10 @@ class vavoox(Screen):
         global HALIGN
         if HALIGN == RT_HALIGN_LEFT:
             HALIGN = RT_HALIGN_RIGHT
+            self['blue'].setText(_('Halign Left'))
         elif HALIGN == RT_HALIGN_RIGHT:
             HALIGN = RT_HALIGN_LEFT
+            self['blue'].setText(_('Halign Right'))
         self.cat()
 
     def backhome(self):
@@ -831,7 +848,7 @@ class vavoox(Screen):
             self.close()
 
     def goConfig(self):
-        self.session.open(vavoo_config)
+        self.session.open(vavoo_configx)
 
     def info(self):
         aboutbox = self.session.open(MessageBox, _('%s\n\n\nThanks:\n@KiddaC\n@oktus\nQu4k3\nAll staff Linuxsat-support.com\nCorvoboys - Forum\n\nThis plugin is free,\nno stream direct on server\nbut only free channel found on the net') % desc_plugin, MessageBox.TYPE_INFO)
@@ -890,7 +907,6 @@ class vavoox(Screen):
                     outfile.write(nname)
                     outfile.write('#EXTVLCOPT:http-user-agent=VAVOO/2.6' + '\n')
                     outfile.write(str(url) + '\n')
-                outfile.close()
                 # make m3u end
                 if len(self.cat_list) < 1:
                     return
@@ -1359,64 +1375,87 @@ VIDEO_FMT_PRIORITY_MAP = {"38": 1, "37": 2, "22": 3, "18": 4, "35": 5, "34": 6}
 
 
 def convert_bouquet(service, name, url):
-    from time import sleep
     sig = Sig()
-    app = '?n=1&b=5&vavoo_auth={}#User-Agent=VAVOO/2.6'.format(str(sig))
-    dir_enigma2 = '/etc/enigma2/'
-    files = '/tmp/{}.m3u'.format(name)
-    type = 'tv'
+    app = '?n=1&b=5&vavoo_auth=%s#User-Agent=VAVOO/2.6' % (str(sig))
+
+    files = '/tmp/%s.m3u' % name
+    bouquet_type = 'tv'
     if "radio" in name.lower():
-        type = "radio"
-    name_file = name.replace('/', '_').replace(',', '')
-    cleanName = re.sub(r'[\<\>\:\"\/\\\|\?\*]', '_', str(name_file))
-    cleanName = re.sub(r' ', '_', cleanName)
-    cleanName = re.sub(r'\d+:\d+:[\d.]+', '_', cleanName)
-    name_file = re.sub(r'_+', '_', cleanName)
+        bouquet_type = "radio"
+    name_file = re.sub(r'[<>:"/\\|?*, ]', '_', str(name))  # Replace spaces and commas with "_"
+    name_file = re.sub(r'\d+:\d+:[\d.]+', '_', name_file)  # Replace numeric patterns with "_"
+    name_file = re.sub(r'_+', '_', name_file)  # Replace sequences of "_" with a single "_"
+
     with open(enigma_path + '/Favorite.txt', 'w') as r:
         r.write(str(name_file) + '###' + str(url))
-        r.close()
-    bouquetname = 'userbouquet.vavoo_{}.{}'.format(name_file.lower(), type.lower())
-    if file_exists(str(files)):
-        sleep(5)
-        ch = 0
+
+    bouquet_name = 'userbouquet.vavoo_%s.%s' % (name_file.lower(), bouquet_type.lower())
+    print("Converting Bouquet %s" % name_file)
+    path1 = '/etc/enigma2/' + str(bouquet_name)
+    path2 = '/etc/enigma2/bouquets.' + str(bouquet_type.lower())
+    ch = 0
+
+    if os.path.exists(files) and os.stat(files).st_size > 0:
         try:
-            if os_path.isfile(files) and os.stat(files).st_size > 0:
-                desk_tmp = ''
-                in_bouquets = 0
-                with open('%s%s' % (dir_enigma2, bouquetname), 'w') as outfile:
-                    outfile.write('#NAME %s\r\n' % name_file.capitalize())
-                    for line in open(files):
-                        if line.startswith('http://') or line.startswith('https'):
-                            line = str(line).strip('\n\r') + str(app) + '\n'
-                            outfile.write('#SERVICE {}:0:0:0:0:0:0:0:0:0:{}').format(service, line.replace(':', '%3a'))  # % (service, line.replace(':', '%3a')))
-                            outfile.write('#DESCRIPTION {}').format(desk_tmp)  # % desk_tmp
-                        elif line.startswith('#EXTINF'):
-                            # desk_tmp = '%s' % line.split(',')[-1]
-                            desk_tmp = '{}'.format(line.split(',')[-1])  # % line.split(',')[-1]
+            tplst = []
+            tplst.append('#NAME %s (%s)' % (name_file.capitalize(), bouquet_type.upper()))
+            tplst.append('#SERVICE 1:64:0:0:0:0:0:0:0:0::%s CHANNELS' % name_file)
+            tplst.append('#DESCRIPTION --- %s ---' % name_file)
+
+            namel = ''
+            svz = ''
+            dct = ''
+
+            with open(files, 'r') as f:  # 'r' is for universal newlines mode
+                for line in f:
+                    if line.startswith("#EXTINF"):
+                        namel = '%s' % line.split(',')[-1]
+                        dsna = ('#DESCRIPTION %s' % namel).splitlines()
+                        dct = ''.join(dsna)
+
+                    elif line.startswith('http'):
+                        line = str(line).strip('\n\r') + str(app)
+                        tag = '1'
+                        if bouquet_type.upper() == 'RADIO':
+                            tag = '2'
+
+                        svca = ('#SERVICE %s:0:%s:0:0:0:0:0:0:0:%s' % (service, tag, line.replace(':', '%3a')))
+                        svz = (svca + ':' + namel).splitlines()
+                        svz = ''.join(svz)
+
+                    if svz not in tplst:
+                        tplst.append(svz)
+                        tplst.append(dct)
                         ch += 1
-                    outfile.close()
-                if os_path.isfile('/etc/enigma2/bouquets.tv'):
-                    for line in open('/etc/enigma2/bouquets.tv'):
-                        if bouquetname in line:
-                            in_bouquets = 1
-                    if in_bouquets == 0:
-                        if os_path.isfile('%s%s' % (dir_enigma2, bouquetname)) and os_path.isfile('/etc/enigma2/bouquets.tv'):
-                            remove_line('/etc/enigma2/bouquets.tv', bouquetname)
-                            with open('/etc/enigma2/bouquets.tv', 'a+') as f:
-                                # outfile.write('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "%s" ORDER BY bouquet\r\n' % bouquetname)
-                                line = '#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "{}" ORDER BY bouquet\n'.format(bouquetname)
-                                if line not in f:
-                                    f.write(line)
-                                # outfile.close()
-                                in_bouquets = 1
-                ReloadBouquets()
+
+            with open(path1, 'w+') as f:
+                f_content = f.read()
+                for item in tplst:
+                    if item not in f_content:
+                        f.write("%s\n" % item)
+                        # print('item  -------- ', item)
+
+            in_bouquets = False
+
+            with open('/etc/enigma2/bouquets.%s' % bouquet_type.lower(), 'r') as f:
+                for line in f:
+                    if bouquet_name in line:
+                        in_bouquets = True
+
+            if not in_bouquets:
+
+                with open(path2, 'a+') as f:
+
+                    bouquetTvString = '#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "' + str(bouquet_name) + '" ORDER BY bouquet\n'
+                    f.write(bouquetTvString)
+
+            ReloadBouquets()
         except Exception as error:
-            trace_error()
-        return ch
+            print(error)
+
+    return ch
 
 
-# autostart
-_session = None
 autoStartTimer = None
 
 
@@ -1553,99 +1592,41 @@ def Plugins(**kwargs):
 
 
 def decodeHtml(text):
-    text = text.replace('&auml;', 'ä')
-    text = text.replace('\u00e4', 'ä')
-    text = text.replace('&#228;', 'ä')
-    text = text.replace('&Auml;', 'Ä')
-    text = text.replace('\u00c4', 'Ä')
-    text = text.replace('&#196;', 'Ä')
-    text = text.replace('&ouml;', 'ö')
-    text = text.replace('\u00f6', 'ö')
-    text = text.replace('&#246;', 'ö')
-    text = text.replace('&ouml;', 'Ö')
-    text = text.replace('&Ouml;', 'Ö')
-    text = text.replace('\u00d6', 'Ö')
-    text = text.replace('&#214;', 'Ö')
-    text = text.replace('&uuml;', 'ü')
-    text = text.replace('\u00fc', 'ü')
-    text = text.replace('&#252;', 'ü')
-    text = text.replace('&Uuml;', 'Ü')
-    text = text.replace('\u00dc', 'Ü')
-    text = text.replace('&#220;', 'Ü')
-    text = text.replace('&szlig;', 'ß')
-    text = text.replace('\u00df', 'ß')
-    text = text.replace('&#223;', 'ß')
-    text = text.replace('&amp;', '&')
-    text = text.replace('&quot;', '\"')
-    text = text.replace('&gt;', '>')
-    text = text.replace('&apos;', "'")
-    text = text.replace('&acute;', '\'')
-    text = text.replace('&ndash;', '-')
-    text = text.replace('&bdquo;', '"')
-    text = text.replace('&rdquo;', '"')
-    text = text.replace('&ldquo;', '"')
-    text = text.replace('&lsquo;', '\'')
-    text = text.replace('&rsquo;', '\'')
-    text = text.replace('&#034;', '"')
-    text = text.replace('&#34;', '"')
-    text = text.replace('&#038;', '&')
-    text = text.replace('&#039;', '\'')
-    text = text.replace('&#39;', '\'')
-    text = text.replace('&#160;', ' ')
-    text = text.replace('\u00a0', ' ')
-    text = text.replace('\u00b4', '\'')
-    text = text.replace('\u003d', '=')
-    text = text.replace('\u0026', '&')
-    text = text.replace('&#174;', '')
-    text = text.replace('&#225;', 'a')
-    text = text.replace('&#233;', 'e')
-    text = text.replace('&#243;', 'o')
-    text = text.replace('&#8211;', '-')
-    text = text.replace('&#8212;', '—')
-    text = text.replace('&mdash;', '—')
-    text = text.replace('\u2013', '–')
-    text = text.replace('&#8216;', "'")
-    text = text.replace('&#8217;', "'")
-    text = text.replace('&#8220;', "'")
-    text = text.replace('&#8221;', '"')
-    text = text.replace('&#8222;', ', ')
-    text = text.replace('\u014d', 'ō')
-    text = text.replace('\u016b', 'ū')
-    text = text.replace('\u201a', '\"')
-    text = text.replace('\u2018', '\"')
-    text = text.replace('\u201e', '\"')
-    text = text.replace('\u201c', '\"')
-    text = text.replace('\u201d', '\'')
-    text = text.replace('\u2019s', '’')
-    text = text.replace('\u00e0', 'à')
-    text = text.replace('\u00e7', 'ç')
-    text = text.replace('\u00e8', 'é')
-    text = text.replace('\u00e9', 'é')
-    text = text.replace('\u00c1', 'Á')
-    text = text.replace('\u00c6', 'Æ')
-    text = text.replace('\u00e1', 'á')
-    text = text.replace('&#xC4;', 'Ä')
-    text = text.replace('&#xD6;', 'Ö')
-    text = text.replace('&#xDC;', 'Ü')
-    text = text.replace('&#xE4;', 'ä')
-    text = text.replace('&#xF6;', 'ö')
-    text = text.replace('&#xFC;', 'ü')
-    text = text.replace('&#xDF;', 'ß')
-    text = text.replace('&#xE9;', 'é')
-    text = text.replace('&#xB7;', '·')
-    text = text.replace('&#x27;', "'")
-    text = text.replace('&#x26;', '&')
-    text = text.replace('&#xFB;', 'û')
-    text = text.replace('&#xF8;', 'ø')
-    text = text.replace('&#x21;', '!')
-    text = text.replace('&#x3f;', '?')
-    text = text.replace('&#8230;', '...')
-    text = text.replace('\u2026', '...')
-    text = text.replace('&hellip;', '...')
-    text = text.replace('&#8234;', '')
     if PY3:
-        text = text.encode('utf-8').decode('unicode_escape')
-    return str(text)  # str needed for PLi
+        import html
+        text = html.unescape(text)
+    else:
+        from six.moves import (html_parser)
+        h = html_parser.HTMLParser()
+        text = h.unescape(text.decode('utf8')).encode('utf8')
+    text = text.replace('&amp;', '&')
+    text = text.replace('&apos;', "'")
+    text = text.replace('&lt;', '<')
+    text = text.replace('&gt;', '>')
+    text = text.replace('&ndash;', '-')
+    text = text.replace('&quot;', '"')
+    text = text.replace('&ntilde;', '~')
+    text = text.replace('&rsquo;', '\'')
+    text = text.replace('&nbsp;', ' ')
+    text = text.replace('&equals;', '=')
+    text = text.replace('&quest;', '?')
+    text = text.replace('&comma;', ',')
+    text = text.replace('&period;', '.')
+    text = text.replace('&colon;', ':')
+    text = text.replace('&lpar;', '(')
+    text = text.replace('&rpar;', ')')
+    text = text.replace('&excl;', '!')
+    text = text.replace('&dollar;', '$')
+    text = text.replace('&num;', '#')
+    text = text.replace('&ast;', '*')
+    text = text.replace('&lowbar;', '_')
+    text = text.replace('&lsqb;', '[')
+    text = text.replace('&rsqb;', ']')
+    text = text.replace('&half;', '1/2')
+    text = text.replace('&DiacriticalTilde;', '~')
+    text = text.replace('&OpenCurlyDoubleQuote;', '"')
+    text = text.replace('&CloseCurlyDoubleQuote;', '"')
+    return text.strip()
 
 
 ListAgent = [

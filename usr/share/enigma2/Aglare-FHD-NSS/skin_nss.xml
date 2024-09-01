@@ -16,8 +16,8 @@
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="menulistpli"/>
-        <panel name="button3temp"/>
-        <panel name="button4temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menudesc"/>
         <panel name="menusep"/>
         <panel name="pigscreen885"/>
@@ -71,7 +71,7 @@
     <screen name="NssMenu" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" title="NssMenu">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="" pixmap="image_logo/nss/zlogo.png" alphatest="blend" position="1485,632" size="445,360" zPosition="0"/>
@@ -133,7 +133,7 @@
     <screen name="NSSCamsManager" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" title="NSSCamsManager">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="info" position="55,513" size="842,68" font="Regular; 22" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="7"/>
@@ -146,7 +146,7 @@
     <screen name="HomeNss" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" title="NSS Addon Manager">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <eLabel name="" position="1734,1016" size="55,52" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
@@ -200,7 +200,7 @@
     <screen name="nssConfig" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" title="NSS Addon Manager">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="config" position="43,161" size="869,114" font="Regular;32" itemHeight="50" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
@@ -211,7 +211,7 @@
     <screen name="nssCamConfig" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" title="NSS Addon Manager">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="config" position="43,161" size="869,678" font="Regular;30" itemHeight="40" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
@@ -223,7 +223,7 @@
         <!-- <panel name="nssConfig"/> -->
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="config" position="43,161" size="869,575" font="Regular;30" itemHeight="40" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
@@ -278,7 +278,7 @@
     <screen backgroundColor="transparent" flags="wfNoBorder" name="nssCategories" position="0,0" size="1920,1080" title="NSS Addon Manager">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="list" position="43,178" size="869,806" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/>
@@ -312,7 +312,7 @@
     <screen name="NssIPK" position="0,0" size="1920,1080" title="NSS Addon Manager" backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <widget name="info" position="42,109" size="1030,70" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
         <widget name="info1" position="41,183" size="1030,100" font="Regular;30" halign="left" foregroundColor="yellow" backgroundColor="#20000000" transparent="1" zPosition="5"/>
@@ -366,7 +366,7 @@
     <screen name="nssInfoCfg" position="0,0" size="1920,1080" title="NSS Softcam Manager" backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="list" position="49,109" size="850,863" font="Regular;32" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" backgroundColor="#20000000"/>
@@ -376,7 +376,7 @@
     <screen name="nssGetipklist" position="0,0" size="1920,1080" title="NSS Softcam Manager" backgroundColor="#ff000000" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="list" position="49,118" size="850,723" scrollbarMode="showOnDemand" font="Regular;32" itemHeight="50" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#20000000" backgroundColorSelected="#0b2049"/>
@@ -395,7 +395,7 @@
         <panel name="pigscreen885"/>
         <panel name="titletemp"/>
         <panel name="menutemp"/>
-        <panel name="button1temp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <widget name="filelist" position="40,100" size="890,900" font="Regular;32" itemHeight="50" transparent="1" itemCornerRadius="8" valign="center" sscrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
         <panel name="bLogo"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/setup.png" transparent="1" alphatest="on"/>
