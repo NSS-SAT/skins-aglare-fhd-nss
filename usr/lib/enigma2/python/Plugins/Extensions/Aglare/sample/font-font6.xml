@@ -1,7 +1,7 @@
   <fonts>
     <font filename="lcd.ttf" name="LCD" scale="100" />
     <font filename="tuxtxt.ttf" name="Console" scale="100" />
-    <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/Greta.ttf" name="Regular" scale="96" />
+    <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/mvboli.ttf" name="Regular" scale="96" />
     <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/DroidSans.ttf" name="Regularn" scale="100" />
     <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/DroidSans-Bold.ttf" name="Bold" scale="100" />
     <font filename="/usr/share/enigma2/Aglare-FHD-NSS/fonts/arial.ttf" name="Replacement" scale="100" replacement="1" />

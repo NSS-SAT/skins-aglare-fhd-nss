@@ -17,7 +17,6 @@
         <panel name="menutemp"/>
         <panel name="menulistpli"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
-        <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menudesc"/>
         <panel name="menusep"/>
         <panel name="pigscreen885"/>
@@ -271,7 +270,59 @@
     
     <!-- ************* MMarkFolderz************* -->
     <screen name="ScriptExecuter" position="0,0" size="1920,1080" title="NSS Addon Manager" backgroundColor="#ff000000" flags="wfNoBorder">
-        <panel name="HomeNss"/>
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
+        <panel name="pigscreen885"/>
+        <panel name="bLogo"/>
+        <eLabel name="" position="1734,1016" size="55,52" backgroundColor="#3e4b53" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
+        <widget name="info" position="39,107" size="884,50" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5"/>
+        <!-- <widget name="list" position="43,172" size="869,812" font="Regular;32" itemHeight="50" scrollbarWidth="10" scrollbarMode="showOnDemand" backgroundColor="#000000" transparent="1"/> -->
+        <eLabel name="" position="997,630" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="icomoon; 30" text="" zPosition="1"/>
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,634" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareReceiverInfo">MemTotal</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Progress" position="1058,662" size="400,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="88">
+            <convert type="AglareReceiverInfo">MemTotal</convert>
+        </widget>
+        <eLabel name="" position="997,684" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="icomoon; 26" text="" zPosition="1"/>
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,688" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareReceiverInfo">HddInfo</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Progress" position="1058,716" size="400,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="88">
+            <convert type="AglareReceiverInfo">HddInfo</convert>
+        </widget>
+        <eLabel name="" position="997,738" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="icomoon; 26" text="" zPosition="1"/>
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,742" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareReceiverInfo">FlashInfo</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Progress" position="1058,770" size="400,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="88">
+            <convert type="AglareReceiverInfo">FlashInfo</convert>
+        </widget>
+        <eLabel name="" position="997,792" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="icomoon; 28" text="" zPosition="1"/>
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,796" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareReceiverInfo">UsbInfo</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Progress" position="1058,824" size="400,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="88">
+            <convert type="AglareReceiverInfo">UsbInfo</convert>
+        </widget>
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,859" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareBoxInfo">Boxtype</convert>
+        </widget>
+        <eLabel name="" position="997,846" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="icomoon; 26" text="" zPosition="1"/>
+        <eLabel name="" position="997,900" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="icomoon; 26" text="" zPosition="1"/>
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,913" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareBoxInfo">CpuInfo</convert>
+        </widget>
+        <eLabel name="" position="997,954" size="50,50" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 18" zPosition="1" text="UP"/>
+        <widget source="session.CurrentService" render="Label" zPosition="6" position="1058,967" size="500,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareBoxInfo">Upinfo</convert>
+        </widget>
+
+        <widget source="list" render="Listbox" position="43,172" size="869,700" font="Regular;32" itemHeight="50" scrollbarMode="showOnDemand" transparent="1" zPosition="5" foregroundColor="#00a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#20000000" backgroundColorSelected="#0b2049">
+            <convert type="StringList" />
+        </widget>
+        <widget name="labstatus" position="38,916" size="892,90" font="Regular;30" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="0" zPosition="5" />
     </screen>
 
     <!-- ************* nssCategories************* -->
