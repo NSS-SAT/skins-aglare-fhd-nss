@@ -18,7 +18,7 @@
     <widget source="ServiceEvent" render="Label" position="1386,420" size="500,40" font="Bold; 27" transparent="1" zPosition="8" valign="center" halign="left" noWrap="1">
         <convert type="EventName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="AglareEventListDisplay" position="1385,490" size="500,200" backgroundColor="buttonsc" column0="10,100,yellow,Regular,30,0,0" column1="110,370,white,Regular,30,1,1" primetimeoffset="0" rowHeight="40" transparent="1" zPosition="50">
+    <widget source="ServiceEvent" render="AglareEventListDisplay" position="1385,480" size="500,200" backgroundColor="buttonsc" column0="10,100,yellow,Regular,30,0,0" column1="110,370,white,Regular,30,1,1" primetimeoffset="0" rowHeight="40" transparent="1" zPosition="50">
         <convert type="AglareEventList">beginOnly=yes,primetime=yes,eventcount=5</convert>
     </widget>
     <widget source="ServiceEvent" render="AglareRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" position="828,268" size="525,415" halign="left" font="Regular; 28" transparent="1" valign="top" zPosition="99">
