@@ -76,31 +76,6 @@ AgentRequest = RequestAgent()
 runningcam = None
 
 
-'''
-try:
-    from .data.NcamInfo import NcamInfoMenu
-except ImportError:
-    pass
-
-try:
-    from .data.OScamInfo import OscamInfoMenu
-except ImportError:
-    pass
-
-try:
-    from .data.CCcamInfo import CCcamInfoMain
-except ImportError:
-    pass
-'''
-
-'''
-try:
-    if os.path.isfile(resolveFilename(SCOPE_PLUGINS, 'Extensions/CCcamInfo/plugin.pyc')):
-        from Plugins.Extensions.CCcamInfo.plugin import CCcamInfoMain
-except ImportError:
-    pass
-'''
-
 try:
     wgetsts()
 except:
@@ -117,9 +92,6 @@ def checkdir():
 
 
 checkdir()
-
-
-# =============== SCREEN PATH SETTING
 screenwidth = getDesktop(0).size()
 if screenwidth.width() == 2560:
     skin_path = res_plugin_path + '/skins/uhd/'
@@ -691,7 +663,6 @@ class nssGetipk(Screen):
         local = False
         self.icount = 0
         self.downloading = False
-        # self.xml = 'http://nonsolosat.net/Manager/Manager.xml'
         self.timer = eTimer()
         if os.path.exists('/var/lib/dpkg/status'):
             self.timer_conn = self.timer.timeout.connect(self._gotPageLoad)
@@ -739,6 +710,16 @@ class nssGetipk(Screen):
             if self.xml:
                 self.xmlparse = minidom.parseString(self.xml)
                 for plugins in self.xmlparse.getElementsByTagName('plugins'):
+                    if config.ParentalControl.configured.value:
+                        if 'adult' in str(plugins.getAttribute('cont')).lower():
+                            continue
+                    if not os.path.exists('/var/lib/dpkg/info'):
+                        if 'dreamos' in str(plugins.getAttribute('cont')).lower():
+                            continue
+
+                    if os.path.exists('/var/lib/dpkg/info'):
+                        if 'dreamos' not in str(plugins.getAttribute('cont')).lower():
+                            continue
                     self.names.append(str(plugins.getAttribute('cont')))
                 # self["list"].l.setItemHeight(50)
                 self["list"].l.setList(self.names)
@@ -868,8 +849,7 @@ class nssGetipklist(Screen):
             cmd2 = "tar -xvf '/tmp/" + self.plug + "' -C /"
         elif ".bz2" in self.plug and "gz" in self.plug:
             cmd2 = "tar -xjvf '/tmp/" + self.plug + "' -C /"
-        # cmd3 = "rm '/tmp/" + self.plug + "'"
-        cmd = cmd2  # + " && " + cmd3
+        cmd = cmd2
         cmd00 = "wget --no-check-certificate -U '%s' -c '%s' -O '%s';%s > /dev/null" % (AgentRequest, str(self.com), self.folddest, cmd)
         print('cmd00:', cmd00)
         title = (_("Installing %s\nPlease Wait...") % self.dom)
