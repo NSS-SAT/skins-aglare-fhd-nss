@@ -53,8 +53,6 @@ PY3 = False
 if sys.version_info[0] >= 3:
     PY3 = True
     unicode = str
-    unichr = chr
-    long = int
     import queue
     import html
     html_parser = html
@@ -106,6 +104,8 @@ def isMountedInRW(path):
     return False
 
 
+cur_skin = config.skin.primary_skin.value.replace('/skin.xml', '')
+noposter = "/usr/share/enigma2/%s/main/noposter.jpg" % cur_skin
 path_folder = "/tmp/poster"
 if os.path.exists("/media/hdd"):
     if isMountedInRW("/media/hdd"):
@@ -136,7 +136,6 @@ except:
 # WITH THE NUMBER OF ITEMS EXPECTED (BLANK LINE IN BOUQUET CONSIDERED)
 # IF NOT SET OR WRONG FILE THE AUTOMATIC POSTER GENERATION WILL WORK FOR
 # THE CHANNELS THAT YOU ARE VIEWING IN THE ENIGMA SESSION
-
 
 def SearchBouquetTerrestrial():
     import glob
@@ -224,8 +223,8 @@ REGEX = re.compile(
     r'\s\d{1,3}\s[чсЧС]\.?\s.*|'           # numero di parte/episodio in russo
     r'\.\s\d{1,3}\s[чсЧС]\.?\s.*|'         # numero di parte/episodio in russo con punto
     r'\s[чсЧС]\.?\s\d{1,3}.*|'             # Parte/Episodio in russo
-    r'\d{1,3}-(?:я|й)\s?с-н.*'             # Finale con numero e suffisso russo
-    , re.DOTALL)
+    r'\d{1,3}-(?:я|й)\s?с-н.*',            # Finale con numero e suffisso russo
+    re.DOTALL)
 
 
 def intCheck():
@@ -240,18 +239,6 @@ def intCheck():
         return False
     else:
         return True
-
-
-# def remove_accents(string):
-    # if type(string) is not unicode:
-        # string = unicode(string, encoding='utf-8')
-    # string = re.sub(u"[àáâãäå]", 'a', string)
-    # string = re.sub(u"[èéêë]", 'e', string)
-    # string = re.sub(u"[ìíîï]", 'i', string)
-    # string = re.sub(u"[òóôõö]", 'o', string)
-    # string = re.sub(u"[ùúûü]", 'u', string)
-    # string = re.sub(u"[ýÿ]", 'y', string)
-    # return string
 
 
 def remove_accents(string):
@@ -288,6 +275,10 @@ def cutName(eventName=""):
         eventName = eventName.replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '')
         eventName = eventName.replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '')
         eventName = eventName.replace('(0+)', '').replace('0+', '').replace('+', '')
+        eventName = eventName.replace('episode', '')
+        eventName = eventName.replace('مسلسل', '')
+        eventName = eventName.replace('فيلم وثائقى', '')
+        eventName = eventName.replace('حفل', '')
         return eventName
     return ""
 
@@ -310,9 +301,15 @@ def dataenc(data):
 
 def convtext(text=''):
     try:
-        if text != '' or text is not None or text != 'None':
+        if text is None:
+            print('return None original text: ', type(text))
+            return  # Esci dalla funzione se text è None
+        if text == '':
+            print('text is an empty string')
+        else:
             print('original text: ', text)
             text = text.lower()
+            print('lowercased text: ', text)
             text = remove_accents(text)
             print('remove_accents text: ', text)
 
@@ -326,9 +323,6 @@ def convtext(text=''):
             text = text.replace('1^ visione rai', '').replace('1^ visione', '').replace('primatv', '').replace('1^tv', '')
             text = text.replace('prima visione', '').replace('1^ tv', '').replace('((', '(').replace('))', ')')
             text = text.replace('live:', '').replace(' - prima tv', '')
-            # for oldem
-            text = re.sub(r'\d+\s*ح', '', text)
-
             if 'giochi olimpici parigi' in text:
                 text = 'olimpiadi di parigi'
             if 'bruno barbieri' in text:
@@ -374,9 +368,14 @@ def convtext(text=''):
             text = re.sub(r'\(\(.*?\)\)|\(.*?\)', '', text)
             # remove all content between and including [] multiple times
             text = re.sub(r'\[\[.*?\]\]|\[.*?\]', '', text)
+            # remove episode number in arabic series
+            text = re.sub(r' +ح', '', text)
+            # remove season number in arabic series
+            text = re.sub(r' +ج', '', text)
+            # remove season number in arabic series
+            text = re.sub(r' +م', '', text)
             # List of bad strings to remove
             bad_strings = [
-
                 "ae|", "al|", "ar|", "at|", "ba|", "be|", "bg|", "br|", "cg|", "ch|", "cz|", "da|", "de|", "dk|",
                 "ee|", "en|", "es|", "eu|", "ex-yu|", "fi|", "fr|", "gr|", "hr|", "hu|", "in|", "ir|", "it|", "lt|",
                 "mk|", "mx|", "nl|", "no|", "pl|", "pt|", "ro|", "rs|", "ru|", "se|", "si|", "sk|", "sp|", "tr|",
@@ -432,9 +431,6 @@ def convtext(text=''):
             text = text.replace('brunobarbierix', 'bruno barbieri - 4 hotel')
             text = quote(text, safe="")
             print('text safe: ', text)
-            # print('Final text: ', text)
-        else:
-            text = text
         return unquote(text).capitalize()
     except Exception as e:
         print('convtext error: ', e)
@@ -458,7 +454,7 @@ class PosterDB(AglarePosterXDownloadThread):
             canal = pdb.get()
             self.logDB("[QUEUE] : {} : {}-{} ({})".format(canal[0], canal[1], canal[2], canal[5]))
             self.pstcanal = convtext(canal[5])
-            if self.pstcanal and self.pstcanal != 'None' or self.pstcanal is not None:
+            if self.pstcanal != 'None' or self.pstcanal is not None:
                 dwn_poster = path_folder + '/' + self.pstcanal + ".jpg"
                 if os.path.exists(dwn_poster):
                     os.utime(dwn_poster, (time.time(), time.time()))
@@ -485,6 +481,8 @@ class PosterDB(AglarePosterXDownloadThread):
                     val, log = self.search_google(dwn_poster, self.pstcanal, canal[4], canal[3], canal[0])
                     self.logDB(log)
                 pdb.task_done()
+        # else:
+            # self.pstcanal = noposter
 
     def logDB(self, logmsg):
         try:
@@ -532,6 +530,7 @@ class PosterAutoDB(AglarePosterXDownloadThread):
                             canal[4] = evt[6]
                             canal[5] = canal[2]
                             self.pstcanal = convtext(canal[5])
+                            # if self.pstcanal is not None:
                             self.pstrNm = path_folder + '/' + self.pstcanal + ".jpg"
                             self.pstcanal = str(self.pstrNm)
                             dwn_poster = self.pstcanal
@@ -696,8 +695,11 @@ class AglarePosterX(Renderer):
                 self.oldCanal = curCanal
                 self.logPoster("Service: {} [{}] : {} : {}".format(servicetype, self.nxts, self.canal[0], self.oldCanal))
                 self.pstcanal = convtext(self.canal[5])
-                self.pstrNm = self.path + '/' + str(self.pstcanal) + ".jpg"
-                self.pstcanal = str(self.pstrNm)
+                if self.pstcanal is not None:
+                    self.pstrNm = self.path + '/' + str(self.pstcanal) + ".jpg"
+                    self.pstcanal = str(self.pstrNm)
+                # else:
+                    # self.pstcanal = noposter
                 if os.path.exists(self.pstcanal):
                     self.timer.start(10, True)
                 else:
@@ -716,9 +718,15 @@ class AglarePosterX(Renderer):
         if self.canal[5]:
             if not os.path.exists(self.pstcanal):
                 self.pstcanal = convtext(self.canal[5])
-                self.pstrNm = self.path + '/' + str(self.pstcanal) + ".jpg"
-                self.pstcanal = str(self.pstrNm)
-            if os.path.exists(self.pstcanal):
+                if self.pstcanal is not None:
+                    self.pstrNm = self.path + '/' + str(self.pstcanal) + ".jpg"
+                    self.pstcanal = str(self.pstrNm)
+                else:
+                    self.pstcanal = noposter
+            else:
+                print('showPoster----')
+                # self.pstcanal = noposter
+                # if os.path.exists(self.pstcanal):
                 self.logPoster("[LOAD : showPoster] {}".format(self.pstcanal))
                 self.instance.setPixmap(loadJPG(self.pstcanal))
                 self.instance.setScale(1)
@@ -730,8 +738,11 @@ class AglarePosterX(Renderer):
         if self.canal[5]:
             if not os.path.exists(self.pstcanal):
                 self.pstcanal = convtext(self.canal[5])
-                self.pstrNm = self.path + '/' + str(self.pstcanal) + ".jpg"
-                self.pstcanal = str(self.pstrNm)
+                if self.pstcanal is not None:
+                    self.pstrNm = self.path + '/' + str(self.pstcanal) + ".jpg"
+                    self.pstcanal = str(self.pstrNm)
+                # else:
+                    # self.pstcanal = noposter
             loop = 180
             found = None
             self.logPoster("[LOOP: waitPoster] {}".format(self.pstcanal))
@@ -743,6 +754,9 @@ class AglarePosterX(Renderer):
                 loop = loop - 1
             if found:
                 self.timer.start(20, True)
+        # else:
+            # print('waitPoster----')
+            # self.pstcanal = noposter
 
     def logPoster(self, logmsg):
         try:

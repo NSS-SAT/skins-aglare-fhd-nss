@@ -14,8 +14,6 @@ import socket
 import sys
 import threading
 import unicodedata
-import html
-
 global my_cur_skin, srch
 
 PY3 = False
@@ -23,11 +21,9 @@ if sys.version_info[0] >= 3:
     PY3 = True
     unicode = str
     unichr = chr
-    from urllib.parse import quote
     import html
     html_parser = html
 else:
-    from urllib2 import quote
     from HTMLParser import HTMLParser
     html = HTMLParser()
 
@@ -680,26 +676,19 @@ class AglarePosterXDownloadThread(threading.Thread):
         # Rimpiazza specifiche sequenze
         string = re.sub(r"u0026", "&", string)
         string = re.sub(r"u003d", "=", string)
-
         # Rimozione segni diacritici lasciando solo i caratteri base
         string = re.sub(r'[\u0300-\u036f]', '', string)
-
         # Rimozione di specifici caratteri di punteggiatura
         string = re.sub(r"[,!?\.\"]", ' ', string)
         string = re.sub(r"[-/:']", '', string)
-
         # Rimozione di tutto ciò che non è alfanumerico o spazio
         string = re.sub(r"[^a-zA-Z0-9 ]", "", string)
-
         # Conversione in minuscolo
         string = string.lower()
-
         # Sostituzione di spazi multipli con uno solo
         string = re.sub(r'\s+', ' ', string)
-
         # Eliminazione degli spazi all'inizio e alla fine della stringa
         string = string.strip()
-
         return string
 
     def PMATCH(self, textA, textB):
