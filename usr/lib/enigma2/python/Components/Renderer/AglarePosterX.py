@@ -232,15 +232,6 @@ REGEX = re.compile(
     re.DOTALL)
 
 
-def getCleanContentSearchTitle(event_title=""):
-    # to search for a title in the content-table by intern cleaned clean_search_title column
-    cleanEventname = re.sub(' I$', ' 1', event_title)
-    cleanEventname = re.sub(' II$', ' 2', cleanEventname)
-    cleanEventname = re.sub(' III$', ' 3', cleanEventname)
-    cleanEventname = cleanEventname.lower().replace(",", "").replace("ß", "ss").replace(" & ", " and ").replace("!", "").replace("-", "").replace(" und ", " and ").replace(".", "").replace("'", "").replace("?", "").replace(" ", "")
-    return cleanEventname
-
-
 def intCheck():
     try:
         response = urlopen("http://google.com", None, 5)
@@ -324,6 +315,9 @@ def convtext(text=''):
             print('original text: ', text)
             text = text.lower()
             print('lowercased text: ', text)
+
+            text = text.partition("-")[0]
+
             text = remove_accents(text)
             print('remove_accents text: ', text)
             # #
@@ -436,7 +430,7 @@ def convtext(text=''):
             text = re.sub(' - +.+?FIN', '', text)  # all episodes and series ????
             text = re.sub('FIN', '', text)
             text = re.sub(r'^\|[\w\-\|]*\|', '', text)
-            text = re.sub(r"[-,?!/\.\":]", '', text)  # replace (- or , or ! or / or . or " or :) by space
+            text = re.sub(r"[-,?!+/\.\":]", '', text)  # replace (- or , or ! or / or . or " or :) by space
             # recoded  end
             text = text.strip(' -')
             # forced

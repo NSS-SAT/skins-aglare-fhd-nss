@@ -22,6 +22,7 @@ from time import gmtime
 import json
 import os
 import re
+
 import socket
 import sys
 import NavigationInstance
@@ -38,6 +39,8 @@ if sys.version_info[0] >= 3:
     from urllib.error import HTTPError, URLError
     import html
     html_parser = html
+
+
 else:
     from urllib import quote_plus
     from urllib2 import urlopen
@@ -239,6 +242,85 @@ def dataenc(data):
     return data
 
 
+# def convtext(text=''):
+    # try:
+        # if text is None:
+            # print('return None original text:', type(text))
+            # return  # Esci dalla funzione se text è None
+        # if text == '':
+            # print('text is an empty string')
+        # if isinstance(text, text_type):  # Python 2 check
+            # text = text.encode('utf-8')
+        # else:
+            # print('original text: ', text)
+            # text = text.lower()
+            # print('lowercased text: ', text)
+
+            # text = remove_accents(text)
+            # print('remove_accents text: ', text)
+
+            # # Applica le funzioni di taglio e pulizia del titolo
+            # text = cutName(text)
+            # text = getCleanTitle(text)
+            # # Regola il titolo se finisce con "the"
+            # if text.endswith("the"):
+                # text = "the " + text[:-4]
+            # # Sostituisci caratteri speciali con stringhe vuote
+            # text = text.replace("\xe2\x80\x93", "").replace('\xc2\x86', '').replace('\xc2\x87', '')  # replace special
+            # text = text.replace('1^ visione rai', '').replace('1^ visione', '').replace('primatv', '').replace('1^tv', '')
+            # text = text.replace('prima visione', '').replace('1^ tv', '').replace('((', '(').replace('))', ')')
+            # text = text.replace('live:', '').replace(' - prima tv', '')
+            # # Gestione casi specifici
+            # replacements = {
+                # 'giochi olimpici': 'olimpiadi',
+                # 'bruno barbieri': 'brunobarbierix',
+                # "anni '60": 'anni 60',
+                # 'tg regione': 'tg3',
+                # 'studio aperto': 'studio aperto',
+                # 'josephine ange gardien': 'josephine ange gardien',
+                # 'elementary': 'elementary',
+                # 'squadra speciale cobra 11': 'squadra speciale cobra 11',
+                # 'criminal minds': 'criminal minds',
+                # 'i delitti del barlume': 'i delitti del barlume',
+                # 'senza traccia': 'senza traccia',
+                # 'hudson e rex': 'hudson e rex',
+                # 'ben-hur': 'ben-hur',
+                # 'la7': 'la7',
+                # 'skytg24': 'skytg24'
+            # }
+            # for key, value in replacements.items():
+                # if key in text:
+                    # text = text.replace(key, value)
+            # text = text + 'FIN'
+            # if re.search(r'[Ss][0-9][Ee][0-9]+.*?FIN', text):
+                # text = re.sub(r'[Ss][0-9][Ee][0-9]+.*?FIN', '', text)
+            # if re.search(r'[Ss][0-9] [Ee][0-9]+.*?FIN', text):
+                # text = re.sub(r'[Ss][0-9] [Ee][0-9]+.*?FIN', '', text)
+
+            # text = re.sub(r'(odc.\s\d+)+.*?FIN', '', text)
+            # text = re.sub(r'(odc.\d+)+.*?FIN', '', text)
+            # text = re.sub(r'(\d+)+.*?FIN', '', text)
+            # text = text.partition("(")[0] + 'FIN'  # .strip()
+            # # text = re.sub("\\s\d+", "", text)
+            # text = text.partition("(")[0]  # .strip()
+            # text = text.partition(":")[0]  # .strip()
+            # text = text.partition(" -")[0]  # .strip()
+            # text = re.sub(' - +.+?FIN', '', text)  # all episodes and series ????
+            # text = re.sub('FIN', '', text)
+            # text = re.sub(r'^\|[\w\-\|]*\|', '', text)
+            # text = re.sub(r"[-,?!+/\.\":]", '', text)  # replace (- or , or ! or / or . or " or :) by space
+            # # text = remove_accents(text)
+            # text = text.strip()
+            # # Modifiche forzate
+            # text = text.replace('XXXXXX', '60')
+            # text = text.replace('brunobarbierix', 'bruno barbieri - 4 hotel')
+
+            # print('text safe:', text)
+        # return unquote(text).capitalize()
+    # except Exception as e:
+        # print('convtext error:', e)
+        # return None
+
 def convtext(text=''):
     try:
         if text is None:
@@ -250,6 +332,9 @@ def convtext(text=''):
             print('original text: ', text)
             text = text.lower()
             print('lowercased text: ', text)
+
+            text = text.partition("-")[0]
+
             text = remove_accents(text)
             print('remove_accents text: ', text)
             # #
@@ -362,7 +447,7 @@ def convtext(text=''):
             text = re.sub(' - +.+?FIN', '', text)  # all episodes and series ????
             text = re.sub('FIN', '', text)
             text = re.sub(r'^\|[\w\-\|]*\|', '', text)
-            text = re.sub(r"[-,?!/\.\":]", '', text)  # replace (- or , or ! or / or . or " or :) by space
+            text = re.sub(r"[-,?!+/\.\":]", '', text)  # replace (- or , or ! or / or . or " or :) by space
             # recoded  end
             text = text.strip(' -')
             # forced
