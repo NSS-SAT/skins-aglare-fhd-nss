@@ -526,6 +526,7 @@ class AglarePosterXDownloadThread(threading.Thread):
         except Exception as e:
             if os.path.exists(dwn_poster):
                 os.remove(dwn_poster)
+
             if os.path.exists(dwn_poster):
                 os.remove(dwn_poster)
             return False, "[ERROR : imdb] {} [{}-{}] => {} ({})".format(self.title_safe, chkType, year, url_mimdb, str(e))
