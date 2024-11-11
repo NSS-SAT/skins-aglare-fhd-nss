@@ -26,6 +26,7 @@ import re
 import socket
 import sys
 import NavigationInstance
+from re import search, sub, I, S, escape
 
 global my_cur_skin, path_folder
 
@@ -246,12 +247,52 @@ def sanitize_filename(filename):
     sanitized = re.sub(r'[^\w\s-]', '', filename)  # Remove invalid characters
     # sanitized = sanitized.replace(' ', '_')      # Replace spaces with underscores
     # sanitized = sanitized.replace('-', '_')      # Replace dashes with underscores
-    return sanitized
+    return sanitized.strip()
 
 
 def convtext(text=''):
     text = text.lower()
     print('text lower init=', text)
+
+    text = text.replace("\xe2\x80\x93", "").replace('\xc2\x86', '').replace('\xc2\x87', '')  # replace special
+    text = text.replace('1^ visione rai', '').replace('1^ visione', ''.replace(' - prima tv', '')).replace(' - primatv', '')
+    text = text.replace('prima visione', '').replace('1^tv', '').replace('1^ tv', '')
+    text = text.replace('((', '(').replace('))', ')')
+    # Inglese
+    text = text.replace('first screening', '').replace('premiere:', '').replace('live:', '').replace('new:', '')
+    # Francese
+    text = text.replace('première diffusion', '').replace('nouveau:', '').replace('en direct:', '')
+    # Spagnolo
+    text = text.replace('estreno:', '').replace('nueva emisión:', '').replace('en vivo:', '')
+
+    if 'bruno barbieri' in text:
+        text = text.replace('bruno barbieri', 'brunobarbierix')
+    if "anni '60" in text:
+        text = "anni 60"
+    if 'tg regione' in text:
+        text = 'tg3'
+    if 'studio aperto' in text:
+        text = 'studio aperto'
+    if 'josephine ange gardien' in text:
+        text = 'josephine ange gardien'
+    if 'elementary' in text:
+        text = 'elementary'
+    if 'squadra speciale cobra 11' in text:
+        text = 'squadra speciale cobra 11'
+    if 'criminal minds' in text:
+        text = 'criminal minds'
+    if 'i delitti del barlume' in text:
+        text = 'i delitti del barlume'
+    if 'senza traccia' in text:
+        text = 'senza traccia'
+    if 'hudson e rex' in text:
+        text = 'hudson e rex'
+    if 'ben-hur' in text:
+        text = 'ben-hur'
+    if 'la7 ' in text:
+        text = 'la7'
+    if 'skytg24' in text:
+        text = 'skytg24'
     cutlist = ['x264', '720p', '1080p', '1080i', 'PAL', 'GERMAN', 'ENGLiSH', 'WS', 'DVDRiP', 'UNRATED', 'RETAIL', 'Web-DL', 'DL', 'LD', 'MiC', 'MD', 'DVDR', 'BDRiP', 'BLURAY', 'DTS', 'UNCUT', 'ANiME',
                'AC3MD', 'AC3', 'AC3D', 'TS', 'DVDSCR', 'COMPLETE', 'INTERNAL', 'DTSD', 'XViD', 'DIVX', 'DUBBED', 'LINE.DUBBED', 'DD51', 'DVDR9', 'DVDR5', 'h264', 'AVC',
                'WEBHDTVRiP', 'WEBHDRiP', 'WEBRiP', 'WEBHDTV', 'WebHD', 'HDTVRiP', 'HDRiP', 'HDTV', 'ITUNESHD', 'REPACK', 'SYNC']
@@ -313,6 +354,10 @@ def convtext(text=''):
     text = re.sub('FIN', '', text)
 
     text = sanitize_filename(text)
+
+    # forced
+    text = text.replace('XXXXXX', '60')
+    text = text.replace('brunobarbierix', 'bruno barbieri - 4 hotel')
 
     text = quote(text, safe="")
     print('text final: ', text)
