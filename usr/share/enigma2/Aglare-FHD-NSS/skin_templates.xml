@@ -35,7 +35,7 @@
     </screen>
     <screen name="menutemp3" flags="wfNoBorder">
         <panel name="timedate"/>
-        <widget source="Title" render="Label" position="76,32" size="1340,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left" textOffset="44,0"/>
+        <widget source="Title" render="Label" position="80,30" size="1340,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left" textOffset="44,0"/>
         <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="20,96" size="1880,912" zPosition="-90" cornerRadius="30" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
@@ -79,7 +79,7 @@
         <widget name="text" position="1060,680" size="810,108" font="Regular; 26" halign="left" valign="top" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="55"/>
     </screen>
     <screen name="titletemp" flags="wfNoBorder">
-        <widget source="Title" render="Label" position="106,38" size="890,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
+        <widget source="Title" render="Label" position="105,40" size="890,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
         <widget source="ScreenPath" render="Label" position="36,10" size="1380,22" backgroundColor="background" transparent="1" zPosition="1" font="Regular; 19" valign="center" halign="left"/>
         <ePixmap position="33,36" size="66,54" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="19"/>
     </screen>
@@ -562,7 +562,7 @@
         </widget>
         <eLabel name="" position="1848,902" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Bold; 20" zPosition="0" text="NO VPN"/>
     </screen>
-   <screen name="infobartemp2" flags="wfNoBorder" position="0,0" backgroundColor="transparent">
+    <screen name="infobartemp2" flags="wfNoBorder" position="0,0" backgroundColor="transparent">
         <eLabel backgroundColor="white1" cornerRadius="30" position="10,800" size="1900,240" zPosition="-99"/>
         <eLabel backgroundColor="black1" cornerRadius="20" position="30,940" size="1860,120" zPosition="-97"/>
         <eLabel backgroundColor="mcolor5" cornerRadius="16" position="810,760" size="300,160" zPosition="-97"/>
