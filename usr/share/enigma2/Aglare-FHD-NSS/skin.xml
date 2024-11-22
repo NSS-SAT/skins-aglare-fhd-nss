@@ -639,7 +639,7 @@
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="menulistpli"/>
-        <panel name="ScreenTemplateAllColorButtons_menu"/>
+        <!-- <panel name="ScreenTemplateAllColorButtons_menu"/> -->
         <panel name="menudesc"/>
         <panel name="menusep"/>
         <panel name="pigscreen885"/>
