@@ -219,7 +219,6 @@ def remove_exif(image_path):
 
 def convert_image(image):
     path = image
-    # remove_exif(path)
     img = Image.open(path)
     img.save(path, "PNG")
     return image
@@ -245,7 +244,6 @@ class AglareSetup(ConfigListScreen, Screen):
         self.previewFiles = '/usr/lib/enigma2/python/Plugins/Extensions/Aglare/sample/'
         self['Preview'] = Pixmap()
         self.setup_title = ('Aglare-FHD-NSS')
-
         list = []
         section = '--------------------------( SKIN GENERAL SETUP )-----------------------'
         list.append(getConfigListEntry(section))
@@ -255,25 +253,17 @@ class AglareSetup(ConfigListScreen, Screen):
         self.onChangedEntry = []
         self.createSetup()
         self['actions'] = ActionMap(['OkCancelActions',
-                                     # # 'InputActions',
-                                     # 'VirtualKeyboardActions',
-                                     # 'MenuActions',
-                                     # 'DirectionActions',
-                                     # 'ColorActions'], {
                                      'DirectionActions',
-                                     # 'InputBoxActions',
-                                     # 'HotkeyActions'
-                                     # 'SetupActions'
-                                     # 'EPGSelectActions',
-                                     # 'MenuActions',
+                                     'InputBoxActions',
+                                     'HotkeyActions'
                                      'VirtualKeyboardActions',
                                      'NumberActions',
-                                     # 'HelpActions',
+                                     'ColorActions',
                                      'InfoActions'], {'showVirtualKeyboard': self.KeyText,
                                                       'left': self.keyLeft,
                                                       'right': self.keyRight,
-                                                      'rightUp': self.keyRight,
-                                                      'leftUp': self.keyLeft,
+                                                      # 'rightUp': self.keyRight,
+                                                      # 'leftUp': self.keyLeft,
                                                       'down': self.keyDown,
                                                       'up': self.keyUp,
                                                       'red': self.keyExit,
@@ -580,7 +570,7 @@ class AglareSetup(ConfigListScreen, Screen):
             if len(x) > 1:  # Check if x has at least two elements
                 x[1].save()
             config.plugins.AglareNss.save()
-            configfile.save()
+        configfile.save()
         try:
             skin_lines = []
 
