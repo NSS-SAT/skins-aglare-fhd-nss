@@ -93,12 +93,12 @@ def isMountedInRW(path):
     return False
 
 
-path_poster= "/tmp/poster"
+path_poster = "/tmp/poster"
 patch_backdrop = "/tmp/backdrop"
 if os.path.exists("/media/hdd") and isMountedInRW("/media/hdd"):
     path_poster = "/media/hdd/poster"
     patch_backdrop = "/media/hdd/backdrop"
-    
+
 elif os.path.exists("/media/usb") and isMountedInRW("/media/usb"):
     path_poster = "/media/usb/poster"
     patch_backdrop = "/media/usb/backdrop"
@@ -255,26 +255,36 @@ class AglareSetup(ConfigListScreen, Screen):
         self.onChangedEntry = []
         self.createSetup()
         self['actions'] = ActionMap(['OkCancelActions',
-                                     # 'InputActions',
-                                     'VirtualKeyboardActions',
-                                     'MenuActions',
+                                     # # 'InputActions',
+                                     # 'VirtualKeyboardActions',
+                                     # 'MenuActions',
+                                     # 'DirectionActions',
+                                     # 'ColorActions'], {
                                      'DirectionActions',
-                                     'ColorActions'], {'showVirtualKeyboard': self.KeyText,
-                                                       'left': self.keyLeft,
-                                                       'right': self.keyRight,
-                                                       'rightUp': self.keyRight,
-                                                       'leftUp': self.keyLeft,
-                                                       'down': self.keyDown,
-                                                       'up': self.keyUp,
-                                                       'red': self.keyExit,
-                                                       'green': self.keySave,
-                                                       'menu': self.Checkskin,
-                                                       'yellow': self.checkforUpdate,
-                                                       'blue': self.info,
-                                                       'info': self.info,
-                                                       '5': self.Checkskin,
-                                                       'cancel': self.keyExit,
-                                                       'ok': self.run}, -1)
+                                     # 'InputBoxActions',
+                                     # 'HotkeyActions'
+                                     # 'SetupActions'
+                                     # 'EPGSelectActions',
+                                     # 'MenuActions',
+                                     'VirtualKeyboardActions',
+                                     'NumberActions',
+                                     # 'HelpActions',
+                                     'InfoActions'], {'showVirtualKeyboard': self.KeyText,
+                                                      'left': self.keyLeft,
+                                                      'right': self.keyRight,
+                                                      'rightUp': self.keyRight,
+                                                      'leftUp': self.keyLeft,
+                                                      'down': self.keyDown,
+                                                      'up': self.keyUp,
+                                                      'red': self.keyExit,
+                                                      'green': self.keySave,
+                                                      'menu': self.Checkskin,
+                                                      'yellow': self.checkforUpdate,
+                                                      'blue': self.info,
+                                                      'info': self.info,
+                                                      '5': self.Checkskin,
+                                                      'cancel': self.keyExit,
+                                                      'ok': self.run}, -1)
         self.onLayoutFinish.append(self.ShowPicture)
         self.onLayoutFinish.append(self.__layoutFinished)
 
@@ -463,10 +473,6 @@ class AglareSetup(ConfigListScreen, Screen):
 
     def DecodePicture(self, PicInfo=None):
         print('PicInfo=', PicInfo)
-        '''
-        if PicInfo is None:
-            PicInfo = '/usr/share/enigma2/xDreamy/screens/default.png'
-        '''
         ptr = self.PicLoad.getData()
         if ptr is not None:
             self["Preview"].instance.setPixmap(ptr)
@@ -503,13 +509,11 @@ class AglareSetup(ConfigListScreen, Screen):
             config.plugins.AglareNss.api2.setValue(0)
             config.plugins.AglareNss.api2.save()
             self.keyApi2()
-
         # self.ShowPicture()
 
     def keyRight(self):
         ConfigListScreen.keyRight(self)
         self.createSetup()
-
         sel = self["config"].getCurrent()[1]
         if sel and sel == config.plugins.AglareNss.png:
             config.plugins.AglareNss.png.setValue(0)
