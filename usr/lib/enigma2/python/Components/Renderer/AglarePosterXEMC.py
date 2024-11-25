@@ -63,8 +63,6 @@ except:
     pass
 
 
-                         
-                    
 def isMountedInRW(path):
     testfile = path + '/tmp-rw-test'
     os.system('touch ' + testfile)
@@ -433,7 +431,7 @@ def convtextxx(text=''):
             print('original text: ', text)
             text = text.lower()
             print('lowercased text: ', text)
-            text.lstrip()
+            text = text.lstrip()
             # #
             text = cutName(text)
             text = getCleanTitle(text)

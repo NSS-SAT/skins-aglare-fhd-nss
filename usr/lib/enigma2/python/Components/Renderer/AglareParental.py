@@ -1,49 +1,32 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# by digiteng...04.2020, 11.2020, 06.2021
-# file by sunriser 07.2021
-# <widget source="session.Event_Now" render="AglareInfoEvents"/>
-# <widget source="session.Event_Next" render="AglareInfoEvents"/>
-# <widget source="Event" render="AglareInfoEvents"/>
-# edit by lululla 07.2022
-# recode from lululla 2023
-from __future__ import absolute_import
+# <widget render="AglareParental" source="session.Event_Now" position="315,874" size="50,50" zPosition="3" transparent="1" alphatest="blend"/>
+from __future__ import print_function
 from Components.Renderer.Renderer import Renderer
-from Components.VariableText import VariableText
 from Components.config import config
-from six import text_type
-from enigma import (
-    eLabel,
-    eEPGCache,
-    eTimer,
-)
-from time import gmtime
+from enigma import ePixmap, eTimer, loadPNG
 import json
 import os
 import re
 import socket
 import sys
-import NavigationInstance
+from six import text_type
 from re import search, sub, I, S, escape
-
-global my_cur_skin, path_folder
 
 
 PY3 = False
 if sys.version_info[0] >= 3:
     PY3 = True
-    from urllib.parse import quote_plus
-    from urllib.request import urlopen
-    from _thread import start_new_thread
-    from urllib.error import HTTPError, URLError
     import html
     html_parser = html
+    from urllib.error import HTTPError, URLError
+    from urllib.request import urlopen
+    from urllib.parse import quote_plus
 else:
-    from urllib import quote_plus
-    from urllib2 import urlopen
-    from thread import start_new_thread
     from urllib2 import HTTPError, URLError
+    from urllib2 import urlopen
+    from urllib import quote_plus
     from HTMLParser import HTMLParser
     html_parser = HTMLParser()
 
@@ -52,15 +35,6 @@ try:
     from urllib import unquote, quote
 except ImportError:
     from urllib.parse import unquote, quote
-
-
-tmdb_api = "3c3efcf47c3577558812bb9d64019d65"
-omdb_api = "cb1d9f55"
-thetvdbkey = 'D19315B88B2DE21F'
-# thetvdbkey = "a99d487bb3426e5f3a60dea6d3d3c7ef"
-epgcache = eEPGCache.getInstance()
-my_cur_skin = False
-cur_skin = config.skin.primary_skin.value.replace('/skin.xml', '')
 
 
 def isMountReadonly(mnt):
@@ -88,6 +62,8 @@ def isMountedInRW(path):
     return False
 
 
+curskin = config.skin.primary_skin.value.replace('/skin.xml', '')
+pratePath = '/usr/share/enigma2/%s/parental' % curskin
 path_folder = "/tmp/poster"
 if os.path.exists("/media/hdd"):
     if isMountedInRW("/media/hdd"):
@@ -101,29 +77,6 @@ elif os.path.exists("/media/mmc"):
 
 if not os.path.exists(path_folder):
     os.makedirs(path_folder)
-
-
-try:
-    if my_cur_skin is False:
-        skin_paths = {
-            "tmdb_api": "/usr/share/enigma2/{}/apikey".format(cur_skin),
-            "omdb_api": "/usr/share/enigma2/{}/omdbkey".format(cur_skin),
-            "thetvdbkey": "/usr/share/enigma2/{}/thetvdbkey".format(cur_skin)
-        }
-        for key, path in skin_paths.items():
-            if os.path.exists(path):
-                with open(path, "r") as f:
-                    value = f.read().strip()
-                    if key == "tmdb_api":
-                        tmdb_api = value
-                    elif key == "omdb_api":
-                        omdb_api = value
-                    elif key == "thetvdbkey":
-                        thetvdbkey = value
-                my_cur_skin = True
-except Exception as e:
-    print("Errore nel caricamento delle API:", str(e))
-    my_cur_skin = False
 
 
 def OnclearMem():
@@ -251,20 +204,20 @@ def convtext(text=''):
         if text is None:
             print('return None original text: ' + str(type(text)))
             return
-        if text == '': 
+        if text == '':
             print('text is an empty string')
         else:
             print('original text:' + text)
             text = text.lower()
             print('lowercased text:' + text)
             text = text.lstrip()
-            
+
             # text = cutName(text)
             # text = getCleanTitle(text)
 
             if text.endswith("the"):
                 text = "the " + text[:-4]
-            
+
             # Modifiche personalizzate
             if 'giochi olimpici parigi' in text:
                 text = 'olimpiadi di parigi'
@@ -295,7 +248,7 @@ def convtext(text=''):
             if 'alessandro borghese - 4 ristoranti' in text:
                 text = 'alessandroborgheseristoranti'
             if 'alessandro borghese: 4 ristoranti' in text:
-                text = 'alessandroborgheseristoranti' 
+                text = 'alessandroborgheseristoranti'
 
             cutlist = ['x264', '720p', '1080p', '1080i', 'pal', 'german', 'english', 'ws', 'dvdrip', 'unrated',
                        'retail', 'web-dl', 'dl', 'ld', 'mic', 'md', 'dvdr', 'bdrip', 'bluray', 'dts', 'uncut', 'anime',
@@ -304,7 +257,7 @@ def convtext(text=''):
                        'webhdtv', 'webhd', 'hdtvrip', 'hdrip', 'hdtv', 'ituneshd', 'repack', 'sync', '1^tv', '1^ tv',
                        '1^ visione rai', '1^ visione', ' - prima tv', ' - primatv', 'prima visione',
                        'film -', 'de filippi', 'first screening',
-                       'live:', 'new:', 'film:', 'première diffusion', 'nouveau:', 'en direct:', 
+                       'live:', 'new:', 'film:', 'première diffusion', 'nouveau:', 'en direct:',
                        'premiere:', 'estreno:', 'nueva emisión:', 'en vivo:'
                        ]
             for word in cutlist:
@@ -389,7 +342,7 @@ def convtextPAUSED(text=''):
                'line.dubbed', 'dd51', 'dvdr9', 'dvdr5', 'h264', 'avc', 'webhdtvrip', 'webhdrip', 'webrip',
                'webhdtv', 'webhd', 'hdtvrip', 'hdrip', 'hdtv', 'ituneshd', 'repack', 'sync', '1^tv', '1^ tv',
                '1^ visione rai', '1^ visione', ' - prima tv', ' - primatv', 'prima visione',
-               'film -', 'de filippi', 'first screening', 'premiere:', 'live:', 'new:', 
+               'film -', 'de filippi', 'first screening', 'premiere:', 'live:', 'new:',
                'première diffusion', 'nouveau:', 'en direct:',
                'estreno:', 'nueva emisión:', 'en vivo:']
     text = text.replace('.wmv', '').replace('.flv', '').replace('.ts', '').replace('.m2ts', '').replace('.mkv', '').replace('.avi', '').replace('.mpeg', '').replace('.mpg', '').replace('.iso', '').replace('.mp4', '')
@@ -463,7 +416,7 @@ def convtextPAUSED(text=''):
     return unquote(text).capitalize()
 
 
-def convtextxx(text=''):
+def convtextPAUSED(text=''):
     try:
         if text is None:
             print('return None original text: ', type(text))
@@ -597,10 +550,8 @@ def convtextxx(text=''):
             text = re.sub(r"[-,?!+/\.\":]", '', text)  # replace (- or , or ! or / or . or " or :) by space
             # recoded  end
             text = text.strip(' -')
-
             text = remove_accents(text)
             print('remove_accents text: ', text)
-
             # forced
             text = text.replace('XXXXXX', '60')
             text = text.replace('brunobarbierix', 'bruno barbieri - 4 hotel')
@@ -612,138 +563,83 @@ def convtextxx(text=''):
         pass
 
 
-class AglareInfoEvents(Renderer, VariableText):
+class AglareParental(Renderer):
 
     def __init__(self):
-        adsl = intCheck()
-        if not adsl:
-            return
         Renderer.__init__(self)
-        VariableText.__init__(self)
-        self.text = ""
 
-    GUI_WIDGET = eLabel
+    GUI_WIDGET = ePixmap
 
     def changed(self, what):
-        if what[0] == self.CHANGED_CLEAR:
-            return self.text
-        if what[0] != self.CHANGED_CLEAR:
-            if self.instance:
+        try:
+            if not self.instance:
+                return
+            if what[0] == self.CHANGED_CLEAR:
                 self.instance.hide()
-            self.showInfos()
-
-    def showInfos(self):
-        self.event = self.source.event
-        if self.event and self.event != 'None' or self.event is not None:
-            self.evnt = self.event.getEventName().replace('\xc2\x86', '').replace('\xc2\x87', '')
-            if not PY3:
-                self.evnt = self.evnt.encode('utf-8')
-            self.evntNm = convtext(self.evnt)
-            self.infos_file = "{}/{}".format(path_folder, self.evntNm)
-            self.text = ''
-            if not os.path.exists(self.infos_file):
-                self.downloadInfos()
-            if os.path.exists(self.infos_file):
-                try:
-                    with open(self.infos_file, 'r') as f:
-                        data = json.load(f)
-                        Title = data.get("Title", "")
-                        imdbRating = data.get("imdbRating", "")
-                        Country = data.get("Country", "")
-                        Year = data.get("Year", "")
-                        Rated = data.get("Rated", "")
-                        Genre = data.get("Genre", "")
-                        Awards = data.get("Awards", "")
-                        Director = data.get("Director", "")
-                        Writer = data.get("Writer", "")
-                        Actors = data.get("Actors", "")
-
-                        if Title and Title != "N/A":
-                            with open("/tmp/rating", "w") as f_rating:
-                                f_rating.write("%s\n%s" % (imdbRating, Rated))
-                            self.text = "Title: %s\nYear: %s\nCountry: %s\nGenre: %s\nDirector: %s\nAwards: %s\nWriter: %s\nCast: %s\nRated: %s\nImdb: %s" % (
-                                str(Title), str(Year), str(Country), str(Genre), str(Director),
-                                str(Awards), str(Writer), str(Actors), str(Rated), str(imdbRating)
-                            )
-                            print("iInfoEvents self.text= ", self.text)
-                            self.instance.show()
-                        else:
-                            if os.path.exists("/tmp/rating"):
-                                os.remove("/tmp/rating")
-                                print('/tmp/rating removed')
-                        return self.text
-                except Exception as e:
-                    print(e)
-            else:
-                return self.text
-
-    def downloadInfos(self):
-        self.year = self.filterSearch()
-        try:
-            url_tmdb = "https://api.themoviedb.org/3/search/{}?api_key={}&query={}".format(self.srch, tmdb_api, quoteEventName(self.evntNm))
-            if self.year:
-                url_tmdb += "&year={}".format(self.year)
-            print('downloadInfos url_tmdb=', url_tmdb)
-            try:
-                response_tmdb = urlopen(url_tmdb)
-                data_tmdb = json.load(response_tmdb)
-                try:
-                    title = data_tmdb["results"][0]["title"]
-                except KeyError:
-                    title = data_tmdb["results"][0]["original_name"]
-                print('downloadInfos Title: ', title)
-                url_omdb = "http://www.omdbapi.com/?apikey={}&t={}".format(omdb_api, quoteEventName(title))
-                print('downloadInfos url_omdb=', url_omdb)
-                response_omdb = urlopen(url_omdb)
-                data_omdb = json.load(response_omdb)
-                with open(self.infos_file, "w") as f:
-                    f.write(json.dumps(data_omdb))
-            except Exception as e:
-                print("Errore durante il download delle informazioni: ", str(e))
-
-        except Exception as e:
-            print("Errore generale: ", str(e))
-
-    def filterSearch(self):
-        try:
-            self.srch = "multi"
-            sd = "%s\n%s\n%s" % (self.event.getEventName(), self.event.getShortDescription(), self.event.getExtendedDescription())
-            keywords = [
-                "t/s", "Т/s", "SM", "d/s", "D/s", "stagione",
-                "Sig.", "episodio", "serie TV", "serie"
-            ]
-            for keyword in keywords:
-                if keyword in sd:
-                    self.srch = "tv"
-                    break
-            years = re.findall(r'\d{4}', sd)
-            valid_years = [_y for _y in years if '1930' <= _y <= str(gmtime().tm_year)]
-            return valid_years[-1] if valid_years else None
-        except Exception as e:
-            print("Errore in filterSearch:", str(e))
-            return False
-
-    def epgs(self):
-        try:
-            events = None
-            ref = NavigationInstance.instance.getCurrentlyPlayingServiceReference().toString()
-            events = epgcache.lookupEvent(['IBDCT', (ref, 0, -1, -1)])
-            for i in range(9):
-                titleNxt = events[i][4]
-                self.evntNm = convtext(titleNxt)
-                self.infos_file = "{}/{}".format(path_folder, self.evntNm)
-                if not os.path.exists(self.infos_file):
-                    self.downloadInfos()
+            if what[0] != self.CHANGED_CLEAR:
+                self.delay()
         except:
             pass
 
-    def delay2(self):
+    def showParental(self):
+        self.event = self.source.event
+        if not self.event:
+            return
+        fd = "{}\n{}\n{}".format(self.event.getEventName(), self.event.getShortDescription(), self.event.getExtendedDescription())
+        try:
+            pattern = [r"\d{1,2}\+"]
+            for i in pattern:
+                age = search(i, fd)
+                if age:
+                    cert = sub(r"\+", "", age.group()).strip()
+                else:
+                    try:
+                        if PY3:
+                            eventNm = self.source.event.getEventName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+                        else:
+                            eventNm = self.source.event.getEventName().replace('\xc2\x86', '').replace('\xc2\x87', '').encode('utf-8')
+
+                        self.pstcanal = convtext(eventNm) if eventNm else None
+                        if not self.pstcanal:
+                            print('none type xxxxxxxxxx- posterx')
+                            return
+                        # eventNm = REGEX.sub("", self.event.getEventName())
+                        # eventNm = eventNm.replace('ё', 'е').strip()
+                        infos_file = "{}{}.json".format(path_folder, self.pstcanal)
+                        if infos_file:
+                            with open(infos_file) as f:
+                                age = json.load(f)['Rated']
+                                cert = {"TV-G": "0",
+                                        "G": "0",
+                                        "TV-Y7": "6",
+                                        "TV-Y": "6",
+                                        "TV-10": "10",
+                                        "TV-12": "12",
+                                        "TV-14": "14",
+                                        "TV-PG": "16",
+                                        "PG-13": "16",
+                                        "PG": "16",
+                                        "TV-MA": "18",
+                                        "R": "18",
+                                        "N/A": "UN",
+                                        "Not Rated": "UN",
+                                        "Unrated": "UN",
+                                        "": "UN",
+                                        "Passed": "UN", }.get(age)
+                    except:
+                        pass
+                if cert:
+                    self.instance.setPixmap(loadPNG(os.path.join(pratePath, "FSK_{}.png".format(cert))))
+                    self.instance.show()
+                else:
+                    self.instance.hide()
+        except:
+            self.instance.hide()
+
+    def delay(self):
         self.timer = eTimer()
         try:
-            self.timer_conn = self.timer.timeout.connect(self.dwn)
+            self.timer_conn = self.timer.timeout.connect(self.showParental)
         except:
-            self.timer.callback.append(self.dwn)
-        self.timer.start(10, True)
-
-    def dwn(self):
-        start_new_thread(self.epgs, ())
+            self.timer.callback.append(self.showParental)
+        self.timer.start(50, True)

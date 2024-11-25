@@ -415,7 +415,7 @@ def convtext(text=''):
 def convtextPAUSED(text=''):
     text = text.lower()
     print('text lower init=', text)
-    text.lstrip()
+    text = text.lstrip()
     text = text.replace("\xe2\x80\x93", "").replace('\xc2\x86', '').replace('\xc2\x87', '')  # replace special
     if 'bruno barbieri' in text:
         text = text.replace('bruno barbieri', 'brunobarbierix')
@@ -536,7 +536,7 @@ def convtextxx(text=''):
             print('original text: ', text)
             text = text.lower()
             print('lowercased text: ', text)
-            text.lstrip()
+            text = text.lstrip()
             # #
             text = cutName(text)
             text = getCleanTitle(text)
