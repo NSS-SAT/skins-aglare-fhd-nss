@@ -95,7 +95,7 @@ def clean_recursive(regexStr="", replaceStr="", eventTitle=""):
 try:
     if my_cur_skin is False:
         skin_paths = {
-            "tmdb_api": "/usr/share/enigma2/{}/apikey".format(cur_skin),
+            "tmdb_api": "/usr/share/enigma2/{}/tmdbkey".format(cur_skin),
             "omdb_api": "/usr/share/enigma2/{}/omdbkey".format(cur_skin),
             "thetvdbkey": "/usr/share/enigma2/{}/thetvdbkey".format(cur_skin)
         }
@@ -723,17 +723,6 @@ class AglareBackdropXDownloadThread(threading.Thread):
             if os.path.exists(dwn_backdrop):
                 os.remove(dwn_backdrop)
             return False, "[ERROR : google] {} [{}-{}] => {} => {} ({})".format(self.title_safe, chkType, year, url_google, url_backdrop, str(e))
-
-    # def savebackdrop(self, dwn_backdrop, url_backdrop):
-        # print('savebackdrop url_poster=', url_backdrop)
-        # if not os.path.exists(dwn_backdrop):
-            # data = urlopen(url_backdrop)
-            # with open(dwn_backdrop, "wb") as local_file:
-                # local_file.write(data.read())
-        # if os.path.exists(dwn_backdrop):
-            # if os.path.getsize(dwn_backdrop) == 0:
-                # os.remove(dwn_backdrop)
-        # return
 
     def savebackdrop(self, url, callback):
         print('000000000URLLLLL=', url)
