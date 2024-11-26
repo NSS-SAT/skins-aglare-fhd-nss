@@ -94,7 +94,7 @@ def clean_recursive(regexStr="", replaceStr="", eventTitle=""):
 try:
     if my_cur_skin is False:
         skin_paths = {
-            "tmdb_api": "/usr/share/enigma2/{}/apikey".format(cur_skin),
+            "tmdb_api": "/usr/share/enigma2/{}/tmdbkey".format(cur_skin),
             "omdb_api": "/usr/share/enigma2/{}/omdbkey".format(cur_skin),
             "thetvdbkey": "/usr/share/enigma2/{}/thetvdbkey".format(cur_skin)
         }
@@ -321,9 +321,9 @@ class AglarePosterXDownloadThread(threading.Thread):
             series_id = re.findall(r'<seriesid>(.*?)</seriesid>', url_read)
             series_name = re.findall(r'<SeriesName>(.*?)</SeriesName>', url_read)
             series_year = re.findall(r'<FirstAired>(19\d{2}|20\d{2})-\d{2}-\d{2}</FirstAired>', url_read)
-            series_banners = re.findall(r'<banner>(.*?)</banner>', url_read)
-            if series_banners:
-                series_banners = 'https://thetvdb.com' + series_banners
+            # series_banners = re.findall(r'<banner>(.*?)</banner>', url_read)
+            # if series_banners:
+                # series_banners = 'https://thetvdb.com' + series_banners
             i = 0
             for iseries_year in series_year:
                 if year == '':
@@ -819,17 +819,6 @@ class AglarePosterXDownloadThread(threading.Thread):
             if os.path.exists(dwn_poster):
                 os.remove(dwn_poster)
             return False, "[ERROR : google] {} [{}-{}] => {} => {} ({})".format(self.title_safe, chkType, year, url_google, url_poster, str(e))
-
-    # def savePoster(self, dwn_poster, url_poster):
-        # print('savePoster url_poster=', url_poster)
-        # if not os.path.exists(dwn_poster):
-            # data = urlopen(url_poster)
-            # with open(dwn_poster, "wb") as local_file:
-                # local_file.write(data.read())
-        # if os.path.exists(dwn_poster):
-            # if os.path.getsize(dwn_poster) == 0:
-                # os.remove(dwn_poster)
-        # return
 
     def savePoster(self, url, callback):
         print('000000000URLLLLL=', url)
