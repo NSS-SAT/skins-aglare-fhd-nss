@@ -182,13 +182,13 @@ else:
                     apdb[i] = service
 
 
-try:
-    folder_size = sum([sum(map(lambda fname: os.path.getsize(os.path.join(path_folder, fname)), files)) for folder_p, folders, files in os.walk(path_folder)])
-    agposter = "%0.f" % (folder_size / (1024 * 1024.0))
-    if agposter >= "5":
-        shutil.rmtree(path_folder)
-except:
-    pass
+# try:
+    # folder_size = sum([sum(map(lambda fname: os.path.getsize(os.path.join(path_folder, fname)), files)) for folder_p, folders, files in os.walk(path_folder)])
+    # agposter = "%0.f" % (folder_size / (1024 * 1024.0))
+    # if agposter >= "5":
+        # shutil.rmtree(path_folder)
+# except:
+    # pass
 
 
 def OnclearMem():
