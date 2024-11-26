@@ -735,7 +735,7 @@ class AglareBackdropXDownloadThread(threading.Thread):
                 # os.remove(dwn_backdrop)
         # return
 
-    def savePoster(self, url, callback):
+    def savebackdrop(self, url, callback):
         print('000000000URLLLLL=', url)
         print('000000000CALLBACK=', callback)
         AGENTS = ["Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36",
