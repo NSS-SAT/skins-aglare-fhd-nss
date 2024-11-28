@@ -277,7 +277,9 @@ def cutName(eventName=""):
         eventName = eventName.replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '')
         eventName = eventName.replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '')
         eventName = eventName.replace('(0+)', '').replace('0+', '').replace('+', '')
+        eventName = eventName.replace('المسلسل العربي', '')
         eventName = eventName.replace('مسلسل', '')
+        eventName = eventName.replace('برنامج', '')
         eventName = eventName.replace('فيلم وثائقى', '')
         eventName = eventName.replace('حفل', '')
         return eventName
@@ -313,20 +315,20 @@ def convtext(text=''):
         if text is None:
             print('return None original text: ' + str(type(text)))
             return
-        if text == '': 
+        if text == '':
             print('text is an empty string')
         else:
             print('original text:' + text)
             text = text.lower()
             print('lowercased text:' + text)
             text = text.lstrip()
-            
+
             # text = cutName(text)
             # text = getCleanTitle(text)
 
             if text.endswith("the"):
                 text = "the " + text[:-4]
-            
+
             # Modifiche personalizzate
             if 'giochi olimpici parigi' in text:
                 text = 'olimpiadi di parigi'
@@ -357,7 +359,7 @@ def convtext(text=''):
             if 'alessandro borghese - 4 ristoranti' in text:
                 text = 'alessandroborgheseristoranti'
             if 'alessandro borghese: 4 ristoranti' in text:
-                text = 'alessandroborgheseristoranti' 
+                text = 'alessandroborgheseristoranti'
 
             cutlist = ['x264', '720p', '1080p', '1080i', 'pal', 'german', 'english', 'ws', 'dvdrip', 'unrated',
                        'retail', 'web-dl', 'dl', 'ld', 'mic', 'md', 'dvdr', 'bdrip', 'bluray', 'dts', 'uncut', 'anime',
@@ -366,7 +368,7 @@ def convtext(text=''):
                        'webhdtv', 'webhd', 'hdtvrip', 'hdrip', 'hdtv', 'ituneshd', 'repack', 'sync', '1^tv', '1^ tv',
                        '1^ visione rai', '1^ visione', ' - prima tv', ' - primatv', 'prima visione',
                        'film -', 'de filippi', 'first screening',
-                       'live:', 'new:', 'film:', 'première diffusion', 'nouveau:', 'en direct:', 
+                       'live:', 'new:', 'film:', 'première diffusion', 'nouveau:', 'en direct:',
                        'premiere:', 'estreno:', 'nueva emisión:', 'en vivo:'
                        ]
             for word in cutlist:
@@ -393,6 +395,12 @@ def convtext(text=''):
             text = re.sub(r'(odc.\d+)+.*?FIN', '', text)
             text = re.sub(r'(\d+)+.*?FIN', '', text)
             text = re.sub('FIN', '', text)
+            # remove episode number in arabic series
+            text = re.sub(r'\sح\s*\d+', '', text)
+            # remove season number in arabic series
+            text = re.sub(r'\sج\s*\d+', '', text)
+            # remove season number in arabic series
+            text = re.sub(r'\sم\s*\d+', '', text)
 
             # Rimuovi accenti e normalizza
             text = remove_accents(text)
@@ -451,7 +459,7 @@ def convtextPAUSED(text=''):
                'line.dubbed', 'dd51', 'dvdr9', 'dvdr5', 'h264', 'avc', 'webhdtvrip', 'webhdrip', 'webrip',
                'webhdtv', 'webhd', 'hdtvrip', 'hdrip', 'hdtv', 'ituneshd', 'repack', 'sync', '1^tv', '1^ tv',
                '1^ visione rai', '1^ visione', ' - prima tv', ' - primatv', 'prima visione',
-               'film -', 'de filippi', 'first screening', 'premiere:', 'live:', 'new:', 
+               'film -', 'de filippi', 'first screening', 'premiere:', 'live:', 'new:',
                'première diffusion', 'nouveau:', 'en direct:',
                'estreno:', 'nueva emisión:', 'en vivo:']
     text = text.replace('.wmv', '').replace('.flv', '').replace('.ts', '').replace('.m2ts', '').replace('.mkv', '').replace('.avi', '').replace('.mpeg', '').replace('.mpg', '').replace('.iso', '').replace('.mp4', '')
@@ -601,11 +609,11 @@ def convtextxx(text=''):
             # remove all content between and including [] multiple times
             text = re.sub(r'\[\[.*?\]\]|\[.*?\]', '', text)
             # remove episode number in arabic series
-            text = re.sub(r' +ح', '', text)
+            text = re.sub(r'\sح\s*\d+', '', text)
             # remove season number in arabic series
-            text = re.sub(r' +ج', '', text)
+            text = re.sub(r'\sج\s*\d+', '', text)
             # remove season number in arabic series
-            text = re.sub(r' +م', '', text)
+            text = re.sub(r'\sم\s*\d+', '', text)
             # List of bad strings to remove
             bad_strings = [
                 "ae|", "al|", "ar|", "at|", "ba|", "be|", "bg|", "br|", "cg|", "ch|", "cz|", "da|", "de|", "dk|",
@@ -695,11 +703,11 @@ class BackdropDB(AglareBackdropXDownloadThread):
                 os.utime(dwn_backdrop, (time.time(), time.time()))
             '''
             # if lng == "fr":
-                # if not os.path.exists(dwn_poster):
-                    # val, log = self.search_molotov_google(dwn_poster, canal[5], canal[4], canal[3], canal[0])
+                # if not os.path.exists(dwn_backdrop):
+                    # val, log = self.search_molotov_google(dwn_backdrop, canal[5], canal[4], canal[3], canal[0])
                     # self.logDB(log)
-                # if not os.path.exists(dwn_poster):
-                    # val, log = self.search_programmetv_google(dwn_poster, canal[5], canal[4], canal[3], canal[0])
+                # if not os.path.exists(dwn_backdrop):
+                    # val, log = self.search_programmetv_google(dwn_backdrop, canal[5], canal[4], canal[3], canal[0])
                     # self.logDB(log)
             '''
             if not os.path.exists(dwn_backdrop):

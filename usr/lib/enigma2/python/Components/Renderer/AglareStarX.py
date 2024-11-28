@@ -245,7 +245,9 @@ def cutName(eventName=""):
         eventName = eventName.replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '')
         eventName = eventName.replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '')
         eventName = eventName.replace('(0+)', '').replace('0+', '').replace('+', '')
+        eventName = eventName.replace('المسلسل العربي', '')
         eventName = eventName.replace('مسلسل', '')
+        eventName = eventName.replace('برنامج', '')
         eventName = eventName.replace('فيلم وثائقى', '')
         eventName = eventName.replace('حفل', '')
         return eventName
@@ -281,20 +283,20 @@ def convtext(text=''):
         if text is None:
             print('return None original text: ' + str(type(text)))
             return
-        if text == '': 
+        if text == '':
             print('text is an empty string')
         else:
             print('original text:' + text)
             text = text.lower()
             print('lowercased text:' + text)
             text = text.lstrip()
-            
+
             # text = cutName(text)
             # text = getCleanTitle(text)
 
             if text.endswith("the"):
                 text = "the " + text[:-4]
-            
+
             # Modifiche personalizzate
             if 'giochi olimpici parigi' in text:
                 text = 'olimpiadi di parigi'
@@ -325,7 +327,7 @@ def convtext(text=''):
             if 'alessandro borghese - 4 ristoranti' in text:
                 text = 'alessandroborgheseristoranti'
             if 'alessandro borghese: 4 ristoranti' in text:
-                text = 'alessandroborgheseristoranti' 
+                text = 'alessandroborgheseristoranti'
 
             cutlist = ['x264', '720p', '1080p', '1080i', 'pal', 'german', 'english', 'ws', 'dvdrip', 'unrated',
                        'retail', 'web-dl', 'dl', 'ld', 'mic', 'md', 'dvdr', 'bdrip', 'bluray', 'dts', 'uncut', 'anime',
@@ -334,7 +336,7 @@ def convtext(text=''):
                        'webhdtv', 'webhd', 'hdtvrip', 'hdrip', 'hdtv', 'ituneshd', 'repack', 'sync', '1^tv', '1^ tv',
                        '1^ visione rai', '1^ visione', ' - prima tv', ' - primatv', 'prima visione',
                        'film -', 'de filippi', 'first screening',
-                       'live:', 'new:', 'film:', 'première diffusion', 'nouveau:', 'en direct:', 
+                       'live:', 'new:', 'film:', 'première diffusion', 'nouveau:', 'en direct:',
                        'premiere:', 'estreno:', 'nueva emisión:', 'en vivo:'
                        ]
             for word in cutlist:
@@ -361,6 +363,12 @@ def convtext(text=''):
             text = re.sub(r'(odc.\d+)+.*?FIN', '', text)
             text = re.sub(r'(\d+)+.*?FIN', '', text)
             text = re.sub('FIN', '', text)
+            # remove episode number in arabic series
+            text = re.sub(r'\sح\s*\d+', '', text)
+            # remove season number in arabic series
+            text = re.sub(r'\sج\s*\d+', '', text)
+            # remove season number in arabic series
+            text = re.sub(r'\sم\s*\d+', '', text)
 
             # Rimuovi accenti e normalizza
             text = remove_accents(text)
@@ -419,7 +427,7 @@ def convtextPAUSED(text=''):
                'line.dubbed', 'dd51', 'dvdr9', 'dvdr5', 'h264', 'avc', 'webhdtvrip', 'webhdrip', 'webrip',
                'webhdtv', 'webhd', 'hdtvrip', 'hdrip', 'hdtv', 'ituneshd', 'repack', 'sync', '1^tv', '1^ tv',
                '1^ visione rai', '1^ visione', ' - prima tv', ' - primatv', 'prima visione',
-               'film -', 'de filippi', 'first screening', 'premiere:', 'live:', 'new:', 
+               'film -', 'de filippi', 'first screening', 'premiere:', 'live:', 'new:',
                'première diffusion', 'nouveau:', 'en direct:',
                'estreno:', 'nueva emisión:', 'en vivo:']
     text = text.replace('.wmv', '').replace('.flv', '').replace('.ts', '').replace('.m2ts', '').replace('.mkv', '').replace('.avi', '').replace('.mpeg', '').replace('.mpg', '').replace('.iso', '').replace('.mp4', '')
@@ -675,13 +683,13 @@ class AglareStarX(VariableValue, Renderer):
             ImdbRating = "0"
             ids = None
             data = ""
-            
+
             self.event = self.source.event
             if self.event and self.event != "None":
                 self.evnt = self.event.getEventName().replace("\xc2\x86", "").replace("\xc2\x87", "")
                 self.evntNm = convtext(self.evnt)
                 dwn_infos = "{}/{}".format(path_folder, self.evntNm)
-                
+
                 if not os.path.exists(dwn_infos):
                     OnclearMem()
                     try:
@@ -690,11 +698,11 @@ class AglareStarX(VariableValue, Renderer):
                         )
                         url = checkRedirect(url)
                         print("url2:", url)
-                        
+
                         if url and "results" in url and url["results"]:
                             ids = url["results"][0]["id"]
                             print("url2 ids:", ids)
-                            
+
                             if ids:
                                 try:
                                     data_url = "https://api.themoviedb.org/3/movie/{}?api_key={}&append_to_response=credits&language={}".format(
@@ -716,19 +724,19 @@ class AglareStarX(VariableValue, Renderer):
                     try:
                         with open(dwn_infos, "r") as f:
                             data = json.load(f)
-                        
+
                         if "vote_average" in data:
                             ImdbRating = data["vote_average"]
                         elif "imdbRating" in data:
                             ImdbRating = data["imdbRating"]
                         else:
                             ImdbRating = "0"
-                        
+
                         print("IMDB Rating:", ImdbRating)
-                        
+
                         if ImdbRating and ImdbRating != "0":
                             rating = int(10 * float(ImdbRating))
-                        
+
                         value = rating
                         self.range, self.value = (0, max_range), value
                         self.instance.show()
@@ -738,7 +746,6 @@ class AglareStarX(VariableValue, Renderer):
                 print("No event available.")
         except Exception as e:
             print("General error in infos method:", e)
-
 
     def postWidgetCreate(self, instance):
         instance.setRange(self.__start, self.__end)

@@ -321,9 +321,11 @@ class AglarePosterXDownloadThread(threading.Thread):
             series_id = re.findall(r'<seriesid>(.*?)</seriesid>', url_read)
             series_name = re.findall(r'<SeriesName>(.*?)</SeriesName>', url_read)
             series_year = re.findall(r'<FirstAired>(19\d{2}|20\d{2})-\d{2}-\d{2}</FirstAired>', url_read)
+            '''
             # series_banners = re.findall(r'<banner>(.*?)</banner>', url_read)
             # if series_banners:
                 # series_banners = 'https://thetvdb.com' + series_banners
+            '''
             i = 0
             for iseries_year in series_year:
                 if year == '':
