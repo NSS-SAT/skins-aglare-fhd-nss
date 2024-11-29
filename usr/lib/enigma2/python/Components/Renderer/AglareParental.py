@@ -53,12 +53,21 @@ def isMountReadonly(mnt):
     return "mount: '%s' doesn't exist" % mnt
 
 
-def isMountedInRW(path):
-    testfile = path + '/tmp-rw-test'
-    os.system('touch ' + testfile)
-    if os.path.exists(testfile):
-        os.system('rm -f ' + testfile)
-        return True
+# def isMountedInRW(path):
+    # testfile = path + '/tmp-rw-test'
+    # os.system('touch ' + testfile)
+    # if os.path.exists(testfile):
+        # os.system('rm -f ' + testfile)
+        # return True
+    # return False
+
+
+def isMountedInRW(mount_point):
+    with open("/proc/mounts", "r") as f:
+        for line in f:
+            parts = line.split()
+            if len(parts) > 1 and parts[1] == mount_point:
+                return True
     return False
 
 
@@ -284,12 +293,6 @@ def convtext(text=''):
             text = re.sub(r'(odc.\d+)+.*?FIN', '', text)
             text = re.sub(r'(\d+)+.*?FIN', '', text)
             text = re.sub('FIN', '', text)
-            # remove episode number in arabic series
-            text = re.sub(r'\sح\s*\d+', '', text)
-            # remove season number in arabic series
-            text = re.sub(r'\sج\s*\d+', '', text)
-            # remove season number in arabic series
-            text = re.sub(r'\sم\s*\d+', '', text)
 
             # Rimuovi accenti e normalizza
             text = remove_accents(text)
