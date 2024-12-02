@@ -5,6 +5,8 @@ import re
 from re import search, sub, I, S, escape
 from six import text_type
 import sys
+import unicodedata
+
 
 PY3 = False
 if sys.version_info[0] >= 3:
@@ -50,16 +52,24 @@ REGEX = re.compile(
     re.DOTALL)
 
 
+# def remove_accents(string):
+    # if not isinstance(string, text_type):
+        # string = text_type(string, 'utf-8')
+    # string = sub(u"[àáâãäå]", 'a', string)
+    # string = sub(u"[èéêë]", 'e', string)
+    # string = sub(u"[ìíîï]", 'i', string)
+    # string = sub(u"[òóôõö]", 'o', string)
+    # string = sub(u"[ùúûü]", 'u', string)
+    # string = sub(u"[ýÿ]", 'y', string)
+    # return string
+
+
 def remove_accents(string):
-    if not isinstance(string, text_type):
-        string = text_type(string, 'utf-8')
-    string = sub(u"[àáâãäå]", 'a', string)
-    string = sub(u"[èéêë]", 'e', string)
-    string = sub(u"[ìíîï]", 'i', string)
-    string = sub(u"[òóôõö]", 'o', string)
-    string = sub(u"[ùúûü]", 'u', string)
-    string = sub(u"[ýÿ]", 'y', string)
-    return string
+    # Normalizza la stringa in forma NFD (separa i caratteri dai loro segni diacritici)
+    normalized = unicodedata.normalize('NFD', string)
+    # Rimuove tutti i segni diacritici utilizzando una regex
+    without_accents = re.sub(r'[\u0300-\u036f]', '', normalized)
+    return without_accents
 
 
 def unicodify(s, encoding='utf-8', norm=None):
@@ -136,17 +146,29 @@ def convtext(text=''):
                 text = "the " + text[:-4]
 
             # Modifiche personalizzate
+            if 'c.s.i.' in text:
+                text = 'csi'
+            if 'lingo: parole' in text:
+                text = 'lingo'
+            if 'io & marilyn' in text:
+                text = 'io e marilyn'
             if 'giochi olimpici parigi' in text:
                 text = 'olimpiadi di parigi'
             if 'bruno barbieri' in text:
                 text = text.replace('bruno barbieri', 'brunobarbierix')
             if "anni '60" in text:
                 text = "anni 60"
+            if "cortesie per gli ospiti" in text:
+                text = "cortesieospiti"
             if 'tg regione' in text:
                 text = 'tg3'
+            if 'planet earth' in text:
+                text = 'planet earth'
             if 'studio aperto' in text:
                 text = 'studio aperto'
             if 'josephine ange gardien' in text:
+                text = 'josephine ange gardien'
+            if 'josephine angelo' in text:
                 text = 'josephine ange gardien'
             if 'elementary' in text:
                 text = 'elementary'
@@ -167,7 +189,48 @@ def convtext(text=''):
             if 'alessandro borghese: 4 ristoranti' in text:
                 text = 'alessandroborgheseristoranti'
             if 'amici di maria' in text:
-                text = 'amicidimariadefilippi'
+                text = 'amicimaria'
+            if 'csi: scena del crimine' in text:
+                text = 'csi scena del crimine'
+            if 'csi miami' in text:
+                text = 'csi miami'                
+            if 'csi: miami' in text:
+                text = 'csi miami'
+            if 'csi: new york' in text:
+                text = 'csi new york'
+            if 'csi: vegas' in text:
+                text = 'csi vegas'
+            if 'csi: cyber' in text:
+                text = 'csi cyber'
+            if 'csi: immortality' in text:
+                text = 'csi immortality'
+            if 'csi: crime scene talks' in text:
+                text = 'csi crime scene talks'
+            if 'alexa: vita da detective' in text:
+                text = 'alexa vita da detective'
+            if 'delitti in paradiso' in text:
+                text = 'delitti in paradiso'
+            if 'modern family' in text:
+                text = 'modern family'
+            if 'shaun: vita da pecora' in text:
+                text = 'shaun'
+            if 'calimero' in text:
+                text = 'calimero'
+            if 'i puffi' in text:
+                text = 'i puffi'
+            if 'stuart little' in text:
+                text = 'stuart little'
+            if 'grande fratello' in text:
+                text = 'grande fratello'
+            if 'castle' in text:
+                text = 'castle'
+            if 'seal team' in text:
+                text = 'seal team'
+            if 'fast forward' in text:
+                text = 'fast forward'
+            if 'un posto al sole' in text:
+                text = 'un posto al sole'
+
 
             text = text.replace('1/2', 'mezzo')
 
@@ -177,27 +240,20 @@ def convtext(text=''):
             text = text.replace('prima visione', '').replace('1^ tv', '').replace('((', '(').replace('))', ')')
             text = text.replace('live:', '').replace(' - prima tv', '')
 
-            # # Gestione casi specifici
-            # replacements = {
-                # 'giochi olimpici parigi': 'olimpiadi di parigi',
-                # 'bruno barbieri': 'brunobarbierix',
-                # "anni '60": 'anni 60',
-                # 'tg regione': 'tg3',
-                # 'studio aperto': 'studio aperto',
-                # 'josephine ange gardien': 'josephine ange gardien',
-                # 'elementary': 'elementary',
-                # 'squadra speciale cobra 11': 'squadra speciale cobra 11',
-                # 'criminal minds': 'criminal minds',
-                # 'i delitti del barlume': 'i delitti del barlume',
-                # 'senza traccia': 'senza traccia',
-                # 'hudson e rex': 'hudson e rex',
-                # 'ben-hur': 'ben-hur',
-                # 'la7': 'la7',
-                # 'skytg24': 'skytg24'
-            # }
-            # for key, value in replacements.items():
-                # if key in text:
-                    # text = text.replace(key, value)
+            cutlist = ['x264', '720p', '1080p', '1080i', 'pal', 'german', 'english', 'ws', 'dvdrip', 'unrated',
+                       'retail', 'web-dl', 'dl', 'ld', 'mic', 'md', 'dvdr', 'bdrip', 'bluray', 'dts', 'uncut', 'anime',
+                       'ac3md', 'ac3', 'ac3d', 'ts', 'dvdscr', 'complete', 'internal', 'dtsd', 'xvid', 'divx', 'dubbed',
+                       'line.dubbed', 'dd51', 'dvdr9', 'dvdr5', 'h264', 'avc', 'webhdtvrip', 'webhdrip', 'webrip',
+                       'webhdtv', 'webhd', 'hdtvrip', 'hdrip', 'hdtv', 'ituneshd', 'repack', 'sync', '1^tv', '1^ tv',
+                       '1^ visione rai', '1^ visione', ' - prima tv', ' - primatv', 'prima visione',
+                       'film -', 'first screening', 'live:', 'new:', 'film:', 'première diffusion',
+                       'premiere:', 'estreno:', 'nueva emisión:', 'en vivo:', 'nouveau:', 'en direct:',
+                       ]
+            for word in cutlist:
+                text = text.replace(word, '')
+            # text = ' '.join(text.split())
+            print(text)
+
             # Rimozione pattern specifici
             text = re.sub(r'^\w{2}:', '', text)  # Rimuove "xx:" all'inizio
             text = re.sub(r'^\w{2}\|\w{2}\s', '', text)  # Rimuove "xx|xx" all'inizio
@@ -249,10 +305,11 @@ def convtext(text=''):
             text = text.strip(' -')
             # Forzature finali
             text = text.replace('XXXXXX', '60')
-            text = text.replace('brunobarbierix', 'bruno barbieri - 4 hotel')
+            text = text.replace('amicimaria', 'amici di maria de filippi')
             text = text.replace('alessandroborgheseristoranti', 'alessandro borghese - 4 ristoranti')
+            text = text.replace('brunobarbierix', 'bruno barbieri - 4 hotel')
             text = text.replace('il ritorno di colombo', 'colombo')
-            text = text.replace('amicidimariadefilippi', 'amici di maria')
+            text = text.replace('cortesieospiti', 'cortesie per gli ospiti')
             # text = quote(text, safe="")
             # text = unquote(text)
             print('text safe:', text)
