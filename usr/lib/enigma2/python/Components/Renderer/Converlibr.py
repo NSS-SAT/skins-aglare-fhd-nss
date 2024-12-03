@@ -137,8 +137,13 @@ def convtext(text=''):
 
             text = text.lstrip()
 
+            # Modifiche personalizzate
             if 'c.s.i.' in text:
                 text = 'csi'
+            if 'csi miami' in text:
+                text = 'csi miami'
+            if 'walker, texas ranger' in text:
+                text = 'walker texas ranger'
             if 'superman & lois' in text:
                 text = 'superman e lois'
             if 'lois & clark' in text:
@@ -154,7 +159,6 @@ def convtext(text=''):
                 text = "the " + text[:-4]
 
             # Modifiche personalizzate
-
             if 'lingo: parole' in text:
                 text = 'lingo'
             if 'heartland' in text:
@@ -199,8 +203,6 @@ def convtext(text=''):
                 text = 'alessandroborgheseristoranti'
             if 'amici di maria' in text:
                 text = 'amicimaria'
-            if 'csi miami' in text:
-                text = 'csi miami'
             if 'csi: miami' in text:
                 text = 'csi miami'
             if 'csi: scena del crimine' in text:
