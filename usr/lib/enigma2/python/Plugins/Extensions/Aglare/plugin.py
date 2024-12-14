@@ -47,7 +47,7 @@ else:
     from urllib2 import Request
 
 
-version = '1.09'
+version = '1.10'
 my_cur_skin = False
 cur_skin = config.skin.primary_skin.value.replace('/skin.xml', '')
 OAWeather = resolveFilename(SCOPE_PLUGINS, "Extensions/{}".format('OAWeather'))
@@ -64,7 +64,7 @@ try:
             "tmdb_api": "/usr/share/enigma2/{}/tmdbkey".format(cur_skin),
             "omdb_api": "/usr/share/enigma2/{}/omdbkey".format(cur_skin),
             # "thetvdbkey": "/usr/share/enigma2/{}/thetvdbkey".format(cur_skin)
-            # "visual_api": "/etc/enigma2/VisualWeather/apikey.txt"
+            # "visual_api": "/etc/enigma2/VisualWeather/visualkey.txt"
         }
         for key, path in skin_paths.items():
             if fileExists(path):
@@ -84,12 +84,12 @@ except Exception as e:
     my_cur_skin = False
 
 
-def isMountedInRW(path):
-    testfile = path + '/tmp-rw-test'
-    os.system('touch ' + testfile)
-    if os.path.exists(testfile):
-        os.system('rm -f ' + testfile)
-        return True
+def isMountedInRW(mount_point):
+    with open("/proc/mounts", "r") as f:
+        for line in f:
+            parts = line.split()
+            if len(parts) > 1 and parts[1] == mount_point:
+                return True
     return False
 
 
@@ -701,7 +701,7 @@ class AglareUpdater(Screen):
     def downloadProgress(self, recvbytes, totalbytes):
         self['status'].setText(_('Download in progress...'))
         self['progress'].value = int(100 * self.last_recvbytes // float(totalbytes))
-        self['progresstext'].text = '%d of %d kBytes (%.2f%%)' % (self.last_recvbytes / 1024, totalbytes / 1024, 100 * self.last_recvbytes / float(totalbytes))
+        self['progresstext'].text = '%d of %d kBytes (%.2f%%)' % (self.last_recvbytes // 1024, totalbytes // 1024, 100 * self.last_recvbytes // float(totalbytes))
         self.last_recvbytes = recvbytes
 
     def restartGUI(self, answer=False):
