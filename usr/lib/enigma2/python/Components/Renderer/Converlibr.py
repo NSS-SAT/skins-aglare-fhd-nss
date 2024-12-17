@@ -177,6 +177,7 @@ def convtext(text=''):
                 ('superman & lois', 'superman e lois', 'set'),
                 ('lois & clark', 'superman e lois', 'set'),
                 ("una 44 magnum per", 'magnumxx', 'set'),
+                ('john q', 'johnq', 'set'),
                 # replace
                 ('1/2', 'mezzo', 'replace'),
                 ('c.s.i.', 'csi', 'replace'),
@@ -349,6 +350,7 @@ def convtext(text=''):
             text = text.replace('amicimaria', 'amici di maria')
             text = text.replace('alessandroborgheseristoranti', 'alessandro borghese - 4 ristoranti')
             text = text.replace('brunobarbierix', 'bruno barbieri - 4 hotel')
+            text = text.replace('johnq', 'john q')
             text = text.replace('il ritorno di colombo', 'colombo')
             text = text.replace('cortesieospiti', 'cortesie per gli ospiti')
             text = text.replace('ermediciinprimalinea', 'er medici in prima linea')
