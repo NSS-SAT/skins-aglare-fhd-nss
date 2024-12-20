@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <skin>
+    <!-- Templates@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
     <screen name="pigscreen885" flags="wfNoBorder">
-        <widget source="session.VideoPicture" render="Pig" position="1020,100" zPosition="19" size="880,499" backgroundColor="transparent" transparent="0" cornerRadius="14"/>
+        <widget source="session.VideoPicture" render="Pig" position="1019,100" zPosition="20" size="836,470" backgroundColor="transparent" transparent="0" cornerRadius="14"/>
     </screen>
     <screen name="menutemp" flags="wfNoBorder">
         <!-- /* time -->
@@ -13,21 +14,24 @@
     </screen>
     <screen name="menutemp2" flags="wfNoBorder">
         <panel name="timedate"/>
+        <panel name="bLogo"/>
+        <ePixmap position="36,39" size="66,54" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="19"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
-        <widget source="Title" render="Label" position="90,32" size="1300,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
-        <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99"/>
+        <widget source="Title" render="Label" position="105,37" size="1300,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="20,97" size="1880,911" zPosition="-90" cornerRadius="30" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
         <widget source="ScreenPath" render="Label" position="36,5" size="1380,22" backgroundColor="background" transparent="1" zPosition="1" font="Regular; 19" valign="center" halign="left"/>
+        <!--         <eLabel name="" position="42,38" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/> -->
     </screen>
     <screen name="menutemp2short" flags="wfNoBorder">
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="timedate"/>
+        <panel name="bLogo"/>
+        <ePixmap position="36,39" size="66,54" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="19"/>
         <widget source="session.VideoPicture" render="Pig" position="1280,120" zPosition="20" size="622,350" backgroundColor="transparent" transparent="0" cornerRadius="14"/>
-        <widget source="Title" render="Label" position="90,50" size="1167,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
+        <widget source="Title" render="Label" position="100,40" size="1167,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
         <eLabel name="" position="20,110" size="1244,898" zPosition="-90" cornerRadius="30" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
-        <eLabel name="" position="42,55" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
         <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
@@ -35,7 +39,9 @@
     </screen>
     <screen name="menutemp3" flags="wfNoBorder">
         <panel name="timedate"/>
-        <widget source="Title" render="Label" position="80,30" size="1340,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left" textOffset="44,0"/>
+        <panel name="bLogo"/>
+        <ePixmap position="36,39" size="66,54" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="19"/>
+        <widget source="Title" render="Label" position="103,39" size="1340,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left" textOffset="44,0"/>
         <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="20,96" size="1880,912" zPosition="-90" cornerRadius="30" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
@@ -79,9 +85,10 @@
         <widget name="text" position="1060,680" size="810,108" font="Regular; 26" halign="left" valign="top" foregroundColor="foreground" backgroundColor="background" transparent="1" zPosition="55"/>
     </screen>
     <screen name="titletemp" flags="wfNoBorder">
-        <widget source="Title" render="Label" position="105,40" size="890,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
+        <widget source="Title" render="Label" position="101,40" size="863,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
         <widget source="ScreenPath" render="Label" position="36,10" size="1380,22" backgroundColor="background" transparent="1" zPosition="1" font="Regular; 19" valign="center" halign="left"/>
-        <ePixmap position="33,36" size="66,54" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="19"/>
+        <!-- <eLabel name="" position="46,49" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="18"/> -->
+        <ePixmap position="36,39" size="66,54" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="19"/>
     </screen>
     <!--/* NEW-Automatic-BUTTONS1 /> -->
     <screen name="ScreenTemplateButtonRed_menu">
@@ -232,14 +239,14 @@
     <screen name="cancelscan" flags="wfNoBorder">
         <eLabel name="new eLabel" text="Cancel" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <eLabel name="new eLabel" text="Scan" position="342,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
-        <eLabel backgroundColor="red" cornerRadius="3" position="32,1064" size="300,6" zPosition="10"/>
-        <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="10"/>
+        <eLabel backgroundColor="red" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
     </screen>
     <screen name="cancelsave" flags="wfNoBorder">
         <eLabel name="new eLabel" text="Cancel" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <eLabel name="new eLabel" text="Save" position="342,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
-        <eLabel backgroundColor="red" cornerRadius="3" position="32,1064" size="300,6" zPosition="10"/>
-        <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="10"/>
+        <eLabel backgroundColor="red" cornerRadius="3" position="32,1064" size="300,6" zPosition="-11"/>
+        <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
     </screen>
     <screen name="timedate" flags="wfNoBorder">
         <!-- /* time -->
@@ -700,7 +707,7 @@
         </widget>
         <eLabel name="" position="1590,855" size="50,36" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="10" font="Bold; 22" zPosition="1" text="TXT" foregroundColor="black1"/>
         <eLabel name="" position="1525,813" size="38,34" font="Regular; 22" halign="center" backgroundColor="background" zPosition="99" transparent="1" text="BR" valign="center"/>
-        <eLabel name="" position="1411,814" size="44,34" backgroundColor="background" foregroundColor="white" halign="center" font="icomoon; 26" text="" zPosition="4" transparent="1"/>
+        <eLabel name="" position="1411,816" size="44,34" backgroundColor="background" foregroundColor="white" halign="center" font="icomoon; 26" text="" zPosition="4" transparent="1"/>
         <eLabel backgroundColor="igsdt" cornerRadius="10" position="10,1000" size="1900,70" zPosition="-98"/>
         <widget source="session.CurrentService" render="Label" position="490,908" size="316,30" font="Regular; 24" backgroundColor="white" transparent="1" halign="center" zPosition="99" valign="center" noWrap="1" foregroundColor="black">
             <convert type="AglareAccess">CamName</convert>
@@ -1186,7 +1193,7 @@
         <widget source="session.CurrentService" render="Label" position="948,924" size="142,45" halign="left" font="Regular; 30" backgroundColor="background" transparent="1" valign="center" zPosition="1">
             <convert type="ServicePosition">Remaining,Plus,ShowHours</convert>
         </widget>
-        <widget source="session.CurrentService" render="Progress" position="226,941" size="700,10" pixmap="main/progfg70010.png" backgroundColor="progbg" cornerRadius="5" zPosition="88">
+        <widget source="session.CurrentService" render="Progress" position="226,941" size="700,10" pixmap="main/progfg70010.png" cornerRadius="5" zPosition="88">
             <convert type="ServicePosition">Position</convert>
         </widget>
         <widget source="session.CurrentService" render="Label" position="670,992" size="300,40" font="Regular; 30" halign="center" valign="center" backgroundColor="background" transparent="1">
@@ -1371,7 +1378,7 @@
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="36,196" size="900,800" zPosition="-90" cornerRadius="18" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
         <eLabel name="" position="1598,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="OK"/>
-        <eLabel name="" position="1658,1018" size="55,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
+        <eLabel name="" position="1658,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
         <eLabel name="" position="1778,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="INFO"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
         <widget name="quickselect" position="36,266" size="1860,700" backgroundColor="background" foregroundColor="foreground" font="Regular;150" halign="center" transparent="1" valign="center" zPosition="99"/>

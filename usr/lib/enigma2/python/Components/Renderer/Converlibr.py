@@ -92,7 +92,7 @@ def remove_accents(string):
     # # Normalizza la stringa in forma NFD
     # normalized = normalize('NFD', string)
     # # Rimuove tutti i segni diacritici utilizzando una regex
-    # without_accents = re.sub(r'[\u0300-\u036f]', '', normalized)
+    # without_accents = sub(r'[\u0300-\u036f]', '', normalized)
     # print("remove_accents result:", repr(without_accents))
     # return without_accents
 
@@ -308,8 +308,12 @@ def convtext(text=''):
             text = sub(r'\[\[.*?\]\]|\[.*?\]', '', text)  # Rimuove contenuti tra "[]"
 
             text = sub(r'[^\w\s]+$', '', text)
-
-            text = sub(r' +ح| +ج| +م', '', text)  # Rimuove numeri di episodi/serie in arabo
+            text = sub(r'\sح\s*\d+', '', text)   # remove episode number in arabic series
+            text = sub(r'\sج\s*\d+', '', text)   # remove season number in arabic series
+            text = sub(r'\sم\s*\d+', '', text)   # remove season number in arabic series
+            # text = sub(r' +ح| +ج| +م', '', text)  # Rimuove numeri di episodi/serie in arabo
+            
+            
             # Rimozione di stringhe non valide
             bad_strings = [
                 "ae|", "al|", "ar|", "at|", "ba|", "be|", "bg|", "br|", "cg|", "ch|", "cz|", "da|", "de|", "dk|",

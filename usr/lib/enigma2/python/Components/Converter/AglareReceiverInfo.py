@@ -22,6 +22,7 @@ class AglareReceiverInfo(Poll, Converter):
     USBINFO = 6
     HDDINFO = 7
     FLASHINFO = 8
+    MMCINFO = 9
 
     def __init__(self, type):
         Converter.__init__(self, type)
@@ -45,9 +46,11 @@ class AglareReceiverInfo(Poll, Converter):
             self.type = self.USBINFO
         elif 'HddInfo' in type:
             self.type = self.HDDINFO
+        elif 'MmcInfo' in type:
+            self.type = self.MMCINFO
         else:
             self.type = self.FLASHINFO
-        if self.type in (self.FLASHINFO, self.HDDINFO, self.USBINFO):
+        if self.type in (self.FLASHINFO, self.HDDINFO, self.MMCINFO, self.USBINFO):
             self.poll_interval = 5000
         else:
             self.poll_interval = 1000
@@ -73,9 +76,10 @@ class AglareReceiverInfo(Poll, Converter):
                      self.SWAPTOTAL: ('Swap', 'Swap'),
                      self.SWAPFREE: ('Swap', 'Swap'),
                      self.USBINFO: ('/media/usb', 'USB'),
+                     self.MMCINFO: ('/media/mmc', 'MMC'),
                      self.HDDINFO: ('/media/hdd', 'HDD'),
                      self.FLASHINFO: ('/', 'Flash')}[self.type]
-            if self.type in (self.USBINFO, self.HDDINFO, self.FLASHINFO):
+            if self.type in (self.USBINFO, self.MMCINFO, self.HDDINFO, self.FLASHINFO):
                 list = self.getDiskInfo(entry[0])
             else:
                 list = self.getMemInfo(entry[0])
@@ -108,9 +112,10 @@ class AglareReceiverInfo(Poll, Converter):
                      self.SWAPTOTAL: 'Swap',
                      self.SWAPFREE: 'Swap'}[self.type]
             result = self.getMemInfo(entry)[3]
-        elif self.type in (self.USBINFO, self.HDDINFO, self.FLASHINFO):
+        elif self.type in (self.USBINFO, self.MMCINFO, self.HDDINFO, self.FLASHINFO):
             path = {self.USBINFO: '/media/usb',
                     self.HDDINFO: '/media/hdd',
+                    self.MMCINFO: '/media/mmc',
                     self.FLASHINFO: '/'}[self.type]
             result = self.getDiskInfo(path)[3]
         return result

@@ -1,5 +1,3 @@
 
-    <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
-        <panel name="infobartemp"/>
-        <panel name="infobartimedate"/>
-    </screen>
+<!--date-->
+     <panel name="infobartimedate" />

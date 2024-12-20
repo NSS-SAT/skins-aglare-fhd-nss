@@ -1,8 +1,3 @@
-# GlamourAccess converter
-# Modded and recoded by MCelliotG for use in Glamour skins or standalone, added Python3 support
-# Based on CaidInfo2 converter coded by bigroma & 2boom
-# If you use this Converter for other skins and rename it, please keep the lines above adding your credits below
-
 from __future__ import absolute_import
 from Components.Converter.Converter import Converter
 from enigma import iServiceInformation
@@ -900,7 +895,7 @@ class AglareAccess(Poll, Converter):
                 camdlist = ""
             return "%s %s" % (serlist, camdlist)
 # OE-A
-        if os.path.exists("/etc/image-version") and not os.path.exists("/etc/.emustart"):
+        if os.path.exists("/etc/image-version") and not os.path.exists("/etc/.emustart") and not os.path.exists("/etc/CurrentBhCamName") and not os.path.exists("/etc/EGCamConf") and not os.path.exists("/etc/clist.list"):
             for line in open("/etc/image-version"):
                 if "=openATV" in line:
                     try:
@@ -917,21 +912,23 @@ class AglareAccess(Poll, Converter):
                     except:
                         pass
                     try:
-                        if os.path.exists("/tmp/.oscam/oscam.version"):
-                            for line in open("/tmp/.oscam/oscam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        elif os.path.exists("/tmp/.ncam/ncam.version"):
-                            for line in open("/tmp/.ncam/ncam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        else:
+                        if os.path.exists("/etc/init.d/softcam"):
                             for line in open("/etc/init.d/softcam"):
                                 if "Short-Description" in line:
                                     cam1 = "%s" % line.split(':')[1].replace(" ", "")
                                 if line.startswith("CAMNAME="):
                                     cam1 = "%s" % line.split('"')[1]
                                 elif line.find("echo") > -1:
+                                    camdname.append(line)
+                            cam2 = "%s" % camdname[1].split('"')[1]       
+                        elif os.path.exists("/tmp/.ncam/ncam.version"):
+                            for line in open("/tmp/.ncam/ncam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
+                        else:            
+                            for line in open("/tmp/.oscam/oscam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
                                     camdname.append(line)
                             cam2 = "%s" % camdname[1].split('"')[1]
                         if not cam1:
@@ -964,21 +961,23 @@ class AglareAccess(Poll, Converter):
                     except:
                         pass
                     try:
-                        if os.path.exists("/tmp/.oscam/oscam.version"):
-                            for line in open("/tmp/.oscam/oscam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        elif os.path.exists("/tmp/.ncam/ncam.version"):
-                            for line in open("/tmp/.ncam/ncam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        else:
+                        if os.path.exists("/etc/init.d/softcam"):
                             for line in open("/etc/init.d/softcam"):
                                 if "Short-Description" in line:
                                     cam1 = "%s" % line.split(':')[1].replace(" ", "")
                                 if line.startswith("CAMNAME="):
                                     cam1 = "%s" % line.split('"')[1]
                                 elif line.find("echo") > -1:
+                                    camdname.append(line)
+                            cam2 = "%s" % camdname[1].split('"')[1]       
+                        elif os.path.exists("/tmp/.ncam/ncam.version"):
+                            for line in open("/tmp/.ncam/ncam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
+                        else:            
+                            for line in open("/tmp/.oscam/oscam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
                                     camdname.append(line)
                             cam2 = "%s" % camdname[1].split('"')[1]
                         if not cam1:
@@ -1011,15 +1010,7 @@ class AglareAccess(Poll, Converter):
                     except:
                         pass
                     try:
-                        if os.path.exists("/tmp/.oscam/oscam.version"):
-                            for line in open("/tmp/.oscam/oscam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        elif os.path.exists("/tmp/.ncam/ncam.version"):
-                            for line in open("/tmp/.ncam/ncam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        else:
+                        if os.path.exists("/etc/init.d/softcam"):
                             for line in open("/etc/init.d/softcam"):
                                 if "Short-Description" in line:
                                     cam1 = "%s" % line.split(':')[1].replace(" ", "")
@@ -1027,52 +1018,15 @@ class AglareAccess(Poll, Converter):
                                     cam1 = "%s" % line.split('"')[1]
                                 elif line.find("echo") > -1:
                                     camdname.append(line)
-                            cam2 = "%s" % camdname[1].split('"')[1]
-                        if not cam1:
-                            return cam2
-                        else:
-                            return cam1
-                    except:
-                        pass
-                    try:
-                        for line in open("/etc/init.d/cardserver"):
-                            if line.find("echo") > -1:
-                                sername.append(line)
-                        cam2 = " %s" % sername[1].split('"')[1]
-                        if not cam2 or cam2 == "None":
-                            cam2 = ""
-                    except:
-                        pass
-                elif "=openbh" in line:
-                    try:
-                        if config.softcam.actCam.value:
-                            cam1 = config.softcam.actCam.value
-                            if " CAM 1" in cam1 or "no cam" in cam1:
-                                cam1 = "No CAM active"
-                        if config.softcam.actCam2.value:
-                            cam2 = config.softcam.actCam2.value
-                            if " CAM 2" in cam2 or "no cam" in cam2 or " CAM" in cam2:
-                                cam2 = ""
-                            else:
-                                cam2 = "+" + cam2
-                    except:
-                        pass
-                    try:
-                        if os.path.exists("/tmp/.oscam/oscam.version"):
-                            for line in open("/tmp/.oscam/oscam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
+                            cam2 = "%s" % camdname[1].split('"')[1]       
                         elif os.path.exists("/tmp/.ncam/ncam.version"):
                             for line in open("/tmp/.ncam/ncam.version"):
                                 if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        else:
-                            for line in open("/usr/camscript/Ncam"):
-                                if "Short-Description" in line:
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                                if line.startswith("CAMNAME="):
-                                    cam1 = "%s" % line.split('"')[1]
-                                elif line.find("echo") > -1:
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
+                        else:            
+                            for line in open("/tmp/.oscam/oscam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
                                     camdname.append(line)
                             cam2 = "%s" % camdname[1].split('"')[1]
                         if not cam1:
@@ -1090,7 +1044,7 @@ class AglareAccess(Poll, Converter):
                             cam2 = ""
                     except:
                         pass
-                elif "=egamimod" in line:
+                elif "=opengoal" in line:
                     try:
                         if config.softcam.actCam.value:
                             cam1 = config.softcam.actCam.value
@@ -1105,21 +1059,23 @@ class AglareAccess(Poll, Converter):
                     except:
                         pass
                     try:
-                        if os.path.exists("/tmp/.oscam/oscam.version"):
-                            for line in open("/tmp/.oscam/oscam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        elif os.path.exists("/tmp/.ncam/ncam.version"):
-                            for line in open("/tmp/.ncam/ncam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        else:
-                            for line in open("/usr/emu_scripts/EGcam"):
+                        if os.path.exists("/etc/init.d/softcam"):
+                            for line in open("/etc/init.d/softcam"):
                                 if "Short-Description" in line:
                                     cam1 = "%s" % line.split(':')[1].replace(" ", "")
                                 if line.startswith("CAMNAME="):
                                     cam1 = "%s" % line.split('"')[1]
                                 elif line.find("echo") > -1:
+                                    camdname.append(line)
+                            cam2 = "%s" % camdname[1].split('"')[1]       
+                        elif os.path.exists("/tmp/.ncam/ncam.version"):
+                            for line in open("/tmp/.ncam/ncam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
+                        else:            
+                            for line in open("/tmp/.oscam/oscam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
                                     camdname.append(line)
                             cam2 = "%s" % camdname[1].split('"')[1]
                         if not cam1:
@@ -1152,21 +1108,23 @@ class AglareAccess(Poll, Converter):
                     except:
                         pass
                     try:
-                        if os.path.exists("/tmp/.oscam/oscam.version"):
-                            for line in open("/tmp/.oscam/oscam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        elif os.path.exists("/tmp/.ncam/ncam.version"):
-                            for line in open("/tmp/.ncam/ncam.version"):
-                                if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
-                        else:
+                        if os.path.exists("/etc/init.d/softcam"):
                             for line in open("/etc/init.d/softcam"):
                                 if "Short-Description" in line:
                                     cam1 = "%s" % line.split(':')[1].replace(" ", "")
                                 if line.startswith("CAMNAME="):
                                     cam1 = "%s" % line.split('"')[1]
                                 elif line.find("echo") > -1:
+                                    camdname.append(line)
+                            cam2 = "%s" % camdname[1].split('"')[1]       
+                        elif os.path.exists("/tmp/.ncam/ncam.version"):
+                            for line in open("/tmp/.ncam/ncam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
+                        else:            
+                            for line in open("/tmp/.oscam/oscam.version"):
+                                if line.startswith("Version:"):
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
                                     camdname.append(line)
                             cam2 = "%s" % camdname[1].split('"')[1]
                         if not cam1:
@@ -1263,7 +1221,7 @@ class AglareAccess(Poll, Converter):
 # DE-OpenBlackHole
         if os.path.exists("/etc/image-version") and os.path.exists("/etc/BhCamConf"):
             for line in open("/etc/image-version"):
-                if "OpenBh" in line:
+                if "OpenBhole" in line:
                     try:
                         if config.softcam.actCam.value:
                             cam1 = config.softcam.actCam.value
@@ -1281,11 +1239,11 @@ class AglareAccess(Poll, Converter):
                         if os.path.exists("/tmp/.oscam/oscam.version"):
                             for line in open("/tmp/.oscam/oscam.version"):
                                 if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
                         elif os.path.exists("/tmp/.ncam/ncam.version"):
                             for line in open("/tmp/.ncam/ncam.version"):
                                 if line.startswith("Version:"):
-                                    cam1 = "%s" % line.split(':')[1].replace(" ", "")
+                                    cam1 = "%s" % line.split('@')[0].replace(" ", "").replace("Version:", "")
                         else:
                             for line in open("/usr/camscript/Ncam"):
                                 if "Short-Description" in line:
@@ -1324,13 +1282,9 @@ class AglareAccess(Poll, Converter):
             except:
                 return None
 # Egami
-        if os.path.exists("/tmp/egami.inf"):
+        if os.path.exists("/etc/EGCamConf"):
             try:
-                lines = open("/tmp/egami.inf", "r").readlines()
-                for line in lines:
-                    item = line.split(":", 1)
-                    if item[0] == "Current emulator":
-                        return item[1].strip()
+                camdlist = open("/etc/CurrentEGCamName", "r")
             except:
                 return None
 # OoZooN
@@ -1345,7 +1299,7 @@ class AglareAccess(Poll, Converter):
                 camdlist = open("/usr/bin/emuactive", "r")
             except:
                 return None
-# Merlin2
+# Merlin2 & PurE2
         if os.path.exists("/etc/clist.list"):
             try:
                 camdlist = open("/etc/clist.list", "r")
@@ -1386,7 +1340,7 @@ class AglareAccess(Poll, Converter):
                 pass
         else:
             emu = "N/A"
-        return "%s %s" % (cardserver.split("\n")[0], emu.split("\n")[0])
+        return "%s" % (emu.split("\n")[0])
 
     def int2hex(self, int):
         return "%x" % int

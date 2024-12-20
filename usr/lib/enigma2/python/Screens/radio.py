@@ -219,7 +219,7 @@ class radiom1(Screen):
                                           'DirectionActions'], {
             'red': self.close,
             'green': self.okClicked,
-            'cancel': self.cancel,
+            'cancel': self.close,
             'up': self.up,
             'down': self.down,
             'left': self.left,

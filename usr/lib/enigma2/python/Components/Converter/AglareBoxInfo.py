@@ -77,27 +77,18 @@ class AglareBoxInfo(Poll, Converter, object):
 			box = software = ''
 			if os.path.isfile('/proc/version'):
 				enigma = open('/proc/version').read().split()[2]
-			if os.path.isfile('/proc/stb/info/boxtype'):
-				box = open('/proc/stb/info/boxtype').read().strip().upper()
-				if box.startswith('HD51'):
-					box = 'AX 4K-BOX HD51'
-				elif box.startswith('SF8008'):
-					box = 'Octagon SF8008'
-				elif box.startswith('MULTIBOXPRO'):
-					box = 'Novaler 4k PRO'
-				elif box.startswith('MULTIBOXSE'):
-					box = 'Novaler 4k SE'
-				elif box.startswith('MULTIBOX'):
-					box = 'Novaler 4k'
-				elif box.startswith('h9combo'):
-					box = 'Zgemma h9combo'
-			elif os.path.isfile('/proc/stb/info/vumodel'):
-				box = 'Vu+ ' + open('/proc/stb/info/vumodel').read().strip().capitalize()
-			elif os.path.isfile('/proc/stb/info/model'):
-				box = open('/proc/stb/info/model').read().strip().upper()
+			try:
+				from Components.SystemInfo import BoxInfo
+				DISPLAYBRAND = BoxInfo.getItem("displaybrand")
+				if DISPLAYBRAND.startswith('Maxytec'):
+					DISPLAYBRAND = 'Novaler'
+				DISPLAYMODEL = BoxInfo.getItem("displaymodel")
+				box = DISPLAYBRAND + " " + DISPLAYMODEL
+			except ImportError:
+				box = os.popen("head -n 1 /etc/hostname").read().split()[0]
 			if os.path.isfile('/etc/issue'):
 				for line in open('/etc/issue'):
-					software += line.capitalize().replace('Open vision enigma2 image for', '').replace('More information : https://openvision.tech', '').replace('%d, %t - (%s %r %m)', '').replace('release', 'r').replace('Welcome to openatv', '').replace('Welcome to teamblue', '').replace('Welcome to openbh', '').replace('Welcome to opendroid', '').replace('Welcome to openspa', '').replace('\n', '').replace('\l', '').replace('\\', '').strip()[:-1].capitalize()
+					software += line.capitalize().replace('Open vision enigma2 image for', '').replace('More information : https://openvision.tech', '').replace('%d, %t - (%s %r %m)', '').replace('release', 'r').replace('Welcome to openatv', '').replace('Welcome to teamblue', '').replace('Welcome to openbh', '').replace('Welcome to openvix', '').replace('Welcome to opendroid', '').replace('Welcome to openspa', '').replace('\n', '').replace('\l', '').replace('\\', '').strip()[:-1].capitalize()
 				if software.startswith("Egami"):
 					try:
 						from Components.SystemInfo import BoxInfo
@@ -105,6 +96,12 @@ class AglareBoxInfo(Poll, Converter, object):
 					except ImportError:
 						pass
 				elif software.startswith("Openbh"):
+					try:
+						from Components.SystemInfo import BoxInfo
+						software = BoxInfo.getItem("displaydistro").upper() + " " + BoxInfo.getItem("imgversion") + " " + BoxInfo.getItem("imagebuild")
+					except ImportError:
+						pass
+				elif software.startswith("Openvix"):
 					try:
 						from Components.SystemInfo import BoxInfo
 						software = BoxInfo.getItem("displaydistro").upper() + " " + BoxInfo.getItem("imgversion") + " " + BoxInfo.getItem("imagebuild")
@@ -164,7 +161,7 @@ class AglareBoxInfo(Poll, Converter, object):
 							cpu_speed = "%s" % str(int(binascii.hexlify(clockfrequency), 16)/1000000)
 						except:
 							cpu_speed = '-'
-				if cpu_info == '':
+				if cpu_info is '':
 					return _('%s, %s MHz (%d %s)') % (info, cpu_speed, cpu_count, cpu_count > 1 and cores or core)
 			else:
 				return _('No info')
@@ -198,8 +195,8 @@ class AglareBoxInfo(Poll, Converter, object):
 						pass
 			except:
 				info = 'N/A'
-			if self.type == self.TempInfo:
-				info = ('CPU:  ' + info[0:2] + 'C')
+			if self.type is self.TempInfo:
+				info = (info[0:2] + 'C')
 			return info
 
 		elif self.type == self.FanInfo:
@@ -211,7 +208,7 @@ class AglareBoxInfo(Poll, Converter, object):
 					info = open('/proc/stb/fp/fan_pwm').read().strip('\n')
 			except:
 				info = 'N/A'
-			if self.type == self.FanInfo:
+			if self.type is self.FanInfo:
 				info = 'Fan: ' + info
 			return info
 

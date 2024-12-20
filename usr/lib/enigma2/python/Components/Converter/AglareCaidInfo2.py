@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 #
 #  CaidInfo2 - Converter
 #  ver 1.2.5 02.06.2021
