@@ -161,7 +161,7 @@ class AglareBoxInfo(Poll, Converter, object):
 							cpu_speed = "%s" % str(int(binascii.hexlify(clockfrequency), 16)/1000000)
 						except:
 							cpu_speed = '-'
-				if cpu_info is '':
+				if cpu_info == '':
 					return _('%s, %s MHz (%d %s)') % (info, cpu_speed, cpu_count, cpu_count > 1 and cores or core)
 			else:
 				return _('No info')

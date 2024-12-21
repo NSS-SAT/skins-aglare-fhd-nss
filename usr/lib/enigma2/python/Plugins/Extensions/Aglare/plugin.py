@@ -621,11 +621,11 @@ class AglareSetup(ConfigListScreen, Screen):
         return SetupSummary
 
     def keySave(self):
-        if not fileExists(self.skinFile + self.version):
-            for x in self['config'].list:
-                x[1].cancel()
-            self.close()
-            return
+        # if not fileExists(self.skinFile + self.version):
+            # for x in self['config'].list:
+                # x[1].cancel()
+            # self.close()
+            # return
 
         for x in self['config'].list:
             if len(x) > 1:  # Check if x has at least two elements
