@@ -406,7 +406,6 @@ class radiom2(Screen):
         self["back"].hide()
         sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
-
         global x, y
         pic = path_png + "ft.jpg"
         x = 430
@@ -838,12 +837,11 @@ class radiom80(Screen):
 
                     self.names.append(display_name)
                     self.urls.append(stream_url)
-
                 self.countdown()
-
-            self['info'].setText(_('Select and Play'))
-            self['key_green'].show()
-            showlist(self.names, self['list'])
+                print('current_song = ', current_song)
+                self['info'].setText(_('Select and Play'))
+                self['key_green'].show()
+                showlist(self.names, self['list'])
 
     def listener(self, urlx):
         content = ' '
@@ -870,7 +868,6 @@ class radiom80(Screen):
                 titlex = titlex_data.get("comeback", "Canzone non disponibile")
                 self.artist = titlex_data.get("artist", "Artista sconosciuto")
             self.downloadCover(self.artist)
-
             self['current_song'].setText(titlex)
             self['listeners'].setText(_('Online: ') + str(live))
             self.selectpic()
@@ -895,35 +892,6 @@ class radiom80(Screen):
                 self.timer.callback.append(self.countdown)
             self.timer.start(current, False)
 
-    # def countdown(self):
-        # try:
-            # live = self.listener(self.listen)
-            # titlex = titlesong(self.backing)
-            # self.downloadCover(self.artist)
-            # self['current_song'].setText(titlex)
-            # self['listeners'].setText(_('Online: ') + live)
-            # self.selectpic()
-            # self.openTest2()
-            # print('Countdown finished.')
-        # except Exception as e:
-            # print(e)
-
-    # def openTest2(self):
-        # print('duration mmm: ', self.duration)
-        # print(type(self.duration))
-        # if self.duration >= 0.0:
-            # value_str = str(self.duration)
-            # conv = value_str.split('.')[0]
-            # print('conv mmm: ', conv)
-            # current = int(float(conv)) * 60
-            # print('current mmm: ', current)
-            # self.timer = eTimer()
-            # try:
-                # self.timer_conn = self.timer.timeout.connect(self.countdown)
-            # except:
-                # self.timer.callback.append(self.countdown)
-            # self.timer.start(current, False)
-
     def showback2(self, picInfo=None):
         try:
             self["back"].instance.show()
@@ -947,12 +915,11 @@ class radiom80(Screen):
                 self.session.open(Playstream2, name, url)
             else:
                 url = url.replace(':', '%3a').replace(' ', '%20')
-
                 if self.player == '3':
                     ref = '4097:0:1:0:0:0:0:0:0:0:' + str(url)  # TV
                 else:
                     ref = '4097:0:2:0:0:0:0:0:0:0:' + str(url)  # Radio
-                print('Final reference: ', ref)
+                print('Final reference:', ref)
                 sref = eServiceReference(ref)
                 sref.setName(name)
                 self.session.nav.stopService()
@@ -961,36 +928,6 @@ class radiom80(Screen):
                 self.countdown()
         except Exception as e:
             print("Errore durante la riproduzione:", e)
-
-    # def openPlay(self):
-        # idx = self['list'].getSelectionIndex()
-        # if idx is None:
-            # return
-        # self.showback2()
-        # name = self.names[idx]
-        # url = self.urls[idx]
-        # if self.is_playing:
-            # self.stop()
-            # return
-        # try:
-            # if self.player == '2':
-                # self.session.open(Playstream2, name, url)
-            # else:
-                # url = url.replace(':', '%3a').replace(' ', '%20')
-                # if self.player == '3':
-                    # ref = '4097:0:1:0:0:0:0:0:0:0:' + str(url)  # tv
-                # else:
-                    # ref = '4097:0:2:0:0:0:0:0:0:0:' + str(url)  # radio
-                # print('final reference:   ', ref)
-                # sref = eServiceReference(ref)
-                # sref.setName(name)
-                # self.session.nav.stopService()
-                # self.session.nav.playService(sref)
-                # self.is_playing = True
-                # self.countdown()
-            # return
-        # except:
-            # pass
 
     def stop(self, text=''):
         if self.is_playing:
