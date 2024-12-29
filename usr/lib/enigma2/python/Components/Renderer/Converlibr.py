@@ -182,6 +182,7 @@ def convtext(text=''):
                 ('1/2', 'mezzo', 'replace'),
                 ('c.s.i.', 'csi', 'replace'),
                 ('c.s.i:', 'csi', 'replace'),
+                ('n.c.i.s.:', 'ncis', 'replace'),
                 ('ncis:', 'ncis', 'replace'),
                 ('ritorno al futuro:', 'ritorno al futuro', 'replace'),
                 

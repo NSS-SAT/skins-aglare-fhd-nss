@@ -560,7 +560,7 @@ class AglareBackdropX(Renderer):
         self.logBackdrop("[LOOP: waitBackdrop] " + self.pstrNm)
 
         while loop > 0:
-            if os.path.exists(self.pstrNm):
+            if self.pstrNm and os.path.exists(self.pstrNm):
                 found = True
                 break
             time.sleep(0.5)
