@@ -58,5 +58,5 @@ class ConverterRotator(Poll, Converter):
 		# f what[0] == self.CHANGED_POLL and \
 		#   self.poll_enabled and \
 		#   not self.sourceList[self.sourceIndex][1]:
-		#	return
+		#   return
 		self.downstream_elements.changed(what)

@@ -1,11 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import re
-from re import sub, S, I, search
+from re import sub, S, I, search, compile, DOTALL, escape
 from six import text_type
-import sys
 from unicodedata import normalize
+import sys
 
 
 try:
@@ -34,7 +33,7 @@ def quoteEventName(eventName):
     return quote_plus(text, safe="+")
 
 
-REGEX = re.compile(
+REGEX = compile(
     r'[\(\[].*?[\)\]]|'                    # Parentesi tonde o quadre
     r':?\s?odc\.\d+|'                      # odc. con o senza numero prima
     r'\d+\s?:?\s?odc\.\d+|'                # numero con odc.
@@ -55,8 +54,7 @@ REGEX = re.compile(
     r'\.\s\d{1,3}\s[чсЧС]\.?\s.*|'         # numero di parte/episodio in russo con punto
     r'\s[чсЧС]\.?\s\d{1,3}.*|'             # Parte/Episodio in russo
     r'\d{1,3}-(?:я|й)\s?с-н.*',            # Finale con numero e suffisso russo
-    re.DOTALL)
-
+    DOTALL)
 
 
 def remove_accents(string):
@@ -69,33 +67,6 @@ def remove_accents(string):
     string = sub(u"[ùúûü]", 'u', string)
     string = sub(u"[ýÿ]", 'y', string)
     return string
-
-
-
-# def remove_accents(string):
-    # # Normalizza la stringa in forma NFD (separa i caratteri dai loro segni diacritici)
-    # normalized = normalize('NFD', string)
-    # # Rimuove tutti i segni diacritici utilizzando una regex
-    # without_accents = sub(r'[\u0300-\u036f]', '', normalized)
-    # return without_accents
-
-
-# # Compatibilità per Python 2 e 3
-# def remove_accents(string):
-    # print("remove_accents received:", repr(string))
-    # # Assicurati che `string` sia Unicode in Python 2
-    # if sys.version_info[0] < 3 and isinstance(string, str):
-        # string = unicode(string, 'utf-8')  # Converti in Unicode
-    # elif not isinstance(string, str):
-        # raise TypeError("Expected a string, got " + type(string).__name__)
-    
-    # # Normalizza la stringa in forma NFD
-    # normalized = normalize('NFD', string)
-    # # Rimuove tutti i segni diacritici utilizzando una regex
-    # without_accents = sub(r'[\u0300-\u036f]', '', normalized)
-    # print("remove_accents result:", repr(without_accents))
-    # return without_accents
-
 
 
 def unicodify(s, encoding='utf-8', norm=None):
@@ -152,24 +123,11 @@ def convtext(text=''):
         if text == '':
             print('text is an empty string')
         else:
-            # if isinstance(text, unicode):  # Se è una stringa Unicode in Python 2
-            text= str(text)  # Converti in una stringa di byte (str in Python 2)
+            text = str(text)
             # print('original text:', text)
             # Converti tutto in minuscolo
             text = text.lower().rstrip()
             # print('lowercased text:', text)
-            # # Rimuovi accenti
-            # text = remove_accents(text)
-            # # print('remove_accents text:', text)
-
-            # remove episode number from series, like "series"
-            # # regex = re.compile(r'^(.*?)([ ._-]*(ep|episodio|st|stag|odc|parte|pt!series|serie||s[0-9]{1,2}e[0-9]{1,2}|[0-9]{1,2}x[0-9]{1,2})[ ._-]*[.]?[ ._-]*[0-9]+.*)$')
-            # # text = sub(regex, r'\1', text).strip()
-            # # print("titolo_pulito:", text)
-            # Force and remove episode number from series, like "series"
-            # # if search(r'[Ss][0-9]+[Ee][0-9]+', text):
-                # # text = sub(r'[Ss][0-9]+[Ee][0-9]+.*[a-zA-Z0-9_]+', '', text, flags=S | I)
-            # # text = sub(r'\(.*\)', '', text).rstrip()  # remove episode number from series, like "series"
 
             # Mappatura sostituzioni con azione specifica
             sostituzioni = [
@@ -177,6 +135,7 @@ def convtext(text=''):
                 ('superman & lois', 'superman e lois', 'set'),
                 ('lois & clark', 'superman e lois', 'set'),
                 ("una 44 magnum per", 'magnumxx', 'set'),
+                ("lupin iii", 'lupiniii', 'set'),
                 ('john q', 'johnq', 'set'),
                 # replace
                 ('1/2', 'mezzo', 'replace'),
@@ -185,7 +144,7 @@ def convtext(text=''):
                 ('n.c.i.s.:', 'ncis', 'replace'),
                 ('ncis:', 'ncis', 'replace'),
                 ('ritorno al futuro:', 'ritorno al futuro', 'replace'),
-                
+
                 # set
                 ('il ritorno di colombo', 'colombo', 'set'),
                 ('lingo: parole', 'lingo', 'set'),
@@ -282,22 +241,20 @@ def convtext(text=''):
             text = text.replace('prima visione', '').replace('film -', '').replace('en vivo:', '').replace('nueva emisión:', '')
             text = text.replace('new:', '').replace('film:', '').replace('première diffusion', '').replace('estreno:', '')
             print('cutlist:', text)
-            
-            
+
             # Rimuovi accenti
             text = remove_accents(text)
             # print('remove_accents text:', text)
 
             # remove episode number from series, like "series"
-            regex = re.compile(r'^(.*?)([ ._-]*(ep|episodio|st|stag|odc|parte|pt!series|serie||s[0-9]{1,2}e[0-9]{1,2}|[0-9]{1,2}x[0-9]{1,2})[ ._-]*[.]?[ ._-]*[0-9]+.*)$')
+            regex = compile(r'^(.*?)([ ._-]*(ep|episodio|st|stag|odc|parte|pt!series|serie|s[0-9]{1,2}e[0-9]{1,2}|[0-9]{1,2}x[0-9]{1,2})[ ._-]*[.]?[ ._-]*[0-9]+.*)$')
             text = sub(regex, r'\1', text).strip()
             print("titolo_pulito:", text)
             # Force and remove episode number from series, like "series"
             if search(r'[Ss][0-9]+[Ee][0-9]+', text):
                 text = sub(r'[Ss][0-9]+[Ee][0-9]+.*[a-zA-Z0-9_]+', '', text, flags=S | I)
             text = sub(r'\(.*\)', '', text).rstrip()  # remove episode number from series, like "series"
-            
-            
+
             # Rimozione pattern specifici
             text = sub(r'^\w{2}:', '', text)  # Rimuove "xx:" all'inizio
             text = sub(r'^\w{2}\|\w{2}\s', '', text)  # Rimuove "xx|xx" all'inizio
@@ -313,8 +270,7 @@ def convtext(text=''):
             text = sub(r'\sج\s*\d+', '', text)   # remove season number in arabic series
             text = sub(r'\sم\s*\d+', '', text)   # remove season number in arabic series
             # text = sub(r' +ح| +ج| +م', '', text)  # Rimuove numeri di episodi/serie in arabo
-            
-            
+
             # Rimozione di stringhe non valide
             bad_strings = [
                 "ae|", "al|", "ar|", "at|", "ba|", "be|", "bg|", "br|", "cg|", "ch|", "cz|", "da|", "de|", "dk|",
@@ -325,14 +281,14 @@ def convtext(text=''):
             ]
 
             bad_strings.extend(map(str, range(1900, 2030)))  # Anni da 1900 a 2030
-            bad_strings_pattern = re.compile('|'.join(map(re.escape, bad_strings)))
+            bad_strings_pattern = compile('|'.join(map(escape, bad_strings)))
             text = bad_strings_pattern.sub('', text)
             # Rimozione suffissi non validi
             bad_suffix = [
                 " al", " ar", " ba", " da", " de", " en", " es", " eu", " ex-yu", " fi", " fr", " gr", " hr", " mk",
                 " nl", " no", " pl", " pt", " ro", " rs", " ru", " si", " swe", " sw", " tr", " uk", " yu"
             ]
-            bad_suffix_pattern = re.compile(r'(' + '|'.join(map(re.escape, bad_suffix)) + r')$')
+            bad_suffix_pattern = compile(r'(' + '|'.join(map(escape, bad_suffix)) + r')$')
             text = bad_suffix_pattern.sub('', text)
             # Rimuovi "." "_" "'" e sostituiscili con spazi
             text = sub(r'[._\']', ' ', text)
@@ -347,10 +303,18 @@ def convtext(text=''):
             # text = sub(r'(\d+)+.*?FIN', '', text)
             # text = sub('FIN', '', text)
 
+            # remove episode number in arabic series
+            text = sub(r' +ح', '', text)
+            # remove season number in arabic series
+            text = sub(r' +ج', '', text)
+            # remove season number in arabic series
+            text = sub(r' +م', '', text)
+
             text = text.partition(" -")[0]  # Rimuove contenuti dopo "-"
             text = text.strip(' -')
             # Forzature finali
             text = text.replace('XXXXXX', '60')
+            text = text.replace('lupiniii', 'lupin iii')
             text = text.replace('magnumxx', "una 44 magnum per l ispettore")
             text = text.replace('amicimaria', 'amici di maria')
             text = text.replace('alessandroborgheseristoranti', 'alessandro borghese - 4 ristoranti')

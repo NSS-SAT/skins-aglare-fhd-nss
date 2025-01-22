@@ -16,8 +16,8 @@
             author="MNASR"
             license="Open"
             Support="OpenPLI, Mod. by Lululla"
-            Version="3.7"
-            Release date="04/10/2024"
+            Version="4.8"
+            Release date="03/01/2025"
 
             supporturl="www.nonsolosat.net"
         </abouth>
@@ -59,6 +59,7 @@
         <color name="#90000000" value="#90000000"/>
         <color name="#90ff00ff" value="#90ff00ff"/>
         <color name="#92f1fc" value="#0092f1fc"/>
+        <color name="#9f1313" value="#009f1313"/>
         <color name="#a0a0a0" value="#00a0a0a0"/>
         <color name="#a64d79" value="#00a64d79"/>
         <color name="#aa001842" value="#aa001842"/>
@@ -77,6 +78,7 @@
         <color name="#fe0000" value="#00fe0000"/>
         <color name="#fefe00" value="#00fefe00"/>
         <color name="#ffb75b" value="#00ffb75b"/>
+        <color name="#ffc000" value="#00ffc000"/>
         <color name="#fffff4" value="#00fffff4"/>
         <color name="#fffffe" value="#00fffffe"/>
         <color name="babyblue" value="#0089cff0"/>
@@ -730,6 +732,9 @@ MultiContentEntryText(pos = (830, 8), size = (30, 38),  font = 1, flags = RT_HAL
         <panel name="menudesc"/>
         <panel name="menusep"/>
         <panel name="pigscreen885"/>
+        <widget source="session.CurrentService" render="Label" zPosition="99" position="1680,967" size="100,26" halign="left" valign="center" font="Regular; 24" transparent="1" backgroundColor="background" foregroundColor="white">
+            <convert type="AglareBoxInfo">PythonVersion</convert>
+        </widget>
         <eLabel name="" position="1658,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
         <eLabel name="" position="1718,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="HELP"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
@@ -1153,7 +1158,7 @@ MultiContentEntryText(pos = (830, 8), size = (30, 38),  font = 1, flags = RT_HAL
             <convert type="AglareBoxInfo">Upinfo</convert>
         </widget>
     </screen>
-    <screen name="MemoryInfo" position="0,0" size="1920,1080" title="MemoryInfo" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="MemoryInfo" position="0,0" size="1920,1080" title="MemoryInfo" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="timedate"/>
@@ -1168,39 +1173,39 @@ MultiContentEntryText(pos = (830, 8), size = (30, 38),  font = 1, flags = RT_HAL
         <widget name="rmemvalue" position="1010,106" size="880,780" font="Regular; 26" zPosition="2" halign="right" transparent="1" backgroundColor="background" foregroundColor="green"/>
         <widget name="pfree" position="46,908" size="120,40" font="Regular; 28" zPosition="1" halign="left" backgroundColor="background" transparent="1" valign="center"/>
         <widget name="pused" position="1770,908" size="120,40" font="Regular; 28" zPosition="1" halign="right" backgroundColor="background" transparent="1" valign="center"/>
-        <widget name="slide" position="170,921" size="1600,14" render="Progress" zPosition="8" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10"/>
+        <widget name="slide" position="170,921" size="1600,14" render="Progress" zPosition="7" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="7"/>
         <widget name="info" position="250,948" size="1420,50" font="Regular; 26" halign="center" valign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" zPosition="55"/>
     </screen>
-    <screen name="TranslationInfo" position="0,0" size="1920,1080" title="About" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="TranslationInfo" position="0,0" size="1920,1080" title="About" backgroundColor="background" flags="wfNoBorder">
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp2"/>
         <panel name="bLogo"/>
         <widget source="TranslatorName" render="Label" position="40,952" size="1840,50" font="Regular; 28" halign="left" backgroundColor="background" transparent="1" foregroundColor="yellow" valign="center"/>
-        <widget source="TranslationInfo" render="Label" position="40,130" size="1840,800" font="Regular; 28" halign="left" backgroundColor="background" transparent="1" foregroundColor="white" valign="top" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
+        <widget source="TranslationInfo" render="Label" position="40,108" size="1840,822" font="Regular; 28" halign="left" backgroundColor="background" transparent="1" foregroundColor="white" valign="top" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="40,944" size="850,3" zPosition="99"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="1030,944" size="850,3" zPosition="99"/>
         <eLabel name="" position="895,925" size="132,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
     </screen>
-    <screen name="CommitInfo" position="0,0" size="1920,1080" title="Commit info" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="CommitInfo" position="0,0" size="1920,1080" title="Commit info" backgroundColor="background" flags="wfNoBorder">
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp2"/>
         <panel name="bLogo"/>
         <eLabel name="" position="45,59" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
-        <widget name="AboutScrollLabel" position="40,130" size="1840,800" font="Regular; 28" halign="left" backgroundColor="background" transparent="1" foregroundColor="white" valign="top" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
+        <widget name="AboutScrollLabel" position="40,108" size="1840,822" font="Regular; 28" halign="left" backgroundColor="background" transparent="1" foregroundColor="white" valign="top" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="40,944" size="850,3" zPosition="99"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="1030,944" size="850,3" zPosition="99"/>
         <eLabel name="" position="895,925" size="132,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
     </screen>
-    <screen name="Troubleshoot" position="0,0" size="1920,1080" title="Troubleshoot" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="Troubleshoot" position="0,0" size="1920,1080" title="Troubleshoot" backgroundColor="background" flags="wfNoBorder">
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp2"/>
         <panel name="bLogo"/>
-        <widget name="AboutScrollLabel" position="40,130" size="1840,800" font="Regular; 28" halign="left" backgroundColor="background" transparent="1" foregroundColor="white" valign="top"/>
+        <widget name="AboutScrollLabel" position="40,108" size="1840,822" font="Regular; 28" halign="left" backgroundColor="background" transparent="1" foregroundColor="white" valign="top" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="40,944" size="850,3" zPosition="99"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="1030,944" size="850,3" zPosition="99"/>
         <eLabel name="" position="895,925" size="132,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
     </screen>
-    <screen name="TextBox" position="0,0" size="1920,1080" title="Message" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="TextBox" position="0,0" size="1920,1080" title="Message" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="bLogo"/>
@@ -1235,7 +1240,7 @@ MultiContentEntryText(pos = (830, 8), size = (30, 38),  font = 1, flags = RT_HAL
     </screen>
     <screen name="SkinSelector" position="0,0" size="1920,1080" title="GUI Skin" backgroundColor="background" flags="wfNoBorder">
         <panel name="pigscreen885"/>
-        <widget source="skins" render="Listbox" position="36,98" size="890,900" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8">
+        <widget source="skins" render="Listbox" position="36,98" size="890,900" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" scrollbarMode="showNever">
             <convert type="TemplatedMultiContent">
 {"template": [
 MultiContentEntryText(pos = (10, 0), size = (510, 50), flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, font=0, text = 1),
@@ -1265,7 +1270,7 @@ MultiContentEntryText(pos = (650, 0), size = (220, 50), flags = RT_HALIGN_RIGHT|
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget name="config" position="36,162" size="890,400" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8"/>
+        <widget name="config" position="36,162" size="890,400" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" scrollbarMode="showNever"/>
         <widget source="Adapter" render="Label" position="36,98" size="890,50" font="Regular; 40" backgroundColor="background" transparent="1" foregroundColor="gold"/>
         <widget source="introduction2" render="Label" position="995,637" size="886,107" font="Regular; 32" halign="left" backgroundColor="background" transparent="1" zPosition="5" valign="top"/>
         <widget source="introduction" render="Label" position="36,620" size="890,50" font="Regular; 40" backgroundColor="background" transparent="1" foregroundColor="gold"/>
@@ -1296,7 +1301,7 @@ MultiContentEntryText(pos = (650, 0), size = (220, 50), flags = RT_HALIGN_RIGHT|
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="NameserverSetup" position="0,0" size="1920,1080" title="Nameserver Setup" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="NameserverSetup" position="0,0" size="1920,1080" title="Nameserver Setup" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="configlist45"/>
@@ -1540,7 +1545,7 @@ MultiContentEntryText(pos = (0, 0), size = (890, 300), flags = RT_HALIGN_CENTER|
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SoftwareManagerSetup" position="0,0" size="1920,1080" title="SoftwareManager setup" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="SoftwareManagerSetup" position="0,0" size="1920,1080" title="SoftwareManager setup" backgroundColor="background" flags="wfNoBorder">
         <widget source="introduction" render="Label" position="1288,230" size="410,400" font="Regular; 26" halign="left" valign="top" foregroundColor="green" backgroundColor="background" transparent="1" zPosition="55"/>
         <panel name="titletemp"/>
         <panel name="menutemp"/>
@@ -1887,7 +1892,7 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
         <panel name="LocationBoxNew"/>
         <panel name="LocationBoxOld"/>
     </screen>
-    <screen name="MediaPlayer" position="0,0" size="1920,1080" title="MediaPlayer" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="MediaPlayer" position="0,0" size="1920,1080" title="MediaPlayer" backgroundColor="background" flags="wfNoBorder">
         <panel name="timedate"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <widget source="Title" render="Label" position="36,32" size="1340,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left" textOffset="44,0"/>
@@ -1916,13 +1921,13 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
         <widget name="year" position="1293,720" size="624,38" font="Regular; 27" backgroundColor="background" foregroundColor="yellow" transparent="1"/>
         <widget name="genre" position="1293,770" size="624,38" font="Regular; 27" backgroundColor="background" foregroundColor="yellow" transparent="1"/>
         <widget name="titletext" position="1176,570" size="113,38" font="Regular;27" foregroundColor="white" backgroundColor="background" transparent="1"/>
-        <widget source="session.CurrentService" render="Label" position="1214,422" size="120,45" zPosition="22" font="Regular;27" halign="left" backgroundColor="background" foregroundColor="white" noWrap="1" transparent="1">
+        <widget source="session.CurrentService" render="Label" position="1214,422" size="148,45" zPosition="22" font="Regular;27" halign="left" backgroundColor="background" foregroundColor="white" noWrap="1" transparent="1">
             <convert type="ServicePosition">Position,ShowHours</convert>
         </widget>
-        <widget source="session.CurrentService" render="Label" position="1714,422" size="120,45" zPosition="22" font="Regular;27" halign="right" backgroundColor="background" foregroundColor="white" noWrap="1" transparent="1">
+        <widget source="session.CurrentService" render="Label" position="1691,422" size="143,45" zPosition="22" font="Regular;27" halign="right" backgroundColor="background" foregroundColor="white" noWrap="1" transparent="1">
             <convert type="ServicePosition">Length</convert>
         </widget>
-        <widget source="session.CurrentService" render="Progress" position="1342,437" size="360,14" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="7" transparent="1" zPosition="2">
+        <widget source="session.CurrentService" render="Progress" position="1372,438" size="300,12" pixmap="main/progfg30012.png" cornerRadius="5" zPosition="99" backgroundColor="progbg">
             <convert type="ServicePosition">Position</convert>
         </widget>
         <widget name="title" position="1293,570" size="624,38" font="Regular; 27" backgroundColor="background" foregroundColor="yellow" transparent="1" noWrap="1"/>
@@ -1968,7 +1973,7 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
     <screen name="MoviePlayer" position="center,center" size="1920,1080" title="InfoBar" backgroundColor="transparent" flags="wfNoBorder" alphatest="on">
         <panel name="mediaplayertemp"/>
     </screen>
-    <screen name="MovieSelection" position="0,0" size="1920,1080" title="Select a movie" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="MovieSelection" position="0,0" size="1920,1080" title="Select a movie" backgroundColor="background" flags="wfNoBorder">
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <!-- <panel name="bLogo"/> -->
         <widget source="session.VideoPicture" render="Pig" position="1164,100" zPosition="20" size="742,418" backgroundColor="transparent" transparent="0" cornerRadius="14"/>
@@ -2001,7 +2006,7 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
         <widget source="session.CurrentService" render="Label" position="1484,744" size="160,38" backgroundColor="background" transparent="1" zPosition="88" font="Regular; 30" valign="center" halign="center" foregroundColor="yellow">
             <convert type="ServicePosition">Remaining,Plus,ShowHours</convert>
         </widget>
-        <widget source="session.CurrentService" render="Progress" position="1162,837" size="740,14" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10">
+        <widget source="session.CurrentService" render="Progress" position="1162,837" size="740,14" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="7">
             <convert type="ServicePosition">Progress</convert>
         </widget>
         <widget source="Service" render="Label" position="1777,786" size="120,38" font="Regular;28" halign="center" backgroundColor="background" transparent="1" zPosition="88">
@@ -2017,8 +2022,8 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
         <widget name="waitingtext" position="34,105" size="1110,900" font="Regular;33" halign="center" valign="center" zPosition="4"/>
         <widget name="chosenletter" position="38,103" size="1110,900" foregroundColor="yellow" font="Regular;112" halign="center" valign="center" transparent="1" zPosition="4"/>
     </screen>
-    <screen name="NimSelection" position="0,0" size="1920,1080" title="Choose Tuner" backgroundColor="transparent" flags="wfNoBorder">
-        <widget source="nimlist" render="Listbox" position="36,98" size="890,750" zPosition="3" enableWrapAround="1" transparent="1" itemHeight="250" itemCornerRadius="30">
+    <screen name="NimSelection" position="0,0" size="1920,1080" title="Choose Tuner" backgroundColor="background" flags="wfNoBorder">
+        <widget source="nimlist" render="Listbox" position="36,98" size="890,750" zPosition="3" enableWrapAround="1" transparent="1" itemHeight="250" itemCornerRadius="30" scrollbarMode="showNever">
             <convert type="TemplatedMultiContent">
 				{"template": [
 MultiContentEntryText(pos = (15, 6), size = (800, 40), flags = RT_HALIGN_LEFT, text = 1), # index 1 is the nim name,
@@ -2036,7 +2041,7 @@ MultiContentEntryText(pos = (50, 44), size = (800, 200), font = 1, flags = RT_HA
         <eLabel name="" position="1778,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="INFO"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/tuner.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="NimSetup" position="0,0" size="1920,1080" title="Reception Settings" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="NimSetup" position="0,0" size="1920,1080" title="Reception Settings" backgroundColor="background" flags="wfNoBorder">
         <panel name="menutemp2"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="bLogo"/>
@@ -2101,21 +2106,21 @@ MultiContentEntryText(pos = (50, 44), size = (800, 200), font = 1, flags = RT_HA
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="introduction" position="997,948" size="550,50" font="Regular; 32" halign="left" backgroundColor="background" transparent="1" zPosition="5" valign="center"/>
-        <widget name="config" position="36,98" size="890,900" itemHeight="45" enableWrapAround="1" transparent="1" font="Regular; 28" itemCornerRadius="8" valign="center"/>
+        <widget name="config" position="36,98" size="890,900" itemHeight="45" enableWrapAround="1" transparent="1" font="Regular; 28" itemCornerRadius="8" valign="center" scrollbarMode="showNever"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="FastScanStatus" position="0,0" size="1920,1080" title="Fast Scan" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="FastScanStatus" position="0,0" size="1920,1080" title="Fast Scan" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="scan_state" position="36,112" size="900,50" zPosition="2" font="Regular; 28" backgroundColor="background" transparent="1"/>
-        <widget name="scan_progress" position="36,190" size="900,26" zPosition="1" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10"/>
+        <widget name="scan_progress" position="36,190" size="880,26" zPosition="1" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="ServiceInfo" position="0,0" size="1920,1080" title="Serviceinfo" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="ServiceInfo" position="0,0" size="1920,1080" title="Serviceinfo" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -2525,12 +2530,11 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="DefaultWizard" position="0,0" size="1920,1080" title="Welcome Satellite-Forum.com..." backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="DefaultWizard" position="0,0" size="1920,1080" title="Welcome..." backgroundColor="transparent" flags="wfNoBorder">
         <!-- <panel name="menutemp2short"/> -->
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="timedate"/>
         <panel name="bLogo"/>
-        
         <ePixmap position="36,39" size="66,54" pixmap="image_logo/nss/tLogo.png" alphatest="blend" transparent="1" zPosition="19"/>
         <widget source="Title" render="Label" position="100,40" size="1167,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
         <eLabel name="" position="20,110" size="1244,898" zPosition="-90" cornerRadius="30" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
@@ -2538,14 +2542,12 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
         <widget source="ScreenPath" render="Label" position="40,14" size="1380,24" backgroundColor="background" transparent="1" zPosition="1" font="Regular; 19" valign="center" halign="left"/>
-        
-
-        <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1557,191" zPosition="10" size="180,500" alphatest="on" transparent="1" font="Regular; 24" />
+        <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1557,191" zPosition="10" size="180,500" alphatest="on" transparent="1" font="Regular; 24"/>
         <widget name="arrowdown" position="-100,-100" size="56,105" pixmap="skin_default/arrowdown.png" zPosition="11" alphatest="blend"/>
         <widget name="arrowdown2" position="-100,-100" size="56,105" pixmap="skin_default/arrowdown.png" zPosition="11" alphatest="blend"/>
         <widget name="arrowup" position="-100,-100" size="56,105" pixmap="skin_default/arrowup.png" zPosition="11" alphatest="blend"/>
         <widget name="arrowup2" position="-100,-100" size="56,105" pixmap="skin_default/arrowup.png" zPosition="11" alphatest="blend"/>
-        <widget name="wizard" pixmap="Aglare-FHD-PLI/skin_default/wizard.png" position="58,136" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
+        <widget name="wizard" pixmap="Aglare-FHD-NSS/skin_default/wizard.png" position="58,136" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
         <widget name="languagetext" position="306,960" size="250,45" zPosition="11" font="Regular; 32" halign="left" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <widget name="text" position="326,116" size="720,418" font="Regular; 30" transparent="1" backgroundColor="background" valign="top"/>
         <widget source="list" render="Listbox" position="60,550" size="1000,400" transparent="1" itemHeight="50">
@@ -2605,7 +2607,7 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="bLogo"/>
-        <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1557,191" zPosition="10" size="180,500" alphatest="on" transparent="1" font="Regular; 24" />
+        <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1557,191" zPosition="10" size="180,500" alphatest="on" transparent="1" font="Regular; 24"/>
         <widget name="arrowdown" position="-100,-100" size="56,105" pixmap="skin_default/arrowdown.png" zPosition="11" alphatest="blend"/>
         <widget name="arrowdown2" position="-100,-100" size="56,105" pixmap="skin_default/arrowdown.png" zPosition="11" alphatest="blend"/>
         <widget name="arrowup" position="-100,-100" size="56,105" pixmap="skin_default/arrowup.png" zPosition="11" alphatest="blend"/>
@@ -2646,7 +2648,7 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <ePixmap pixmap="buttons/key_blue.png" position="36,160" zPosition="0" size="54,34" transparent="1" alphatest="on"/>
         <widget name="languagetext" position="110,120" size="388,34" font="Regular; 26" transparent="1" backgroundColor="background"/>
         <widget name="wizard" pixmap="skin_default/wizard.png" position="45,255" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
-        <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1557,191" zPosition="10" size="180,500" alphatest="on" transparent="1" font="Regular; 24" />
+        <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1557,191" zPosition="10" size="180,500" alphatest="on" transparent="1" font="Regular; 24"/>
         <widget name="arrowdown" pixmap="skin_default/arrowdown.png" position="-100,-100" zPosition="11" size="56,105" alphatest="on"/>
         <widget name="arrowdown2" pixmap="skin_default/arrowdown.png" position="-100,-100" zPosition="11" size="56,105" alphatest="on"/>
         <widget name="arrowup" pixmap="skin_default/arrowup.png" position="-100,-100" zPosition="11" size="56,105" alphatest="on"/>
@@ -2667,7 +2669,7 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <widget name="arrowdown2" pixmap="skin_default/arrowdown.png" position="-100,-100" zPosition="11" size="56,105" alphatest="on"/>
         <widget name="arrowup" pixmap="skin_default/arrowup.png" position="-100,-100" zPosition="11" size="56,105" alphatest="on"/>
         <widget name="arrowup2" pixmap="skin_default/arrowup.png" position="-100,-100" zPosition="11" size="56,105" alphatest="on"/>
-        <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1557,191" zPosition="10" size="180,500" alphatest="on" transparent="1" font="Regular; 24" />
+        <widget name="rc" pixmaps="skin_default/rc.png,skin_default/rcold.png" position="1557,191" zPosition="10" size="180,500" alphatest="on" transparent="1" font="Regular; 24"/>
         <widget name="wizard" pixmap="skin_default/wizard.png" position="50,106" zPosition="10" size="240,240" alphatest="blend" transparent="1"/>
         <widget name="languagetext" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <widget name="text" position="307,115" size="610,282" font="Regular; 30" transparent="1" backgroundColor="background" valign="top"/>
@@ -2718,14 +2720,14 @@ MultiContentEntryText(pos=(435,75), size=(430,30), text = 2, font = 1, flags = R
         <widget name="rotorstatus" position="997,803" size="510,70" font="Regular; 50" zPosition="1" transparent="1" backgroundColor="background" valign="center" halign="left"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
-        <screen name="RemoteControlCode" position="0,0" size="1920,1080" title="Remote Control" backgroundColor="transparent" flags="wfNoBorder">
-            <panel name="titletemp"/>
-            <panel name="menutemp"/>
-            <panel name="ScreenTemplateAllColorButtons_menu"/>
-            <panel name="configlist45"/>
-            <panel name="pigscreen885"/>
-            <ePixmap name="" position="1683,786" size="180,180" zPosition="1" pixmap="main/ico/remotecontrol.png" transparent="1" alphatest="on"/>
-        </screen>
+    </screen>
+    <screen name="RemoteControlCode" position="0,0" size="1920,1080" title="Remote Control" backgroundColor="transparent" flags="wfNoBorder">
+        <panel name="titletemp"/>
+        <panel name="menutemp"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
+        <panel name="configlist45"/>
+        <panel name="pigscreen885"/>
+        <ePixmap name="" position="1683,786" size="180,180" zPosition="1" pixmap="main/ico/remotecontrol.png" transparent="1" alphatest="on"/>
     </screen>
     <screen name="HdmiCECSetupScreen" position="0,0" size="1920,1080" title="HDMI CEC setup" backgroundColor="transparent" flags="wfNoBorder">
         <panel name="titletemp"/>
@@ -3217,7 +3219,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (20, 15), size = (80, 80), png = 2),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="StreamingClientsInfo" position="0,0" size="1920,1080" title="Streaming Clients Info" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="StreamingClientsInfo" position="0,0" size="1920,1080" title="Streaming Clients Info" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -3336,7 +3338,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (20, 15), size = (80, 80), png = 2),
         <eLabel name="" position="1778,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="INFO"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
     </screen>
-    <screen name="TMBDSettings" position="0,0" size="1920,1080" title="TMBDSettings" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="TMBDSettings" position="0,0" size="1920,1080" title="TMBDSettings" backgroundColor="background" flags="wfNoBorder">
         <panel name="menutemp2short"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="bLogo"/>
@@ -3444,21 +3446,21 @@ MultiContentEntryText(pos=(160,1), size=(700,100), font=0, flags=RT_HALIGN_LEFT|
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CacheFlushSetupMenu" position="fill" title="CacheFlush" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="CacheFlushSetupMenu" position="fill" title="CacheFlush" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <!--panel name="Progress" /-->
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget name="config" position="36,98" size="890,550" font="Regular;30" valign="center" itemHeight="50" transparent="1" itemCornerRadius="8"/>
+        <widget name="config" position="36,98" size="890,550" font="Regular;30" valign="center" itemHeight="50" transparent="1" itemCornerRadius="8" scrollbarMode="showNever"/>
         <widget name="min_free_kb" position="36,914" size="890,34" font="Regular; 30" transparent="1" halign="left" backgroundColor="background"/>
         <widget name="memory" position="36,956" size="890,34" font="Regular; 30" halign="left" transparent="1" backgroundColor="background" foregroundColor="yellow"/>
         <widget name="slide" position="60,856" size="840,16" zPosition="3" transparent="1" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CacheFlushInfoScreen" position="fill" title="CacheFlush Info" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="CacheFlushInfoScreen" position="fill" title="CacheFlush Info" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="timedate"/>
@@ -3478,14 +3480,14 @@ MultiContentEntryText(pos=(160,1), size=(700,100), font=0, flags=RT_HALIGN_LEFT|
     <screen name="CacheFlushAutoScreen" position="800,200" size="420,40" title="CacheFlush Status" zPosition="10" flags="wfBorder">
         <widget name="message_label" position="1,0" size="418,39" font="Regular;28" valign="center" halign="center" backgroundColor="background" transparent="1"/>
     </screen>
-    <screen backgroundColor="transparent" flags="wfNoBorder" name="SoftcamSetup" position="0,0" size="1920,1080" title="">
+    <screen backgroundColor="background" flags="wfNoBorder" name="SoftcamSetup" position="0,0" size="1920,1080" title="">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="description"/>
         <panel name="bLogo"/>
-        <widget name="config" position="36,98" size="890,150" itemHeight="50" valign="center" enableWrapAround="1" transparent="1" alphatest="on" font="Regular; 30" zPosition="99" itemCornerRadius="8"/>
+        <widget name="config" position="36,98" size="890,150" itemHeight="50" valign="center" enableWrapAround="1" transparent="1" alphatest="on" font="Regular; 30" zPosition="99" itemCornerRadius="8" scrollbarMode="showNever"/>
         <widget name="info" position="70,510" size="800,480" font="Regular; 24" halign="center" valign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" zPosition="6"/>
         <widget source="session.CurrentService" render="Label" position="80,356" size="828,40" font="Regular; 23" halign="left" zPosition="1" backgroundColor="background" transparent="1" text="EcmInfo" valign="center" noWrap="1">
             <convert type="AglareAccess">CryptInfo</convert>
@@ -3497,7 +3499,7 @@ MultiContentEntryText(pos=(160,1), size=(700,100), font=0, flags=RT_HALIGN_LEFT|
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="MultiBootSelector" position="0,0" size="1920,1080" title="Multiboot Image Selector" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="MultiBootSelector" position="0,0" size="1920,1080" title="Multiboot Image Selector" flags="wfNoBorder" backgroundColor="background">
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="titletemp"/>
@@ -3654,7 +3656,7 @@ MultiContentEntryText(pos=(160,1), size=(700,100), font=0, flags=RT_HALIGN_LEFT|
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="setup_recording" position="fill" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="setup_recording" position="fill" title="Setup" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="configlist45"/>
@@ -3676,7 +3678,7 @@ MultiContentEntryText(pos=(160,1), size=(700,100), font=0, flags=RT_HALIGN_LEFT|
         <panel name="bLogo"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/subssupport.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="EventViewContextMenu" title="Eventview Context Menu" position="fill" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="EventViewContextMenu" title="Eventview Context Menu" position="fill" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -3693,7 +3695,7 @@ MultiContentEntryText(pos=(160,1), size=(700,100), font=0, flags=RT_HALIGN_LEFT|
         <panel name="bLogo"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/setup.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="ShowSoftcamPackages" position="fill" title="Install Softcams" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="ShowSoftcamPackages" position="fill" title="Install Softcams" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -3718,7 +3720,7 @@ MultiContentEntryText(pos = (90, 42), size = (800, 40), font=1, flags = RT_HALIG
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/camd.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="ZapHistoryBrowser" position="fill" title="Zap History" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="ZapHistoryBrowser" position="fill" title="Zap History" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -3727,7 +3729,7 @@ MultiContentEntryText(pos = (90, 42), size = (800, 40), font=1, flags = RT_HALIG
         <widget name="list" position="36,98" size="890,880" halign="left" valign="center" textOffset="20,4" itemHeight="80" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" foregroundColorSelected="yellow"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/channelselection_setup.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="SelectBouquet" position="fill" title="Choose bouquet" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SelectBouquet" position="fill" title="Choose bouquet" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -3736,7 +3738,7 @@ MultiContentEntryText(pos = (90, 42), size = (800, 40), font=1, flags = RT_HALIG
         <panel name="bLogo"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/channelselection_setup.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="MyLanguageSelection" position="0,0" size="1920,1080" title="Language selection" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="MyLanguageSelection" position="0,0" size="1920,1080" title="Language selection" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -3754,7 +3756,7 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/language.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SetupCronConf" title="Cron Setup" flags="wfNoBorder" position="0,0" size="1920,1080" backgroundColor="transparent">
+    <screen name="SetupCronConf" title="Cron Setup" flags="wfNoBorder" position="0,0" size="1920,1080" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -3764,39 +3766,11 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="ButtonSetup" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-        <panel name="titletemp"/>
-        <panel name="menutemp"/>
-        <panel name="ScreenTemplateAllColorButtons_menu"/>
-        <panel name="description"/>
-        <panel name="pigscreen885"/>
-        <panel name="bLogo"/>
-        <widget name="list" position="36,98" size="890,620" font="Regular;30" valign="center" itemHeight="62" enableWrapAround="1" transparent="1" zPosition="5" itemCornerRadius="8"/>
-        <widget name="choosen" position="36,798" size="890,200" itemHeight="50" valign="center" itemCornerRadius="8" transparent="1"/>
-        <eLabel name="" position="416,752" size="132,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
-        <eLabel backgroundColor="mcolor3" cornerRadius="3" position="36,770" size="400,3" zPosition="99"/>
-        <eLabel backgroundColor="mcolor3" cornerRadius="3" position="524,770" size="400,3" zPosition="99"/>
-        <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
-        <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/remotecontrol.png" transparent="1" alphatest="on"/>
-        <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
+    <screen name="ButtonSetup" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="background">
+        <panel name="HotkeySetup"/>
     </screen>
-    <screen name="ButtonSetupSelect" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
-        <panel name="titletemp"/>
-        <panel name="menutemp"/>
-        <panel name="ScreenTemplateAllColorButtons_menu"/>
-        <panel name="description"/>
-        <panel name="pigscreen885"/>
-        <panel name="bLogo"/>
-        <widget name="list" position="36,98" size="890,620" font="Regular;30" valign="center" itemHeight="62" enableWrapAround="1" transparent="1" zPosition="5" itemCornerRadius="8"/>
-        <widget name="choosen" position="36,798" size="890,200" itemHeight="50" valign="center" itemCornerRadius="8" transparent="1"/>
-        <eLabel name="" position="416,752" size="132,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
-        <eLabel backgroundColor="mcolor3" cornerRadius="3" position="36,770" size="400,3" zPosition="99"/>
-        <eLabel backgroundColor="mcolor3" cornerRadius="3" position="524,770" size="400,3" zPosition="99"/>
-        <eLabel name="" position="1718,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="CH+"/>
-        <eLabel name="" position="1778,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="CH-"/>
-        <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
-        <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/remotecontrol.png" transparent="1" alphatest="on"/>
-        <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
+    <screen name="ButtonSetupSelect" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="background">
+        <panel name="HotkeySetupSelect"/>
     </screen>
     <screen name="xtra" position="0,0" size="1920,1080" title="xtraEvent..." flags="wfNoBorder" backgroundColor="background">
         <panel name="menutemp2short"/>
@@ -4052,17 +4026,17 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
         </widget>
     </screen>
     <screen name="HistoryZapDescriptionDurationBarPiconSkinFullHD" position="120,100" size="1200,890" title="History zap..." flags="wfBorder">
-        <widget source="menu" render="Listbox" position="0,5" size="1200,880" itemHeight="88">
+        <widget source="menu" render="Listbox" position="2,5" size="1196,880" itemHeight="88" scrollbarMode="showNever" itemCornerRadius="10">
             <convert type="TemplatedMultiContent">
             {"template": [
-                  MultiContentEntryText(pos=(5,87), size=(1100, 1), border_width=1, border_color=0x282828 ), # border
-                  MultiContentEntryText(pos = (80, 0), size = (70, 88), flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, color = 0x00dddddd, color_sel = 0x0067b0c2, text = 1), # number
-                  MultiContentEntryText(pos = (150, 9), size = (400, 81), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00dddddd, color_sel = 0x0067b0c2), # chname
-                  MultiContentEntryText(pos = (570, 9), size = (530, 81), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 3, color = 0x00dddddd, color_sel = 0x0067b0c2), # eventname
-                  MultiContentEntryText(pos = (570, 40), size = (530, 41), flags = RT_HALIGN_LEFT | RT_VALIGN_BOTTOM, text = 4, color = 0x00dddddd, color_sel = 0x0067b0c2), # eventdescr
-                  MultiContentEntryText(pos = (450, 0), size = (100, 84), flags = RT_HALIGN_LEFT | RT_VALIGN_BOTTOM, text = 7, color = 0x00dddddd, color_sel = 0x0067b0c2), # percent
-                  MultiContentEntryProgress(pos = (150, 57), size = (280, 15), percent = -5, borderWidth = 1, foreColor = 0x00dddddd, foreColorSelected = 0x0067b0c2), # progress
-                  MultiContentEntryPixmapAlphaBlend(pos=(5, 23), size=(75, 45), png=6)
+MultiContentEntryText(pos=(5,87), size=(1100, 1), border_width=1, border_color=0x282828 ), # border
+MultiContentEntryText(pos = (80, 0), size = (70, 88), flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, color = 0x00dddddd, color_sel = 0x0067b0c2, text = 1), # number
+MultiContentEntryText(pos = (150, 9), size = (400, 81), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2, color = 0x00dddddd, color_sel = 0x0067b0c2), # chname
+MultiContentEntryText(pos = (570, 9), size = (600, 81), flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 3, color = 0x00dddddd, color_sel = 0x0067b0c2), # eventname
+MultiContentEntryText(pos = (570, 40), size = (600, 41), flags = RT_HALIGN_LEFT | RT_VALIGN_BOTTOM, text = 4, color = 0x00dddddd, color_sel = 0x0067b0c2), # eventdescr
+MultiContentEntryText(pos = (450, 0), size = (100, 80), flags = RT_HALIGN_LEFT | RT_VALIGN_BOTTOM, text = 7, color = 0x00dddddd, color_sel = 0x0067b0c2), # percent
+MultiContentEntryProgress(pos = (150, 57), size = (280, 15), percent = -5, borderWidth = 1, foreColor = 0x00dddddd, foreColorSelected = 0x0067b0c2), # progress
+MultiContentEntryPixmapAlphaBlend(pos=(5, 23), size=(75, 45), png=6)
                   ],
                 "fonts": [gFont("Regular", 28)],
                 "itemHeight": 88
@@ -4082,10 +4056,12 @@ MultiContentEntryPixmap(pos = (20,6), size = (60,40), png = 2), # index 2 is the
         <widget name="cancel" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <widget name="canceltext" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <widget name="clear" position="652,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
+        <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
+        <ePixmap name="" position="1679,835" size="200,80" zPosition="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HistoryZapSelector/zap.png" transparent="1" alphatest="on" scale="1"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/setup.png" transparent="1" alphatest="on"/>
     </screen>
     <screen name="HistoryZapEventSkinFullHD" position="120,100" size="1200,900" title="History zap..." flags="wfBorder">
-        <widget source="menu" render="Listbox" position="0,0" size="1200,900">
+        <widget source="menu" render="Listbox" position="0,0" size="1200,900" scrollbarMode="showNever">
             <convert type="TemplatedMultiContent">
             {"template": [
                   MultiContentEntryText(pos=(5,48), size=(1100, 1), border_width=1, border_color=0x282828 ), # border
@@ -4159,7 +4135,7 @@ MultiContentEntryText(pos = (80,0),size = (900,50),font=0,flags = RT_HALIGN_LEFT
         <panel name="bLogo"/>
         <widget name="Picture" position="1223,671" size="454,255" alphatest="blend"/>
     </screen>
-    <screen name="AtileHD_About" position="center,center" size="400,170" title="Aglare-FHD-NSS">
+    <screen name="AtileHD_About" position="center,center" size="400,170" title="Aglare-FHD-PLI">
         <eLabel text="MNASR" position="center,0" size="210,50" font="Regular; 42" halign="center" backgroundColor="background" foregroundColor="mainskincolor"/>
         <ePixmap position="center,50" size="210,120" pixmap="picon_default.png" alphatest="blend" zPosition="10"/>
     </screen>
@@ -4171,262 +4147,28 @@ MultiContentEntryText(pos = (80,0),size = (900,50),font=0,flags = RT_HALIGN_LEFT
         <widget name="WarningPixmap" pixmap="icons/input_warning.png" position="12,12" size="80,80" alphatest="blend" scale="1"/>
         <!--openpli-->
         <widget name="text" position="108,12" size="1077,152" font="Regular; 33" valign="top" halign="left" backgroundColor="background" foregroundColor="white"/>
-        <widget name="list" position="15,200" size="1170,100" textOffset="10,6" itemHeight="50" font="Regular;30" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="14"/>
+        <widget name="list" position="15,200" size="1170,100" textOffset="10,6" itemHeight="50" font="Regular;30" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10"/>
         <applet type="onLayoutFinish">
-
-
 from enigma import eSize, ePoint
 orgwidth = self.instance.size().width()
 orgpos = self.instance.position()
-
-
-
-
-
-
-
-
-
-
-
-
 textsize = self["text"].getSize()
 textsize = (textsize[0] + 70, textsize[1] + 70)
-                                            
-
-
-
-
-
-
-
-
-
-
-                      
-
-
-
-                 
-           
-
-
-
-
-
-                   
-
-
-
-
-
-
-                         
-                                  
-
-
-
-
-
-
-
-
-
-
-
-
-                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-             
-              
-
-             
-        
-                           
-                                        
-                                     
-                                                
-                                                       
-           
-            
-
-                               
-                           
-                             
-                         
-                      
-               
-     
-                   
-     
-               
-                             
-                                            
-     
-                                           
-                                        
-                                    
-                                                                                                                                                                                                    
-                                                                                                                                                              
-                                                                                                                                                          
-
-                                         
-                                                                                                                                       
-                                                                                                                                                                
-
-                                                                 
-                                                                                     
-                                             
-
-                          
-                                               
-                                  
-
-                                                           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 count = len(self.list)
-
-
-
 if count &gt; 13:
 	count = 13
-
-
-
-
-
 offset = 50 * count
-
-
-
-
-
-
 wsizex = textsize[0] + 70
 wsizey = textsize[1] + offset + 10
-
-
-
-
-
-
 if (689 &gt; wsizex):
-
 	wsizex = 689
-
 wsize = (wsizex, wsizey)
-                                               
-                                  
-
-
-
-        
-
-
-
-
-
 self.instance.resize(eSize(*wsize))
-
-
-
 self["text"].instance.resize(eSize(*textsize))
-
-
 listsize = (wsizex -20, 50 * count)
 self["list"].instance.move(ePoint(10, textsize[1]))
 self["list"].instance.resize(eSize(*listsize))
-
-
 newwidth = wsize[0]
-
 self.instance.move(ePoint((1920-wsizex)//2, (1080-wsizey)//(count &gt; 7 and 2 or 3)))
 		</applet>
     </screen>
@@ -4435,331 +4177,40 @@ self.instance.move(ePoint((1920-wsizex)//2, (1080-wsizey)//(count &gt; 7 and 2 o
         <widget name="ErrorPixmap" pixmap="icons/input_error.png" position="12,12" size="80,80" alphatest="blend" scale="1" transparent="1"/>
         <widget name="QuestionPixmap" pixmap="icons/input_question.png" position="12,12" size="80,80" alphatest="blend" scale="1" transparent="1"/>
         <widget name="text" position="108,12" size="1077,152" font="Regular; 33" valign="top" halign="left" backgroundColor="background" foregroundColor="white"/>
-        <widget name="list" position="15,200" size="1170,100" textOffset="10,6" itemHeight="50" font="Regular;30" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="14"/>
+        <widget name="list" position="14,199" size="1170,100" textOffset="10,6" itemHeight="50" font="Regular;30" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10"/>
         <applet type="onLayoutFinish">
-                                                                                       
-                               
-                                            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                          
-    
-                    
-                    
-                     
-                      
-                      
-                      
-               
-               
-
 
 from enigma import eSize, ePoint
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 orgwidth = self.instance.size().width()
 orgpos = self.instance.position()
 textsize = self["text"].getSize()
 textsize = (textsize[0] + 70, textsize[1] + 70)
-                                            
-
-
-
-
-
-
-
-
-
-
-                      
-
-
-
-                 
-           
-
-
-
-
-
-                   
-
-
-
-
-
-
-                         
-                                  
-
-
-
-
-
-
-
-
-
-
-
-
-                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-             
-              
-
-             
-        
-                           
-                                        
-                                     
-                                                
-                                                       
-           
-            
-
-                               
-                           
-                             
-                         
-                      
-               
-     
-                   
-     
-               
-                             
-                                            
-     
-                                           
-                                        
-                                                                                                                                                                                
-                                                                                                                                                            
-                                                                                                                                                     
-                                                                                                                                                      
-
-                                         
-                                                                                                                                             
-                                                                                                                                 
-
-                                                                 
-                                                                                     
-                                             
-
-                          
-                                               
-                                  
-
-                                                           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 count = len(self.list)
-
-
-
 if count &gt; 13:
 	count = 13
-
-
-
-
-
 offset = 50 * count
-
-
-
-
-
-
 wsizex = textsize[0] + 70
 wsizey = textsize[1] + offset + 10
-
-
-
-
-
-
 if (689 &gt; wsizex):
-
 	wsizex = 689
-
 wsize = (wsizex, wsizey)
-                                               
-                                  
-
-
-
-        
-
-
-
-
-
 self.instance.resize(eSize(*wsize))
-
-
-
 self["text"].instance.resize(eSize(*textsize))
-
-
 listsize = (wsizex -20, 50 * count)
 self["list"].instance.move(ePoint(10, textsize[1]))
 self["list"].instance.resize(eSize(*listsize))
-
-
 newwidth = wsize[0]
-
 self.instance.move(ePoint((1920-wsizex)//2, (1080-wsizey)//(count &gt; 7 and 2 or 3)))
 		</applet>
     </screen>
-    <screen name="ScriptRunner" position="fill" title="Job Manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="ScriptRunner" position="fill" title="Job Manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="lab1" position="36,98" size="890,50" font="Regular; 30" halign="left" valign="center" backgroundColor="background" transparent="1" zPosition="99" foregroundColor="yellow"/>
-        <widget name="list" position="36,166" size="890,800" itemHeight="50" valign="center" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" textOffset="20,0"/>
+        <widget name="list" position="36,166" size="890,800" itemHeight="50" valign="center" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" textOffset="20,0" scrollbarMode="showNever"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/script.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
@@ -4827,7 +4278,7 @@ self.instance.move(ePoint((1920-wsizex)//2, (1080-wsizey)//(count &gt; 7 and 2 o
     <screen name="VideoFinetune" position="fill" backgroundColor="black" flags="wfNoBorder">
         <widget source="Canvas" render="Canvas" position="center,center" size="1280,720" font="Regular;32"/>
     </screen>
-    <screen name="IMDB" position="0,0" size="1920,1080" title="IMDb Details Plugin" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="IMDB" position="0,0" size="1920,1080" title="IMDb Details Plugin" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -5220,7 +4671,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (0, 77), size = (890, 3), png = 5), # in
         <panel name="bLogo"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/smb.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="SleepTimerEdit" position="fill" title="Sleep Timer" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="SleepTimerEdit" position="fill" title="Sleep Timer" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -5241,7 +4692,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (0, 77), size = (890, 3), png = 5), # in
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/screenname.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="Swap" position="fill" title="Swapp Manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="Swap" position="fill" title="Swapp Manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -5275,7 +4726,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (0, 77), size = (890, 3), png = 5), # in
         <panel name="footnote"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/setup.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="LocaleSelection" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="LocaleSelection" position="0,0" size="1920,1080" title="Setup" flags="wfNoBorder" backgroundColor="background">
         <!--panel name="titletemp" /-->
         <panel name="menutemp2"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -5304,12 +4755,6 @@ MultiContentEntryPixmapAlphaBlend(pos = (0, 77), size = (890, 3), png = 5), # in
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="1030,944" size="850,3" zPosition="99"/>
         <eLabel name="" position="895,925" size="132,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
     </screen>
-    <screen name="vEditor" position="0,0" size="1920,1080" title="vEditor" backgroundColor="transparent" flags="wfNoBorder">
-        <panel name="menutemp3"/>
-        <panel name="ScreenTemplateAllColorButtons_menu"/>
-        <panel name="bLogo"/>
-        <widget name="filedata" position="24,100" size="1876,838" itemHeight="35"/>
-    </screen>
     <screen name="MviExplorer" position="0,0" size="1920,1080" title="MviExplorer" backgroundColor="transparent" flags="wfNoBorder">
     </screen>
     <screen name="FileCommander" position="0,0" size="1920,1080" title="File Commander" backgroundColor="transparent" flags="wfNoBorder">
@@ -5318,7 +4763,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (0, 77), size = (890, 3), png = 5), # in
         <panel name="bLogo"/>
         <eLabel name="" position="1598,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="OK"/>
         <eLabel name="" position="1658,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
-        <widget source="headleft" render="Listbox" position="34,108" size="900,120" selectionDisabled="1" transparent="1">
+        <widget source="headleft" render="Listbox" position="34,108" size="900,120" selectionDisabled="1" transparent="1" scrollbarMode="showNever">
             <convert type="TemplatedMultiContent">
 				{"template": [
 					MultiContentEntryText(pos= (20, 0), size=(848, 75), font = 1, flags = RT_HALIGN_LEFT | RT_WRAP, text = 26), # Index 26 is the current directory + the current file.
@@ -5333,7 +4778,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (0, 77), size = (890, 3), png = 5), # in
 				}
 			</convert>
         </widget>
-        <widget source="headright" render="Listbox" position="980,108" size="900,120" selectionDisabled="1" transparent="1">
+        <widget source="headright" render="Listbox" position="980,108" size="900,120" selectionDisabled="1" transparent="1" scrollbarMode="showNever">
             <convert type="TemplatedMultiContent">
 				{"template": [
 					MultiContentEntryText(pos= (20, 0), size=(848, 75), font = 1, flags = RT_HALIGN_LEFT | RT_WRAP, text = 26), # Index 26 is the current directory + the current file.
@@ -5358,13 +4803,13 @@ MultiContentEntryPixmapAlphaBlend(pos = (0, 77), size = (890, 3), png = 5), # in
         <widget name="sortright" position="980,200" size="0,0" font="Regular;27" halign="left" foregroundColor="white" backgroundColor="background" transparent="1"/>
         <!-- /* time -->
     </screen>
-    <screen name="ChromiumEd" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="ChromiumEd" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget name="config" position="36,98" size="890,900" itemHeight="50" font="Regular;30" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="8" valign="center"/>
+        <widget name="config" position="36,98" size="890,900" itemHeight="50" font="Regular;30" itemCornerRadius="8" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" valign="center"/>
         <widget alphatest="blend" name="HelpWindow" position="529,20" size="906,188" transparent="1" zPosition="99" font="Regular; 30" halign="center"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cromium.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
@@ -5402,10 +4847,10 @@ MultiContentEntryPixmapAlphaBlend(pos = (0, 77), size = (890, 3), png = 5), # in
     <screen name="TimeshiftLocationBox" position="0,0" size="1920,1080" title="Location Box" backgroundColor="transparent" flags="wfNoBorder">
         <panel name="LocationBoxNew"/>
     </screen>
-    <screen name="MovieLocationBox" position="0,0" size="1920,1080" title="Location Box" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="MovieLocationBox" position="0,0" size="1920,1080" title="Location Box" backgroundColor="background" flags="wfNoBorder">
         <panel name="LocationBoxNew"/>
     </screen>
-    <screen name="PlaybackLocationBox" position="0,0" size="1920,1080" title="Location Box" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="PlaybackLocationBox" position="0,0" size="1920,1080" title="Location Box" backgroundColor="background" flags="wfNoBorder">
         <panel name="LocationBoxNew"/>
     </screen>
     <screen name="AutoBouquetsMaker_Setup" title="AutoBouquet Maker Setup" position="fill" backgroundColor="transparent" flags="wfNoBorder">
@@ -5846,7 +5291,7 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y()))
         <widget name="size" position="375,640" size="0,0" font="Regular;16" halign="right" backgroundColor="background" foregroundColor="white" transparent="1"/>
         <widget source="Service" render="AglarePosterXEMC" position="1703,585" size="200,300" cornerRadius="10" backgroundColor="white" alphatest="on" zPosition="101"/>
     </screen>
-    <screen name="setup_usage" position="0,0" size="1920,1080" title="Customize" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="setup_usage" position="0,0" size="1920,1080" title="Customize" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp"/>
@@ -5859,7 +5304,7 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y()))
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="TaskView" position="0,0" title="TaskView" backgroundColor="transparent" flags="wfNoBorder" size="1920,1080">
+    <screen name="TaskView" position="0,0" title="TaskView" backgroundColor="background" flags="wfNoBorder" size="1920,1080">
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp"/>
@@ -5872,16 +5317,16 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y()))
         <widget source="progress" render="Label" position="50,380" size="860,40" font="Regular;30" foregroundColor="yellow" backgroundColor="background" valign="center" halign="center" transparent="0" zPosition="2">
             <convert type="ProgressToText"/>
         </widget>
-        <widget name="config" position="36,500" size="890,80" font="Regular;30" itemHeight="40" backgroundColor="background" transparent="1"/>
+        <widget name="config" position="36,500" size="890,80" font="Regular;30" itemHeight="40" backgroundColor="background" transparent="1" scrollbarMode="showNever"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/tuner.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="Opkg" position="0,0" size="1920,1080" title="Installing Software..." flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="Opkg" position="0,0" size="1920,1080" title="Installing Software..." flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget name="activityslider" position="48,150" size="860,30" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="30"/>
+        <widget name="activityslider" position="48,150" size="860,30" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="15"/>
         <widget name="package" position="48,234" size="860,45" font="Regular;30" backgroundColor="background" foregroundColor="white" transparent="1"/>
         <widget name="status" position="50,350" size="860,45" font="Regular;30" backgroundColor="background" foregroundColor="white" transparent="1"/>
         <widget name="slider" position="50,450" size="860,30" backgroundColor="progbg" foregroundColor="progfg" cornerRadius="30"/>
@@ -5950,7 +5395,7 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y()))
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SetupStreamRelay" position="0,0" size="1920,1080" title="Stream Relay Settings" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="SetupStreamRelay" position="0,0" size="1920,1080" title="Stream Relay Settings" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp"/>
@@ -5962,14 +5407,14 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2, orgpos.y()))
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SubsSearchSettings" position="0,0" size="1920,1080" title="Subtitles search settings" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsSearchSettings" position="0,0" size="1920,1080" title="Subtitles search settings" flags="wfNoBorder" backgroundColor="background">
         <panel name="timedate"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="bLogo"/>
         <widget source="Title" render="Label" position="36,32" size="1340,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
         <eLabel backgroundColor="wpmc" cornerRadius="20" position="0,0" size="1920,1080" zPosition="-99"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="20,1014" size="1880,60" zPosition="-80"/>
-        <eLabel name="" position="20,110" size="1880,898" zPosition="-90" cornerRadius="30" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
+        <eLabel name="" position="20,30" size="1880,977" zPosition="-90" cornerRadius="30" backgroundColor="mcolor2" foregroundColor="mcolor2"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
         <widget source="ScreenPath" render="Label" position="36,5" size="1380,22" backgroundColor="background" transparent="1" zPosition="1" font="Regular; 19" valign="center" halign="left"/>
         <widget name="config" position="36,124" size="1850,270" font="Regular;28" itemHeight="45" halign="left" valign="center" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" transparent="1" itemCornerRadius="8"/>
@@ -5999,18 +5444,18 @@ MultiContentEntryText(pos = (1720,0), size = (120,45), font = 0, flags = RT_HALI
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="1030,416" size="850,3" zPosition="99"/>
         <eLabel name="" position="895,400" size="132,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
     </screen>
-    <screen name="SubsChooser" position="0,0" size="1920,1080" title="Choose Subtitles" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsChooser" position="0,0" size="1920,1080" title="Choose Subtitles" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget name="file_list" position="36,98" size="890,535" valign="center" halign="left" itemHeight="45" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
-        <widget name="menu_list" position="36,850" size="890,120" itemHeight="60" valign="center" halign="left" enableWrapAround="1" transparent="1" font="Regular; 30" scrollbarMode="showOnDemand"/>
+        <widget name="file_list" position="36,98" size="890,535" itemHeight="45" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10"/>
+        <widget name="menu_list" position="36,850" size="890,120" itemHeight="60" enableWrapAround="1" transparent="1" font="Regular; 30" scrollbarMode="showOnDemand"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/subssupport.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SubsSearchParamsMenu" position="0,0" size="1920,1080" title="Update Search params" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsSearchParamsMenu" position="0,0" size="1920,1080" title="Update Search params" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -6021,7 +5466,7 @@ MultiContentEntryText(pos = (1720,0), size = (120,45), font = 0, flags = RT_HALI
         <widget name="config" position="36,220" size="890,270" itemHeight="45" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" valign="center" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
         <eLabel name="" position="1598,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="OK"/>
     </screen>
-    <screen name="SubsSearch" position="fill" title="Subtitles search" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsSearch" position="fill" title="Subtitles search" flags="wfNoBorder" backgroundColor="background">
         <panel name="timedate"/>
         <panel name="menutemp3"/>
         <panel name="bLogo"/>
@@ -6068,7 +5513,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (1710,4),   size = (36,36), png=4), # sy
         <eLabel name="" position="1658,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
     </screen>
-    <screen name="SubsDownloadedSelection" position="0,0" size="1920,1080" title="Downloaded Subtitles" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsDownloadedSelection" position="0,0" size="1920,1080" title="Downloaded Subtitles" flags="wfNoBorder" backgroundColor="background">
         <panel name="menutemp3"/>
         <panel name="bLogo"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6094,7 +5539,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (1710,4),   size = (36,36), png=4), # sy
         </widget>
         <widget source="entries_sum" render="Label" position="98,948" size="500,50" font="Regular;30" halign="left" backgroundColor="background" transparent="1" foregroundColor="green"/>
     </screen>
-    <screen name="SubsDownloadedSubtitlesMenu" position="0,0" size="1920,1080" title="Downloaded Subtitles - Settings" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsDownloadedSubtitlesMenu" position="0,0" size="1920,1080" title="Downloaded Subtitles - Settings" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6103,7 +5548,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (1710,4),   size = (36,36), png=4), # sy
         <panel name="bLogo"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/subssupport.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="SubsSupportSettings" position="0,0" size="1920,1080" title="" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="SubsSupportSettings" position="0,0" size="1920,1080" title="" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -6123,7 +5568,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (1710,4),   size = (36,36), png=4), # sy
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/subssupport.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SubsSetupGeneral" position="0,0" size="1920,1080" title="General settings" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsSupportSettings" position="0,0" size="1920,1080" title="" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6133,7 +5578,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (1710,4),   size = (36,36), png=4), # sy
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/subssupport.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SubsSetupExternal" position="0,0" size="1920,1080" title="External Subtitles settings" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsSetupExternal" position="0,0" size="1920,1080" title="External Subtitles settings" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -6143,7 +5588,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (1710,4),   size = (36,36), png=4), # sy
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/subssupport.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SubsSetupDVBPlayer" position="0,0" size="1920,1080" title="DVB player settings" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsSetupDVBPlayer" position="0,0" size="1920,1080" title="DVB player settings" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6153,7 +5598,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (1710,4),   size = (36,36), png=4), # sy
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/media.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SubsSearchProviderMenu" position="0,0" size="1920,1080" title="ConfigListScreen" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SubsSearchProviderMenu" position="0,0" size="1920,1080" title="ConfigListScreen" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -6197,16 +5642,18 @@ MultiContentEntryText(pos = (0, 0),   size = (680, 35),  font = 0, flags = RT_HA
 </convert>
         </widget>
     </screen>
-    <screen name="CrashLogScreen" position="0,0" size="1920,1080" title="View or Remove Crashlog files" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="CrashLogScreen" position="0,0" size="1920,1080" title="View or Remove Crashlog files" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
+        <panel name="buttonicons"/>
         <panel name="bLogo"/>
-        <!-- <panel name="ScreenTemplateAllColorButtons_menu"/> -->
+        <!--
         <eLabel backgroundColor="red" cornerRadius="3" position="34,1064" size="296,6" zPosition="-11"/>
         <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
         <eLabel backgroundColor="yellow" cornerRadius="3" position="652,1064" size="300,6" zPosition="-11"/>
         <eLabel backgroundColor="blue" cornerRadius="3" position="962,1064" size="300,6" zPosition="-11"/>
+        -->
         <widget source="Redkey" render="Label" position="32,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <widget source="Greenkey" render="Label" position="342,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <widget source="Yellowkey" render="Label" position="652,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
@@ -6270,7 +5717,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Format:%H:%M</convert>
         </widget>
-        <widget source="Event" render="Progress" position="179,183" size="1278,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="33">
+        <widget source="Event" render="Progress" position="179,183" size="1278,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="5" zPosition="33">
             <convert type="EventTime">Progress</convert>
         </widget>
         <widget source="Event" render="Label" position="1462,168" zPosition="2" size="120,40" font="Regular; 30" halign="right" backgroundColor="background" transparent="1">
@@ -6326,7 +5773,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Format:%H:%M</convert>
         </widget>
-        <widget source="Event" render="Progress" position="179,183" size="864,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="33">
+        <widget source="Event" render="Progress" position="179,183" size="864,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="5" zPosition="33">
             <convert type="EventTime">Progress</convert>
         </widget>
         <widget source="Event" render="Label" position="1050,168" zPosition="2" size="120,40" font="Regular; 30" halign="right" backgroundColor="background" transparent="1">
@@ -6380,7 +5827,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Format:%H:%M</convert>
         </widget>
-        <widget source="Event" render="Progress" position="1294,475" size="500,10" pixmap="main/progfg2308.png" cornerRadius="10" zPosition="33">
+        <widget source="Event" render="Progress" position="1294,475" size="500,10" pixmap="main/progfg2308.png" cornerRadius="5" zPosition="33">
             <convert type="EventTime">Progress</convert>
         </widget>
         <widget source="Event" render="Label" position="1774,460" zPosition="2" size="120,40" font="Regular; 30" halign="right" backgroundColor="background" transparent="1" valign="center">
@@ -6423,7 +5870,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Format:%H:%M</convert>
         </widget>
-        <widget source="Event" render="Progress" position="179,183" size="1278,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="10" zPosition="33">
+        <widget source="Event" render="Progress" position="179,183" size="1278,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="5" zPosition="33">
             <convert type="EventTime">Progress</convert>
         </widget>
         <widget source="Event" render="Label" position="1462,168" zPosition="2" size="120,40" font="Regular; 30" halign="right" backgroundColor="background" transparent="1">
@@ -6441,7 +5888,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
         <ePixmap name="" position="1685,118" size="184,276" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="2"/>
         <widget name="bouquetlist" position="56,405" size="1820,45" zPosition="3" itemHeight="45" font="Regular;29" borderColor="white" borderWidth="1" backgroundColor="background" foregroundColor="white" backgroundColorSelected="gold" foregroundColorSelected="gold" transparent="0" valign="center"/>
         <widget name="lab1" position="50,700" size="1790,53" font="Regular; 36" halign="center" valign="center" zPosition="20" foregroundColor="white" transparent="1" backgroundColor="background"/>
-        <widget enableWrapAround="0" itemHeight="30" font="Regular;0" name="list" position="0,0" size="0,150" zPosition="-10"/>
+        <widget enableWrapAround="0" itemHeight="30" font="Regular;0" name="list" position="0,0" size="0,150" zPosition="-10" scrollbarMode="showNever"/>
         <widget font="Regular;29" halign="left" valign="center" name="currCh1" noWrap="1" position="130,465" size="270,40" zPosition="2" transparent="1" foregroundColor="white" backgroundColor="background"/>
         <widget font="Regular;29" halign="left" valign="center" name="currCh2" noWrap="1" position="490,465" size="270,40" zPosition="2" transparent="1" foregroundColor="white" backgroundColor="background"/>
         <widget font="Regular;29" halign="left" valign="center" name="currCh3" noWrap="1" position="850,465" size="270,40" zPosition="2" transparent="1" foregroundColor="white" backgroundColor="background"/>
@@ -6476,6 +5923,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
     <screen name="EPGverticalPIG" position="0,0" size="1920,1080" title="EPG Selection" backgroundColor="background" flags="wfNoBorder">
         <panel name="menutemp3"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
+        <widget name="list" enableWrapAround="0" itemHeight="30" font="Regular;32" position="0,0" size="0,150" zPosition="-10" scrollbarMode="showNever"/>
         <eLabel name="" position="1598,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="OK"/>
         <eLabel name="" position="1658,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
         <eLabel name="" position="1718,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EPG"/>
@@ -6494,7 +5942,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Format:%H:%M</convert>
         </widget>
-        <widget source="Event" render="Progress" position="1315,475" size="460,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="10" zPosition="33">
+        <widget source="Event" render="Progress" position="1315,475" size="460,10" backgroundColor="progbg" foregroundColor="yellow" cornerRadius="5" zPosition="33">
             <convert type="EventTime">Progress</convert>
         </widget>
         <widget source="Event" render="Label" position="1774,460" zPosition="2" size="120,40" font="Regular; 30" halign="right" backgroundColor="background" transparent="1" valign="center">
@@ -6509,7 +5957,6 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
         <ePixmap name="" position="1685,118" size="184,276" alphatest="on" pixmap="image_logo/nss/nocover.png" zPosition="2"/>
         <widget name="bouquetlist" position="50,114" size="1068,46" zPosition="3" itemHeight="45" font="Regular;29" borderColor="white" borderWidth="1" backgroundColor="background" foregroundColor="white" backgroundColorSelected="gold" foregroundColorSelected="gold" transparent="0" valign="center"/>
         <widget name="lab1" position="50,500" size="1068,53" font="Regular;36" halign="center" valign="center" zPosition="20" foregroundColor="white" transparent="1" backgroundColor="background"/>
-        <widget enableWrapAround="0" itemHeight="30" font="Regular;0" name="list" position="0,0" size="0,150" zPosition="-10"/>
         <widget font="Regular;29" halign="left" valign="center" name="currCh1" noWrap="1" position="130,163" size="270,40" zPosition="2" transparent="1" foregroundColor="white" backgroundColor="background"/>
         <widget font="Regular;29" halign="left" valign="center" name="currCh2" noWrap="1" position="490,163" size="270,40" zPosition="2" transparent="1" foregroundColor="white" backgroundColor="background"/>
         <widget font="Regular;29" halign="left" valign="center" name="currCh3" noWrap="1" position="850,163" size="270,40" zPosition="2" transparent="1" foregroundColor="white" backgroundColor="background"/>
@@ -6550,7 +5997,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Format:%H:%M</convert>
         </widget>
-        <widget source="Event" render="Progress" position="1315,475" size="460,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="10" zPosition="33">
+        <widget source="Event" render="Progress" position="1315,475" size="460,10" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="5" zPosition="33">
             <convert type="EventTime">Progress</convert>
         </widget>
         <widget source="Event" render="Label" position="1774,460" zPosition="2" size="120,40" font="Regular; 30" halign="right" backgroundColor="background" transparent="1" valign="center">
@@ -6564,7 +6011,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
         <widget source="Event" render="xtraPoster" position="1200,118" size="184,276" zPosition="99" cornerRadius="14"/>
         <widget name="list" position="34,120" size="1099,850" itemHeight="50" EventFontSingle="Regular;30" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryForegroundColorNow="green" EntryForegroundColorNowSelected="yellow" EntryForegroundColorPast="hellgreen" EntryForegroundColorPastSelected="fresh" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" enableWrapAround="1" transparent="0"/>
     </screen>
-    <screen name="EPGSearch" position="0,0" size="1920,1080" title="EPG Search" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="EPGSearch" position="0,0" size="1920,1080" title="EPG Search" backgroundColor="background" flags="wfNoBorder">
         <panel name="menutemp3"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <eLabel name="" position="36,36" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
@@ -6585,7 +6032,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
             <convert type="EventTime">StartTime</convert>
             <convert type="ClockToText">Format:%H:%M</convert>
         </widget>
-        <widget source="Event" render="Progress" position="1294,475" size="500,10" pixmap="main/progfg2308.png" cornerRadius="10" zPosition="33">
+        <widget source="Event" render="Progress" position="1294,475" size="500,10" pixmap="main/progfg2308.png" cornerRadius="5" zPosition="33">
             <convert type="EventTime">Progress</convert>
         </widget>
         <widget source="Event" render="Label" position="1774,460" zPosition="2" size="120,40" font="Regular; 30" halign="right" backgroundColor="background" transparent="1" valign="center">
@@ -6599,7 +6046,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (51, 40), png = 2), # ind
         <widget source="Event" render="xtraPoster" position="1200,118" size="184,276" zPosition="99" cornerRadius="14"/>
         <widget name="list" position="34,120" size="1099,850" itemHeight="50" EventFontSingle="Regular;30" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryForegroundColorNow="green" EntryForegroundColorNowSelected="yellow" EntryForegroundColorPast="hellgreen" EntryForegroundColorPastSelected="fresh" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" enableWrapAround="1" transparent="0"/>
     </screen>
-    <screen name="QuickMenuDevices" position="0,0" size="1920,1080" backgroundColor="transparent" title="Devices" flags="wfNoBorder">
+    <screen name="QuickMenuDevices" position="0,0" size="1920,1080" backgroundColor="background" title="Devices" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6637,7 +6084,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
 	</convert>
         </widget>
     </screen>
-    <screen name="NetworkMacSetup" position="0,0" size="1920,1080" title="MAC-address settings" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="NetworkMacSetup" position="0,0" size="1920,1080" title="MAC-address settings" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="cancelsave"/>
@@ -6651,7 +6098,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="NetworkWizard" position="0,0" size="1920,1080" title="Welcome www.nonsolosat.net..." flags="wfNoBorder" backgroundColor="background">
+    <screen name="NetworkWizard" position="0,0" size="1920,1080" title="Welcome..." flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6726,17 +6173,17 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
             <convert type="ConditionalShowHide"/>
         </widget>
     </screen>
-    <screen name="IPKGMenu" position="0,0" size="1920,1080" title="Select IPKG source....." backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="IPKGMenu" position="0,0" size="1920,1080" title="Select IPKG source....." backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget name="filelist" position="36,98" size="890,900" itemHeight="50" transparent="1" font="Regular; 30" itemCornerRadius="8" valign="center"/>
+        <widget name="filelist" position="36,98" size="890,900" itemHeight="50" transparent="1" font="Regular; 30" itemCornerRadius="8" valign="center" scrollbarMode="showNever"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="IPKGSource" position="0,0" size="1920,1080" title="IPKG source" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="IPKGSource" position="0,0" size="1920,1080" title="IPKG source" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6746,7 +6193,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="BackupSelection" position="0,0" size="1920,1080" title="Select files/folders to backup" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="BackupSelection" position="0,0" size="1920,1080" title="Select files/folders to backup" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6755,7 +6202,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
         <widget name="checkList" position="36,98" size="890,900" itemHeight="60" valign="center" enableWrapAround="1" transparent="1" font="Regular; 30" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="8"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/backup_manager.png" transparent="1" alphatest="on"/>
     </screen>
-    <screen name="ImageBackup" position="fill" title="Image Backup" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="ImageBackup" position="fill" title="Image Backup" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6766,7 +6213,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="FlashOnline" position="0,0" size="1920,1080" title="Flash Online" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="FlashOnline" position="0,0" size="1920,1080" title="Flash Online" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6777,7 +6224,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="RestoreMenuImage" position="0,0" size="1920,1080" title="Restore Backups" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="RestoreMenuImage" position="0,0" size="1920,1080" title="Restore Backups" backgroundColor="background" flags="wfNoBorder">
         <widget name="filelist" position="36,98" size="890,900" itemHeight="50" transparent="1" alphatest="on" font="Regular; 30" itemCornerRadius="8" valign="center" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
         <panel name="titletemp"/>
         <panel name="menutemp"/>
@@ -6788,7 +6235,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
     <screen name="RestoreMenu" title="Restore Backups" position="fill" backgroundColor="black" flags="wfNoBorder">
-        <widget name="filelist" position="36,98" size="890,900" itemHeight="50" transparent="1" font="Regular; 30"/>
+        <widget name="filelist" position="36,98" size="890,900" itemHeight="50" transparent="1" font="Regular; 30" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10"/>
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6797,7 +6244,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="RestorePlugins" position="fill" title="Select Plugins" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="RestorePlugins" position="fill" title="Select Plugins" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6805,7 +6252,7 @@ MultiContentEntryPixmapAlphaBlend(pos=(45, 14), size=(128, 77), png=6, flags = B
         <panel name="bLogo"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
-        <widget source="menu" render="Listbox" position="36,98" size="890,900" transparent="1" itemHeight="50" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1">
+        <widget source="menu" render="Listbox" position="36,98" size="890,900" transparent="1" itemHeight="50" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10">
             <convert type="TemplatedMultiContent">
 				{"template": [
 MultiContentEntryText(pos = (40, 2), size = (760, 36), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_TOP, text = 0),
@@ -6820,9 +6267,6 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
     <screen name="NumberZapPicon" position="0,100" size="1920,135" title="QuickZap" flags="wfNoBorder" backgroundColor="transparent">
         <eLabel name="a" position="10,0" size="1900,135" backgroundColor="igsd" zPosition="-10" foregroundColor="igsd" cornerRadius="30"/>
         <widget name="number" position="300,0" size="300,135" halign="center" valign="center" font="Regular;90" backgroundColor="background"/>
-        <widget source="Service" render="MetrixHDXPicon" position="52,8" size="198,119" alphatest="blend" transparent="1" zPosition="1">
-            <convert type="ServiceName">Reference</convert>
-        </widget>
         <widget source="Service" render="Picon" position="52,8" size="198,119" alphatest="blend" transparent="1" zPosition="1">
             <convert type="ServiceName">Reference</convert>
         </widget>
@@ -6865,7 +6309,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
             <convert type="FrontendInfo">LOCK</convert>
             <convert type="ConditionalShowHide">Invert</convert>
         </widget>
-        <widget name="config" position="80,336" size="900,650" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8"/>
+        <widget name="config" position="80,336" size="900,650" itemHeight="50" enableWrapAround="1" transparent="1" font="Regular; 30" itemCornerRadius="8" scrollbarMode="showNever"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
         <eLabel name="snr" text="SNR:" position="60,110" size="200,60" font="Regular; 54" halign="right" backgroundColor="background" transparent="1" valign="center"/>
@@ -6896,7 +6340,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
             <convert type="ConditionalShowHide"/>
         </widget>
     </screen>
-    <screen name="PositionerSetup" position="0,0" size="1920,1080" title="Positioner setup..." backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="PositionerSetup" position="0,0" size="1920,1080" title="Positioner setup..." backgroundColor="background" flags="wfNoBorder">
         <panel name="menutemp3"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
@@ -6928,7 +6372,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel text="FEC:" position="82,450" size="200,32" font="Regular; 28" transparent="1" backgroundColor="background"/>
         <widget name="snr_db" position="1565,372" size="120,38" zPosition="2" font="Regular; 30" backgroundColor="background" halign="left" transparent="1"/>
     </screen>
-    <screen name="PositionerSetupLog" position="0,0" size="1920,1080" title="Positioner setup log" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="PositionerSetupLog" position="0,0" size="1920,1080" title="Positioner setup log" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6938,7 +6382,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="ScanSimple" position="0,0" size="1920,1080" title="Service scan" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="ScanSimple" position="0,0" size="1920,1080" title="Service scan" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="description"/>
@@ -6950,7 +6394,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="ScanSetup" position="0,0" size="1920,1080" title="Service scan" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="ScanSetup" position="0,0" size="1920,1080" title="Service scan" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="configlist45"/>
@@ -6961,7 +6405,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="ServiceScan" position="0,0" size="1920,1080" title="Service Scan" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="ServiceScan" position="0,0" size="1920,1080" title="Service Scan" backgroundColor="background" flags="wfNoBorder">
         <panel name="menutemp3"/>
         <eLabel name="" position="36,38" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -6989,7 +6433,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="TunerScreen" position="0,0" size="1920,1080" title="Tune" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="TunerScreen" position="0,0" size="1920,1080" title="Tune" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -6999,7 +6443,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="EMCSelection" position="0,0" size="1920,1080" title="Enhanced Movie Center" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="EMCSelection" position="0,0" size="1920,1080" title="Enhanced Movie Center" flags="wfNoBorder" backgroundColor="background">
         <panel name="menutemp3"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <eLabel name="" position="1229,43" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
@@ -7039,7 +6483,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1390,590" size="110,38" text="START:" font="Regular; 30" transparent="1"/>
         <eLabel name="" position="1390,640" size="110,38" text="END:" font="Regular; 30" transparent="1"/>
     </screen>
-    <screen name="MovieMenu" position="fill" title="EMC menu" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="MovieMenu" position="fill" title="EMC menu" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7051,7 +6495,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/MEDIA.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="EMCImdbScan" position="0,0" size="1920,1080" title="EMC Cover search" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="EMCImdbScan" position="0,0" size="1920,1080" title="EMC Cover search" flags="wfNoBorder" backgroundColor="background">
         <panel name="menutemp3"/>
         <!--panel name="buttonicons" /-->
         <eLabel name="" position="1229,43" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
@@ -7071,7 +6515,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <widget name="Manage Cover" position="652,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <widget name="Single search" position="1282,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
     </screen>
-    <screen name="getCover" position="0,0" size="1920,1080" title="EMC Cover Selecter" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="getCover" position="0,0" size="1920,1080" title="EMC Cover Selecter" flags="wfNoBorder" backgroundColor="background">
         <panel name="menutemp3"/>
         <!--panel name="buttonicons" /-->
         <eLabel name="" position="1229,43" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
@@ -7083,7 +6527,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1658,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
     </screen>
-    <screen name="CronTimers" title="Cronmanager Menu" position="fill" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="CronTimers" title="Cronmanager Menu" position="fill" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7103,7 +6547,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CPmaniger" position="0,0" size="1920,1080" flags="wfNoBorder" title="Select Copy/Move location..." backgroundColor="transparent">
+    <screen name="CPmaniger" position="0,0" size="1920,1080" flags="wfNoBorder" title="Select Copy/Move location..." backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <!--panel name="buttonicons" /-->
@@ -7116,7 +6560,7 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="vInputBox" position="0,0" size="1920,1080" flags="wfNoBorder" title="Input..." backgroundColor="transparent">
+    <screen name="vInputBox" position="0,0" size="1920,1080" flags="wfNoBorder" title="Input..." backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7150,11 +6594,13 @@ MultiContentEntryPixmapAlphaTest(pos = (5, 1), size = (24, 24), png = 1),
             <convert type="ServiceName">Name</convert>
         </widget>
     </screen>
-    <screen name="vEditor" position="0,0" size="1920,1080" flags="wfNoBorder" title="File-Explorer" backgroundColor="transparent">
+    <screen name="vEditor" position="0,0" size="1920,1080" flags="wfNoBorder" title="File-Explorer" backgroundColor="background">
         <panel name="menutemp3"/>
-        <widget name="filedata" position="45,120" size="1830,810" itemHeight="45" font="Regular;30" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="8" valign="center"/>
+        <panel name="ScreenTemplateAllColorButtons_menu"/>
+        <panel name="bLogo"/>
+        <widget name="filedata" position="24,100" size="1876,838" itemHeight="35"/>
     </screen>
-    <screen name="PluginManager" position="0,0" size="1920,1080" title="Plugin manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="PluginManager" position="0,0" size="1920,1080" title="Plugin manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7183,7 +6629,7 @@ MultiContentEntryText(pos = (21, 46), size = (785, 42), font=1, flags = RT_HALIG
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="PackageManager" position="0,0" size="1920,1080" title="PackageManager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="PackageManager" position="0,0" size="1920,1080" title="PackageManager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7218,7 +6664,7 @@ MultiContentEntryPixmapAlphaTest(pos = (8, 87), size = (0, 0), png = 5), # index
         <widget source="Title" render="Label" position="36,32" size="890,52" font="Regular; 32" noWrap="1" transparent="1" valign="center" zPosition="1" halign="left"/>
         <widget name="list" position="36,94" size="890,900" serviceItemHeight="50" serviceNumberFont="Regular;30" serviceNameFont="Regular;30" serviceInfoFont="Regular;28" additionalInfoFont="Regular;28" foregroundColor="white" foregroundColorSelected="yellow" backgroundColorSelected="mcolor5" colorServiceDescription="mint" colorServiceDescriptionSelected="#00ffffff" colorServiceStreamed="green" colorAdditionalInfo="white" colorAdditionalInfoSelected="white" foregroundColorServiceNotAvail="#444444" colorEventProgressbarBorderSelected="white" colorEventProgressbarBorder="white" zPosition="4" transparent="1" halign="left" itemHeight="50" picServiceEventProgressbar="main/chprogressbar.png" progressbarHeight="6" progressBarWidth="100" progressbarBorderWidth="1" progressPercentWidth="60" scrollbarMode="showAlways" scrollbarForegroundColor="mcolor5" scrollbarBorderColor="mcolor2" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarRadius="5" backgroundColorMarked="#00131a1d"/>
     </screen>
-    <screen name="PluginBrowser" position="0,0" size="1920,1080" title="Plugin Browser" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="PluginBrowser" position="0,0" size="1920,1080" title="Plugin Browser" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7235,7 +6681,7 @@ MultiContentEntryPixmapAlphaTest(pos = (8, 87), size = (0, 0), png = 5), # index
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="PluginDownloadBrowser" position="0,0" size="1920,1080" title="Downloadable plugins" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="PluginDownloadBrowser" position="0,0" size="1920,1080" title="Downloadable plugins" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7268,7 +6714,7 @@ MultiContentEntryPixmapAlphaTest(pos = (8, 87), size = (0, 0), png = 5), # index
     <screen name="Mac" position="center,center" size="700,300" title="MAC CHANGER BY ZIKO" backgroundColor="#31000000" flags="wfBorder">
         <widget name="config" position="0,0" size="700,300" zPosition="1" transparent="0" scrollbarMode="showOnDemand" itemHeight="100" valign="center" itemCornerRadius="10" font="Regular; 36"/>
     </screen>
-    <screen name="SelectImage" position="0,0" size="1920,1080" title="Input" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="SelectImage" position="0,0" size="1920,1080" title="Input" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7294,7 +6740,7 @@ MultiContentEntryPixmapAlphaTest(pos = (8, 87), size = (0, 0), png = 5), # index
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="DeliteBluePanel" position="0,0" size="1920,1080" title="Black Hole Blue Panel" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="DeliteBluePanel" position="0,0" size="1920,1080" title="Black Hole Blue Panel" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7302,7 +6748,7 @@ MultiContentEntryPixmapAlphaTest(pos = (8, 87), size = (0, 0), png = 5), # index
         <panel name="bLogo"/>
         <eLabel name="" position="872,120" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="OK"/>
         <eLabel name="" position="42,120" size="52,52" font="icomoon; 34" text="" halign="center" zPosition="99" transparent="1" valign="center"/>
-        <widget name="list" position="99,120" size="764,50" itemHeight="50" zPosition="2" font="Regular; 32" transparent="1" itemCornerRadius="20" textOffset="20,8"/>
+        <widget name="list" position="99,120" size="764,50" itemHeight="50" zPosition="2" font="Regular; 32" transparent="1" itemCornerRadius="20" textOffset="20,8" scrollbarMode="showNever"/>
         <widget name="lab1" position="44,190" size="300,40" font="Regular; 30" zPosition="2" halign="left" backgroundColor="background" transparent="1" foregroundColor="yellow"/>
         <widget name="lab2" position="44,240" size="279,40" font="Regular; 30" halign="left" zPosition="2" backgroundColor="background" transparent="1" valign="center"/>
         <widget name="lab3" position="440,190" size="479,40" font="Regular; 30" halign="left" zPosition="2" backgroundColor="background" transparent="1" valign="center"/>
@@ -7316,7 +6762,7 @@ MultiContentEntryPixmapAlphaTest(pos = (8, 87), size = (0, 0), png = 5), # index
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
     </screen>
-    <screen name="DeliteGreenPanel" position="0,0" size="1920,1080" title="OpenBh Green Panel" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="DeliteGreenPanel" position="0,0" size="1920,1080" title="OpenBh Green Panel" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7338,13 +6784,13 @@ MultiContentEntryPixmapAlphaTest(pos = (10, 17), size = (100, 40), png = 2, flag
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
     </screen>
-    <screen name="Ipkg" position="0,0" size="1920,1080" title="Installing Software..." flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="Ipkg" position="0,0" size="1920,1080" title="Installing Software..." flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget name="activityslider" position="48,150" size="860,30" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="30"/>
+        <widget name="activityslider" position="48,150" size="860,30" backgroundColor="progbg" foregroundColor="fgcolor" cornerRadius="15"/>
         <widget name="package" position="48,234" size="860,45" font="Regular;30" backgroundColor="background" foregroundColor="white" transparent="1"/>
         <widget name="status" position="50,350" size="860,45" font="Regular;30" backgroundColor="background" foregroundColor="white" transparent="1"/>
         <widget name="slider" position="50,450" size="860,30" backgroundColor="progbg" foregroundColor="progfg" cornerRadius="30"/>
@@ -7356,7 +6802,7 @@ MultiContentEntryPixmapAlphaTest(pos = (10, 17), size = (100, 40), png = 2, flag
         <widget name="connect" position="0,0" size="494,145" zPosition="-1" pixmaps="obh/startcam_1.png,obh/startcam_2.png,obh/startcam_3.png,obh/startcam_4.png" transparent="1"/>
         <widget name="lab1" position="5,5" halign="center" size="360,135" zPosition="1" font="Regular;26" valign="center" foregroundColor="white" backgroundColor="background" transparent="1"/>
     </screen>
-    <screen name="DeliteSettings" position="0,0" size="1920,1080" title="OpenBh Settings" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="DeliteSettings" position="0,0" size="1920,1080" title="OpenBh Settings" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7375,7 +6821,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 8), size = (50, 50), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="DeliteScript" position="0,0" size="1920,1080" title="Script Panel" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="DeliteScript" position="0,0" size="1920,1080" title="Script Panel" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="menutemp"/>
@@ -7394,7 +6840,7 @@ MultiContentEntryText(pos = (10, 2), size = (870, 40), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/script.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="DeliteAddons" position="0,0" size="1920,1080" title="Feeds and Update Manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="DeliteAddons" position="0,0" size="1920,1080" title="Feeds and Update Manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7414,7 +6860,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 15), size = (50, 50), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="Nab_downArea" position="0,0" size="1920,1080" title="Downloads Manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="Nab_downArea" position="0,0" size="1920,1080" title="Downloads Manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7433,10 +6879,10 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 15), size = (50, 50), png = 1),
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
     <screen name="Nab_ConnectPop" position="center,210" size="494,145" title="Connection in progress" flags="wfNoBorder">
-        <widget name="connect" position="0,0" size="494,145" zPosition="-1" pixmaps="Aglare-FHD-NSS/obh/connection_1.png,Aglare-FHD-NSS/obh/connection_2.png,Aglare-FHD-NSS/obh/connection_3.png,Aglare-FHD-NSS/obh/connection_4.png,Aglare-FHD-NSS/obh/connection_5.png" transparent="1"/>
+        <widget name="connect" position="0,0" size="494,145" zPosition="-1" pixmaps="Aglare-FHD-PLI/obh/connection_1.png,Aglare-FHD-PLI/obh/connection_2.png,Aglare-FHD-PLI/obh/connection_3.png,Aglare-FHD-PLI/obh/connection_4.png,Aglare-FHD-PLI/obh/connection_5.png" transparent="1"/>
         <widget name="lab1" position="5,90" halign="center" size="485,51" zPosition="1" font="Regular; 28" valign="center" backgroundColor="background" transparent="1"/>
     </screen>
-    <screen name="Nab_downCat" position="0,0" size="1920,1080" title="Downloads Manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="Nab_downCat" position="0,0" size="1920,1080" title="Downloads Manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7454,7 +6900,7 @@ MultiContentEntryText(pos = (20, 0), size = (840, 50), flags = RT_HALIGN_LEFT|RT
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="Nab_uninstPanel" position="0,0" size="1920,1080" title="Uninstall Panel" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="Nab_uninstPanel" position="0,0" size="1920,1080" title="Uninstall Panel" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7472,7 +6918,7 @@ MultiContentEntryText(pos = (10, 2), size = (1000, 50), flags = RT_HALIGN_LEFT|R
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="addonsParentalConfig" position="0,0" size="1920,1080" title="Addons parental control setup" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="addonsParentalConfig" position="0,0" size="1920,1080" title="Addons parental control setup" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7482,7 +6928,7 @@ MultiContentEntryText(pos = (10, 2), size = (1000, 50), flags = RT_HALIGN_LEFT|R
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="BhSetupGreen" position="0,0" size="1920,1080" title="OpenBh Green Panel Setup" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="BhSetupGreen" position="0,0" size="1920,1080" title="OpenBh Green Panel Setup" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7500,7 +6946,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 15), size = (50, 50), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="BhsysInfo" position="0,0" size="1920,1080" title="OpenBh Info" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="BhsysInfo" position="0,0" size="1920,1080" title="OpenBh Info" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7524,7 +6970,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 15), size = (50, 50), png = 1),
         <widget source="status" render="Label" position="330,620" size="1260,150" zPosition="10" font="Regular;28" halign="center" valign="center" transparent="1" backgroundColor="background"/>
         <eLabel backgroundColor="buttonsc" cornerRadius="30" position="318,838" size="1285,60" zPosition="1"/>
     </screen>
-    <screen name="Bp_UsbFormat" position="0,0" size="1920,1080" title="OpenBh Usb Format Wizard" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="Bp_UsbFormat" position="0,0" size="1920,1080" title="OpenBh Usb Format Wizard" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7534,7 +6980,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 15), size = (50, 50), png = 1),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="DeliteDevicesPanel" position="0,0" size="1920,1080" title="Devices Manager" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="DeliteDevicesPanel" position="0,0" size="1920,1080" title="Devices Manager" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7557,7 +7003,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="BlackPoleSwap" position="0,0" size="1920,1080" title="Swap File Manager" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="BlackPoleSwap" position="0,0" size="1920,1080" title="Swap File Manager" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7567,13 +7013,13 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/swapp.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="DeliteAutocamMan2" position="0,0" size="1920,1080" title="Autocam Manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="DeliteAutocamMan2" position="0,0" size="1920,1080" title="Autocam Manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <widget name="defaultcam" position="36,98" size="890,70" font="Regular; 40" halign="left" valign="center" foregroundColor="yellow" backgroundColor="background" transparent="1"/>
-        <widget source="list" render="Listbox" position="36,184" size="890,800" font="Regular;30" itemHeight="50" enableWrapAround="1" transparent="1" itemCornerRadius="8">
+        <widget source="list" render="Listbox" position="36,184" size="890,800" font="Regular;30" itemHeight="50" enableWrapAround="1" transparent="1" itemCornerRadius="8" scrollbarMode="showNever">
             <convert type="StringList"/>
         </widget>
         <eLabel backgroundColor="#fe0000" cornerRadius="3" position="34,1064" size="296,6" zPosition="-11"/>
@@ -7583,18 +7029,18 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="DeliteSetupAutocam2" position="0,0" size="1920,1080" title="Autocam Setup" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="DeliteSetupAutocam2" position="0,0" size="1920,1080" title="Autocam Setup" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget name="config" position="36,98" size="890,900" font="Regular;30" itemHeight="50" enableWrapAround="1" transparent="1" itemCornerRadius="8" valign="center"/>
+        <widget name="config" position="36,98" size="890,900" font="Regular;30" itemHeight="50" enableWrapAround="1" transparent="1" itemCornerRadius="8" valign="center" scrollbarMode="showNever"/>
         <eLabel backgroundColor="#fe00" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
         <widget name="key_green" render="Label" position="342,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="AboutOE" title="Image Information" position="fill" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="AboutOE" title="Image Information" position="fill" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7603,14 +7049,14 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <widget source="lab2" render="Label" position="997,660" size="620,45" font="Regular;36" zPosition="2" halign="left" transparent="1"/>
         <widget source="lab3" render="Label" position="997,710" size="620,45" font="Regular;36" zPosition="2" halign="left" transparent="1"/>
         <panel name="bLogo"/>
-        <widget name="AboutScrollLabel" position="36,98" size="890,900" font="Regular;30" transparent="1" valign="top" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
+        <widget name="AboutScrollLabel" position="36,98" size="890,900" font="Regular;30" transparent="1" valign="top" backgroundColor="mcolor2" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1"/>
         <ePixmap name="" position="957,845" size="550,155" pixmap="/usr/share/enigma2/Aglare-FHD-NSS/boximage.png" alphatest="on" scale="1"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
         <eLabel name="" position="1658,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SystemNetworkInfo" position="0,0" size="1920,1080" title="SystemInfo" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SystemNetworkInfo" position="0,0" size="1920,1080" title="SystemInfo" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7626,7 +7072,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SystemMemoryInfo" position="0,0" size="1920,1080" title="SystemInfo" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="SystemMemoryInfo" position="0,0" size="1920,1080" title="SystemInfo" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7638,7 +7084,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="Devices" position="0,0" size="1920,1080" title="SystemInfo" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="Devices" position="0,0" size="1920,1080" title="SystemInfo" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7658,13 +7104,13 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="BhSpeedUp" position="0,0" size="1920,1080" title="OpenBh Speed Up" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="BhSpeedUp" position="0,0" size="1920,1080" title="OpenBh Speed Up" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
-        <widget name="config" position="36,200" size="890,800" zPosition="2" font="Regular; 30" itemHeight="50" enableWrapAround="1" transparent="1" itemCornerRadius="8" valign="center"/>
+        <widget name="config" position="36,200" size="890,800" zPosition="2" font="Regular; 30" itemHeight="50" enableWrapAround="1" transparent="1" itemCornerRadius="8" valign="center" scrollbarMode="showNever"/>
         <widget name="lab1" position="36,98" zPosition="1" size="890,100" font="Regular; 30" halign="left" foregroundColor="yellow" backgroundColor="background" transparent="1"/>
         <eLabel backgroundColor="red" cornerRadius="3" position="34,1064" size="296,6" zPosition="-11"/>
         <eLabel backgroundColor="green" cornerRadius="3" position="342,1064" size="300,6" zPosition="-11"/>
@@ -7673,12 +7119,12 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="BhNetBrowser" position="0,0" size="1920,1080" title="Select Network Interface" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="BhNetBrowser" position="0,0" size="1920,1080" title="Select Network Interface" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget source="list" render="Listbox" position="36,98" size="890,900" font="Regular;30" itemHeight="50" enableWrapAround="1" transparent="1" itemCornerRadius="8" textOffset="15,4">
+        <widget source="list" render="Listbox" position="36,98" size="890,900" font="Regular;30" itemHeight="50" enableWrapAround="1" transparent="1" itemCornerRadius="8" textOffset="15,4" scrollbarMode="showNever">
             <convert type="StringList"/>
         </widget>
         <eLabel backgroundColor="#fe0000" cornerRadius="3" position="34,1064" size="296,6" zPosition="-11"/>
@@ -7691,7 +7137,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
     <screen name="OscamInfo" position="fill" title="OscamInfoMenu" backgroundColor="transparent" flags="wfNoBorder">
         <panel name="OscamInfoMenu"/>
     </screen>
-    <screen name="OscamInfoMenu" position="fill" title="OscamInfoMenu" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="OscamInfoMenu" position="fill" title="OscamInfoMenu" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -7700,7 +7146,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/oscam-logo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="OscamInfoConfigScreen" position="fill" title="Oscam Info Setup" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="OscamInfoConfigScreen" position="fill" title="Oscam Info Setup" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7780,7 +7226,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="36,770" size="400,3" zPosition="99"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="524,770" size="400,3" zPosition="99"/>
     </screen>
-    <screen name="MenuSort" position="0,0" size="1920,1080" title="Main menu" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="MenuSort" position="0,0" size="1920,1080" title="Main menu" backgroundColor="background" flags="wfNoBorder">
         <panel name="pigscreen885"/>
         <panel name="titletemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7793,7 +7239,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="ForecaPreview" title="Foreca Weather Forecast" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080">
+    <screen name="ForecaPreview" title="Foreca Weather Forecast" backgroundColor="background" flags="wfNoBorder" position="center,center" size="1920,1080">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7803,7 +7249,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <!--
          <widget name="MainList" itemHeight="180" font0="Regular;28" font1="Regular;26" font2="Regular;28" font3="Regular;28" setTime="0,80,100,45" setPict="100,65,70,70" setPictScale="0" setTemp="200,55,90,40" setTempUnits="200,95,90,40" setWindPict="300,75,35,35" setWindPictScale="1" setWind="330,55,95,40" setWindUnits="330,95,120,40" text1Pos="480,0,800,42" text2Pos="480,45,800,42" text3Pos="480,90,800,42" text4Pos="480,135,800,42" enableWrapAround="1" position="36,182" size="890,720" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10"/>
         -->
-        <widget name="MainList" itemHeight="180" font0="Regular;28" font1="Regular;26" font2="Regular;28" font3="Regular;28" setTime="5,80,100,45" setPict="80,45,80,80" setPictScale="1" setTemp="200,55,150,40" setTempUnits="200,95,90,40" setWindPict="355,75,35,35" setWindPictScale="1" setWind="380,55,95,40" setWindUnits="380,95,120,40" text1Pos="500,0,800,42" text2Pos="500,45,800,42"  text3Pos="500,90,800,42" text4Pos="500,135,800,42" enableWrapAround="1" position="36,182" size="890,720" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10"/>
+        <widget name="MainList" itemHeight="180" font0="Regular;28" font1="Regular;26" font2="Regular;28" font3="Regular;28" setTime="5,80,100,45" setPict="80,45,80,80" setPictScale="1" setTemp="200,55,150,40" setTempUnits="200,95,90,40" setWindPict="355,75,35,35" setWindPictScale="1" setWind="380,55,95,40" setWindUnits="380,95,120,40" text1Pos="500,0,800,42" text2Pos="500,45,800,42" text3Pos="500,90,800,42" text4Pos="500,135,800,42" enableWrapAround="1" position="36,182" size="890,720" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10"/>
         <eLabel name="" position="1298,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="OK"/>
         <eLabel name="" position="1440,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="MENU"/>
         <eLabel name="" position="1600,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="INFO"/>
@@ -7814,7 +7260,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <ePixmap name="" position="1660,788" size="180,180" pixmap="main/ico/foreca.png" alphatest="on" zPosition="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="SatPanel" title="Satellite photos" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+    <screen name="SatPanel" title="Satellite photos" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7824,7 +7270,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <ePixmap name="" position="1660,788" size="180,180" pixmap="main/ico/foreca.png" alphatest="on" zPosition="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CityPanel" title="Select a city" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+    <screen name="CityPanel" title="Select a city" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7835,7 +7281,7 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <ePixmap name="" position="1660,788" size="180,180" pixmap="main/ico/foreca.png" alphatest="on" zPosition="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="FTPBrowser" position="0,0" size="1920,1080" title="FTPBrowser" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="FTPBrowser" position="0,0" size="1920,1080" title="FTPBrowser" backgroundColor="background" flags="wfNoBorder">
         <panel name="menutemp3"/>
         <!--panel name="buttonicons" /-->
         <eLabel name="" position="36,36" size="40,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
@@ -7860,13 +7306,13 @@ MultiContentEntryPixmapAlphaBlend(pos = (10, 20), size = (80, 80), png = 2),
         <eLabel name="" position="894,870" size="132,40" font="icomoon; 36" text="" transparent="1" valign="center" halign="center" zPosition="99"/>
         <eLabel backgroundColor="mcolor3" cornerRadius="3" position="956,200" size="3,675" zPosition="99"/>
     </screen>
-    <screen name="FTPServerManager" position="0,0" size="1920,1080" title="FTP Server Manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="FTPServerManager" position="0,0" size="1920,1080" title="FTP Server Manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget source="list" render="Listbox" position="36,98" size="890,900" zPosition="3" enableWrapAround="1" transparent="1" itemHeight="50" itemCornerRadius="30">
+        <widget source="list" render="Listbox" position="36,98" size="890,900" zPosition="3" enableWrapAround="1" transparent="1" itemHeight="50" itemCornerRadius="30" scrollbarMode="showNever">
             <convert type="TemplatedMultiContent">
 				{"template": [
 MultiContentEntryText(pos=(10,0), size=(800,50), text = 0, font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER),
@@ -7877,13 +7323,13 @@ MultiContentEntryText(pos=(10,0), size=(800,50), text = 0, font = 0, flags = RT_
 			</convert>
         </widget>
     </screen>
-    <screen name="FTPQueueManager" position="0,0" size="1920,1080" title="FTP Queque Manager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="FTPQueueManager" position="0,0" size="1920,1080" title="FTP Queque Manager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <panel name="bLogo"/>
-        <widget source="list" render="Listbox" position="36,98" size="890,900" zPosition="3" enableWrapAround="1" transparent="1" itemHeight="60" itemCornerRadius="30">
+        <widget source="list" render="Listbox" position="36,98" size="890,900" zPosition="3" enableWrapAround="1" transparent="1" itemHeight="60" itemCornerRadius="30" scrollbarMode="showNever">
             <convert type="TemplatedMultiContent">
 				{"template": [
 MultiContentEntryText(pos=(55,2), size=(755,30), text = 0, font = 0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER),
@@ -7896,7 +7342,7 @@ MultiContentEntryPixmapAlphaTest(pos=(5,10), size=(40,40), png = 2),
 			</convert>
         </widget>
     </screen>
-    <screen name="FTPServerEditor" position="0,0" size="1920,1080" title="FTP Server Editor" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="FTPServerEditor" position="0,0" size="1920,1080" title="FTP Server Editor" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7904,7 +7350,7 @@ MultiContentEntryPixmapAlphaTest(pos=(5,10), size=(40,40), png = 2),
         <panel name="bLogo"/>
         <widget name="config" position="36,98" size="890,900" valign="center" itemHeight="45" font="Regular; 30" itemCornerRadius="8" enableWrapAround="1" transparent="1" zPosition="9" scrollbarMode="showAlways" scrollbarForegroundColor="mcolor5" scrollbarBorderColor="mcolor2" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarRadius="5"/>
     </screen>
-    <screen name="AspectRatioSwitchSetup" position="0,0" size="1920,1080" title="AspectRatioSwitch" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="AspectRatioSwitchSetup" position="0,0" size="1920,1080" title="AspectRatioSwitch" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7913,7 +7359,7 @@ MultiContentEntryPixmapAlphaTest(pos=(5,10), size=(40,40), png = 2),
         <widget name="config" position="36,98" size="890,750" valign="center" itemHeight="45" font="Regular; 30" itemCornerRadius="8" enableWrapAround="1" transparent="1" zPosition="9" scrollbarMode="showAlways" scrollbarForegroundColor="mcolor5" scrollbarBorderColor="mcolor2" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarRadius="5"/>
         <widget name="label" position="953,755" size="937,234" font="Regular;30" valign="center" halign="left" foregroundColor="yellow" backgroundColor="black" transparent="1" zPosition="5"/>
     </screen>
-    <screen name="BackupStart" position="0,0" size="1920,1080" title="Backup Suite" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="BackupStart" position="0,0" size="1920,1080" title="Backup Suite" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -7924,7 +7370,7 @@ MultiContentEntryPixmapAlphaTest(pos=(5,10), size=(40,40), png = 2),
         <eLabel name="" position="1778,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="INFO"/>
         <widget source="help" render="Label" position="1018,826" size="810,100" font="Regular;26" foregroundColor="#b0b0b0" backgroundColor="black" transparent="1" zPosition="5"/>
     </screen>
-    <screen name="WhatisNewInfo" position="0,0" size="1920,1080" title="FlashConfig" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="WhatisNewInfo" position="0,0" size="1920,1080" title="FlashConfig" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -8065,7 +7511,7 @@ MultiContentEntryPixmapAlphaTest(pos=(5,10), size=(40,40), png = 2),
         <widget name="bouquet" position="5,110" size="190,40" halign="right" font="Regular; 30" foregroundColor="foreground" backgroundColor="background"/>
         <widget name="chBouq" position="210,110" size="354,40" halign="left" font="Regular; 30" noWrap="1" backgroundColor="background" foregroundColor="cyan"/>
     </screen>
-    <screen name="PacketManager" position="0,0" size="1920,1080" title="PackageManager" backgroundColor="transparent" flags="wfNoBorder">
+    <screen name="PacketManager" position="0,0" size="1920,1080" title="PackageManager" backgroundColor="background" flags="wfNoBorder">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -8134,7 +7580,7 @@ MultiContentEntryPixmapAlphaTest(pos = (8, 87), size = (0, 0), png = 5), # index
         <eLabel text="Save" position="342,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <eLabel text="Update" position="652,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
         <eLabel text="Info" position="962,1016" size="300,45" zPosition="11" font="Regular; 30" valign="center" halign="center" backgroundColor="background" transparent="1" foregroundColor="white"/>
-        <widget name="Preview" position="1008,671" size="498, 280" zPosition="2"/>
+        <widget name="Preview" position="1008,671" size="498, 280" zPosition="1"/>
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/aglarelogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
@@ -8654,7 +8100,7 @@ MultiContentEntryText(pos = (10,0), size = (890,50), font=0, flags = RT_HALIGN_L
         <panel name="ScreenTemplateAllColorButtons_menu"/>
         <panel name="pigscreen885"/>
         <widget name="meinelist" position="36,120" size="890,585" font="Regular;30" itemHeight="45" itemCornerRadius="10" zPosition="3" scrollbarMode="showOnDemand" textOffset="10,6"/>
-        <widget name="status" font="Regular; 40" position="103,42" size="800,50" foregroundColor="white" transparent="1" zPosition="3" halign="left" valign="center"/>
+        <widget name="status" font="Regular; 40" position="78,42" size="800,50" foregroundColor="white" transparent="1" zPosition="3" halign="left" valign="center"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
         <ePixmap name="" position="1662,839" size="200,80" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/OAWeather/plugin.png" scale="1" zPosition="1"/>
@@ -8873,7 +8319,7 @@ MultiContentEntryPixmapAlphaTest(pos = (14, 17), size = (100, 40), png = 2, flag
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/openvpn.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="BhEpgPanel" position="0,0" size="1920,1080" title="OpenBh EPG Panel" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="BhEpgPanel" position="0,0" size="1920,1080" title="OpenBh EPG Panel" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -8885,7 +8331,7 @@ MultiContentEntryPixmapAlphaTest(pos = (14, 17), size = (100, 40), png = 2, flag
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="Nab_downPanel" position="0,0" size="1920,1080" title="Manual Install Bh Packages" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="Nab_downPanel" position="0,0" size="1920,1080" title="Manual Install Bh Packages" flags="wfNoBorder" backgroundColor="background">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -8935,7 +8381,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <widget name="folderlist" position="36,160" zPosition="1" size="890,800" valign="center" transparent="1" itemHeight="50" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10"/>
         <eLabel name="" position="1838,1018" size="52,52" backgroundColor="mcolor4" halign="center" valign="center" transparent="0" cornerRadius="26" font="Regular; 17" zPosition="1" text="EXIT"/>
     </screen>
-    <screen name="CCcamInfoMain" title="CCcamInfoMain" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
+    <screen name="CCcamInfoMain" title="CCcamInfoMain" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -8944,7 +8390,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoEcmInfoSelection" title="CCcamInfoEcmInfoSelection" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
+    <screen name="CCcamInfoEcmInfoSelection" title="CCcamInfoEcmInfoSelection" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -8953,7 +8399,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoInfoScreen" title="CCcamInfoInfoScreen" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
+    <screen name="CCcamInfoInfoScreen" title="CCcamInfoInfoScreen" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -8962,7 +8408,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamShareViewMenu" title="CCcamShareViewMenu" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
+    <screen name="CCcamShareViewMenu" title="CCcamShareViewMenu" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -8975,7 +8421,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoSubMenu" title="CCcamInfoSubMenu" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
+    <screen name="CCcamInfoSubMenu" title="CCcamInfoSubMenu" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -8985,7 +8431,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoServerMenu" title="CCcamInfoServerMenu" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
+    <screen name="CCcamInfoServerMenu" title="CCcamInfoServerMenu" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -8995,7 +8441,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoConfigMenu" title="CCcamInfoConfigMenu" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
+    <screen name="CCcamInfoConfigMenu" title="CCcamInfoConfigMenu" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080" transparent="0">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="pigscreen885"/>
@@ -9004,7 +8450,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoRemoteBoxMenu" title="CCcamInfoRemoteBoxMenu" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+    <screen name="CCcamInfoRemoteBoxMenu" title="CCcamInfoRemoteBoxMenu" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -9014,7 +8460,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoConfigSwitcher" title="CCcamInfoConfigSwitcher" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+    <screen name="CCcamInfoConfigSwitcher" title="CCcamInfoConfigSwitcher" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -9024,7 +8470,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoShareInfo" title="CCcamInfoShareInfo" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+    <screen name="CCcamInfoShareInfo" title="CCcamInfoShareInfo" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -9034,7 +8480,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <ePixmap name="" position="1660,788" size="180,180" zPosition="1" pixmap="main/ico/cccamlogo.png" transparent="1" alphatest="on"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="CCcamInfoMenuConfig" title="CCcamInfoMenuConfig" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+    <screen name="CCcamInfoMenuConfig" title="CCcamInfoMenuConfig" backgroundColor="background" flags="wfNoBorder" position="0,0" size="1920,1080">
         <panel name="titletemp"/>
         <panel name="menutemp"/>
         <panel name="ScreenTemplateAllColorButtons_menu"/>
@@ -9100,7 +8546,7 @@ MultiContentEntryText(pos = (15, 0), size = (890, 50), flags = RT_HALIGN_LEFT|RT
         <eLabel name="" position="1660,826" size="180,180" font="icomoon; 100" text="" halign="center" zPosition="99" transparent="1"/>
         <eLabel backgroundColor="sidec2" cornerRadius="90" position="1600,788" size="500,180"/>
     </screen>
-    <screen name="vEditorScreen" position="0,0" size="1920,1080" flags="wfNoBorder" title="File-Explorer" backgroundColor="transparent">
+    <screen name="vEditorScreen" position="0,0" size="1920,1080" flags="wfNoBorder" title="File-Explorer" backgroundColor="background">
         <panel name="menutemp3"/>
         <widget name="filedata" position="45,121" size="1830,810" itemHeight="45" font="Regular;30" textOffset="10,6" transparent="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="mcolor5" scrollbarSliderBorderColor="mcolor2" scrollbarWidth="10" scrollbarSliderBorderWidth="1" itemCornerRadius="10" valign="center"/>
     </screen>

@@ -251,7 +251,10 @@ def titlesong(url):
 
             # Estrai l'artista
             if "artist" in data:
-                artist = data["artist"]["name"]
+                try:
+                    artist = data["artist"]["name"]
+                except KeyError:
+                    artist = ", ".join(data.get("top_artists", []))
 
             # Costruisci il risultato
             comeback = (
@@ -420,7 +423,8 @@ class radiom2(Screen):
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
         self.picload.startDecode(pic)
-        self['setupActions'] = ActionMap(['HotkeyActions',
+        self['setupActions'] = ActionMap(['SetupActions',
+                                          'ColorActions',
                                           'TimerEditActions'], {
             'red': self.close,
             'green': self.okClicked,
@@ -758,16 +762,6 @@ class radiom80(Screen):
         description = ''
         djs = ''
         if a == 0:
-            # from requests.adapters import HTTPAdapter
-            # hdr = {"User-Agent": "Enigma2 - RadioM Plugin"}
-            # adapter = HTTPAdapter()
-            # http = requests.Session()
-            # http.mount("http://", adapter)
-            # http.mount("https://", adapter)
-            # r = http.get(self.url, headers=hdr, timeout=10, verify=False, stream=True)
-            # r.raise_for_status()
-            # if r.status_code == requests.codes.ok:
-                # y = r.json()
             data = titlesong2(self.url)
             if "error" in data:
                 print("Errore:", data["error"])
