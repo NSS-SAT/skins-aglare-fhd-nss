@@ -6,64 +6,91 @@ Plugin RadioM is developed
 from Lululla to Mmark
 """
 from __future__ import print_function
-from Components.AVSwitch import AVSwitch
+
+# built-in imports
+from datetime import datetime as dt
+from os import remove, replace, walk
+from os.path import dirname, exists, getsize
+from sys import version_info
+from time import time
+from json import loads as json_loads
+from re import sub
+from urllib.parse import quote
+from urllib.request import Request, urlopen
+
+# third-party imports
+from PIL import Image
+import requests
+
+# enigma imports
+from enigma import (
+    RT_HALIGN_LEFT,
+    RT_VALIGN_CENTER,
+    eListboxPythonMultiContent,
+    ePicLoad,
+    eServiceReference,
+    eTimer,
+    gFont,
+    getDesktop,
+    loadPNG,
+)
+
+# enigma2 Components
 from Components.ActionMap import ActionMap
 from Components.Button import Button
 from Components.Label import Label
 from Components.MenuList import MenuList
-from Components.MultiContent import (MultiContentEntryPixmapAlphaTest, MultiContentEntryText)
+from Components.MultiContent import MultiContentEntryPixmapAlphaTest, MultiContentEntryText
 from Components.Pixmap import Pixmap
 from Components.ServiceEventTracker import InfoBarBase
 from Components.config import config
+
+# enigma2 Screens
 from Screens.InfoBarGenerics import (
     InfoBarMenu,
-    InfoBarSeek,
     InfoBarNotifications,
+    InfoBarSeek,
     InfoBarShowHide,
 )
 from Screens.Screen import Screen
+
+# enigma2 Tools
+from Tools.Directories import resolveFilename
+
+
+import gettext
+_ = gettext.gettext
+
 try:
     from Tools.Directories import SCOPE_GUISKIN as SCOPE_SKIN
 except ImportError:
     from Tools.Directories import SCOPE_SKIN
-from Tools.Directories import resolveFilename
-from requests.adapters import HTTPAdapter
-from enigma import (
-    RT_HALIGN_LEFT,
-    RT_VALIGN_CENTER,
-    eServiceReference,
-    ePicLoad,
-    getDesktop,
-    eTimer,
-    loadPNG,
-    eListboxPythonMultiContent,
-    gFont,
-)
-import os
-import sys
-import six
-import requests
-from datetime import datetime as dt
+
+try:
+    from Components.AVSwitch import AVSwitch
+except ImportError:
+    from Components.AVSwitch import eAVControl as AVSwitch
+
+
+"""
+Plugin RadioM is developed
+from Lululla to Mmark 2020
+"""
+
+# constant
 version = '1.1'
 HD = getDesktop(0).size()
-iconpic = 'plugin.png'
+PY3 = version_info.major >= 3
 screenWidth = getDesktop(0).size().width()
-PY3 = sys.version_info.major >= 3
 cur_skin = config.skin.primary_skin.value.replace('/skin.xml', '')
-path_png = os.path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/radio/"
-if PY3:
-    unicode = str
-    from urllib.request import urlopen
-    from urllib.request import Request
-else:
-    from urllib2 import urlopen
-    from urllib2 import Request
-
-
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0',
-           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-           'Accept-Language': 'de,en-US;q=0.7,en;q=0.3',
-           'Accept-Encoding': 'gzip, deflate'}
+path_png = dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/radio/"
+sc = AVSwitch().getFramebufferScale()
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "de,en-US;q=0.7,en;q=0.3",
+    "Accept-Encoding": "gzip, deflate"
+}
 
 
 def ReadUrl2(url, referer):
@@ -146,7 +173,7 @@ def RListEntry(download):
     res = [(download)]
     col = 0xffffff
     colsel = 0xf07655
-    pngx = os.path.dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/skin_default/icons/folder.png"
+    pngx = dirname(resolveFilename(SCOPE_SKIN, str(cur_skin))) + "/radio/folder.png"
     if screenWidth >= 1920:
         res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 10), size=(30, 30), png=loadPNG(pngx)))
         res.append(MultiContentEntryText(pos=(60, 0), size=(600, 50), font=0, text=download, color=col, color_sel=colsel, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER))
@@ -155,120 +182,67 @@ def RListEntry(download):
     return res
 
 
-def showlist(data, list):
-    icount = 0
+def showlist(datal, list):
     plist = []
-    for line in data:
-        name = data[icount]
+    for name in datal:  # Iterazione più pythonica
         plist.append(RListEntry(name))
-        icount += 1
     list.setList(plist)
 
 
 def resizePoster(x, y, dwn_poster):
     try:
         from PIL import Image
-        img = Image.open(dwn_poster)
-        # width, height = img.size
-        # ratio = float(width) / float(height)
-        # new_height = int(isz.split(",")[1])
-        # new_width = int(ratio * new_height)
-        new_width = x
-        new_height = y
-        try:
-            rimg = img.resize((new_width, new_height), Image.LANCZOS)
-        except:
-            rimg = img.resize((new_width, new_height), Image.ANTIALIAS)
-        img.close()
-        rimg.save(dwn_poster)
-        rimg.close()
+        with Image.open(dwn_poster) as img:
+            new_width = x
+            new_height = y
+            try:
+                rimg = img.resize((new_width, new_height), Image.LANCZOS)
+            except Exception:
+                rimg = img.resize((new_width, new_height), Image.ANTIALIAS)
+            rimg.save(dwn_poster)
+            # no need to close rimg, it's in memory
     except Exception as e:
         print("ERROR:{}".format(e))
 
 
 def titlesong2(url):
     try:
-        # Header HTTP
-        hdr = {"User-Agent": "Enigma2 - RadioM Plugin"}
-        # Configura HTTPAdapter
-        adapter = HTTPAdapter()
-        http = requests.Session()
-        http.mount("http://", adapter)
-        http.mount("https://", adapter)
-        # Effettua la richiesta
-        r = http.get(url, headers=hdr, timeout=10, verify=False, stream=True)
+        r = requests.get(url, headers=HEADERS, timeout=10, verify=False)
         r.raise_for_status()
-        # Controlla lo stato della risposta
-        if r.status_code == requests.codes.ok:
-            # Ritorna i dati JSON
-            return r.json()
+        return r.json()
     except Exception as e:
-        # Ritorna un errore in caso di problemi
         return {"error": str(e)}
 
 
 def titlesong(url):
     try:
-        # Header HTTP
-        hdr = {"User-Agent": "Enigma2 - RadioM Plugin"}
-        # Configura HTTPAdapter
-        adapter = HTTPAdapter()
-        http = requests.Session()
-        http.mount("http://", adapter)
-        http.mount("https://", adapter)
+        r = requests.get(url, headers=HEADERS, timeout=10, verify=False)
+        data = r.json()
 
-        # Effettua la richiesta
-        r = http.get(url, headers=hdr, timeout=10, verify=False, stream=True)
-        r.raise_for_status()
+        real_duration = data.get("track", {}).get("duration", 0)
 
-        # Controlla lo stato della risposta
-        if r.status_code == requests.codes.ok:
-            data = r.json()
+        if real_duration <= 0:
+            real_duration = 210  # 3.5 minut
 
-            # Variabili di default
-            title = ''
-            start = ''
-            ends = ''
-            duration = 0
-            artist = ''
+        start_time = dt.strptime(data.get("started_at", "")[:19], "%Y-%m-%d %H:%M:%S")
+        end_time = dt.strptime(data.get("ends_at", "")[:19], "%Y-%m-%d %H:%M:%S")
+        timestamp_duration = int((end_time - start_time).total_seconds())
 
-            # Estrai il titolo
-            if "title" in data:
-                title = data["title"].replace('()', '')
+        real_duration = timestamp_duration if 30 < timestamp_duration < 600 else real_duration
+        comeback = (
+            'Artist: ' + data.get("artist", {}).get("name", "") + '\n' +
+            'Title: ' + data.get("title", "") + '\n' +
+            'Duration: ' + str(real_duration) + ' sec'
+        )
 
-            # Estrai e converti i timestamp
-            if "started_at" in data:
-                start = data["started_at"].strip(' ')[0:19]
-                start_time = dt.strptime(start, "%Y-%m-%d %H:%M:%S")
-
-            if "ends_at" in data:
-                ends = data["ends_at"].strip(' ')[0:19]
-                end_time = dt.strptime(ends, "%Y-%m-%d %H:%M:%S")
-
-                # Calcola la differenza
-                delta = end_time - start_time
-                duration = delta.total_seconds()
-
-            # Estrai l'artista
-            if "artist" in data:
-                try:
-                    artist = data["artist"]["name"]
-                except KeyError:
-                    artist = ", ".join(data.get("top_artists", []))
-
-            # Costruisci il risultato
-            comeback = (
-                'Artist: ' + str(artist) + '\n' +
-                'Title: ' + str(title) + '\n' +
-                'Start: ' + str(start) + '\n' +
-                'End: ' + str(ends) + '\n' +
-                'Duration sec.: ' + str(duration)
-            )
-
-            return {"comeback": comeback, "artist": artist, "title": title, "start": start, "ends": ends, "duration": duration}
+        return {
+            "comeback": comeback,
+            "duration": real_duration,
+            "title": data.get("title", ""),
+            "artist": data.get("artist", {}).get("name", "")
+        }
 
     except Exception as e:
-        # In caso di errore, ritorna un dizionario con il messaggio di errore
         return {"error": str(e)}
 
 
@@ -284,35 +258,29 @@ class radiom1(Screen):
         self.currentList = 'list'
         self["logo"] = Pixmap()
         self["back"] = Pixmap()
-        sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
         global x, y
         pic = path_png + "ft.jpg"
-        x = 430
-        y = 430
-        if screenWidth == 1920:
-            x = 400
-            y = 400
-        if screenWidth == 2560:
-            x = 850
-            y = 850
+        x = 340
+        y = 340
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
         self.picload.startDecode(pic)
-        self['setupActions'] = ActionMap(['HotkeyActions',
-                                          'OkCancelActions',
-                                          'TimerEditActions',
-                                          'DirectionActions'], {
-            'red': self.close,
-            'green': self.okClicked,
-            'cancel': self.close,
-            'up': self.up,
-            'down': self.down,
-            'left': self.left,
-            'right': self.right,
-            'ok': self.okClicked
-        },        -2)
+        self["setupActions"] = ActionMap(
+            ["HotkeyActions", "OkCancelActions", "TimerEditActions", "DirectionActions"],
+            {
+                "red": self.close,
+                "green": self.okClicked,
+                "cancel": self.close,
+                "up": self.up,
+                "down": self.down,
+                "left": self.left,
+                "right": self.right,
+                "ok": self.okClicked
+            },
+            -2
+        )
         self.onLayoutFinish.append(self.openTest)
 
     def openTest(self):
@@ -333,7 +301,19 @@ class radiom1(Screen):
         self.pics.append(path_png + "shclager.png")
         self.names.append('1000OLDIES')
         self.urls.append('http://laut.fm/fm-api/stations/1000oldies')
-        self.pics.append(path_png + "/1000oldies.png")
+        self.pics.append(path_png + "1000oldies.png")
+        self.names.append('REGGAETON')
+        self.urls.append('https://laut.fm/fm-api/stations/reggaeton')
+        self.pics.append(path_png + "reggaeton.png")
+        self.names.append('FLASHBASS-FM')
+        self.urls.append('https://laut.fm/fm-api/stations/flashbass-fm')
+        self.pics.append(path_png + "flashbass.png")
+        self.names.append('1000GOLD')
+        self.urls.append('https://laut.fm/fm-api/stations/1000goldschlager')
+        self.pics.append(path_png + "1000gold.png")
+        self.names.append('SIMLIVERADIO')
+        self.urls.append('https://laut.fm/fm-api/stations/simliveradio')
+        self.pics.append(path_png + "simliveradio.png")
         self.names.append('RADIO CYRUS')
         self.urls.append('http://75.119.158.76:8090/radio.mp3')
         self.pics.append(path_png + "ft.jpg")
@@ -358,7 +338,6 @@ class radiom1(Screen):
         if idx is None:
             return
         pic = self.pics[idx]
-        sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
@@ -407,36 +386,29 @@ class radiom2(Screen):
         self["logo"] = Pixmap()
         self["back"] = Pixmap()
         self["back"].hide()
-        sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
-        global x, y
         pic = path_png + "ft.jpg"
-        x = 430
-        y = 430
-        if screenWidth == 1920:
-            x = 400
-            y = 400
-        if screenWidth == 2560:
-            x = 850
-            y = 850
+        x = 340
+        y = 340
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
         self.picload.startDecode(pic)
-        self['setupActions'] = ActionMap(['SetupActions',
-                                          'ColorActions',
-                                          'TimerEditActions'], {
-            'red': self.close,
-            'green': self.okClicked,
-            'cancel': self.cancel,
-            'ok': self.okClicked,
-        },        -2)
+        self["setupActions"] = ActionMap(
+            ["SetupActions", "ColorActions", "TimerEditActions"],
+            {
+                "red": self.close,
+                "green": self.okClicked,
+                "cancel": self.cancel,
+                "ok": self.okClicked,
+            },
+            -2
+        )
         self.onLayoutFinish.append(self.openTest)
 
     def openTest(self):
-        # uLists = path_png
         self.names = []
-        for root, dirs, files in os.walk(path_png):
+        for root, dirs, files in walk(path_png):
             for name in files:
                 if '.txt' in name:
                     # continue
@@ -479,53 +451,51 @@ class radiom3(Screen):
         self["back"].hide()
         self.srefOld = self.session.nav.getCurrentlyPlayingServiceReference()
         self.is_playing = False
-        sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
         global x, y
         pic = path_png + "ft.jpg"
-        x = 430
-        y = 430
-        if screenWidth == 1920:
-            x = 400
-            y = 400
-        if screenWidth == 2560:
-            x = 850
-            y = 850
+        x = 340
+        y = 340
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
         self.picload.startDecode(pic)
-
-        self['setupActions'] = ActionMap(['SetupActions',
-                                          'ColorActions',
-                                          'TimerEditActions'], {
-            'red': self.close,
-            'green': self.okClicked,
-            'cancel': self.cancel,
-            'ok': self.okClicked,
-        },        -2)
+        self["setupActions"] = ActionMap(
+            ["SetupActions", "ColorActions", "TimerEditActions"],
+            {
+                "red": self.close,
+                "green": self.okClicked,
+                "cancel": self.cancel,
+                "ok": self.okClicked,
+            },
+            -2
+        )
         self.onLayoutFinish.append(self.openTest)
 
     def openTest(self):
-        # uLists = THISPLUG + '/Playlists'
         file1 = path_png + str(self.name)
         print('Here in showContentA2 file1 = ', file1)
         self.names = []
         self.urls = []
-        f1 = open(file1, 'r')
-        for line in f1.readlines():
-            if '##' not in line:
-                continue
-            line = line.replace('\n', '')
-            items = line.split('###')
-            name = items[0]
-            url = items[1]
-            self.names.append(name)
-            self.urls.append(url)
-        showlist(self.names, self['list'])
+        try:
+            with open(file1, "r") as f1:
+                for line in f1:
+                    if "##" not in line:
+                        continue
+                    line = line.strip()
+                    items = line.split("###")
+                    if len(items) < 2:
+                        continue
+                    name = items[0]
+                    url = items[1]
+                    self.names.append(name)
+                    self.urls.append(url)
+                showlist(self.names, self['list'])
+        except Exception as e:
+            print("Error reading file:", e)
 
     def okClicked(self):
-        idx = self['list'].getSelectionIndex()
+        idx = self["list"].getSelectionIndex()
         if idx is None:
             return
         name = self.names[idx]
@@ -534,13 +504,9 @@ class radiom3(Screen):
             self.stop()
             return
 
-        url = url.replace(':', '%3a').replace(' ', '%20')
-        tv = False
-        if tv is False:
-            ref = '4097:0:1:0:0:0:0:0:0:0:' + str(url)  # tv
-        else:
-            ref = '4097:0:2:0:0:0:0:0:0:0:' + str(url)  # radio
-        print('final reference:   ', ref)
+        url = url.replace(":", "%3a").replace(" ", "%20")
+        ref = "4097:0:1:0:0:0:0:0:0:0:" + str(url)
+        print("final reference:   ", ref)
         sref = eServiceReference(ref)
         sref.setName(name)
         self.session.nav.stopService()
@@ -593,59 +559,64 @@ class radiom80(Screen):
         self["back"] = Pixmap()
         self["back"].hide()
         self.player = '1'
-        sc = AVSwitch().getFramebufferScale()
         self.picload = PicLoader()
         global x, y
         pic = pic.replace("\n", "").replace("\r", "")
-        x = 430
-        y = 430
-        if screenWidth == 1920:
-            x = 340
-            y = 340
-        if screenWidth == 2560:
-            x = 850
-            y = 850
+        x = 340
+        y = 340
         resizePoster(x, y, pic)
         self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#00000000"))
         self.picload.addCallback(self.showback)
         self.picload.startDecode(self.pic)
         self.srefOld = self.session.nav.getCurrentlyPlayingServiceReference()
         self.is_playing = False
-        try:
-            self.init_aspect = int(self.getAspect())
-        except:
-            self.init_aspect = 0
-        self.new_aspect = self.init_aspect
+        self.cover_timer = eTimer()
+        self.cover_timer.callback.append(self.countdown)
+        self.current_artist = ""
+        self.current_title = ""
+        self.last_song_id = ""
+        self.okcoverdown = 'failed'
+
+        self.update_timer = eTimer()
+        self.update_timer.callback.append(self.countdown)
+        self.update_timer.start(10000, False)
+        self.last_cover_request = 0
+        self.song_start_time = time()
+        self.last_song_hash = ""
+        self.current_cover = ""
+        self.cover_timeout = 0
+        self.backing = ""
+        self.current_duration = 0
+
         self['key_red'] = Button(_('Exit'))
-        self['key_blue'] = Label('Player 1-2-3')
+        self['key_blue'] = Label("Player 1-2-3")
         self['key_green'] = Button(_('Select'))
         self['key_green'].hide()
-        self['actions'] = ActionMap(['OkActions',
-                                     'SetupActions',
-                                     'ColorActions',
-                                     'EPGSelectActions',
-                                     'InfoActions',
-                                     'CancelActions'], {
-            'red': self.cancel,
-            'back': self.cancel,
-            'blue': self.typeplayer,
-            'green': self.openPlay,
-            'info': self.countdown,
-            'cancel': self.cancel,
-            'ok': self.openPlay,
-        },        -2)
+        self["actions"] = ActionMap(
+            ["OkActions", "SetupActions", "ColorActions", "EPGSelectActions", "InfoActions", "CancelActions"],
+            {
+                "red": self.cancel,
+                "back": self.cancel,
+                "blue": self.typeplayer,
+                "green": self.openPlay,
+                "info": self.countdown,
+                "cancel": self.cancel,
+                "ok": self.openPlay,
+            },
+            -2
+        )
         self.onShow.append(self.openTest)
 
     def typeplayer(self):
-        if self.player == '2':
+        if self.player == "2":
             self["key_blue"].setText("Player 3-2-1")
-            self.player = '3'
-        elif self.player == '1':
+            self.player = "3"
+        elif self.player == "1":
             self["key_blue"].setText("Player 2-3-1")
-            self.player = '2'
+            self.player = "2"
         else:
             self["key_blue"].setText("Player 1-2-3")
-            self.player = '1'
+            self.player = "1"
         return
 
     def showback(self, picInfo=None):
@@ -657,89 +628,101 @@ class radiom80(Screen):
         except Exception as err:
             print("ERROR showback:", err)
 
-    def selectpic(self):
-        if self.okcoverdown == 'success':
-            pic = '/tmp/artist.jpg'
-            x = self["logo"].instance.size().width()
-            y = self["logo"].instance.size().height()
-            pic = pic.replace("\n", "").replace("\r", "")
-            resizePoster(x, y, pic)
-            sc = AVSwitch().getFramebufferScale()
-            self.picload = PicLoader()
-            self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "FF000000"))
-            self.picload.addCallback(self.showback)
-            self.picload.startDecode(pic)
-        return
+    def showback2(self, picInfo=None):
+        try:
+            self["back"].instance.show()
+        except Exception as err:
+            self["back"].instance.hide()
+            print("ERROR showback2:", err)
 
-    '''
-    # http://radio.garden/api/ara/content/places
-    # "results": [
-        # {
-            # "wrapperType": "track",
-            # "kind": "music-video",
-            # "artistId": 909253,
-            # "collectionId": 1445738051,
-            # "trackId": 1445738215,
-            # "artistName": "Jack Johnson",
-            # "collectionName": "To the Sea",
-            # "trackName": "You And Your Heart",
-            # "collectionCensoredName": "To the Sea",
-            # "trackCensoredName": "You And Your Heart (Closed-Captioned)",
-            # "artistViewUrl": "https://music.apple.com/us/artist/jack-johnson/909253?uo=4",
-            # "collectionViewUrl": "https://music.apple.com/us/music-video/you-and-your-heart-closed-captioned/1445738215?uo=4",
-            # "trackViewUrl": "https://music.apple.com/us/music-video/you-and-your-heart-closed-captioned/1445738215?uo=4",
-            # "previewUrl": "https://video-ssl.itunes.apple.com/itunes-assets/Video115/v4/f0/92/0c/f0920ce2-8bb7-5e62-b44c-36ce701fe7b1/mzvf_6922739671336234286.640x352.h264lc.U.p.m4v",
-            # "artworkUrl30": "https://is1-ssl.mzstatic.com/image/thumb/Video/41/81/14/mzi.wdsoqdmh.jpg/30x30bb.jpg",
-            # "artworkUrl60": "https://is1-ssl.mzstatic.com/image/thumb/Video/41/81/14/mzi.wdsoqdmh.jpg/60x60bb.jpg",
-            # "artworkUrl100": "https://is1-ssl.mzstatic.com/image/thumb/Video/41/81/14/mzi.wdsoqdmh.jpg/100x100bb.jpg",
-            # "collectionPrice": 11.99,
-            # "trackPrice": -1.0,
-            # "releaseDate": "2010-06-01T07:00:00Z",
-            # "collectionExplicitness": "notExplicit",
-            # "trackExplicitness": "notExplicit",
-            # "discCount": 1,
-            # "discNumber": 1,
-            # "trackCount": 15,
-            # "trackNumber": 14,
-            # "trackTimeMillis": 197288,
-            # "country": "USA",
-            # "currency": "USD",
-            # "primaryGenreName": "Rock"
-        # },'''
+    def selectpic(self):
+        try:
+            if hasattr(self, 'okcoverdown') and self.okcoverdown == 'success':
+                temp_path = '/tmp/artist_temp.jpg'
+                final_path = '/tmp/artist.jpg'
+
+                if exists(final_path):
+                    try:
+                        with Image.open(final_path) as img:
+                            if img.format != 'JPEG':
+                                img.convert('RGB').save(temp_path, 'JPEG', quality=90)
+                                replace(temp_path, final_path)
+                    except Exception as conv_err:
+                        print("Errore conversione:", conv_err)
+                        remove(final_path) if exists(final_path) else None
+                        return
+
+                if exists(final_path) and getsize(final_path) > 2048:
+                    x = self["logo"].instance.size().width()
+                    y = self["logo"].instance.size().height()
+                    self["logo"].instance.setPixmap(None)
+                    resizePoster(x, y, final_path)
+                    self.picload = PicLoader()
+                    self.picload.setPara((x, y, sc[0], sc[1], 0, 1, "#FF000000"))
+
+                    def safe_callback(picInfo=None):
+                        try:
+                            ptr = self.picload.getData()
+                            if ptr:
+                                self["logo"].instance.setPixmap(ptr.__deref__())
+                                self["logo"].instance.show()
+                        except Exception as e:
+                            print("Error callback:", e)
+
+                    self.picload.addCallback(safe_callback)
+                    self.picload.startDecode(final_path)
+                else:
+                    print("Invalid or missing image file")
+
+        except Exception as err:
+            print("Error selectpic:", err)
+            self.picload.startDecode(self.pic)
+
+    def getCover(self, url):
+        try:
+            temp_path = '/tmp/artist_temp.jpg'
+            final_path = '/tmp/artist.jpg'
+
+            with requests.get(url, stream=True, timeout=15) as r:
+                r.raise_for_status()
+                with open(temp_path, 'wb') as f:
+                    for chunk in r.iter_content(8192):
+                        f.write(chunk)
+
+            with Image.open(temp_path) as img:
+                img.verify()
+
+            replace(temp_path, final_path)
+            return True
+
+        except Exception as e:
+            if exists(temp_path):
+                remove(temp_path)
+            print("Error getCover:", str(e))
+            return False
 
     def downloadCover(self, title):
         try:
             self.okcoverdown = 'failed'
-            print('^^^DOWNLOAD COVER^^^')
-            itunes_url = 'http://itunes.apple.com/search?term=%s&limit=1&media=music' % six.moves.urllib.parse.quote_plus(title)
-            res = requests.get(itunes_url, timeout=5)
+            clean_title = sub(r'\([^)]*\)', '', title).strip()
+            search_query = f"{self.current_artist} {clean_title}" if self.current_artist else clean_title
+            itunes_url = f'https://itunes.apple.com/search?term={quote(search_query)}&entity=album&limit=1'
+            res = requests.get(itunes_url, timeout=10)
             data = res.json()
-            if six.PY3:
-                url = data['results'][0]['artworkUrl100']
-            else:
-                url = data['results'][0]['artworkUrl100'].encode('utf-8')
-            url = url.replace('https', 'http')
-            print('url is: ', url)
-            if self.getCover(url):
-                self.okcoverdown = 'success'
-                print('success artist url')
-            else:
-                self.okcoverdown = 'failed'
-        except:
-            self.okcoverdown = 'failed'
-        print('self.okcoverdown = ', self.okcoverdown)
-        return
+            if data.get('resultCount', 0) == 0:
+                # Fallback alla ricerca per canzone
+                itunes_url = f'https://itunes.apple.com/search?term={quote(search_query)}&entity=song&limit=1'
+                res = requests.get(itunes_url, timeout=10)
+                data = res.json()
 
-    def getCover(self, url):
-        try:
-            data = geturl(url)
-            if data:
-                with open('/tmp/artist.jpg', 'wb') as f:
-                    f.write(data)
-                return True
-            return False
-        except:
-            return False
+            if data.get('resultCount', 0) > 0:
+                artwork_url = data['results'][0].get('artworkUrl100', '')
+                if artwork_url:
+                    artwork_url = artwork_url.replace('100x100bb', '600x600bb')
+                    if self.getCover(artwork_url):
+                        self.okcoverdown = 'success'
+        except Exception as e:
+            print("Error download:", str(e))
 
     def openTest(self):
         self.timer = eTimer()
@@ -750,39 +733,26 @@ class radiom80(Screen):
         self.timer.start(250, True)
 
     def loadPlaylist(self):
-        self.names = []
-        self.urls = []
-        a = 0
-        display_name = ''
-        page_url = ''
-        stream_url = ''
-        current_song = ''
-        listeners = ''
-        format = ''
-        description = ''
-        djs = ''
-        if a == 0:
+        try:
+            self.names = []
+            self.urls = []
+            display_name = ''
+            page_url = ''
+            stream_url = ''
+            current_song = ''
+            listeners = ''
+            format = ''
+            description = ''
+            djs = ''
             data = titlesong2(self.url)
             if "error" in data:
                 print("Errore:", data["error"])
-            else:
-                print("Dati della canzone:", data)
-
+                self.okcoverdown = 'failed'
+                return
             for cat in data:
-                print('cat: ', cat)
-                display_name = ''
-                page_url = ''
-                stream_url = ''
-                current_song = ''
-                listeners = ''
-                format = ''
-                description = ''
-                djs = ''
-                # Estrazione dei dati
                 if "stream_url" in cat:
                     if "display_name" in cat:
                         display_name = str(cat["display_name"])
-                        print('display_name = ', display_name)
 
                     if "page_url" in cat:
                         page_url = str(cat["page_url"])
@@ -795,19 +765,28 @@ class radiom80(Screen):
                     if "current_song" in cat["api_urls"]:
                         urla = cat["api_urls"]["current_song"]
                         self.backing = str(urla)
-                        print('url song = ', urla)
-
+                        print('url song = ', self.backing)
                         current_song_data = titlesong2(urla)
                         if "error" in current_song_data:
                             print('Errore nel recuperare la canzone:', current_song_data["error"])
                             current_song = _("Error retrieving song")
                         else:
                             current_song = current_song_data.get("title", _("Unknown Title"))
-                            print('current_song = ', current_song)
+                            print('current_song =', current_song)
+
+                            if hasattr(self, 'last_song'):
+                                if self.last_song != current_song:
+                                    self.downloadCover(current_song)
+                                    self.selectpic()
+                            else:
+                                self.downloadCover(current_song)
+                                self.selectpic()
+
+                            self.last_song = current_song
 
                     if "listeners" in cat["api_urls"]:
                         urlb = str(cat["api_urls"]["listeners"])
-                        self.listen = urlb
+                        print("Type of data listeners:", type(urlb))
                         listeners = self.listener(urlb)
                         print('listeners = ', listeners)
 
@@ -817,7 +796,6 @@ class radiom80(Screen):
 
                     if "description" in cat:
                         description = str(cat["description"])
-                        print('description = ', description)
 
                     if "djs" in cat:
                         djs = str(cat["djs"])
@@ -831,71 +809,59 @@ class radiom80(Screen):
 
                     self.names.append(display_name)
                     self.urls.append(stream_url)
+
                 self.countdown()
                 print('current_song = ', current_song)
                 self['info'].setText(_('Select and Play'))
                 self['key_green'].show()
                 showlist(self.names, self['list'])
-
-    def listener(self, urlx):
-        content = ' '
-        try:
-            referer = 'https://laut.fm'
-            content = ReadUrl2(urlx, referer)
         except Exception as e:
-            print('err:', e)
-        return content
-
-    def cancel(self):
-        self.stop()
-        self.close()
+            print("Error loadPlaylist:", str(e))
+            self.okcoverdown = 'failed'
 
     def countdown(self):
         try:
-            live = self.listener(self.listen)
-            titlex_data = titlesong(self.backing)
-            if "error" in titlex_data:
-                print("Errore nel recupero della canzone:", titlex_data["error"])
-                titlex = "Canzone non disponibile"
-                self.artist = "Artista sconosciuto"
+            if not self.backing:
+                print("No URLs set for songs")
+                return
+
+            data = titlesong(self.backing)
+            if "error" in data:
+                print("Errore API:", data["error"])
+                return
+
+            current_id = f"{data['artist']}-{data['title']}"
+            if self.last_song_id != current_id:
+                self['current_song'].setText(data["comeback"])
+                self.downloadCover(f"{data['artist']} {data['title']}")
+                self.selectpic()
+                self.last_song_id = current_id
+
+            remaining = data["duration"] - (time() - self.song_start_time)
+            if remaining > 0:
+                self.cover_timer.start(int(remaining * 1000), False)
             else:
-                titlex = titlex_data.get("comeback", "Canzone non disponibile")
-                self.artist = titlex_data.get("artist", "Artista sconosciuto")
-            self.downloadCover(self.artist)
-            self['current_song'].setText(titlex)
-            self['listeners'].setText(_('Online: ') + str(live))
-            self.selectpic()
-            self.openTest2()
-            print('Countdown finished.')
+                self.song_start_time = time()
+                self.cover_timer.start(1000, False)
+
         except Exception as e:
-            print('Errore durante il countdown:', e)
+            print("Error countdown:", e)
 
     def openTest2(self):
         print('duration mmm: ', self.duration)
         print(type(self.duration))
-        if self.duration >= 0.0:
-            value_str = str(self.duration)
-            conv = value_str.split('.')[0]
-            print('conv mmm: ', conv)
-            current = int(float(conv)) * 60
-            print('current mmm: ', current)
+        if self.duration > 0:
+            duration_seconds = int(self.duration)
+            print("Timer in sec:", duration_seconds)
             self.timer = eTimer()
             try:
                 self.timer_conn = self.timer.timeout.connect(self.countdown)
             except:
                 self.timer.callback.append(self.countdown)
-            self.timer.start(current, False)
-
-    def showback2(self, picInfo=None):
-        try:
-            self["back"].instance.show()
-        except Exception as err:
-            self["back"].instance.hide()
-            print("ERROR showback:", err)
-        return
+            self.timer.start(duration_seconds * 1000, False)
 
     def openPlay(self):
-        idx = self['list'].getSelectionIndex()
+        idx = self["list"].getSelectionIndex()
         if idx is None:
             return
         self.showback2()
@@ -905,15 +871,17 @@ class radiom80(Screen):
             self.stop()
             return
         try:
-            if self.player == '2':
+            if self.player == "2":
                 self.session.open(Playstream2, name, url)
             else:
-                url = url.replace(':', '%3a').replace(' ', '%20')
-                if self.player == '3':
-                    ref = '4097:0:1:0:0:0:0:0:0:0:' + str(url)  # TV
+                # Encode URL
+                url = url.replace(":", "%3a").replace(" ", "%20")
+                if self.player == "3":
+                    ref = "4097:0:1:0:0:0:0:0:0:0:" + str(url)
                 else:
-                    ref = '4097:0:2:0:0:0:0:0:0:0:' + str(url)  # Radio
-                print('Final reference:', ref)
+                    ref = "4097:0:2:0:0:0:0:0:0:0:" + str(url)
+
+                print("Final reference:", ref)
                 sref = eServiceReference(ref)
                 sref.setName(name)
                 self.session.nav.stopService()
@@ -921,9 +889,23 @@ class radiom80(Screen):
                 self.is_playing = True
                 self.countdown()
         except Exception as e:
-            print("Errore durante la riproduzione:", e)
+            print("Error during playback:", e)
 
-    def stop(self, text=''):
+    def listener(self, urlx):
+        content = None
+        try:
+            referer = "https://laut.fm"
+            raw = ReadUrl2(urlx, referer)
+            content = json_loads(raw)
+        except Exception as e:
+            print("err:", e)
+        return content
+
+    def cancel(self):
+        self.stop()
+        self.close()
+
+    def stop(self, text=""):
         if self.is_playing:
             self.timer.stop()
             try:
@@ -931,36 +913,11 @@ class radiom80(Screen):
                 self.is_playing = False
                 self.session.nav.stopService()
                 self.session.nav.playService(self.srefOld)
-                return
-            except TypeError as e:
-                print(e)
+                self.cover_timer.stop()
+            except TypeError:
+                self.cover_timer.stop()
                 self.close()
-
-    def getAspect(self):
-        return AVSwitch().getAspectRatioSetting()
-
-    def getAspectString(self, aspectnum):
-        return {0: '4:3 Letterbox',
-                1: '4:3 PanScan',
-                2: '16:9',
-                3: '16:9 always',
-                4: '16:10 Letterbox',
-                5: '16:10 PanScan',
-                6: '16:9 Letterbox'}[aspectnum]
-
-    def setAspect(self, aspect):
-        map = {0: '4_3_letterbox',
-               1: '4_3_panscan',
-               2: '16_9',
-               3: '16_9_always',
-               4: '16_10_letterbox',
-               5: '16_10_panscan',
-               6: '16_9_letterbox'}
-        config.av.aspectratio.setValue(map[aspect])
-        try:
-            AVSwitch().setAspectRatio(aspect)
-        except:
-            pass
+            aspect_manager.restore_aspect()
 
 
 class Playstream2(Screen, InfoBarMenu, InfoBarBase, InfoBarSeek, InfoBarNotifications, InfoBarShowHide):
@@ -968,7 +925,6 @@ class Playstream2(Screen, InfoBarMenu, InfoBarBase, InfoBarSeek, InfoBarNotifica
     STATE_PAUSED = 2
 
     def __init__(self, session, name, url):
-        global SREF
         Screen.__init__(self, session)
         self.skinName = 'MoviePlayer'
         self.sref = None
@@ -981,18 +937,25 @@ class Playstream2(Screen, InfoBarMenu, InfoBarBase, InfoBarSeek, InfoBarNotifica
         except:
             self.init_aspect = 0
         self.new_aspect = self.init_aspect
-        self['actions'] = ActionMap(['WizardActions',
-                                     'MoviePlayerActions',
-                                     'EPGSelectActions',
-                                     'MediaPlayerSeekActions',
-                                     'ColorActions',
-                                     'InfobarShowHideActions',
-                                     'InfobarSeekActions',
-                                     'InfobarActions'], {'leavePlayer': self.stop,
-                                                         'back': self.stop,
-                                                         'playpauseService': self.playpauseService,
-                                                         'down': self.av
-                                                         }, -1)
+        self["actions"] = ActionMap(
+            [
+                "WizardActions",
+                "MoviePlayerActions",
+                "EPGSelectActions",
+                "MediaPlayerSeekActions",
+                "ColorActions",
+                "InfobarShowHideActions",
+                "InfobarSeekActions",
+                "InfobarActions"
+            ],
+            {
+                "leavePlayer": self.stop,              # Stop the player
+                "back": self.stop,                     # Back action to stop the player
+                "playpauseService": self.togglePlayPause,  # Toggle play/pause
+                # "down": self.adjustAVSettings          # Adjust AV settings or navigate down
+            },
+            -1
+        )
         self.allowPiP = False
         self.is_playing = False
         InfoBarSeek.__init__(self, actionmap='MediaPlayerSeekActions')
@@ -1029,53 +992,14 @@ class Playstream2(Screen, InfoBarMenu, InfoBarBase, InfoBarSeek, InfoBarNotifica
                 self.is_playing = False
                 self.session.nav.stopService()
                 self.session.nav.playService(self.srefOld)
-                if not self.new_aspect == self.init_aspect:
-                    try:
-                        self.setAspect(self.init_aspect)
-                    except:
-                        pass
-
                 self.exit()
             except TypeError as e:
                 print(e)
                 self.exit()
 
     def exit(self):
+        aspect_manager.restore_aspect()
         self.close()
-
-    def getAspect(self):
-        return AVSwitch().getAspectRatioSetting()
-
-    def getAspectString(self, aspectnum):
-        return {0: _('4:3 Letterbox'),
-                1: _('4:3 PanScan'),
-                2: _('16:9'),
-                3: _('16:9 always'),
-                4: _('16:10 Letterbox'),
-                5: _('16:10 PanScan'),
-                6: _('16:9 Letterbox')}[aspectnum]
-
-    def setAspect(self, aspect):
-        map = {0: '4_3_letterbox',
-               1: '4_3_panscan',
-               2: '16_9',
-               3: '16_9_always',
-               4: '16_10_letterbox',
-               5: '16_10_panscan',
-               6: '16_9_letterbox'}
-        config.av.aspectratio.setValue(map[aspect])
-        try:
-            AVSwitch().setAspectRatio(aspect)
-        except:
-            pass
-
-    def av(self):
-        temp = int(self.getAspect())
-        temp = temp + 1
-        if temp > 6:
-            temp = 0
-        self.new_aspect = temp
-        self.setAspect(temp)
 
     def playpauseService(self):
         if self.state == self.STATE_PLAYING:
@@ -1107,17 +1031,6 @@ ListAgent = [
     'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.15 (KHTML, like Gecko) Chrome/24.0.1295.0 Safari/537.15',
     'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.14 (KHTML, like Gecko) Chrome/24.0.1292.0 Safari/537.14',
     'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-    'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_4) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1290.1 Safari/537.13',
-    'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.13 (KHTML, like Gecko) Chrome/24.0.1284.0 Safari/537.13',
-    'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.8 (KHTML, like Gecko) Chrome/17.0.940.0 Safari/535.8',
-    'Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-    'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-    'Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
-    'Mozilla/5.0 (Windows NT 6.1; rv:15.0) Gecko/20120716 Firefox/15.0a2',
-    'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1.16) Gecko/20120427 Firefox/15.0a1',
-    'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:15.0) Gecko/20120427 Firefox/15.0a1',
 ]
 
 
@@ -1138,7 +1051,7 @@ class PicLoader:
         self.picload.setPara((width, height, sc[0], sc[1], False, 1, "#ff000000"))
 
     def load(self, filename):
-        if os.path.exists('/var/lib/dpkg/status'):
+        if exists('/var/lib/dpkg/status'):
             self.picload.startDecode(filename, False)
         else:
             self.picload.startDecode(filename, 0, 0, False)
@@ -1150,7 +1063,7 @@ class PicLoader:
         self.picload_conn = None
 
     def addCallback(self, callback):
-        if os.path.exists('/var/lib/dpkg/status'):
+        if exists('/var/lib/dpkg/status'):
             self.picload_conn = self.picload.PictureData.connect(callback)
         else:
             self.picload.PictureData.get().append(callback)
@@ -1163,3 +1076,29 @@ class PicLoader:
 
     def startDecode(self, f):
         self.picload.startDecode(f)
+
+
+class AspectManager:
+    def __init__(self):
+        self.init_aspect = self.get_current_aspect()
+        print("[INFO] Initial aspect ratio:", self.init_aspect)
+
+    def get_current_aspect(self):
+        """Restituisce l'aspect ratio attuale del dispositivo."""
+        try:
+            return int(AVSwitch().getAspectRatioSetting())
+        except Exception as e:
+            print("[ERROR] Failed to get aspect ratio:", str(e))
+            return 0  # Valore di default in caso di errore
+
+    def restore_aspect(self):
+        """Ripristina l'aspect ratio originale all'uscita del plugin."""
+        try:
+            print("[INFO] Restoring aspect ratio to:", self.init_aspect)
+            AVSwitch().setAspectRatio(self.init_aspect)
+        except Exception as e:
+            print("[ERROR] Failed to restore aspect ratio:", str(e))
+
+
+aspect_manager = AspectManager()
+aspect_manager.get_current_aspect()
