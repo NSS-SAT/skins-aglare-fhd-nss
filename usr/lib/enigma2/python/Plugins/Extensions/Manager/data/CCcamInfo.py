@@ -151,29 +151,33 @@ def _parse(url):
 
 
 def getPage(url, callback, errback):
-    url, auth_headers = _parse(url)
-    print("[CCcamInfo] URL requested:", url)
-    data = ""
+    url, AuthHeaders = _parse(url)
+    print("[CCcamInfo]2 url=%s" % url)
     try:
+        print(f"[CCcamInfo] URL requested: {url}")
+        url, auth_headers = _parse(url)
+        print(f"[CCcamInfo] Parsed URL: {url}")
         if 'username' in auth_headers and 'password' in auth_headers:
-            credentials = "%s:%s" % (auth_headers['username'], auth_headers['password'])
+            # Codifica base64 delle credenziali
+            credentials = f"{auth_headers['username']}:{auth_headers['password']}"
             encoded_credentials = b64encode(credentials.encode('utf-8')).decode('utf-8')
-            auth_headers['Authorization'] = "Basic %s" % encoded_credentials
+            auth_headers['Authorization'] = f"Basic {encoded_credentials}"
         try:
             response = requests.get(url, headers=auth_headers)
             response.raise_for_status()
-            try:
-                data = response.content.decode(encoding='utf-8')
-            except UnicodeDecodeError:
-                data = response.content.decode(encoding='latin-1')
         except requests.exceptions.RequestException as error:
-            print("[CCcamInfo][getPage] Error in response:", error)
-            errback(error)
-            return
+            print(f"[CCcamInfo][getPage] Error in response: {error}")
+            callback("")
+            print('callback', callback)
+        else:
+            try:
+                data = response.content.decode(encoding='UTF-8')
+            except:
+                data = response.content.decode(encoding='latin-1')
         callback(data)
     except TypeError as e:
-        print("TypeError:", e)
-        errback(e)
+        print(f"TypeError: {e}")
+        raise
 
 
 class HelpableNumberActionMap(NumberActionMap):
@@ -238,7 +242,7 @@ def notBlackListed(entry):
 
     except IOError as e:
         # In caso di errore di lettura del file, logga l'errore e considera tutti gli entry come non blacklisted
-        print("Error reading blacklist file:", e)
+        print(f"Error reading blacklist file: {e}")
         blacklisted_entries = set()
     return entry not in blacklisted_entries
 
@@ -630,7 +634,7 @@ class CCcamInfoMain(Screen):
                     elif lx.startswith('WEBINFO PASSWORD :'):
                         password = getConfigValue(lx)
         except IOError as e:
-            print("Errore nella lettura del file di configurazione:", e)
+            print(f"Errore nella lettura del file di configurazione: {e}")
             return
         # Se username e password sono presenti, aggiorna l'URL con le credenziali
         if username and password:
@@ -1468,7 +1472,7 @@ class CCcamInfoRemoteBoxMenu(Screen):
 
         except IOError as e:
             # Log the error or handle it appropriately
-            print("Error reading profiles file:", e)
+            print(f"Error reading profiles file: {e}")
             content = ""
         profiles = content.split("\n")
         for profile in profiles:
@@ -1485,9 +1489,9 @@ class CCcamInfoRemoteBoxMenu(Screen):
                             self.list.append(name)
                             self.profiles.append(CCcamInfoRemoteBox(name, ip, username, password, port))
                         else:
-                            print("Invalid port number {port} in profile:", name)
+                            print(f"Invalid port number {port} in profile: {name}")
                     except ValueError:
-                        print("Invalid port number format in profile:", name)
+                        print(f"Invalid port number format in profile: {name}")
         self["list"].setList(self.list)
 
     def saveConfigs(self):
